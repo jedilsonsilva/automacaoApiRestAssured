@@ -1,0 +1,29 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 4.998 s <<< FAILURE! - in br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest
+testGarantirContratosLimitesConta(br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest)  Time elapsed: 0.055 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: instance type (array) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/meta/properties/requestDateTime"}
+    instance: {"pointer":"/meta/requestDateTime"}
+    domain: "validation"
+    keyword: "type"
+    found: "array"
+    expected: ["string"]
+
+  Actual: {"data":{"overdraftLimitContracted":0,"overdraftLimitUsed":0},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f/overdraft-limits","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,5,14,11,15,5,349831000]}}
+
+	at br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest.testGarantirContratosLimitesConta(GetLimiteTest.java:76)
+
+testMetodoNaoSuportadoLimites(br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest)  Time elapsed: 0.057 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <405> but was <500>.
+
+	at br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest.testMetodoNaoSuportadoLimites(GetLimiteTest.java:64)
+

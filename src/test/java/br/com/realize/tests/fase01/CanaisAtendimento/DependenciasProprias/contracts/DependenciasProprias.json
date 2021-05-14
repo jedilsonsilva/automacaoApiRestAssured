@@ -1,0 +1,383 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "companies": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "cnpjNumber": {
+                  "type": "string"
+                },
+                "branches": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "identification": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "code": {
+                              "type": "string"
+                            },
+                            "checkDigit": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "code",
+                            "checkDigit",
+                            "name"
+                          ]
+                        },
+                        "postalAddress": {
+                          "type": "object",
+                          "properties": {
+                            "address": {
+                              "type": "string"
+                            },
+                            "additionalInfo": {
+                              "type": "string"
+                            },
+                            "districtName": {
+                              "type": "string"
+                            },
+                            "townName": {
+                              "type": "string"
+                            },
+                            "ibgeCode": {
+                              "type": "string"
+                            },
+                            "countrySubDivision": {
+                              "type": "string"
+                            },
+                            "postCode": {
+                              "type": "string"
+                            },
+                            "country": {
+                              "type": "string"
+                            },
+                            "countryCode": {
+                              "type": "string"
+                            },
+                            "geographicCoordinates": {
+                              "type": "object",
+                              "properties": {
+                                "longitude": {
+                                  "type": "string"
+                                },
+                                "latitude": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "longitude",
+                                "latitude"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "address",
+                            "additionalInfo",
+                            "districtName",
+                            "townName",
+                            "ibgeCode",
+                            "countrySubDivision",
+                            "postCode",
+                            "country",
+                            "countryCode",
+                            "geographicCoordinates"
+                          ]
+                        },
+                        "availability": {
+                          "type": "object",
+                          "properties": {
+                            "standards": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "weekday": {
+                                      "type": "string"
+                                    },
+                                    "openingTime": {
+                                      "type": "string"
+                                    },
+                                    "closingTime": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "weekday",
+                                    "openingTime",
+                                    "closingTime"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "weekday": {
+                                      "type": "string"
+                                    },
+                                    "openingTime": {
+                                      "type": "string"
+                                    },
+                                    "closingTime": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "weekday",
+                                    "openingTime",
+                                    "closingTime"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "weekday": {
+                                      "type": "string"
+                                    },
+                                    "openingTime": {
+                                      "type": "string"
+                                    },
+                                    "closingTime": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "weekday",
+                                    "openingTime",
+                                    "closingTime"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "weekday": {
+                                      "type": "string"
+                                    },
+                                    "openingTime": {
+                                      "type": "string"
+                                    },
+                                    "closingTime": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "weekday",
+                                    "openingTime",
+                                    "closingTime"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "weekday": {
+                                      "type": "string"
+                                    },
+                                    "openingTime": {
+                                      "type": "string"
+                                    },
+                                    "closingTime": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "weekday",
+                                    "openingTime",
+                                    "closingTime"
+                                  ]
+                                }
+                              ]
+                            },
+                            "exception": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "standards",
+                            "exception"
+                          ]
+                        },
+                        "phones": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "countryCallingCode": {
+                                  "type": "string"
+                                },
+                                "areaCode": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "countryCallingCode",
+                                "areaCode",
+                                "number"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "countryCallingCode": {
+                                  "type": "string"
+                                },
+                                "areaCode": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "countryCallingCode",
+                                "areaCode",
+                                "number"
+                              ]
+                            }
+                          ]
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "identification",
+                        "postalAddress",
+                        "availability",
+                        "phones",
+                        "services"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "cnpjNumber",
+                "branches"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "companies"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

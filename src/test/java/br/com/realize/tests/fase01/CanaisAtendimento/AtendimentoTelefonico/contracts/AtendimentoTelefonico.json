@@ -1,0 +1,511 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "companies": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "cnpjNumber": {
+                  "type": "string"
+                },
+                "phoneChannels": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "identification": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "additionalInfo": {
+                              "type": "string"
+                            },
+                            "phones": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "additionalInfo",
+                            "phones"
+                          ]
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "identification",
+                        "services"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "identification": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "additionalInfo": {
+                              "type": "string"
+                            },
+                            "phones": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "additionalInfo",
+                            "phones"
+                          ]
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "identification",
+                        "services"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "identification": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "additionalInfo": {
+                              "type": "string"
+                            },
+                            "phones": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "additionalInfo",
+                            "phones"
+                          ]
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "identification",
+                        "services"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "identification": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "additionalInfo": {
+                              "type": "string"
+                            },
+                            "phones": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "countryCallingCode": {
+                                      "type": "string"
+                                    },
+                                    "areaCode": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "countryCallingCode",
+                                    "areaCode",
+                                    "number"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "additionalInfo",
+                            "phones"
+                          ]
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                },
+                                "additionalInfo": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "code",
+                                "additionalInfo"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "identification",
+                        "services"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "cnpjNumber",
+                "phoneChannels"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "companies"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

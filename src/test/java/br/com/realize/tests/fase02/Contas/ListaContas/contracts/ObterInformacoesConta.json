@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "brandName": {
+              "type": "string"
+            },
+            "brandID": {
+              "type": ["null", "string"]
+            },
+            "companyCnpj": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "compeCode": {
+              "type": "string"
+            },
+            "branchCode": {
+              "type": "string"
+            },
+            "number": {
+              "type": "string"
+            },
+            "checkDigit": {
+              "type": "string"
+            },
+            "accountID": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "brandName",
+            "brandID",
+            "companyCnpj",
+            "type",
+            "compeCode",
+            "branchCode",
+            "number",
+            "checkDigit",
+            "accountID"
+          ]
+        }
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages",
+        "requestDateTime"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

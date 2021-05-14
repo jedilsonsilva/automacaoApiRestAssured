@@ -1,0 +1,11 @@
+<suite name="Rest Assured test examples">
+    <test name="fase01">
+        <classes>
+            <class name="com.sun.xml.internal.ws.developer.SchemaValidation"/>
+            <class name="br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest"/>
+            <class name="br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest"/>
+            <class name="br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest"/>
+            <class name="br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest"/>
+        </classes>
+    </test>
+</suite>

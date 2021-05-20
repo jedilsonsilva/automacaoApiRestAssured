@@ -1,72 +1,26 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "data": {
-      "type": "object",
-      "properties": {
-        "overdraftLimitContracted": {
-          "type": "integer"
-        },
-        "overdraftLimitUsed": {
-          "type": "integer"
-        }
-      },
-      "required": [
-        "overdraftLimitContracted",
-        "overdraftLimitUsed"
-      ]
-    },
-    "links": {
-      "type": "object",
-      "properties": {
-        "self": {
-          "type": "string"
-        },
-        "first": {
-          "type": "null"
-        },
-        "prev": {
-          "type": "null"
-        },
-        "next": {
-          "type": "null"
-        },
-        "last": {
-          "type": "null"
-        }
-      },
-      "required": [
-        "self",
-        "first",
-        "prev",
-        "next",
-        "last"
-      ]
-    },
-    "meta": {
-      "type": "object",
-      "properties": {
-        "totalRecords": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        },
-        "requestDateTime": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "totalRecords",
-        "totalPages",
-        "requestDateTime"
-      ]
-    }
+  "data": {
+    "overdraftLimitContracted": 0,
+    "overdraftLimitUsed": 0
   },
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ]
+  "links": {
+    "self": "http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f/overdraft-limits",
+    "first": null,
+    "prev": null,
+    "next": null,
+    "last": null
+  },
+  "meta": {
+    "totalRecords": 1,
+    "totalPages": 1,
+    "requestDateTime": [
+      2021,
+      5,
+      18,
+      10,
+      36,
+      14,
+      117998000
+    ]
+  }
 }

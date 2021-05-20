@@ -1,49 +1,43 @@
-package br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.requests;
+package br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.requests;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+
 import static io.restassured.RestAssured.given;
 
 
-public class GetAtendimentoEletronicoRequest {
+public class GetCartaoCreditoPessoaNaturalRequest {
 
-    @Step("Obtém as informações dos canais de atendimento eletronico.")
-    public Response obterInformacoesAtendimentoEletronico() {
+    @Step("Retorna o objeto Brand contendo os Cartões de Crédito oferecidos a Pessoa Natural.")
+    public Response obterInformacoesCartaoCreditoPessoaNatural() {
         return given()
                 .queryParam("page", 1)
-                .queryParam("page-size", "10")
+                .queryParam("page-size", "25")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
-    public String obterLinkSelfAtendimentoEletronico() {
-        return obterInformacoesAtendimentoEletronico()
+    public String obterLinkSelfCartaoCreditoPessoaNatural() {
+        return obterInformacoesCartaoCreditoPessoaNatural()
                 .then()
                 .statusCode(200)
                 .extract().path("links.self");
     }
-    @Step("Obtém as informações dos canais de atendimento telefônico.")
-    public Response canaisEletronicos() {
-        return given()
-                .queryParam("page", 1)
-                .queryParam("page-size", "10")
-                .when()
-                .get("channels/v1/electronic-channels");
-    }
+
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {
         return given()
                 .queryParam("page", 10)
                 .queryParam("page-size", "10")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
     @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API")
     public Response pathInvalido() {
         return given()
                 .queryParam("page", 1)
-                .queryParam("page-size", "10")
+                .queryParam("page-size", "25")
                 .when()
-                .get("channels/v1/electronic-channelss");
+                .get("/products-services/v1/personal-credit-cardss");
     }
     @Step("O número da página informado é zero.")
     public Response numeroPaginaZero() {
@@ -51,7 +45,7 @@ public class GetAtendimentoEletronicoRequest {
                 .queryParam("page", 0)
                 .queryParam("page-size", "10")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
     @Step("O número da página informado contém letras ou caracteres especiais.")
     public Response numeroPaginaInvalido() {
@@ -59,7 +53,7 @@ public class GetAtendimentoEletronicoRequest {
                 .queryParam("page", -8)
                 .queryParam("page-size", "10")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
     @Step("O tamanho da página informado é zero.")
     public Response tamanhoPaginaZero() {
@@ -67,7 +61,7 @@ public class GetAtendimentoEletronicoRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "0")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
     @Step("O tamanho da página informado contém letras ou caracteres especiais.")
     public Response tamanhoPaginaInvalido() {
@@ -75,7 +69,7 @@ public class GetAtendimentoEletronicoRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "1abc#")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
     @Step("O tamanho da página informado é superior ao valor 1000.")
     public Response tamanhoPaginaSuperior() {
@@ -83,7 +77,7 @@ public class GetAtendimentoEletronicoRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "1001")
                 .when()
-                .get("channels/v1/electronic-channels");
+                .get("/products-services/v1/personal-credit-cards");
     }
     @Step("Método não suportado para a o endpoint informado")
     public Response metodoNaoSuportado() {
@@ -91,7 +85,7 @@ public class GetAtendimentoEletronicoRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .post("channels/v1/electronic-channels");
+                .post("/products-services/v1/personal-credit-cards");
     }
 }
 

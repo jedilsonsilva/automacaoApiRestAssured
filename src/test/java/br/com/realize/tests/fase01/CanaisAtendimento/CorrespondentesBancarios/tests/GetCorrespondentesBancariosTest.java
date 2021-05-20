@@ -19,6 +19,7 @@ import java.io.File;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
 
 @Epic("Fase 01")
 @Feature("Canais de Atendimento")
@@ -190,5 +191,17 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
                 .statusCode(422)
                 .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
+    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase01.class})
+    @DisplayName("405 - Validar o status code informando um método não suportado.")
+    public void testMetodoNaoSuportado() throws Exception {
+        getCorrespondentesBancariosRequest.metodoNaoSuportado()
+                .then()
+                .log().all()
+                .statusCode(405)
+                .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
+                .body("errors.detail", hasItem("Request method 'POST' not supported"));
     }
 }

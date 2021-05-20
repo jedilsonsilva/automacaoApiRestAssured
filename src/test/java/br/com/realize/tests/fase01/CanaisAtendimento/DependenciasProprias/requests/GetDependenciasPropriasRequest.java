@@ -78,5 +78,13 @@ public class GetDependenciasPropriasRequest {
                 .when()
                 .get("channels/v1/branches");
     }
+    @Step("Método não suportado para a o endpoint informado")
+    public Response metodoNaoSuportado() {
+        return given()
+                .queryParam("page", 1)
+                .queryParam("page-size", "25")
+                .when()
+                .post("channels/v1/branches");
+    }
 }
 

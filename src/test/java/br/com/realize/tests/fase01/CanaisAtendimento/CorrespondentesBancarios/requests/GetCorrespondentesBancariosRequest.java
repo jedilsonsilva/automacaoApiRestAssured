@@ -97,6 +97,14 @@ public class GetCorrespondentesBancariosRequest {
                 .when()
                 .get("channels/v1/banking-agents");
     }
+    @Step("Método não suportado para a o endpoint informado")
+    public Response metodoNaoSuportado() {
+        return given()
+                .queryParam("page", 1)
+                .queryParam("page-size", "25")
+                .when()
+                .post("channels/v1/banking-agents");
+    }
 //OBTENDO OS ENDPOINTS DA PAGINAÇÃO
     public String obterLinkSelfCorrespondentesBancarios() {
         return obterInformacoesCorrespondentesBancarios()

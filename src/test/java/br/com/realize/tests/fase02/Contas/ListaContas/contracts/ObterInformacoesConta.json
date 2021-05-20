@@ -1,105 +1,35 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "data": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "brandName": {
-              "type": "string"
-            },
-            "brandID": {
-              "type": ["null", "string"]
-            },
-            "companyCnpj": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "compeCode": {
-              "type": "string"
-            },
-            "branchCode": {
-              "type": "string"
-            },
-            "number": {
-              "type": "string"
-            },
-            "checkDigit": {
-              "type": "string"
-            },
-            "accountID": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "brandName",
-            "brandID",
-            "companyCnpj",
-            "type",
-            "compeCode",
-            "branchCode",
-            "number",
-            "checkDigit",
-            "accountID"
-          ]
-        }
-      ]
-    },
-    "links": {
-      "type": "object",
-      "properties": {
-        "self": {
-          "type": "string"
-        },
-        "first": {
-          "type": "null"
-        },
-        "prev": {
-          "type": "null"
-        },
-        "next": {
-          "type": "null"
-        },
-        "last": {
-          "type": "null"
-        }
-      },
-      "required": [
-        "self",
-        "first",
-        "prev",
-        "next",
-        "last"
-      ]
-    },
-    "meta": {
-      "type": "object",
-      "properties": {
-        "totalRecords": {
-          "type": "integer"
-        },
-        "totalPages": {
-          "type": "integer"
-        },
-        "requestDateTime": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "totalRecords",
-        "totalPages",
-        "requestDateTime"
-      ]
+  "data": [
+    {
+      "brandName": "REALIZE CFI S.A.",
+      "brandID": "218b28be-b283-5994-973e-3bafbffccf0c",
+      "companyCnpj": "27351731000138",
+      "type": "CONTA_PAGAMENTO_PRE_PAGA",
+      "compeCode": "374",
+      "branchCode": "0001",
+      "number": "158076326",
+      "checkDigit": "6",
+      "accountID": "e92c51df-b68c-4faa-9cbc-4cb1b232781f"
     }
+  ],
+  "links": {
+    "self": "http://10.120.192.16/open-banking/accounts/v1/accounts?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1%0A",
+    "first": null,
+    "prev": null,
+    "next": null,
+    "last": null
   },
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ]
+  "meta": {
+    "totalRecords": 1,
+    "totalPages": 1,
+    "requestDateTime": [
+      2021,
+      5,
+      18,
+      10,
+      19,
+      56,
+      89381000
+    ]
+  }
 }

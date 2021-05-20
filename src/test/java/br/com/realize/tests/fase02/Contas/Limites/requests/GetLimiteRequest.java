@@ -25,9 +25,25 @@ public class GetLimiteRequest {
                 .get("accounts/v1/accounts/" + AccountIDInvalido + "/overdraft-limits");
     }
 //REQUISIÇÕES DOS STATUS CODE DE ERRO
-    @Step("Obter os limites da conta")
-    public Response metodoNaoSuportadoLimites() {
+    public String obterLinkSelf() {
+        return obterLimitesConta()
+            .then()
+            .statusCode(200)
+            .extract().path("links.self");
+    }
+    @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API")
+    public Response pathInvalido() {
         return given()
+                .queryParam("page", 1)
+                .queryParam("page-size", "10")
+                .when()
+                .get("accounts/v1/accounts/" + obterAccountID() + "/overdraft-limitss");
+    }
+    @Step("Método não suportado para a o endpoint informado")
+    public Response metodoNaoSuportado() {
+        return given()
+                .queryParam("page", 1)
+                .queryParam("page-size", "25")
                 .when()
                 .post("accounts/v1/accounts/" + obterAccountID() + "/overdraft-limits");
     }
@@ -37,13 +53,6 @@ public class GetLimiteRequest {
                 .then()
                 .statusCode(200)
                 .extract().path("data[0].accountID");
-    }
-//RECUPERA O LINK PARA VALIDAR NO TESTE
-    public String obterLinkSelfLimitesConta() {
-        return obterLimitesConta()
-                .then()
-                .statusCode(200)
-                .extract().path("links.self");
     }
 }
 

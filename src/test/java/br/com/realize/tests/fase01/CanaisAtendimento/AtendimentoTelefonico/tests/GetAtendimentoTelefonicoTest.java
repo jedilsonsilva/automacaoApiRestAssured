@@ -1,5 +1,6 @@
 package br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests;
 
+import br.com.realize.runners.fase02;
 import br.com.realize.suites.Contract;
 import br.com.realize.runners.fase01;
 import br.com.realize.suites.AllTests;
@@ -199,5 +200,17 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
                 .statusCode(422)
                 .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
+    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
+    @DisplayName("405 - Validar o status code informando um método não suportado.")
+    public void testMetodoNaoSuportado() throws Exception {
+        getAtendimentoTelefonicooRequest.metodoNaoSuportado()
+                .then()
+                .log().all()
+                .statusCode(405)
+                .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
+                .body("errors.detail", hasItem("Request method 'POST' not supported"));
     }
 }

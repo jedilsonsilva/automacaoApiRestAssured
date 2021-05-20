@@ -1,12 +1,11 @@
-package br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests;
+package br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.tests;
 
 import br.com.realize.runners.fase01;
-import br.com.realize.runners.fase02;
 import br.com.realize.suites.AllTests;
 import br.com.realize.suites.Contract;
 import br.com.realize.suites.Healthcheck;
 import br.com.realize.tests.base.tests.BaseTest;
-import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.requests.GetAtendimentoEletronicoRequest;
+import br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.requests.GetCartaoCreditoPessoaNaturalRequest;
 import br.com.realize.utils.Utils;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -20,75 +19,81 @@ import java.io.File;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.equalTo;
 
 @Epic("Fase 01")
-@Feature("Canais de Atendimento")
-public class GetAtendimentoEletronicoTest  extends BaseTest{
+@Feature("Produtos e Serviços")
+public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
 
-        GetAtendimentoEletronicoRequest getAtendimentoEletronicoRequest = new GetAtendimentoEletronicoRequest();
+        GetCartaoCreditoPessoaNaturalRequest getCartaoCreditoPessoaNaturalRequest = new GetCartaoCreditoPessoaNaturalRequest();
 
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Obter atendimento eletrônico.")
-        public void testAtendimentoEletronico() throws Exception {
-            String linkSelf = getAtendimentoEletronicoRequest.obterLinkSelfAtendimentoEletronico();
-            getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
+        @DisplayName("Obter informações do cartão de crédito pessoa natural com a bandeira VISA.")
+        public void testCartaoCreditoPessoaNaturalBandeiraVisa() throws Exception {
+            String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
+            getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
                     .then()
                     .log().all()
                     .statusCode(200)
-                    .body("data.companies[0].cnpjNumber", equalTo("27351731"))
-                    .body("data.companies[0].name", equalTo("REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A."))
+                    .rootPath("data.companies[0].personalCreditCards.identification.product")
+                    .body("type[0]", equalTo("STANDARD_INTERNACIONAL"))
+                    .noRootPath()
+                    .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
+                    .body("network[0]", equalTo("VISA"))
+                    .noRootPath()
                     .body("links.self", equalTo(linkSelf))
-                    .body("meta.totalRecords", equalTo(2));
+                    .body("meta.totalRecords", equalTo(3));
         }
-
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Obter informações do tipo de atendimento eletrônico Internet Banking.")
-        public void testInformacoesInternetBanking() throws Exception {
-            getAtendimentoEletronicoRequest.canaisEletronicos()
-                    .then()
-                    .log().all()
-                    .statusCode(200)
-                    .rootPath("data.companies.electronicChannels")
-                    .body("identification[0].type[0]", equalTo("INTERNET_BANKING"))
-                    .body("identification[0].additionalInfo[0]", equalTo("Pagamento de contas e visualização de limites."))
-                    .body("identification[0].urls[0]", hasItems("https://www.realizesolucoesfinanceiras.com.br/cartoes-renner/login",
-                            "https://www.realizesolucoesfinanceiras.com.br/cartoes-renner/login/data-nascimento"))
-                    .body("services[0].name[0]", hasItem("CARTAO_CREDITO"))
-                    .body("services[0].code[0]", hasItem("CARTAO_CREDITO"));
+        @DisplayName("Obter informações do cartão de crédito pessoa natural com a bandeira MASTERCARD.")
+        public void testCartaoCreditoPessoaNaturalBandeiraMastercard() throws Exception {
+                String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
+                getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
+                        .then()
+                        .log().all()
+                        .statusCode(200)
+                        .rootPath("data.companies[0].personalCreditCards.identification.product")
+                        .body("type[1]", equalTo("STANDARD_INTERNACIONAL"))
+                        .noRootPath()
+                        .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
+                        .body("network[1]", equalTo("MASTERCARD"))
+                        .noRootPath()
+                        .body("links.self", equalTo(linkSelf))
+                        .body("meta.totalRecords", equalTo(3));
         }
-
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Obter informações do tipo de atendimento eletrônico Mobile Banking.")
-        public void testInformacoesMobileBanking() throws Exception {
-            getAtendimentoEletronicoRequest.canaisEletronicos()
-                    .then()
-                    .log().all()
-                    .statusCode(200)
-                    .rootPath("data.companies.electronicChannels")
-                    .body("identification[0].type[1]", equalTo("MOBILE_BANKING"))
-                    .body("identification[0].urls[1]", hasItems("https://play.google.com/store/apps/details?id=br.com.lojasrenner&hl=pt_BR",
-                            "https://apps.apple.com/br/app/lojas-renner-roupas-e-sapatos/id567763947"))
-                    .body("services[0].name[0]", hasItem("CARTAO_CREDITO"))
-                    .body("services[0].code[0]", hasItem("CARTAO_CREDITO"));
+        @DisplayName("Obter informações do cartão de crédito pessoa natural com a bandeira própria.")
+        public void testCartaoCreditoPessoaNaturalBandeiraPropria() throws Exception {
+                String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
+                getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
+                        .then()
+                        .log().all()
+                        .statusCode(200)
+                        .rootPath("data.companies[0].personalCreditCards.identification.product")
+                        .body("type[2]", equalTo("COMPRAS"))
+                        .noRootPath()
+                        .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
+                        .body("network[2]", equalTo("BANDEIRA_PROPRIA"))
+                        .noRootPath()
+                        .body("links.self", equalTo(linkSelf))
+                        .body("meta.totalRecords", equalTo(3));
         }
 
         @Test
         @Severity(SeverityLevel.BLOCKER)
         @Category({Contract.class, AllTests.class, fase01.class})
         @DisplayName("Garantir o contrato do retorno da lista de atendimento eletrônico")
-        public void testGarantirContratosAtendimentoEletronico() throws Exception {
-            getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
+        public void testGarantirContratosCreditoPessoaNatural() throws Exception {
+                getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
                     .then()
                     .statusCode(200)
                     .assertThat().body(matchesJsonSchema(
-                    new File(Utils.getContractsBasePath("fase01/CanaisAtendimento/AtendimentoEletronico", "AtendimentoEletronico"))));
+                    new File(Utils.getContractsBasePath("fase01/ProdutosServicos/CartaoCreditoPessoaNatural", "CartaoCreditoPessoaNatural"))));
         }
 
         //VALIDAÇÕES DOS STATUS CODE DE ERRO
@@ -97,7 +102,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 404 - Número da página não localizado.")
         public void testNumeroPaginaNaoLocalizado() throws Exception {
-            getAtendimentoEletronicoRequest.numeroPaginaNaoLocalizado()
+                getCartaoCreditoPessoaNaturalRequest.numeroPaginaNaoLocalizado()
                     .then()
                     .log().all()
                     .statusCode(404)
@@ -110,7 +115,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 404 - Path da API inválido")
         public void testPathInvalido() throws Exception {
-            getAtendimentoEletronicoRequest.pathInvalido()
+                getCartaoCreditoPessoaNaturalRequest.pathInvalido()
                     .then()
                     .log().all()
                     .statusCode(404)
@@ -123,7 +128,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 400 - Número da página é zero.")
         public void testNumeroPaginaZero() throws Exception {
-            getAtendimentoEletronicoRequest.numeroPaginaZero()
+                getCartaoCreditoPessoaNaturalRequest.numeroPaginaZero()
                     .then()
                     .log().all()
                     .statusCode(400)
@@ -136,7 +141,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 400 - Número da página inválido.")
         public void testNumeroPaginaInvalido() throws Exception {
-            getAtendimentoEletronicoRequest.numeroPaginaInvalido()
+                getCartaoCreditoPessoaNaturalRequest.numeroPaginaInvalido()
                     .then()
                     .log().all()
                     .statusCode(400)
@@ -149,7 +154,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 400 - Tamanho da página é zero.")
         public void testTamanhoPaginaZero() throws Exception {
-            getAtendimentoEletronicoRequest.tamanhoPaginaZero()
+                getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaZero()
                     .then()
                     .log().all()
                     .statusCode(400)
@@ -162,7 +167,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 400 - Tamanho da página inválido.")
         public void testTamanhoPaginaInvalido() throws Exception {
-            getAtendimentoEletronicoRequest.tamanhoPaginaInvalido()
+                getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaInvalido()
                     .then()
                     .log().all()
                     .statusCode(400)
@@ -175,7 +180,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido.")
         public void testTamanhoPaginaSuperior() throws Exception {
-            getAtendimentoEletronicoRequest.tamanhoPaginaSuperior()
+                getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaSuperior()
                     .then()
                     .log().all()
                     .statusCode(422)
@@ -184,14 +189,15 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         }
         @Test
         @Severity(SeverityLevel.NORMAL)
-        @Category({Healthcheck.class, AllTests.class, fase02.class})
-        @DisplayName("405 - Validar o status code informando um método não suportado")
+        @Category({Healthcheck.class, AllTests.class, fase01.class})
+        @DisplayName("405 - Validar o status code informando um método não suportado.")
         public void testMetodoNaoSuportado() throws Exception {
-                getAtendimentoEletronicoRequest.metodoNaoSuportado()
+                getCartaoCreditoPessoaNaturalRequest.metodoNaoSuportado()
                         .then()
                         .log().all()
                         .statusCode(405)
                         .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                         .body("errors.detail", hasItem("Request method 'POST' not supported"));
         }
+
 }

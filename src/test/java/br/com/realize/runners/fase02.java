@@ -11,6 +11,7 @@ import org.junit.runners.Suite;
 @RunWith(Categories.class)
 @Categories.IncludeCategory(Healthcheck.class)
 @Suite.SuiteClasses({
+        //CONTAS
         GetContaTest.class,
         GetSaldoTest.class,
         GetLimiteTest.class

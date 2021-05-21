@@ -17,13 +17,6 @@ public class GetEmprestimoPessoaJuridicaRequest {
                 .get("/products-services/v1/business-loans");
     }
 
-    public String obterLinkSelfEmprestimoPessoaJuridica() {
-        return obterInformacoesEmprestimoPessoaJuridica()
-                .then()
-                .statusCode(200)
-                .extract().path("links.self");
-    }
-
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {
         return given()
@@ -87,6 +80,12 @@ public class GetEmprestimoPessoaJuridicaRequest {
                 .queryParam("page-size", "25")
                 .when()
                 .post("/products-services/v1/business-loans");
+    }
+    public String obterLinkSelfEmprestimoPessoaJuridica() {
+        return obterInformacoesEmprestimoPessoaJuridica()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
     }
 }
 

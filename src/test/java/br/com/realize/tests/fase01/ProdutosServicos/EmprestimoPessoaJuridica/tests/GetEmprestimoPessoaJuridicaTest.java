@@ -31,40 +31,41 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Obter informações do cartão de crédito pessoa natural com a bandeira VISA.")
-        public void testCartaoCreditoPessoaNaturalBandeiraVisa() throws Exception {
+        @DisplayName("Validar o retorno das informações do endpoint de empréstimo pessoa jurídica")
+        public void testEmprestimoMicrocreditoPessoaJuridica() throws Exception {
             String linkSelf = getEmprestimoPessoaJuridicaRequest.obterLinkSelfEmprestimoPessoaJuridica();
                 getEmprestimoPessoaJuridicaRequest.obterInformacoesEmprestimoPessoaJuridica()
                     .then()
                     .log().all()
                     .statusCode(200)
-                    .rootPath("data.companies[0].personalCreditCards.identification.product")
-                    .body("type[0]", equalTo("STANDARD_INTERNACIONAL"))
-                    .noRootPath()
-                    .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
-                    .body("network[0]", equalTo("VISA"))
+                    .rootPath("data.companies[0].businessLoans")
+                    .body("type[0]", equalTo("EMPRESTIMO_MICROCREDITO_PRODUTIVO_ORIENTADO"))
+                    .body("type[1]", equalTo("EMPRESTIMO_CHEQUE_ESPECIAL"))
+                    .body("type[2]", equalTo("EMPRESTIMO_CONTA_GARANTIDA"))
+                    .body("type[3]", equalTo("EMPRESTIMO_CAPITAL_GIRO_PRAZO_VENCIMENTO_ATE_365_DIAS"))
+                    .body("type[4]", equalTo("EMPRESTIMO_CAPITAL_GIRO_PRAZO_VENCIMENTO_SUPERIOR_365_DIAS"))
+                    .body("type[5]", equalTo("EMPRESTIMO_CAPITAL_GIRO_ROTATIVO"))
                     .noRootPath()
                     .body("links.self", equalTo(linkSelf))
-                    .body("meta.totalRecords", equalTo(3));
+                    .body("meta.totalRecords", equalTo(6));
         }
-
         @Test
         @Severity(SeverityLevel.BLOCKER)
         @Category({Contract.class, AllTests.class, fase01.class})
-        @DisplayName("Garantir o contrato do retorno da lista de atendimento eletrônico")
-        public void testGarantirContratosCreditoPessoaNatural() throws Exception {
+        @DisplayName("Garantir o contrato do retorno do endpoint de empréstimo pessoa jurídica.")
+        public void testGarantirEmprestimoPessoaJuridica() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.obterInformacoesEmprestimoPessoaJuridica()
                     .then()
                     .statusCode(200)
                     .assertThat().body(matchesJsonSchema(
-                    new File(Utils.getContractsBasePath("fase01/ProdutosServicos/CartaoCreditoPessoaNatural", "CartaoCreditoPessoaNatural"))));
+                    new File(Utils.getContractsBasePath("fase01/ProdutosServicos/EmprestimoPessoaJuridica", "EmprestimoPessoaJuridica"))));
         }
 
         //VALIDAÇÕES DOS STATUS CODE DE ERRO
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 404 - Número da página não localizado.")
+        @DisplayName("Validar o retorno 404 - Número da página não localizado no endpoint de cartão de empréstipo pessoa jurídica")
         public void testNumeroPaginaNaoLocalizado() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.numeroPaginaNaoLocalizado()
                     .then()
@@ -77,7 +78,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 404 - Path da API inválido")
+        @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de cartão de empréstipo pessoa jurídica")
         public void testPathInvalido() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.pathInvalido()
                     .then()
@@ -90,7 +91,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 400 - Número da página é zero.")
+        @DisplayName("Validar o retorno 400 - Número da página é zero no endpoint de cartão de empréstipo pessoa jurídica")
         public void testNumeroPaginaZero() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.numeroPaginaZero()
                     .then()
@@ -103,7 +104,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 400 - Número da página inválido.")
+        @DisplayName("Validar o retorno 400 - Número da página inválido no endpoint de cartão de empréstipo pessoa jurídica")
         public void testNumeroPaginaInvalido() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.numeroPaginaInvalido()
                     .then()
@@ -116,7 +117,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 400 - Tamanho da página é zero.")
+        @DisplayName("Validar o retorno 400 - Tamanho da página é zero no endpoint de cartão de empréstipo pessoa jurídica")
         public void testTamanhoPaginaZero() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.tamanhoPaginaZero()
                     .then()
@@ -129,7 +130,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 400 - Tamanho da página inválido.")
+        @DisplayName("Validar o retorno 400 - Tamanho da página inválido no endpoint de cartão de empréstipo pessoa jurídica")
         public void testTamanhoPaginaInvalido() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.tamanhoPaginaInvalido()
                     .then()
@@ -142,7 +143,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido.")
+        @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido no endpoint de cartão de empréstipo pessoa jurídica")
         public void testTamanhoPaginaSuperior() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.tamanhoPaginaSuperior()
                     .then()
@@ -154,7 +155,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase02.class})
-        @DisplayName("405 - Validar o status code informando um método não suportado.")
+        @DisplayName("Validar retorno 405 -Método não suportado no endpoint de cartão de empréstipo pessoa jurídica")
         public void testMetodoNaoSuportado() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.metodoNaoSuportado()
                         .then()

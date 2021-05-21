@@ -30,7 +30,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter correspondentes bancários.")
+    @DisplayName("Validar o retorno das informações gerais de correspondentes bancários")
     public void testCorrespondentesBancarios() throws Exception {
         String linkSelf = getCorrespondentesBancariosRequest.obterLinkSelfCorrespondentesBancarios();
         String linkNext = getCorrespondentesBancariosRequest.obterLinkNextCorrespondentesBancarios();
@@ -104,14 +104,14 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
-                new File(Utils.getContractsBasePath("Fase01/CanaisAtendimento/CorrespondentesBancarios", "CorrespondentesBancarios"))));
+                new File(Utils.getContractsBasePath("fase01/CanaisAtendimento/CorrespondentesBancarios", "CorrespondentesBancarios"))));
     }
 
 //VALIDAÇÕES DOS STATUS CODE DE ERRO
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Número da página não localizado.")
+    @DisplayName("Validar o retorno 404 - Número da página não localizado no endpoint de correspondentes bancários")
     public void testNumeroPaginaNaoLocalizado() throws Exception {
         getCorrespondentesBancariosRequest.numeroPaginaNaoLocalizado()
                 .then()
@@ -123,7 +123,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido")
+    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de correspondentes bancários")
     public void testPathInvalido() throws Exception {
         getCorrespondentesBancariosRequest.pathInvalido()
                 .then()
@@ -135,7 +135,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página é zero.")
+    @DisplayName("Validar o retorno 400 - Número da página é zero no endpoint de correspondentes bancários")
     public void testNumeroPaginaZero() throws Exception {
         getCorrespondentesBancariosRequest.numeroPaginaZero()
                 .then()
@@ -147,7 +147,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página inválido.")
+    @DisplayName("Validar o retorno 400 - Número da página inválido no endpoint de correspondentes bancários")
     public void testNumeroPaginaInvalido() throws Exception {
         getCorrespondentesBancariosRequest.numeroPaginaInvalido()
                 .then()
@@ -159,7 +159,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página é zero.")
+    @DisplayName("Validar o retorno 400 - Tamanho da página é zero no endpoint de correspondentes bancários")
     public void testTamanhoPaginaZero() throws Exception {
         getCorrespondentesBancariosRequest.tamanhoPaginaZero()
                 .then()
@@ -171,7 +171,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página inválido.")
+    @DisplayName("Validar o retorno 400 - Tamanho da página inválido no endpoint de correspondentes bancários")
     public void testTamanhoPaginaInvalido() throws Exception {
         getCorrespondentesBancariosRequest.tamanhoPaginaInvalido()
                 .then()
@@ -183,7 +183,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido.")
+    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido no endpoint de correspondentes bancários")
     public void testTamanhoPaginaSuperior() throws Exception {
         getCorrespondentesBancariosRequest.tamanhoPaginaSuperior()
                 .then()
@@ -195,7 +195,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado.")
+    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de correspondentes bancários")
     public void testMetodoNaoSuportado() throws Exception {
         getCorrespondentesBancariosRequest.metodoNaoSuportado()
                 .then()

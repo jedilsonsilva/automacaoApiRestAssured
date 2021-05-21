@@ -24,7 +24,6 @@ br\com\realize\tests\fase01\CanaisAtendimento\CorrespondentesBancarios\requests\
 br\com\realize\runners\Contracts.class
 br\com\realize\tests\fase01\CanaisAtendimento\DependenciasProprias\requests\GetDependenciasPropriasRequest.class
 br\com\realize\tests\fase02\Contas\ListaContas\tests\GetContaTest.class
-br\com\realize\tests\fase01\ProdutosServicos\tests\EmprestimoPessoaJuridicaTest.class
 br\com\realize\suites\E2e.class
 br\com\realize\tests\fase01\CanaisAtendimento\AtendimentoEletronico\requests\GetAtendimentoEletronicoRequest.class
 br\com\realize\tests\fase02\Contas\Saldos\tests\GetSaldoTest.class

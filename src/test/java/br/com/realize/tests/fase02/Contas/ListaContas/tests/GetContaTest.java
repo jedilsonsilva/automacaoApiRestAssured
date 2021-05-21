@@ -26,7 +26,7 @@ public class GetContaTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar a obtenção das informações da conta.")
+    @DisplayName("Validar o retorno do endpoint de informações da conta")
     public void testValidarinformacoesConta() throws Exception {
         getContaRequest.obterInformacoesConta()
                 .then()
@@ -61,7 +61,7 @@ public class GetContaTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar tipo de conta igual a Depósito à vista.")
+    @DisplayName("Validar o retorno do endpoint de contas com tipo de conta igual a Depósito à vista")
     public void testTipoContaDepositoAVista() throws Exception {
         getContaRequest.tipoContaDepositoAVista()
                 .then()
@@ -74,7 +74,7 @@ public class GetContaTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar tipo de conta igual a Poupança.")
+    @DisplayName("Validar o retorno do endpoint de contas com tipo de conta igual a Poupança")
     public void testTipoContaPoupanca() throws Exception {
         getContaRequest.tipoContaPoupanca()
                 .then()
@@ -110,20 +110,7 @@ public class GetContaTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 404 - Número da página não localizado.")
-    public void testNumeroPaginaNaoLocalizado() throws Exception {
-        getContaRequest.numeroPaginaNaoLocalizado()
-                .then()
-                .log().all()
-                .statusCode(404)
-                .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
-                .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
-    }
-
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido")
+    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de lista de contas")
     public void testPathInvalido() throws Exception {
         getContaRequest.pathInvalido()
                 .then()
@@ -132,75 +119,10 @@ public class GetContaTest extends BaseTest {
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 400 - Número da página é zero.")
-    public void testNumeroPaginaZero() throws Exception {
-        getContaRequest.numeroPaginaZero()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Número da página inválido."))
-                .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
-    }
-
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 400 - Número da página inválido.")
-    public void testNumeroPaginaInvalido() throws Exception {
-        getContaRequest.numeroPaginaInvalido()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Número da página inválido."))
-                .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
-    }
-
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página é zero.")
-    public void testTamanhoPaginaZero() throws Exception {
-        getContaRequest.tamanhoPaginaZero()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Tamanho da página inválido."))
-                .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
-    }
-
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página inválido.")
-    public void testTamanhoPaginaInvalido() throws Exception {
-        getContaRequest.tamanhoPaginaInvalido()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Tamanho da página inválido."))
-                .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
-    }
-
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido.")
-    public void testTamanhoPaginaSuperior() throws Exception {
-        getContaRequest.tamanhoPaginaSuperior()
-                .then()
-                .log().all()
-                .statusCode(422)
-                .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
-                .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado")
+    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de lista de contas")
     public void testMetodoNaoSuportado() throws Exception {
         getContaRequest.metodoNaoSuportado()
                 .then()

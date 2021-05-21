@@ -27,7 +27,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter atendimento telefônico.")
+    @DisplayName("Validar o retorno das informações gerais do atendimento telefônico")
     public void testAtendimentoTelefonico() throws Exception {
         String linkSelf = getAtendimentoTelefonicooRequest.obterLinkSelfAtendimentoTelefonico();
         getAtendimentoTelefonicooRequest.obterInformacoesAtendimentoTelefonico()
@@ -42,7 +42,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter informações do tipo de atendimento telefônico Central telefônica.")
+    @DisplayName("Validar o retorno das informações do tipo de atendimento Central telefônica.")
     public void testInformacoesCentralTelefonica() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
@@ -57,7 +57,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter informações do tipo de atendimento SAC.")
+    @DisplayName("Validar o retorno das informações do tipo de atendimento SAC.")
     public void testInformacoesSAC() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
@@ -72,7 +72,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter informações do tipo de atendimento Ouvidoria.")
+    @DisplayName("Validar o retorno das informações do tipo de atendimento Ouvidoria.")
     public void testInformacoesOuvidoria() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
@@ -87,7 +87,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter informações do tipo de atendimento Outros.")
+    @DisplayName("Validar o retorno das informações do tipo de atendimento Outros.")
     public void testInformacoesOutros() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
@@ -105,7 +105,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class, fase01.class})
-    @DisplayName("Garantia o contrato do retorno de contato telefonico")
+    @DisplayName("Garantir o contrato do retorno da lista de atendimento telefônico")
     public void testGarantirContratosInformacoesConta(){
         getAtendimentoTelefonicooRequest.obterInformacoesAtendimentoTelefonico()
                 .then()
@@ -120,7 +120,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Número da página não localizado.")
+    @DisplayName("Validar o retorno 404 - Número da página não localizado do endpoint de atendimento telefônico")
     public void testNumeroPaginaNaoLocalizado() throws Exception {
         getAtendimentoTelefonicooRequest.numeroPaginaNaoLocalizado()
                 .then()
@@ -132,7 +132,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido")
+    @DisplayName("Validar o retorno 404 - Path da API inválido do endpoint de atendimento telefônico")
     public void testPathInvalido() throws Exception {
         getAtendimentoTelefonicooRequest.pathInvalido()
                 .then()
@@ -144,7 +144,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página é zero.")
+    @DisplayName("Validar o retorno 400 - Número da página é zero do endpoint de atendimento telefônico")
     public void testNumeroPaginaZero() throws Exception {
         getAtendimentoTelefonicooRequest.numeroPaginaZero()
                 .then()
@@ -156,7 +156,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página inválido.")
+    @DisplayName("Validar o retorno 400 - Número da página inválido do endpoint de atendimento telefônico")
     public void testNumeroPaginaInvalido() throws Exception {
         getAtendimentoTelefonicooRequest.numeroPaginaInvalido()
                 .then()
@@ -168,7 +168,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página é zero.")
+    @DisplayName("Validar o retorno 400 - Tamanho da página é zero do endpoint de atendimento telefônico")
     public void testTamanhoPaginaZero() throws Exception {
         getAtendimentoTelefonicooRequest.tamanhoPaginaZero()
                 .then()
@@ -180,7 +180,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página inválido.")
+    @DisplayName("Validar o retorno 400 - Tamanho da página inválido do endpoint de atendimento telefônico")
     public void testTamanhoPaginaInvalido() throws Exception {
         getAtendimentoTelefonicooRequest.tamanhoPaginaInvalido()
                 .then()
@@ -192,7 +192,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido.")
+    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido do endpoint de atendimento telefônico")
     public void testTamanhoPaginaSuperior() throws Exception {
         getAtendimentoTelefonicooRequest.tamanhoPaginaSuperior()
                 .then()
@@ -204,7 +204,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado.")
+    @DisplayName("405 - Validar o status code informando um método não suportado do endpoint de atendimento telefônico")
     public void testMetodoNaoSuportado() throws Exception {
         getAtendimentoTelefonicooRequest.metodoNaoSuportado()
                 .then()

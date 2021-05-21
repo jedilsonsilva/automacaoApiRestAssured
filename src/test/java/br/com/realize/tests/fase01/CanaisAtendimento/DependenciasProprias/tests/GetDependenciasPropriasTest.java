@@ -29,7 +29,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Obter dependências próprias.")
+    @DisplayName("Validar o retorno das informações gerais de dependências próprias")
     public void testDependenciasProprias() throws Exception {
         String linkSelf = getDependenciasPropriasRequest.obterLinkSelfDependenciasProprias();
         getDependenciasPropriasRequest.obterInformacoesDependenciasProprias()
@@ -57,7 +57,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Número da página não localizado.")
+    @DisplayName("Validar o retorno 404 - Número da página não localizado no endpoint de dependências próprias")
     public void testNumeroPaginaNaoLocalizado() throws Exception {
         getDependenciasPropriasRequest.numeroPaginaNaoLocalizado()
                 .then()
@@ -69,7 +69,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido")
+    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de dependências próprias")
     public void testPathInvalido() throws Exception {
         getDependenciasPropriasRequest.pathInvalido()
                 .then()
@@ -81,7 +81,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página é zero.")
+    @DisplayName("Validar o retorno 400 - Número da página é zero no endpoint de dependências próprias")
     public void testNumeroPaginaZero() throws Exception {
         getDependenciasPropriasRequest.numeroPaginaZero()
                 .then()
@@ -93,7 +93,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página inválido.")
+    @DisplayName("Validar o retorno 400 - Número da página inválido no endpoint de dependências próprias")
     public void testNumeroPaginaInvalido() throws Exception {
         getDependenciasPropriasRequest.numeroPaginaInvalido()
                 .then()
@@ -105,7 +105,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página é zero.")
+    @DisplayName("Validar o retorno 400 - Tamanho da página é zero no endpoint de dependências próprias")
     public void testTamanhoPaginaZero() throws Exception {
         getDependenciasPropriasRequest.tamanhoPaginaZero()
                 .then()
@@ -117,7 +117,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página inválido.")
+    @DisplayName("Validar o retorno 400 - Tamanho da página inválido no endpoint de dependências próprias")
     public void testTamanhoPaginaInvalido() throws Exception {
         getDependenciasPropriasRequest.tamanhoPaginaInvalido()
                 .then()
@@ -129,7 +129,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido.")
+    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido no endpoint de dependências próprias")
     public void testTamanhoPaginaSuperior() throws Exception {
         getDependenciasPropriasRequest.tamanhoPaginaSuperior()
                 .then()
@@ -141,7 +141,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado.")
+    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de dependências próprias")
     public void testMetodoNaoSuportado() throws Exception {
         getDependenciasPropriasRequest.metodoNaoSuportado()
                 .then()

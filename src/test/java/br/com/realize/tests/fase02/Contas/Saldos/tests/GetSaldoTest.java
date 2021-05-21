@@ -28,7 +28,7 @@ public class GetSaldoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class})
-    @DisplayName("Validar a obtenção do saldo da conta.")
+    @DisplayName("Validar o retorno das informações do endpoint de saldo da conta")
     public void testObterSaldo() throws Exception {
         getSaldoRequest.obterSaldoConta()
                 .then()
@@ -39,7 +39,7 @@ public class GetSaldoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class})
-    @DisplayName("Validar a garantia do contrato do retorno do saldo das contas")
+    @DisplayName("Validar a garantia do contrato do retorno do saldo da conta")
     public void testGarantirContratosSaldoConta() throws Exception {
         getSaldoRequest.obterSaldoConta().then()
                 .statusCode(200)
@@ -61,7 +61,7 @@ public class GetSaldoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado na obtenção de saldos da conta")
+    @DisplayName("Validar retorno 405 -Método não suportado no endpoint de saldos da conta")
     public void testMetodoNaoSuportado() throws Exception {
         getSaldoRequest.metodoNaoSuportado()
                 .then()
@@ -73,7 +73,7 @@ public class GetSaldoTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido")
+    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de saldos da conta")
     public void testPathInvalido() throws Exception {
         getSaldoRequest.pathInvalido()
                 .then()

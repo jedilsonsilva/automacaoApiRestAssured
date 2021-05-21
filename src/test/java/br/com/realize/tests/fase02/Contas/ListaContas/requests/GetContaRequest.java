@@ -74,6 +74,8 @@ public class GetContaRequest {
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {
         return given()
+                .queryParam("accountType", "CONTA_PAGAMENTO_PRE_PAGA")
+                .queryParam("cpfCnpj", "15218532827")
                 .queryParam("page", 10)
                 .queryParam("page-size", "10")
                 .when()
@@ -90,6 +92,7 @@ public class GetContaRequest {
     @Step("O número da página informado é zero.")
     public Response numeroPaginaZero() {
         return given()
+                .queryParam("")
                 .queryParam("page", 0)
                 .queryParam("page-size", "10")
                 .when()

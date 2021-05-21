@@ -29,7 +29,7 @@ public class GetLimiteTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class})
-    @DisplayName("Validar a obtenção dos limites da conta.")
+    @DisplayName("Validar o retorno das informações do endpoint de limites da conta.")
     public void testObterLimites() throws Exception {
         String linkSelf = getLimiteRequest.obterLinkSelf();
         getLimiteRequest.obterLimitesConta()
@@ -58,7 +58,7 @@ public class GetLimiteTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido")
+    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de limites da conta")
     public void testPathInvalido() throws Exception {
         getLimiteRequest.pathInvalido()
                 .then()
@@ -70,7 +70,7 @@ public class GetLimiteTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado")
+    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de limites da conta")
     public void testMetodoNaoSuportado() throws Exception {
         getLimiteRequest.metodoNaoSuportado()
                 .then()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="7.776" tests="7" errors="0" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="19.251" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,8 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_281\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\SOUTHS~1\AppData\Local\Temp\surefire4862857526067008472\surefirebooter3511860499461166776.jar C:\Users\SouthSystem\AppData\Local\Temp\surefire4862857526067008472 2021-05-14T11-14-24_172-jvmRun1 surefire2658231856217513041tmp surefire_01652842482260642813tmp"/>
+    <property name="sun.java.command" value="C:\Users\SOUTHS~1\AppData\Local\Temp\surefire2440933788932973360\surefirebooter7947886472219682048.jar C:\Users\SouthSystem\AppData\Local\Temp\surefire2440933788932973360 2021-05-20T17-14-47_152-jvmRun1 surefire6655540525105679241tmp surefire_05790418046683458343tmp"/>
+    <property name="test" value="GetContaTest#testValidarinformacoesConta"/>
     <property name="surefire.test.class.path" value="C:\Projetos\openbanking\target\test-classes;C:\Projetos\openbanking\target\classes;C:\Users\SouthSystem\.m2\repository\org\projectlombok\lombok\1.18.6\lombok-1.18.6.jar;C:\Users\SouthSystem\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\SouthSystem\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\SouthSystem\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\SouthSystem\.m2\repository\io\rest-assured\rest-assured\4.2.0\rest-assured-4.2.0.jar;C:\Users\SouthSystem\.m2\repository\org\codehaus\groovy\groovy\2.5.8\groovy-2.5.8.jar;C:\Users\SouthSystem\.m2\repository\org\codehaus\groovy\groovy-xml\2.5.8\groovy-xml-2.5.8.jar;C:\Users\SouthSystem\.m2\repository\org\apache\httpcomponents\httpclient\4.5.3\httpclient-4.5.3.jar;C:\Users\SouthSystem\.m2\repository\org\apache\httpcomponents\httpcore\4.4.6\httpcore-4.4.6.jar;C:\Users\SouthSystem\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\SouthSystem\.m2\repository\commons-codec\commons-codec\1.9\commons-codec-1.9.jar;C:\Users\SouthSystem\.m2\repository\org\apache\httpcomponents\httpmime\4.5.3\httpmime-4.5.3.jar;C:\Users\SouthSystem\.m2\repository\org\hamcrest\hamcrest\2.1\hamcrest-2.1.jar;C:\Users\SouthSystem\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\SouthSystem\.m2\repository\io\rest-assured\xml-path\4.2.0\xml-path-4.2.0.jar;C:\Users\SouthSystem\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.2\jakarta.xml.bind-api-2.3.2.jar;C:\Users\SouthSystem\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.1\jakarta.activation-api-1.2.1.jar;C:\Users\SouthSystem\.m2\repository\com\sun\xml\bind\jaxb-osgi\2.3.0.1\jaxb-osgi-2.3.0.1.jar;C:\Users\SouthSystem\.m2\repository\org\apache\sling\org.apache.sling.javax.activation\0.1.0\org.apache.sling.javax.activation-0.1.0.jar;C:\Users\SouthSystem\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\SouthSystem\.m2\repository\io\rest-assured\json-schema-validator\4.2.0\json-schema-validator-4.2.0.jar;C:\Users\SouthSystem\.m2\repository\com\github\java-json-tools\json-schema-validator\2.2.10\json-schema-validator-2.2.10.jar;C:\Users\SouthSystem\.m2\repository\com\github\java-json-tools\json-schema-core\1.2.10\json-schema-core-1.2.10.jar;C:\Users\SouthSystem\.m2\repository\com\github\java-json-tools\jackson-coreutils\1.9\jackson-coreutils-1.9.jar;C:\Users\SouthSystem\.m2\repository\com\google\guava\guava\16.0.1\guava-16.0.1.jar;C:\Users\SouthSystem\.m2\repository\com\github\fge\msg-simple\1.1\msg-simple-1.1.jar;C:\Users\SouthSystem\.m2\repository\com\github\fge\btf\1.2\btf-1.2.jar;C:\Users\SouthSystem\.m2\repository\com\github\fge\uri-template\0.9\uri-template-0.9.jar;C:\Users\SouthSystem\.m2\repository\org\mozilla\rhino\1.7.7.1\rhino-1.7.7.1.jar;C:\Users\SouthSystem\.m2\repository\javax\mail\mailapi\1.4.3\mailapi-1.4.3.jar;C:\Users\SouthSystem\.m2\repository\joda-time\joda-time\2.9.7\joda-time-2.9.7.jar;C:\Users\SouthSystem\.m2\repository\com\googlecode\libphonenumber\libphonenumber\8.0.0\libphonenumber-8.0.0.jar;C:\Users\SouthSystem\.m2\repository\com\google\code\findbugs\jsr305\3.0.1\jsr305-3.0.1.jar;C:\Users\SouthSystem\.m2\repository\net\sf\jopt-simple\jopt-simple\5.0.3\jopt-simple-5.0.3.jar;C:\Users\SouthSystem\.m2\repository\com\github\javafaker\javafaker\1.0.1\javafaker-1.0.1.jar;C:\Users\SouthSystem\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Users\SouthSystem\.m2\repository\org\yaml\snakeyaml\1.23\snakeyaml-1.23-android.jar;C:\Users\SouthSystem\.m2\repository\com\github\mifmif\generex\1.0.2\generex-1.0.2.jar;C:\Users\SouthSystem\.m2\repository\dk\brics\automaton\automaton\1.11-8\automaton-1.11-8.jar;C:\Users\SouthSystem\.m2\repository\io\rest-assured\json-path\4.2.0\json-path-4.2.0.jar;C:\Users\SouthSystem\.m2\repository\org\codehaus\groovy\groovy-json\2.5.8\groovy-json-2.5.8.jar;C:\Users\SouthSystem\.m2\repository\io\rest-assured\rest-assured-common\4.2.0\rest-assured-common-4.2.0.jar;C:\Users\SouthSystem\.m2\repository\io\qameta\allure\allure-junit4\2.9.0\allure-junit4-2.9.0.jar;C:\Users\SouthSystem\.m2\repository\io\qameta\allure\allure-java-commons\2.9.0\allure-java-commons-2.9.0.jar;C:\Users\SouthSystem\.m2\repository\io\qameta\allure\allure-model\2.9.0\allure-model-2.9.0.jar;C:\Users\SouthSystem\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.7\jackson-databind-2.9.7.jar;C:\Users\SouthSystem\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;C:\Users\SouthSystem\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.7\jackson-core-2.9.7.jar;C:\Users\SouthSystem\.m2\repository\org\apache\tika\tika-core\1.19.1\tika-core-1.19.1.jar;C:\Users\SouthSystem\.m2\repository\org\aspectj\aspectjrt\1.9.1\aspectjrt-1.9.1.jar;C:\Users\SouthSystem\.m2\repository\org\jooq\joor-java-8\0.9.9\joor-java-8-0.9.9.jar;C:\Users\SouthSystem\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;C:\Users\SouthSystem\.m2\repository\com\google\code\gson\gson\2.8.6\gson-2.8.6.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="allure.results.directory" value="C:\Projetos\openbanking\target/allure-results"/>
@@ -32,7 +33,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\SOUTHS~1\AppData\Local\Temp\surefire4862857526067008472\surefirebooter3511860499461166776.jar;C:\Users\SouthSystem\.m2\repository/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\SOUTHS~1\AppData\Local\Temp\surefire2440933788932973360\surefirebooter7947886472219682048.jar;C:\Users\SouthSystem\.m2\repository/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_281\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_281\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -61,144 +62,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testCpfInvalido" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="0"/>
-  <testcase name="testTipoContaPoupanca" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="0.08"/>
-  <testcase name="testCpfSemConta" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="0.654"/>
-  <testcase name="testTipoContaDepositoAVista" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="0.082"/>
-  <testcase name="testMetodoNaoSuportadoContas" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="0.12">
-    <failure message="1 expectation failed.&#10;Expected status code &lt;405&gt; but was &lt;500&gt;.&#10;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
-1 expectation failed.
-Expected status code <405> but was <500>.
-
-	at br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest.testMetodoNaoSuportadoContas(GetContaTest.java:120)
-]]></failure>
-    <system-out><![CDATA[HTTP/1.1 500 Internal Server Error
-Date: Fri, 14 May 2021 14:15:16 GMT
-Content-Type: application/json
-Transfer-Encoding: chunked
-Connection: keep-alive
-Content-Encoding: gzip
-
-{
-    "errors": [
-        {
-            "code": "500",
-            "title": "Ocorreu um erro inesperado ao processar sua requisição.",
-            "detail": "Request method 'POST' not supported"
-        }
-    ]
-}
-Request method:	POST
-Request URI:	http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1
-Proxy:			<none>
-Request params:	<none>
-Query params:	accountType=CONTA_PAGAMENTO_PRE_PAGA
-				cpfCnpj=15218532827
-				page=1
-				page-size=1
-Form params:	<none>
-Path params:	<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Multiparts:		<none>
-Body:			<none>
-
-HTTP/1.1 500 Internal Server Error
-Date: Fri, 14 May 2021 14:15:16 GMT
-Content-Type: application/json
-Transfer-Encoding: chunked
-Connection: keep-alive
-Content-Encoding: gzip
-
-{
-    "errors": [
-        {
-            "code": "500",
-            "title": "Ocorreu um erro inesperado ao processar sua requisição.",
-            "detail": "Request method 'POST' not supported"
-        }
-    ]
-}
-]]></system-out>
-  </testcase>
-  <testcase name="testValidarinformacoesConta" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="2.797"/>
-  <testcase name="testGarantirContratosInformacoesConta" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="4.027">
-    <failure message="1 expectation failed.&#10;Response body doesn&apos;t match expectation.&#10;Expected: The content to match the given JSON schema.&#10;error: instance type (array) does not match any allowed primitive type (allowed: [&quot;string&quot;])&#10;    level: &quot;error&quot;&#10;    schema: {&quot;loadingURI&quot;:&quot;#&quot;,&quot;pointer&quot;:&quot;/properties/meta/properties/requestDateTime&quot;}&#10;    instance: {&quot;pointer&quot;:&quot;/meta/requestDateTime&quot;}&#10;    domain: &quot;validation&quot;&#10;    keyword: &quot;type&quot;&#10;    found: &quot;array&quot;&#10;    expected: [&quot;string&quot;]&#10;&#10;  Actual: {&quot;data&quot;:[{&quot;brandName&quot;:&quot;REALIZE CFI S.A.&quot;,&quot;brandID&quot;:&quot;218b28be-b283-5994-973e-3bafbffccf0c&quot;,&quot;companyCnpj&quot;:&quot;27351731000138&quot;,&quot;type&quot;:&quot;CONTA_PAGAMENTO_PRE_PAGA&quot;,&quot;compeCode&quot;:&quot;374&quot;,&quot;branchCode&quot;:&quot;0001&quot;,&quot;number&quot;:&quot;158076326&quot;,&quot;checkDigit&quot;:&quot;6&quot;,&quot;accountID&quot;:&quot;e92c51df-b68c-4faa-9cbc-4cb1b232781f&quot;}],&quot;links&quot;:{&quot;self&quot;:&quot;http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&amp;cpfCnpj=15218532827&amp;page=1&amp;page-size=1&quot;,&quot;first&quot;:null,&quot;prev&quot;:null,&quot;next&quot;:null,&quot;last&quot;:null},&quot;meta&quot;:{&quot;totalRecords&quot;:1,&quot;totalPages&quot;:1,&quot;requestDateTime&quot;:[2021,5,14,11,15,23,519301000]}}&#10;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
-1 expectation failed.
-Response body doesn't match expectation.
-Expected: The content to match the given JSON schema.
-error: instance type (array) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/meta/properties/requestDateTime"}
-    instance: {"pointer":"/meta/requestDateTime"}
-    domain: "validation"
-    keyword: "type"
-    found: "array"
-    expected: ["string"]
-
-  Actual: {"data":[{"brandName":"REALIZE CFI S.A.","brandID":"218b28be-b283-5994-973e-3bafbffccf0c","companyCnpj":"27351731000138","type":"CONTA_PAGAMENTO_PRE_PAGA","compeCode":"374","branchCode":"0001","number":"158076326","checkDigit":"6","accountID":"e92c51df-b68c-4faa-9cbc-4cb1b232781f"}],"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,5,14,11,15,23,519301000]}}
-
-	at br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest.testGarantirContratosInformacoesConta(GetContaTest.java:57)
-]]></failure>
-    <system-out><![CDATA[Request method:	GET
-Request URI:	http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1
-Proxy:			<none>
-Request params:	<none>
-Query params:	accountType=CONTA_PAGAMENTO_PRE_PAGA
-				cpfCnpj=15218532827
-				page=1
-				page-size=1
-Form params:	<none>
-Path params:	<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Multiparts:		<none>
-Body:			<none>
-
-HTTP/1.1 200 OK
-Date: Fri, 14 May 2021 14:15:23 GMT
-Content-Type: application/json
-Transfer-Encoding: chunked
-Connection: keep-alive
-Content-Encoding: gzip
-
-{
-    "data": [
-        {
-            "brandName": "REALIZE CFI S.A.",
-            "brandID": "218b28be-b283-5994-973e-3bafbffccf0c",
-            "companyCnpj": "27351731000138",
-            "type": "CONTA_PAGAMENTO_PRE_PAGA",
-            "compeCode": "374",
-            "branchCode": "0001",
-            "number": "158076326",
-            "checkDigit": "6",
-            "accountID": "e92c51df-b68c-4faa-9cbc-4cb1b232781f"
-        }
-    ],
-    "links": {
-        "self": "http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1",
-        "first": null,
-        "prev": null,
-        "next": null,
-        "last": null
-    },
-    "meta": {
-        "totalRecords": 1,
-        "totalPages": 1,
-        "requestDateTime": [
-            2021,
-            5,
-            14,
-            11,
-            15,
-            23,
-            519301000
-        ]
-    }
-}
-]]></system-out>
-  </testcase>
+  <testcase name="testValidarinformacoesConta" classname="br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest" time="17.186"/>
 </testsuite>

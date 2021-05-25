@@ -2,12 +2,13 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\ListaCo
 C:\Projetos\openbanking\src\test\java\br\com\realize\suites\AllTests.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\base\tests\BaseTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\fase01.java
-C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\tests\EmprestimoPessoaJuridicaTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\ListaContas\requests\GetContaRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\Healthcheck.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\suites\fase01.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\base\tests\Constantes.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\users\models\UsersGeneric.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\CartaoCreditoPessoaNatural\requests\GetCartaoCreditoPessoaNaturalRequest.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\CartaoCreditoPessoaNatural\tests\GetCartaoCreditoPessoaNaturalTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\utils\Utils.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Limites\requests\GetLimiteRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\E2e.java
@@ -22,6 +23,8 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\CanaisAtendime
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\auth\tests\PostAuthTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\CanaisAtendimento\DependenciasProprias\requests\GetDependenciasPropriasRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\utils\DataUtils.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaJuridica\requests\GetEmprestimoPessoaJuridicaRequest.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaJuridica\tests\GetEmprestimoPessoaJuridicaTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Saldos\tests\GetSaldoTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\fase02.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Saldos\requests\GetSaldoRequest.java

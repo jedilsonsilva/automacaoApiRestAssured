@@ -10,6 +10,7 @@ br\com\realize\tests\fase01\CanaisAtendimento\AtendimentoTelefonico\requests\Get
 br\com\realize\tests\fase01\CanaisAtendimento\AtendimentoTelefonico\tests\GetAtendimentoTelefonicoTest.class
 br\com\realize\suites\fase01.class
 br\com\realize\tests\fase02\Contas\ListaContas\requests\GetContaRequest.class
+br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaJuridica\tests\GetEmprestimoPessoaJuridicaTest.class
 br\com\realize\utils\DataUtils.class
 br\com\realize\tests\base\requests\BaseRequest.class
 br\com\realize\utils\Utils.class
@@ -23,9 +24,12 @@ br\com\realize\tests\auth\requests\PostAuthRequest.class
 br\com\realize\tests\fase01\CanaisAtendimento\CorrespondentesBancarios\requests\GetCorrespondentesBancariosRequest.class
 br\com\realize\runners\Contracts.class
 br\com\realize\tests\fase01\CanaisAtendimento\DependenciasProprias\requests\GetDependenciasPropriasRequest.class
+br\com\realize\tests\fase01\ProdutosServicos\CartaoCreditoPessoaNatural\tests\GetCartaoCreditoPessoaNaturalTest.class
 br\com\realize\tests\fase02\Contas\ListaContas\tests\GetContaTest.class
+br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaJuridica\requests\GetEmprestimoPessoaJuridicaRequest.class
 br\com\realize\suites\E2e.class
 br\com\realize\tests\fase01\CanaisAtendimento\AtendimentoEletronico\requests\GetAtendimentoEletronicoRequest.class
+br\com\realize\tests\fase01\ProdutosServicos\CartaoCreditoPessoaNatural\requests\GetCartaoCreditoPessoaNaturalRequest.class
 br\com\realize\tests\fase02\Contas\Saldos\tests\GetSaldoTest.class
 br\com\realize\runners\AllTests.class
 br\com\realize\suites\Acceptance.class

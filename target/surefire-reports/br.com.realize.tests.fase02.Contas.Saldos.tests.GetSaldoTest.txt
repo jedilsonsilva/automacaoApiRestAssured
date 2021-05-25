@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.964 s - in br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.994 s - in br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest

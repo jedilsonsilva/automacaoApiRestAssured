@@ -79,6 +79,14 @@ public class GetCartaoCreditoPessoaNaturalRequest {
                 .when()
                 .get("/products-services/v1/personal-credit-cards");
     }
+    @Step("O tamanho da página informado é inferior a 11.")
+    public Response tamanhoPaginaInveriorDez() {
+        return given()
+                .queryParam("page", 1)
+                .queryParam("page-size", "5")
+                .when()
+                .get("/products-services/v1/personal-credit-cards");
+    }
     @Step("Método não suportado para a o endpoint informado")
     public Response metodoNaoSuportado() {
         return given()

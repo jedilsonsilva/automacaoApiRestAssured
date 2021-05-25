@@ -190,6 +190,19 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
+        @DisplayName("Validar o retorno 404 - Tamanho da página é inferior a 11 no endpoint de cartão de crédito pesso natural")
+        public void testTamanhoPaginaInferiorDez() throws Exception {
+                getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaInveriorDez()
+                        .then()
+                        .log().all()
+                        .statusCode(400)
+                        .body("errors[0].title", equalTo("Tamanho da página inválido."))
+                        .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
+        }
+
+        @Test
+        @Severity(SeverityLevel.NORMAL)
+        @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de cartão de crédito pesso natural")
         public void testMetodoNaoSuportado() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.metodoNaoSuportado()

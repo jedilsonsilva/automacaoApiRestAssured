@@ -23,6 +23,7 @@ import static org.hamcrest.Matchers.hasItem;
 
 @Epic("Fase 01")
 @Feature("Canais de Atendimento")
+@DisplayName("Correspondentes Bancários")
 public class GetCorrespondentesBancariosTest extends BaseTest {
 
     GetCorrespondentesBancariosRequest getCorrespondentesBancariosRequest = new GetCorrespondentesBancariosRequest();

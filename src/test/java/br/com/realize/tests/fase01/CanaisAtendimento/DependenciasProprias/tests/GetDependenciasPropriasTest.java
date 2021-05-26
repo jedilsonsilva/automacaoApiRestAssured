@@ -22,6 +22,7 @@ import static org.hamcrest.Matchers.hasItem;
 
 @Epic("Fase 01")
 @Feature("Canais de Atendimento")
+@DisplayName("Depedências Próprias")
 public class GetDependenciasPropriasTest extends BaseTest {
 
     GetDependenciasPropriasRequest getDependenciasPropriasRequest = new GetDependenciasPropriasRequest();

@@ -24,6 +24,7 @@ import static org.hamcrest.Matchers.*;
 
 @Epic("Fase 01")
 @Feature("Produtos e Serviços")
+@DisplayName("Empréstimos Pessoa Jurídica")
 public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
 
         GetEmprestimoPessoaJuridicaRequest getEmprestimoPessoaJuridicaRequest = new GetEmprestimoPessoaJuridicaRequest();

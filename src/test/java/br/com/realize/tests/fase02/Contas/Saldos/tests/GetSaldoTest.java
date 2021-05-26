@@ -8,6 +8,7 @@ import br.com.realize.tests.base.tests.BaseTest;
 import br.com.realize.suites.Healthcheck;
 import br.com.realize.tests.fase02.Contas.Saldos.requests.GetSaldoRequest;
 import br.com.realize.utils.Utils;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -20,7 +21,9 @@ import java.io.File;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
-@Feature("Saldos")
+@Epic("Fase 02")
+@Feature("Contas")
+@DisplayName("Saldo da Conta")
 public class GetSaldoTest extends BaseTest {
     String AccountIDInvalido = GetContaRequest.AccountIDInvalido;
     GetSaldoRequest getSaldoRequest = new GetSaldoRequest();

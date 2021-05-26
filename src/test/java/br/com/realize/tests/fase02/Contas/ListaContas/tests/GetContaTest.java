@@ -18,8 +18,9 @@ import java.io.File;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
-@Epic("fase02")
+@Epic("Fase 02")
 @Feature("Contas")
+@DisplayName("Lista de Contas")
 public class GetContaTest extends BaseTest {
     GetContaRequest getContaRequest = new GetContaRequest();
 

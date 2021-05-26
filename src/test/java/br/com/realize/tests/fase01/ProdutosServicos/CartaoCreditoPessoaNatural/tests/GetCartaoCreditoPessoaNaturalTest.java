@@ -22,6 +22,7 @@ import static org.hamcrest.Matchers.*;
 
 @Epic("Fase 01")
 @Feature("Produtos e Serviços")
+@DisplayName("Cartão de Crédito Pessoa Natural")
 public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
 
         GetCartaoCreditoPessoaNaturalRequest getCartaoCreditoPessoaNaturalRequest = new GetCartaoCreditoPessoaNaturalRequest();

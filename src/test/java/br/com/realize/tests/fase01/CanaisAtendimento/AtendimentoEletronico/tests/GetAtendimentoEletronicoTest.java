@@ -24,6 +24,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 @Epic("Fase 01")
 @Feature("Canais de Atendimento")
+@DisplayName("Atendimento Eletrônico")
 public class GetAtendimentoEletronicoTest  extends BaseTest{
 
         GetAtendimentoEletronicoRequest getAtendimentoEletronicoRequest = new GetAtendimentoEletronicoRequest();

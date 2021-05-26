@@ -20,8 +20,10 @@ import java.io.File;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
-@Epic("fase02")
+
+@Epic("Fase 02")
 @Feature("Contas")
+@DisplayName("Limite da Conta")
 public class GetLimiteTest extends BaseTest {
     String AccountIDInvalido = GetContaRequest.AccountIDInvalido;
     GetLimiteRequest getLimiteRequest = new GetLimiteRequest();
@@ -45,7 +47,7 @@ public class GetLimiteTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class})
-    @DisplayName("Validar a obtenção dos limites da conta com ID inválido.")
+    @DisplayName("Validar o retorno 404 - Obtenção dos limites da conta com ID inválido.")
     public void testIdInvalidoLimite() throws Exception {
         getLimiteRequest.idInvalidoLimite()
                 .then()
@@ -70,7 +72,7 @@ public class GetLimiteTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de limites da conta")
+    @DisplayName("Validar o retorno 405 - Método não suportado no endpoint de limites da conta")
     public void testMetodoNaoSuportado() throws Exception {
         getLimiteRequest.metodoNaoSuportado()
                 .then()
@@ -83,7 +85,7 @@ public class GetLimiteTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class})
-    @DisplayName("Validar a garantia do retorno do limite das contas")
+    @DisplayName("Validar a garantia do contrato de retorno do limite das contas")
     public void testGarantirContratosLimitesConta() throws Exception {
         getLimiteRequest.obterLimitesConta().then()
                 .statusCode(200)

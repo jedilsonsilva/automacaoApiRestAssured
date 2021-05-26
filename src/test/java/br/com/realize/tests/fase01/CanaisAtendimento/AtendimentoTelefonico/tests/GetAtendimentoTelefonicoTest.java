@@ -20,6 +20,7 @@ import static org.hamcrest.Matchers.*;
 
 @Epic("Fase 01")
 @Feature("Canais de Atendimento")
+@DisplayName("Atendimento Telefônico")
 public class GetAtendimentoTelefonicoTest extends BaseTest {
 
     GetAtendimentoTelefonicoRequest getAtendimentoTelefonicooRequest = new GetAtendimentoTelefonicoRequest();

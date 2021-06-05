@@ -21,14 +21,7 @@ public class GetAtendimentoEletronicoRequest {
                 .statusCode(200)
                 .extract().path("links.self");
     }
-    @Step("Obtém as informações dos canais de atendimento telefônico.")
-    public Response canaisEletronicos() {
-        return given()
-                .queryParam("page", 1)
-                .queryParam("page-size", "10")
-                .when()
-                .get("channels/v1/electronic-channels");
-    }
+
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {
         return given()

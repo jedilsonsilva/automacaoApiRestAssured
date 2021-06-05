@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "outages": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "outageTime": {
+                  "type": "string"
+                },
+                "duration": {
+                  "type": "string"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "unavailableEndpoints": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "inclusitionTime": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "partial": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "outageTime",
+                "duration",
+                "explanation",
+                "unavailableEndpoints",
+                "inclusitionTime",
+                "partial"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "outages"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

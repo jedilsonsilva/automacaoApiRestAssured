@@ -1,4 +1,4 @@
-/*package br.com.realizeOpenBanking.users.models;
+/*package br.com.realize.users.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,8 @@ import com.google.gson.annotations.SerializedName;
     @AllArgsConstructor
     public class BaseUsersGeneric extends UsersGeneric {
 
-        @SerializedName("accountID")
+        @SerializedName("data.creditCardAccountId")
         @Expose
-        public String idConta;
+        public String creditCardAccountId;
 
 }*/

@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "productType": {
+          "type": "string"
+        },
+        "productAdditionalInfo": {
+          "type": "null"
+        },
+        "creditCardNetwork": {
+          "type": "string"
+        },
+        "networkAdditionalInfo": {
+          "type": "null"
+        },
+        "paymentMethod": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "identificationNumber": {
+                  "type": "string"
+                },
+                "isMultipleCreditCard": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "identificationNumber",
+                "isMultipleCreditCard"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "productType",
+        "productAdditionalInfo",
+        "creditCardNetwork",
+        "networkAdditionalInfo",
+        "paymentMethod"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

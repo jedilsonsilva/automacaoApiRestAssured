@@ -1,5 +1,6 @@
 package br.com.realize.utils;
 
+import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
 
 public class Utils {
@@ -65,5 +66,10 @@ public class Utils {
                 + "/contracts/"
                 + contract
                 + ".json";
+    }
+    public static Integer getIdContaPeloNome(String nome){
+        return RestAssured.get("/contas?nome="+nome)
+                .then()
+                .extract().path("id[0]");
     }
 }

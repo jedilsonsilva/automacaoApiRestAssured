@@ -1,0 +1,57 @@
+{
+  "data": [
+    {
+      "creditLineLimitType": "LIMITE_CREDITO_TOTAL",
+      "consolidationType": "CONSOLIDADO",
+      "identificationNumber": "************6500",
+      "lineName": null,
+      "lineNameAdditionalInfo": null,
+      "isLimitFlexible": false,
+      "limitAmount": 0,
+      "limitAmountCurrency": "BRL",
+      "usedAmount": 0,
+      "usedAmountCurrency": "BRL",
+      "availableAmount": 0,
+      "availableAmountCurrency": "BRL"
+    },
+    {
+      "creditLineLimitType": "LIMITE_CREDITO_MODALIDADE_OPERACAO",
+      "consolidationType": "INDIVIDUAL",
+      "identificationNumber": "************6500",
+      "lineName": "CREDITO_A_VISTA",
+      "lineNameAdditionalInfo": "Limite de compras para uso exclusivo nas Lojas Renner e Camicato",
+      "isLimitFlexible": false,
+      "limitAmount": 0,
+      "limitAmountCurrency": "BRL",
+      "usedAmount": 0,
+      "usedAmountCurrency": "BRL",
+      "availableAmount": 0,
+      "availableAmountCurrency": "BRL"
+    },
+    {
+      "creditLineLimitType": "LIMITE_CREDITO_MODALIDADE_OPERACAO",
+      "consolidationType": "INDIVIDUAL",
+      "identificationNumber": "************6500",
+      "lineName": "SAQUE_CREDITO_BRASIL",
+      "lineNameAdditionalInfo": null,
+      "isLimitFlexible": false,
+      "limitAmount": 0,
+      "limitAmountCurrency": "BRL",
+      "usedAmount": 0,
+      "usedAmountCurrency": "BRL",
+      "availableAmount": 0,
+      "availableAmountCurrency": "BRL"
+    }
+  ],
+  "links": {
+    "self": "http://10.120.192.16/open-banking/credit-cards-accounts/v1/accounts/590680765/limits",
+    "first": null,
+    "prev": null,
+    "next": null,
+    "last": null
+  },
+  "meta": {
+    "totalRecords": 3,
+    "totalPages": 1
+  }
+}

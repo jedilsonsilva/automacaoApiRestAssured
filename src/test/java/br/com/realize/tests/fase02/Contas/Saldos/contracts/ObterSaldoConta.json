@@ -1,27 +1,111 @@
 {
-  "data": {
-    "avaiableAmount": 5988994811.9800,
-    "blockedAmount": 0.0000,
-    "automaticallyInvestedAmount": 0.0000
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "avaiableAmount": {
+          "type": "number"
+        },
+        "availableAmountCurrency": {
+          "type": "string"
+        },
+        "blockedAmount": {
+          "type": "number"
+        },
+        "blockedAmountCurrency": {
+          "type": "string"
+        },
+        "automaticallyInvestedAmount": {
+          "type": "number"
+        },
+        "automaticallyInvestedAmountCurrency": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "avaiableAmount",
+        "availableAmountCurrency",
+        "blockedAmount",
+        "blockedAmountCurrency",
+        "automaticallyInvestedAmount",
+        "automaticallyInvestedAmountCurrency"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages",
+        "requestDateTime"
+      ]
+    }
   },
-  "links": {
-    "self": "http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f/balances",
-    "first": null,
-    "prev": null,
-    "next": null,
-    "last": null
-  },
-  "meta": {
-    "totalRecords": 1,
-    "totalPages": 1,
-    "requestDateTime": [
-      2021,
-      5,
-      18,
-      11,
-      1,
-      27,
-      597896000
-    ]
-  }
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
 }

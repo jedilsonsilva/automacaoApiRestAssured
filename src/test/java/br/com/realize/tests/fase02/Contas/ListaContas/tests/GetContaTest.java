@@ -34,7 +34,6 @@ public class GetContaTest extends BaseTest {
                 .log().all()
                 .statusCode(200)
                 .body("data.brandName", hasItem("REALIZE CFI S.A."))
-                .body("data.brandID", hasItem("218b28be-b283-5994-973e-3bafbffccf0c"))
                 .body("data.companyCnpj", hasItem("27351731000138"))
                 .body("data.type", hasItem("CONTA_PAGAMENTO_PRE_PAGA"))
                 .body("data.compeCode", hasItem("374"))

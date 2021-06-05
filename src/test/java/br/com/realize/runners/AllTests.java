@@ -19,11 +19,13 @@ import org.junit.runners.Suite;
         GetContaTest.class,
         GetSaldoTest.class,
         GetLimiteTest.class,
+        //GetContaPagamentoPosPagoTest.class,
         GetAtendimentoEletronicoTest.class,
         GetAtendimentoTelefonicoTest.class,
         GetDependenciasPropriasTest.class,
         GetCorrespondentesBancariosTest.class,
-        GetCartaoCreditoPessoaNaturalTest.class
+        GetCartaoCreditoPessoaNaturalTest.class,
+        //GetEmprestimoPessoaJuridicaTest.class
 })
 public class AllTests {
 }

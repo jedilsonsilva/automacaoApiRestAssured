@@ -50,7 +50,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno de informações do tipo de atendimento eletrônico Internet Banking")
         public void testInformacoesInternetBanking() throws Exception {
-            getAtendimentoEletronicoRequest.canaisEletronicos()
+            getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
                     .then()
                     .log().all()
                     .statusCode(200)
@@ -68,7 +68,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno de informações do tipo de atendimento eletrônico Mobile Banking")
         public void testInformacoesMobileBanking() throws Exception {
-            getAtendimentoEletronicoRequest.canaisEletronicos()
+            getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
                     .then()
                     .log().all()
                     .statusCode(200)

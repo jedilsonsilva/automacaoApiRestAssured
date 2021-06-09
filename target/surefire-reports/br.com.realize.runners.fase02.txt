@@ -1,0 +1,39 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.runners.fase02
+-------------------------------------------------------------------------------
+Tests run: 35, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 84.763 s <<< FAILURE! - in br.com.realize.runners.fase02
+testValidarIdentificacaoConta(br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest.<init>(GetIdentificacaoContaTest.java:34)
+
+testIdInvalido(br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest.<init>(GetIdentificacaoContaTest.java:34)
+
+testPathInvalido(br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest.<init>(GetIdentificacaoContaTest.java:34)
+
+testValidarinformacoesContaPosPagoID(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPagoId.tests.GetContaPagamentoPosPagoIDTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPagoId.tests.GetContaPagamentoPosPagoIDTest.<init>(GetContaPagamentoPosPagoIDTest.java:32)
+
+testPathInvalido(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPagoId.tests.GetContaPagamentoPosPagoIDTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPagoId.tests.GetContaPagamentoPosPagoIDTest.<init>(GetContaPagamentoPosPagoIDTest.java:32)
+

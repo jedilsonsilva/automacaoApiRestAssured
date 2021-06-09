@@ -1,14 +1,10 @@
 package br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.requests;
 
 import com.github.javafaker.Faker;
-import com.sun.xml.internal.ws.wsdl.writer.document.soap.Body;
 import io.qameta.allure.Step;
-import io.restassured.assertion.BodyMatcher;
 import io.restassured.response.Response;
 
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 

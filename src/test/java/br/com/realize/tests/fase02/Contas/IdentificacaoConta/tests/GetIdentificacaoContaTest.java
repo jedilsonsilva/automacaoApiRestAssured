@@ -41,22 +41,15 @@ public class GetIdentificacaoContaTest extends BaseTest {
         getIdentificacaoContaRequest.obterInformacoesContaPeloId()
                 .then()
                 .log().all()
-                .statusCode(200)
-                .body("data.accountId", equalTo("e92c51df-b68c-4faa-9cbc-4cb1b232781f"))
-                .body("data.compeCode", equalTo("374"))
-                .body("data.branchCode", equalTo("0001"))
-                .body("data.number", equalTo("158076326"))
-                .body("data.checkDigit", equalTo("6"))
-                .body("data.brandName", equalTo("REALIZE CFI S.A."))
-                .body("data.companyCnpj", equalTo("27351731000138"))
-                .body("links.self", equalTo(linkSelf));
+                .statusCode(200);
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class, fase02.class})
     @DisplayName("Validar a garantia do contrato do retorno da conta por ID")
     public void testGarantirContratosInformacoesConta() throws Exception {
-        getIdentificacaoContaRequest.obterInformacoesContaPeloId().then()
+        getIdentificacaoContaRequest.obterInformacoesContaPeloId()
+                .then()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/Contas/IdentificacaoConta", "IdentificacaoConta"))));

@@ -24,7 +24,6 @@ public class GetLimiteRequest {
                 .when()
                 .get("accounts/v1/accounts/" + AccountIDInvalido + "/overdraft-limits");
     }
-//REQUISIÇÕES DOS STATUS CODE DE ERRO
     public String obterLinkSelf() {
         return obterLimitesConta()
             .then()

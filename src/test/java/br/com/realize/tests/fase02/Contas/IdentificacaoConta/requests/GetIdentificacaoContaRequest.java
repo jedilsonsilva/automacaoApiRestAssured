@@ -1,12 +1,16 @@
 package br.com.realize.tests.fase02.Contas.IdentificacaoConta.requests;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+
+import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
 
 public class GetIdentificacaoContaRequest {
-
+    Faker fake = new Faker(new Locale("pt-br"));
+    String cpf = fake.options().option("11162630094","15218532827","03118458003");
     public GetIdentificacaoContaRequest idInvalido(){
         String invalidateId = "e92c51df-b68c-4faa-9cbc-5555555555";
         return this;
@@ -16,7 +20,7 @@ public class GetIdentificacaoContaRequest {
     public String obterIdConta() {
         String id = given()
                 .queryParam("accountType", "CONTA_PAGAMENTO_PRE_PAGA")
-                .queryParam("cpfCnpj", "11162630094")
+                .queryParam("cpfCnpj", ""+cpf+"")
                 .queryParam("page", "1")
                 .queryParam("page-size", "1")
                 .when()

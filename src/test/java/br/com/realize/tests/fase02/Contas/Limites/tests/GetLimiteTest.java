@@ -38,11 +38,14 @@ public class GetLimiteTest extends BaseTest {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("data.overdraftLimitContracted", is(0))
-                .body("data.overdraftLimitUsed", is(0))
-                .body("meta.totalRecords", is(1))
-                .body("meta.totalPages", is(1))
-                .body("links.self", equalTo(linkSelf));
+                .body("data.overdraftContractedLimit", is(0))
+                .body("data.overdraftContractedLimitCurrency", is("BRL"))
+                .body("data.overdraftUsedLimit", is(0))
+                .body("data.overdraftUsedLimitCurrency", is("BRL"))
+                .body("data.unarrangedOverdraftAmount", is(0))
+                .body("data.unarrangedOverdraftAmountCurrency", is("BRL"))
+                .body("links.self", is(linkSelf));
+
     }
     @Test
     @Severity(SeverityLevel.NORMAL)

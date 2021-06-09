@@ -1,16 +1,32 @@
 package br.com.realize.tests.fase02.Contas.Saldos.requests;
 
-import br.com.realize.tests.fase02.Contas.ListaContas.requests.GetContaRequest;
+import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+
+import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
 
 public class GetSaldoRequest {
+    Faker fake = new Faker(new Locale("pt-br"));
+    String cpf = fake.options().option("11162630094","15218532827");
 
     public static String AccountIDInvalido = "123456789";
-    GetContaRequest getContaRequest = new GetContaRequest();
 
+    public String obterAccountID() {
+        String accountID = given()
+                .queryParam("accountType", "CONTA_PAGAMENTO_PRE_PAGA")
+                .queryParam("cpfCnpj", ""+cpf+"")
+                .queryParam("page", "1")
+                .queryParam("page-size", "1")
+                .when()
+                .get("accounts/v1/accounts/")
+                .then()
+                .statusCode(200)
+                .extract().path("data[0].accountID");
+        return accountID;
+    }
     @Step("Obter os Saldos da Conta")
     public Response obterSaldoConta() {
         return given()
@@ -38,12 +54,6 @@ public class GetSaldoRequest {
                 .when()
                 .get("accounts/v1/accounts/" + obterAccountID() + "/balancess");
     }
-    //RECUPERAR O ACCOUNTID DO RESPONSE DE OBTER INFORMACOES DA CONTA PARA UTILIZA-LO NO OBTER SALDO
-    public String obterAccountID() {
-        return getContaRequest.obterInformacoesConta()
-                .then()
-                .statusCode(200)
-                .extract().path("data[0].accountID");
-    }
+
 }
 

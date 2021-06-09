@@ -76,7 +76,18 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
     }
-
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
+    @DisplayName("Validar a consulta informando um CPF e um CreditCardAccountId diferente.")
+    public void testcontaDiferenteCreditCardAccountId() throws Exception {
+        getLimiteCartaoCreditoRequest.contaDiferenteCreditCardAccountId()
+                .then()
+                .log().all()
+                .statusCode(404)
+                .body("errors[0].title", equalTo("O recurso solicitado não existe."))
+                .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
+    }
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -89,78 +100,7 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
     }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 404 - Número da página não localizado no endpoint de limites de cartão de crédito.")
-    public void testNumeroPaginaNaoLocalizado() throws Exception {
-        getLimiteCartaoCreditoRequest.numeroPaginaNaoLocalizado()
-                .then()
-                .log().all()
-                .statusCode(404)
-                .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
-                .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página é zero no endpoint de Conta de pagamento pós-pago")
-    public void testNumeroPaginaZero() throws Exception {
-        getLimiteCartaoCreditoRequest.numeroPaginaZero()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Número da página inválido."))
-                .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Número da página inválido no endpoint de limites de cartão de crédito.")
-    public void testNumeroPaginaInvalido() throws Exception {
-        getLimiteCartaoCreditoRequest.numeroPaginaInvalido()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Número da página inválido."))
-                .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página é zero no endpoint de limites de cartão de crédito.")
-    public void testTamanhoPaginaZero() throws Exception {
-        getLimiteCartaoCreditoRequest.tamanhoPaginaZero()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Tamanho da página inválido."))
-                .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 400 - Tamanho da página inválido no endpoint de limites de cartão de crédito.")
-    public void testTamanhoPaginaInvalido() throws Exception {
-        getLimiteCartaoCreditoRequest.tamanhoPaginaInvalido()
-                .then()
-                .log().all()
-                .statusCode(400)
-                .body("errors[0].title", equalTo("Tamanho da página inválido."))
-                .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase01.class})
-    @DisplayName("Validar o retorno 422 - Tamanho da página superior ao permitido no endpoint de limites de cartão de crédito.")
-    public void testTamanhoPaginaSuperior() throws Exception {
-        getLimiteCartaoCreditoRequest.tamanhoPaginaSuperior()
-                .then()
-                .log().all()
-                .statusCode(422)
-                .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
-                .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
-    }
+
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})

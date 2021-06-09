@@ -5,9 +5,6 @@
     "data": {
       "type": "object",
       "properties": {
-        "accountId": {
-          "type": "string"
-        },
         "compeCode": {
           "type": "string"
         },
@@ -20,58 +17,6 @@
         "checkDigit": {
           "type": "string"
         },
-        "brandName": {
-          "type": "string"
-        },
-        "companyCnpj": {
-          "type": "string"
-        },
-        "requestDateTime": {
-          "type": "array",
-          "items": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            }
-          ]
-        },
-        "updateDateTime": {
-          "type": "array",
-          "items": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            }
-          ]
-        },
         "type": {
           "type": "string"
         },
@@ -83,15 +28,10 @@
         }
       },
       "required": [
-        "accountId",
         "compeCode",
         "branchCode",
         "number",
         "checkDigit",
-        "brandName",
-        "companyCnpj",
-        "requestDateTime",
-        "updateDateTime",
         "type",
         "subtype",
         "currency"

@@ -1,57 +1,223 @@
 {
-  "data": [
-    {
-      "creditLineLimitType": "LIMITE_CREDITO_TOTAL",
-      "consolidationType": "CONSOLIDADO",
-      "identificationNumber": "************6500",
-      "lineName": null,
-      "lineNameAdditionalInfo": null,
-      "isLimitFlexible": false,
-      "limitAmount": 0,
-      "limitAmountCurrency": "BRL",
-      "usedAmount": 0,
-      "usedAmountCurrency": "BRL",
-      "availableAmount": 0,
-      "availableAmountCurrency": "BRL"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "creditLineLimitType": {
+              "type": "string"
+            },
+            "consolidationType": {
+              "type": "string"
+            },
+            "identificationNumber": {
+              "type": "string"
+            },
+            "lineName": {
+              "type": "null"
+            },
+            "lineNameAdditionalInfo": {
+              "type": "null"
+            },
+            "isLimitFlexible": {
+              "type": "boolean"
+            },
+            "limitAmount": {
+              "type": "integer"
+            },
+            "limitAmountCurrency": {
+              "type": "string"
+            },
+            "usedAmount": {
+              "type": "number"
+            },
+            "usedAmountCurrency": {
+              "type": "string"
+            },
+            "availableAmount": {
+              "type": "integer"
+            },
+            "availableAmountCurrency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "creditLineLimitType",
+            "consolidationType",
+            "identificationNumber",
+            "lineName",
+            "lineNameAdditionalInfo",
+            "isLimitFlexible",
+            "limitAmount",
+            "limitAmountCurrency",
+            "usedAmount",
+            "usedAmountCurrency",
+            "availableAmount",
+            "availableAmountCurrency"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "creditLineLimitType": {
+              "type": "string"
+            },
+            "consolidationType": {
+              "type": "string"
+            },
+            "identificationNumber": {
+              "type": "string"
+            },
+            "lineName": {
+              "type": "string"
+            },
+            "lineNameAdditionalInfo": {
+              "type": "string"
+            },
+            "isLimitFlexible": {
+              "type": "boolean"
+            },
+            "limitAmount": {
+              "type": "integer"
+            },
+            "limitAmountCurrency": {
+              "type": "string"
+            },
+            "usedAmount": {
+              "type": "number"
+            },
+            "usedAmountCurrency": {
+              "type": "string"
+            },
+            "availableAmount": {
+              "type": "integer"
+            },
+            "availableAmountCurrency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "creditLineLimitType",
+            "consolidationType",
+            "identificationNumber",
+            "lineName",
+            "lineNameAdditionalInfo",
+            "isLimitFlexible",
+            "limitAmount",
+            "limitAmountCurrency",
+            "usedAmount",
+            "usedAmountCurrency",
+            "availableAmount",
+            "availableAmountCurrency"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "creditLineLimitType": {
+              "type": "string"
+            },
+            "consolidationType": {
+              "type": "string"
+            },
+            "identificationNumber": {
+              "type": "string"
+            },
+            "lineName": {
+              "type": "string"
+            },
+            "lineNameAdditionalInfo": {
+              "type": "null"
+            },
+            "isLimitFlexible": {
+              "type": "boolean"
+            },
+            "limitAmount": {
+              "type": "integer"
+            },
+            "limitAmountCurrency": {
+              "type": "string"
+            },
+            "usedAmount": {
+              "type": "number"
+            },
+            "usedAmountCurrency": {
+              "type": "string"
+            },
+            "availableAmount": {
+              "type": "integer"
+            },
+            "availableAmountCurrency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "creditLineLimitType",
+            "consolidationType",
+            "identificationNumber",
+            "lineName",
+            "lineNameAdditionalInfo",
+            "isLimitFlexible",
+            "limitAmount",
+            "limitAmountCurrency",
+            "usedAmount",
+            "usedAmountCurrency",
+            "availableAmount",
+            "availableAmountCurrency"
+          ]
+        }
+      ]
     },
-    {
-      "creditLineLimitType": "LIMITE_CREDITO_MODALIDADE_OPERACAO",
-      "consolidationType": "INDIVIDUAL",
-      "identificationNumber": "************6500",
-      "lineName": "CREDITO_A_VISTA",
-      "lineNameAdditionalInfo": "Limite de compras para uso exclusivo nas Lojas Renner e Camicato",
-      "isLimitFlexible": false,
-      "limitAmount": 0,
-      "limitAmountCurrency": "BRL",
-      "usedAmount": 0,
-      "usedAmountCurrency": "BRL",
-      "availableAmount": 0,
-      "availableAmountCurrency": "BRL"
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
     },
-    {
-      "creditLineLimitType": "LIMITE_CREDITO_MODALIDADE_OPERACAO",
-      "consolidationType": "INDIVIDUAL",
-      "identificationNumber": "************6500",
-      "lineName": "SAQUE_CREDITO_BRASIL",
-      "lineNameAdditionalInfo": null,
-      "isLimitFlexible": false,
-      "limitAmount": 0,
-      "limitAmountCurrency": "BRL",
-      "usedAmount": 0,
-      "usedAmountCurrency": "BRL",
-      "availableAmount": 0,
-      "availableAmountCurrency": "BRL"
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ]
     }
-  ],
-  "links": {
-    "self": "http://10.120.192.16/open-banking/credit-cards-accounts/v1/accounts/590680765/limits",
-    "first": null,
-    "prev": null,
-    "next": null,
-    "last": null
   },
-  "meta": {
-    "totalRecords": 3,
-    "totalPages": 1
-  }
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
 }

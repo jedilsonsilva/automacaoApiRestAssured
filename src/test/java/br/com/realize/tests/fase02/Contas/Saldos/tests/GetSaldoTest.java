@@ -30,21 +30,20 @@ public class GetSaldoTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class})
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
     @DisplayName("Validar o retorno das informações do endpoint de saldo da conta")
     public void testObterSaldo() throws Exception {
         getSaldoRequest.obterSaldoConta()
                 .then()
-                .log().all()
-                .statusCode(200)
-                .body("meta.totalRecords", is(1));
+                .statusCode(200);
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class})
     @DisplayName("Validar a garantia do contrato do retorno do saldo da conta")
     public void testGarantirContratosSaldoConta() throws Exception {
-        getSaldoRequest.obterSaldoConta().then()
+        getSaldoRequest.obterSaldoConta()
+                .then()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/Contas/Saldos", "ObterSaldoConta"))));

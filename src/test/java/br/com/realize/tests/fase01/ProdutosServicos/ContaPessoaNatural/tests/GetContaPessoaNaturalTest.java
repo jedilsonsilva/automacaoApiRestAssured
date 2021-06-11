@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -27,7 +28,7 @@ import static org.hamcrest.Matchers.*;
 public class GetContaPessoaNaturalTest extends BaseTest{
 
         GetContaPessoaNaturalRequest getContaPessoaNaturalRequest = new GetContaPessoaNaturalRequest();
-
+        String linkSelf = getContaPessoaNaturalRequest.obterLinkSelfContaNatural();
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
@@ -35,8 +36,11 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testContaPessoaNatural() throws Exception {
                 getContaPessoaNaturalRequest.obterInformacoesContaPessoaNatural()
                     .then()
-                    .log().all()
-                    .statusCode(200);
+                    .statusCode(200)
+                    .time(lessThan(4L), TimeUnit.SECONDS)
+                    .body("meta.totalPages", greaterThan(0))
+                    .body("meta.totalRecords", greaterThan(0))
+                    .body("links.self", is(linkSelf));;
         }
         @Test
         @Severity(SeverityLevel.BLOCKER)
@@ -57,7 +61,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testNumeroPaginaNaoLocalizado() throws Exception {
                 getContaPessoaNaturalRequest.numeroPaginaNaoLocalizado()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
@@ -70,7 +73,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testPathInvalido() throws Exception {
                 getContaPessoaNaturalRequest.pathInvalido()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                     .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -83,7 +85,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testNumeroPaginaZero() throws Exception {
                 getContaPessoaNaturalRequest.numeroPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -96,7 +97,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testNumeroPaginaInvalido() throws Exception {
                 getContaPessoaNaturalRequest.numeroPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -109,7 +109,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaZero() throws Exception {
                 getContaPessoaNaturalRequest.tamanhoPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -122,7 +121,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaInvalido() throws Exception {
                 getContaPessoaNaturalRequest.tamanhoPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -135,7 +133,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaSuperior() throws Exception {
                 getContaPessoaNaturalRequest.tamanhoPaginaSuperior()
                     .then()
-                    .log().all()
                     .statusCode(422)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
@@ -147,7 +144,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaInferiorDez() throws Exception {
                 getContaPessoaNaturalRequest.tamanhoPaginaInveriorDez()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .body("errors[0].title", equalTo("Tamanho da página inválido."))
                         .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -160,7 +156,6 @@ public class GetContaPessoaNaturalTest extends BaseTest{
         public void testMetodoNaoSuportado() throws Exception {
                 getContaPessoaNaturalRequest.metodoNaoSuportado()
                         .then()
-                        .log().all()
                         .statusCode(405)
                         .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                         .body("errors.detail", hasItem("Request method 'POST' not supported"));

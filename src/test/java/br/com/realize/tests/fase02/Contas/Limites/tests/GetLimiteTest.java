@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -36,7 +37,6 @@ public class GetLimiteTest extends BaseTest {
         String linkSelf = getLimiteRequest.obterLinkSelf();
         getLimiteRequest.obterLimitesConta()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("data.overdraftContractedLimit", is(0))
                 .body("data.overdraftContractedLimitCurrency", is("BRL"))
@@ -44,8 +44,10 @@ public class GetLimiteTest extends BaseTest {
                 .body("data.overdraftUsedLimitCurrency", is("BRL"))
                 .body("data.unarrangedOverdraftAmount", is(0))
                 .body("data.unarrangedOverdraftAmountCurrency", is("BRL"))
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
                 .body("links.self", is(linkSelf));
-
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -58,8 +60,6 @@ public class GetLimiteTest extends BaseTest {
                 .body("errors.title", hasItem("O recurso solicitado não existe."))
                 .body("errors.detail", hasItem("Nenhuma conta encontrada para o id " + AccountIDInvalido + "."));
     }
-//VALIDAÇÕES DOS STATUS CODE DE ERRO
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -67,7 +67,6 @@ public class GetLimiteTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getLimiteRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -79,12 +78,10 @@ public class GetLimiteTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getLimiteRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));
     }
-    //GARANTIA DO CONTRATO
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class})

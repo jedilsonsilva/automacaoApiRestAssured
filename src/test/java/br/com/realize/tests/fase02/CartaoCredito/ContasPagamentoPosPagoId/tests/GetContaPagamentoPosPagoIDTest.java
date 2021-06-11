@@ -19,6 +19,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -39,7 +40,11 @@ public class GetContaPagamentoPosPagoIDTest extends BaseTest {
         getContaPagamentoPosPagoIDRequest.retornaContasPagamentoPosPagoID()
                 .then()
                 .log().all()
-                .statusCode(200);
+                .statusCode(200)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
+                .body("links.self", is(linkSelf));;
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)

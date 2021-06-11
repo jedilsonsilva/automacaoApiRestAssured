@@ -8,6 +8,12 @@ import static io.restassured.RestAssured.given;
 
 public class GetContaPessoaNaturalRequest {
 
+    public String obterLinkSelfContaNatural() {
+        return obterInformacoesContaPessoaNatural()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
     @Step("Retorna o objeto Brand contendo as Contas oferecidas a Pessoa Natural.")
     public Response obterInformacoesContaPessoaNatural() {
         return given()

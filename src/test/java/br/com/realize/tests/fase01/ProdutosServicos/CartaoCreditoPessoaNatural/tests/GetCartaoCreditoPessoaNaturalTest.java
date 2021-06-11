@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -26,16 +27,15 @@ import static org.hamcrest.Matchers.*;
 public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
 
         GetCartaoCreditoPessoaNaturalRequest getCartaoCreditoPessoaNaturalRequest = new GetCartaoCreditoPessoaNaturalRequest();
+        String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
 
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno das informações do cartão de crédito pessoa natural com a bandeira VISA")
         public void testCartaoCreditoPessoaNaturalBandeiraVisa() throws Exception {
-            String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
             getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
                     .then()
-                    .log().all()
                     .statusCode(200)
                     .rootPath("data.companies[0].personalCreditCards.identification.product")
                     .body("type[0]", equalTo("STANDARD_INTERNACIONAL"))
@@ -43,18 +43,18 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
                     .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
                     .body("network[0]", equalTo("VISA"))
                     .noRootPath()
-                    .body("links.self", equalTo(linkSelf))
-                    .body("meta.totalRecords", equalTo(3));
+                    .time(lessThan(4L), TimeUnit.SECONDS)
+                    .body("meta.totalPages", greaterThan(0))
+                    .body("meta.totalRecords", greaterThan(0))
+                    .body("links.self", is(linkSelf));
         }
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno das informações do cartão de crédito pessoa natural com a bandeira MASTERCARD")
         public void testCartaoCreditoPessoaNaturalBandeiraMastercard() throws Exception {
-                String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
                 getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
                         .then()
-                        .log().all()
                         .statusCode(200)
                         .rootPath("data.companies[0].personalCreditCards.identification.product")
                         .body("type[1]", equalTo("STANDARD_INTERNACIONAL"))
@@ -62,18 +62,18 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
                         .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
                         .body("network[1]", equalTo("MASTERCARD"))
                         .noRootPath()
-                        .body("links.self", equalTo(linkSelf))
-                        .body("meta.totalRecords", equalTo(3));
+                        .time(lessThan(4L), TimeUnit.SECONDS)
+                        .body("meta.totalPages", greaterThan(0))
+                        .body("meta.totalRecords", greaterThan(0))
+                        .body("links.self", is(linkSelf));
         }
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno das informações do cartão de crédito pessoa natural com bandeira própria")
         public void testCartaoCreditoPessoaNaturalBandeiraPropria() throws Exception {
-                String linkSelf = getCartaoCreditoPessoaNaturalRequest.obterLinkSelfCartaoCreditoPessoaNatural();
                 getCartaoCreditoPessoaNaturalRequest.obterInformacoesCartaoCreditoPessoaNatural()
                         .then()
-                        .log().all()
                         .statusCode(200)
                         .rootPath("data.companies[0].personalCreditCards.identification.product")
                         .body("type[2]", equalTo("COMPRAS"))
@@ -81,8 +81,10 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
                         .rootPath("data.companies[0].personalCreditCards.identification.creditCard")
                         .body("network[2]", equalTo("BANDEIRA_PROPRIA"))
                         .noRootPath()
-                        .body("links.self", equalTo(linkSelf))
-                        .body("meta.totalRecords", equalTo(3));
+                        .time(lessThan(4L), TimeUnit.SECONDS)
+                        .body("meta.totalPages", greaterThan(0))
+                        .body("meta.totalRecords", greaterThan(0))
+                        .body("links.self", is(linkSelf));
         }
 
         @Test
@@ -105,7 +107,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testNumeroPaginaNaoLocalizado() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.numeroPaginaNaoLocalizado()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
@@ -118,7 +119,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testPathInvalido() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.pathInvalido()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                     .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -131,7 +131,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testNumeroPaginaZero() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.numeroPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -144,7 +143,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testNumeroPaginaInvalido() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.numeroPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -157,7 +155,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaZero() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -170,7 +167,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaInvalido() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -183,7 +179,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaSuperior() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaSuperior()
                     .then()
-                    .log().all()
                     .statusCode(422)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
@@ -195,7 +190,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testTamanhoPaginaInferiorDez() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.tamanhoPaginaInveriorDez()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .body("errors[0].title", equalTo("Tamanho da página inválido."))
                         .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -208,7 +202,6 @@ public class GetCartaoCreditoPessoaNaturalTest extends BaseTest{
         public void testMetodoNaoSuportado() throws Exception {
                 getCartaoCreditoPessoaNaturalRequest.metodoNaoSuportado()
                         .then()
-                        .log().all()
                         .statusCode(405)
                         .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                         .body("errors.detail", hasItem("Request method 'POST' not supported"));

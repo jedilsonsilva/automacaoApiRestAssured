@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -28,6 +29,7 @@ import static org.hamcrest.Matchers.*;
 public class GetContaPagamentoPosPagoTest extends BaseTest {
 
     GetContaPagamentoPosPagoRequest getContaPagamentoPosPagoRequest = new GetContaPagamentoPosPagoRequest();
+    String linkSelf = getContaPagamentoPosPagoRequest.obterLinkSelf();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -36,8 +38,11 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
     public void testValidarinformacoesConta() throws Exception {
         getContaPagamentoPosPagoRequest.retornaContasPagamentoPosPago()
                 .then()
-                .log().all()
-                .statusCode(200);
+                .statusCode(200)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
+                .body("links.self", is(linkSelf));;
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -50,7 +55,6 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/CartaoCredito/ContasPagamentoPosPago", "ContaPagamentoPosPago"))));
     }
-
    @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -58,11 +62,9 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
     public void testCpfSemConta() throws Exception {
         getContaPagamentoPosPagoRequest.cpfSemConta()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("data", is(empty()));
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -70,12 +72,10 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
     public void testCpfInvalido() throws Exception {
         getContaPagamentoPosPagoRequest.cpfInvalido()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                 .body("errors[0].detail", equalTo("O CPF informado é inválido."));
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -83,12 +83,10 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getContaPagamentoPosPagoRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -96,10 +94,8 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getContaPagamentoPosPagoRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));
     }
-
 }

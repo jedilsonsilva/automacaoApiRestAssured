@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -27,7 +28,7 @@ import static org.hamcrest.Matchers.*;
 public class GetSaldoTest extends BaseTest {
     String AccountIDInvalido = GetContaRequest.AccountIDInvalido;
     GetSaldoRequest getSaldoRequest = new GetSaldoRequest();
-
+    String linkSelf = getSaldoRequest.obterLinkSelf();
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -35,7 +36,11 @@ public class GetSaldoTest extends BaseTest {
     public void testObterSaldo() throws Exception {
         getSaldoRequest.obterSaldoConta()
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
+                .body("links.self", is(linkSelf));
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -59,7 +64,6 @@ public class GetSaldoTest extends BaseTest {
                 .body("errors.title", hasItem("O recurso solicitado não existe."))
                 .body("errors.detail", hasItem("Nenhuma conta encontrada para o id " + AccountIDInvalido + "."));
     }
-//VALIDAÇÕES DOS STATUS CODE DE ERRO
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class})
@@ -67,7 +71,6 @@ public class GetSaldoTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getSaldoRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));
@@ -79,7 +82,6 @@ public class GetSaldoTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getSaldoRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));

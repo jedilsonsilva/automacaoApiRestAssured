@@ -1,5 +1,6 @@
 package br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.requests;
 
+import br.com.realize.tests.base.requests.BaseRequest;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -12,25 +13,32 @@ import static io.restassured.RestAssured.given;
 public class GetContaPagamentoPosPagoRequest {
 
     Faker fake = new Faker(new Locale("pt-br"));
-    String cpf = fake.options().option("17681046895", "65745612800", "03118458003", "03134539268", "18857858014",
+    String cpf = fake.options().option("17681046895", "65745612800", "03134539268", "18857858014",
             "23948094500", "52242641468", "75629018051");
+    String url = "credit-cards-accounts/v1/accounts";
 
+    public String obterLinkSelf() {
+        return retornaContasPagamentoPosPago()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
     @Step("Retorna as Contas de Pagamento pós-pago.")
     public Response retornaContasPagamentoPosPago() {
         return given()
          .queryParam("cpf", cpf)
          .queryParam("page", "1")
          .queryParam("page-size", "25")
-         .when().get("credit-cards-accounts/v1/accounts");
+         .when().get(url);
     }
     @Step("CPF sem conta de pagamento pós-pago")
     public Response cpfSemConta() {
         return given()
-                .queryParam("cpf", "37810541013")
+                .queryParam("cpf", "47007865070")
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()
-                .get("credit-cards-accounts/v1/accounts");
+                .get(url);
     }
 
     @Step("CPF sem conta de pagamento pós-pago")
@@ -40,7 +48,7 @@ public class GetContaPagamentoPosPagoRequest {
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()
-                .get("credit-cards-accounts/v1/accounts");
+                .get(url);
     }
 
 
@@ -51,7 +59,7 @@ public class GetContaPagamentoPosPagoRequest {
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()
-                .get("credit-cards-accounts/v1/accountss");
+                .get(url+"s");
     }
     @Step("Método não suportado para a o endpoint informado")
     public Response metodoNaoSuportado() {
@@ -60,7 +68,7 @@ public class GetContaPagamentoPosPagoRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .post("credit-cards-accounts/v1/accounts");
+                .post(url);
     }
 }
 

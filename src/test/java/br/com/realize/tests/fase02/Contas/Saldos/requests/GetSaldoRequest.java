@@ -27,6 +27,12 @@ public class GetSaldoRequest {
                 .extract().path("data[0].accountID");
         return accountID;
     }
+    public String obterLinkSelf() {
+        return obterSaldoConta()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
     @Step("Obter os Saldos da Conta")
     public Response obterSaldoConta() {
         return given()

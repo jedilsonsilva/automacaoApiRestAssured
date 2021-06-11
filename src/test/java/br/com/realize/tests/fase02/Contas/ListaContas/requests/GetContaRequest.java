@@ -63,13 +63,24 @@ public class GetContaRequest {
                 .get("accounts/v1/accounts/");
     }
 
- //REQUISIÇÕES DOS STATUS CODE DE ERRO
  public String obterLinkSelfListaContas() {
      return obterInformacoesConta()
              .then()
              .statusCode(200)
              .extract().path("links.self");
  }
+    public String obterLinkSelfAvista() {
+        return tipoContaDepositoAVista()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
+    public String obterLinkSelfPoupanca() {
+        return tipoContaPoupanca()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
 
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {

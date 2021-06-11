@@ -16,10 +16,10 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.*;
 
 @Epic("Fase 01")
 @Feature("Canais de Atendimento")
@@ -27,25 +27,25 @@ import static org.hamcrest.Matchers.hasItem;
 public class GetCorrespondentesBancariosTest extends BaseTest {
 
     GetCorrespondentesBancariosRequest getCorrespondentesBancariosRequest = new GetCorrespondentesBancariosRequest();
-
+    String linkSelf = getCorrespondentesBancariosRequest.obterLinkSelfCorrespondentesBancarios();
+    String linkNext = getCorrespondentesBancariosRequest.obterLinkNextCorrespondentesBancarios();
+    String linkLast = getCorrespondentesBancariosRequest.obterLinkLastCorrespondentesBancarios();
+    String linkFirst = getCorrespondentesBancariosRequest.obterLinkFirstCorrespondentesBancarios();
+    String linkPrev = getCorrespondentesBancariosRequest.obterLinkPrevCorrespondentesBancarios();
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
     @DisplayName("Validar o retorno das informações gerais de correspondentes bancários")
     public void testCorrespondentesBancarios() throws Exception {
-        String linkSelf = getCorrespondentesBancariosRequest.obterLinkSelfCorrespondentesBancarios();
-        String linkNext = getCorrespondentesBancariosRequest.obterLinkNextCorrespondentesBancarios();
-        String linkLast = getCorrespondentesBancariosRequest.obterLinkLastCorrespondentesBancarios();
-        String linkFirst = getCorrespondentesBancariosRequest.obterLinkFirstCorrespondentesBancarios();
-        String linkPrev = getCorrespondentesBancariosRequest.obterLinkPrevCorrespondentesBancarios();
 
         getCorrespondentesBancariosRequest.obterInformacoesCorrespondentesBancarios()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("data.companies[0].cnpjNumber", equalTo("27351731"))
                 .body("data.companies[0].name", equalTo("REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A."))
-                .body("meta.totalRecords", equalTo(366))
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
                 .body("links.self", equalTo(linkSelf))
                 .body("links.first", equalTo(linkFirst))
                 .body("links.prev", equalTo(linkPrev))
@@ -107,7 +107,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase01/CanaisAtendimento/CorrespondentesBancarios", "CorrespondentesBancarios"))));
     }
-
 //VALIDAÇÕES DOS STATUS CODE DE ERRO
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -116,7 +115,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testNumeroPaginaNaoLocalizado() throws Exception {
         getCorrespondentesBancariosRequest.numeroPaginaNaoLocalizado()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                 .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (15)."));
@@ -128,7 +126,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getCorrespondentesBancariosRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -140,7 +137,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testNumeroPaginaZero() throws Exception {
         getCorrespondentesBancariosRequest.numeroPaginaZero()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Número da página inválido."))
                 .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -152,7 +148,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testNumeroPaginaInvalido() throws Exception {
         getCorrespondentesBancariosRequest.numeroPaginaInvalido()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Número da página inválido."))
                 .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -164,7 +159,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testTamanhoPaginaZero() throws Exception {
         getCorrespondentesBancariosRequest.tamanhoPaginaZero()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Tamanho da página inválido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -176,7 +170,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testTamanhoPaginaInvalido() throws Exception {
         getCorrespondentesBancariosRequest.tamanhoPaginaInvalido()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Tamanho da página inválido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -188,7 +181,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testTamanhoPaginaSuperior() throws Exception {
         getCorrespondentesBancariosRequest.tamanhoPaginaSuperior()
                 .then()
-                .log().all()
                 .statusCode(422)
                 .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
@@ -200,7 +192,6 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getCorrespondentesBancariosRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));

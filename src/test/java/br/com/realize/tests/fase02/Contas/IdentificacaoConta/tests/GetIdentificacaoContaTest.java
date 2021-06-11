@@ -19,6 +19,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
@@ -31,17 +32,21 @@ import static org.hamcrest.Matchers.*;
 public class GetIdentificacaoContaTest extends BaseTest {
 
     GetIdentificacaoContaRequest getIdentificacaoContaRequest = new GetIdentificacaoContaRequest();
-    String linkSelf = getIdentificacaoContaRequest.obterLinkSelf();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
     @DisplayName("Validar o retorno do endpoint de informações da conta pelo enpoint de indentificação da conta")
     public void testValidarIdentificacaoConta() throws Exception {
+        String linkSelf = getIdentificacaoContaRequest.obterLinkSelf();
         getIdentificacaoContaRequest.obterInformacoesContaPeloId()
                 .then()
-                .log().all()
-                .statusCode(200);
+                .statusCode(200)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
+                .body("links.self", is(linkSelf));
+
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -73,7 +78,6 @@ public class GetIdentificacaoContaTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getIdentificacaoContaRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -85,7 +89,6 @@ public class GetIdentificacaoContaTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getIdentificacaoContaRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));

@@ -13,6 +13,8 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
@@ -24,21 +26,22 @@ import static org.hamcrest.Matchers.*;
 public class GetAtendimentoTelefonicoTest extends BaseTest {
 
     GetAtendimentoTelefonicoRequest getAtendimentoTelefonicooRequest = new GetAtendimentoTelefonicoRequest();
+    String linkSelf = getAtendimentoTelefonicooRequest.obterLinkSelfAtendimentoTelefonico();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
     @DisplayName("Validar o retorno das informações gerais do atendimento telefônico")
     public void testAtendimentoTelefonico() throws Exception {
-        String linkSelf = getAtendimentoTelefonicooRequest.obterLinkSelfAtendimentoTelefonico();
         getAtendimentoTelefonicooRequest.obterInformacoesAtendimentoTelefonico()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("data.companies[0].cnpjNumber", equalTo("27351731"))
                 .body("data.companies[0].name", equalTo("REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A."))
-                .body("meta.totalRecords", equalTo(4))
-                .body("links.self", equalTo(linkSelf));
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
+                .body("links.self", is(linkSelf));
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -113,11 +116,9 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
                     new File(Utils.getContractsBasePath(
-                    "fase01/CanaisAtendimento/AtendimentoTelefonico",
-                    "AtendimentoTelefonico"))));
+                    "fase01/CanaisAtendimento/AtendimentoTelefonico","AtendimentoTelefonico"))));
     }
 
-//VALIDAÇÕES DOS STATUS CODE DE ERRO
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})

@@ -15,6 +15,8 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
@@ -23,6 +25,10 @@ import static org.hamcrest.Matchers.*;
 @DisplayName("Lista de Contas")
 public class GetContaTest extends BaseTest {
     GetContaRequest getContaRequest = new GetContaRequest();
+    String linkSelf = getContaRequest.obterLinkSelfListaContas();
+    String linkSelfPoupanca = getContaRequest.obterLinkSelfPoupanca();
+    String linkSelfAVista = getContaRequest.obterLinkSelfAvista();
+
 
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -31,7 +37,6 @@ public class GetContaTest extends BaseTest {
     public void testValidarinformacoesConta() throws Exception {
         getContaRequest.obterInformacoesConta()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("data.brandName", hasItem("REALIZE CFI S.A."))
                 .body("data.companyCnpj", hasItem("27351731000138"))
@@ -41,10 +46,10 @@ public class GetContaTest extends BaseTest {
                 .body("data.number", hasItem("158076326"))
                 .body("data.checkDigit", hasItem("6"))
                 .body("data.accountID", hasItem("e92c51df-b68c-4faa-9cbc-4cb1b232781f"))
-                .body("meta.totalRecords", is(1))
-                .body("meta.totalPages", is(1))
-                .extract().path("{data.accountID}");
-
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", greaterThan(0))
+                .body("meta.totalRecords", greaterThan(0))
+                .body("links.self", is(linkSelf));
     }
 
     @Test
@@ -67,8 +72,10 @@ public class GetContaTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .body("data", is(empty()))
-                .body("meta.totalRecords", is(0))
-                .body("meta.totalPages", is(0));
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", equalTo(0))
+                .body("meta.totalRecords", equalTo(0))
+                .body("links.self", is(linkSelfAVista));
     }
 
     @Test
@@ -80,8 +87,10 @@ public class GetContaTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .body("data", is(empty()))
-                .body("meta.totalRecords", is(0))
-                .body("meta.totalPages", is(0));
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("meta.totalPages", equalTo(0))
+                .body("meta.totalRecords", equalTo(0))
+                .body("links.self", is(linkSelfPoupanca));
     }
 
     @Test
@@ -114,7 +123,6 @@ public class GetContaTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getContaRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -126,7 +134,6 @@ public class GetContaTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getContaRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));

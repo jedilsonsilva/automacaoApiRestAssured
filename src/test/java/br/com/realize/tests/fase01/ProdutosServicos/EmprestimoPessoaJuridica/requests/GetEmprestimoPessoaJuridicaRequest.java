@@ -8,6 +8,12 @@ import static io.restassured.RestAssured.given;
 
 public class GetEmprestimoPessoaJuridicaRequest {
 
+    public String obterLinkSelfEmprestimoPessoaJuridica() {
+        return obterInformacoesEmprestimoPessoaJuridica()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
     @Step("Retorna o objeto Brand contendo os Empréstimos oferecidos a Pessoa Jurídica.")
     public Response obterInformacoesEmprestimoPessoaJuridica() {
         return given()
@@ -81,11 +87,6 @@ public class GetEmprestimoPessoaJuridicaRequest {
                 .when()
                 .post("/products-services/v1/business-loans");
     }
-    public String obterLinkSelfEmprestimoPessoaJuridica() {
-        return obterInformacoesEmprestimoPessoaJuridica()
-                .then()
-                .statusCode(200)
-                .extract().path("links.self");
-    }
+
 }
 

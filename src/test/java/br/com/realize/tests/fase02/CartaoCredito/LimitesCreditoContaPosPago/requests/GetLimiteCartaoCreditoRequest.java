@@ -22,6 +22,12 @@ public class GetLimiteCartaoCreditoRequest {
         String cpfSemCartao = geradorCpfCnpjRG.geraCPF();
         return cpfSemCartao;
     }
+    public String obterLinkSelf() {
+        return retornaLimitesCartaoCredito()
+                .then()
+                .statusCode(200)
+                .extract().path("links.self");
+    }
 
     public String obterCreditCardAccountId() {
         String creditCardAccountId = given()

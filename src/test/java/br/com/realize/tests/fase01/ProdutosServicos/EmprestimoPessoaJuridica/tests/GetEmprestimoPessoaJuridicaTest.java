@@ -18,6 +18,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -28,16 +29,15 @@ import static org.hamcrest.Matchers.*;
 public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
 
         GetEmprestimoPessoaJuridicaRequest getEmprestimoPessoaJuridicaRequest = new GetEmprestimoPessoaJuridicaRequest();
+        String linkSelf = getEmprestimoPessoaJuridicaRequest.obterLinkSelfEmprestimoPessoaJuridica();
 
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
         @DisplayName("Validar o retorno das informações do endpoint de empréstimo pessoa jurídica")
         public void testEmprestimoMicrocreditoPessoaJuridica() throws Exception {
-            String linkSelf = getEmprestimoPessoaJuridicaRequest.obterLinkSelfEmprestimoPessoaJuridica();
                 getEmprestimoPessoaJuridicaRequest.obterInformacoesEmprestimoPessoaJuridica()
                     .then()
-                    .log().all()
                     .statusCode(200)
                     .rootPath("data.companies[0].businessLoans")
                     .body("type[0]", equalTo("EMPRESTIMO_MICROCREDITO_PRODUTIVO_ORIENTADO"))
@@ -47,8 +47,10 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
                     .body("type[4]", equalTo("EMPRESTIMO_CAPITAL_GIRO_PRAZO_VENCIMENTO_SUPERIOR_365_DIAS"))
                     .body("type[5]", equalTo("EMPRESTIMO_CAPITAL_GIRO_ROTATIVO"))
                     .noRootPath()
-                    .body("links.self", equalTo(linkSelf))
-                    .body("meta.totalRecords", equalTo(6));
+                    .time(lessThan(4L), TimeUnit.SECONDS)
+                    .body("meta.totalPages", greaterThan(0))
+                    .body("meta.totalRecords", greaterThan(0))
+                    .body("links.self", is(linkSelf));
         }
         @Test
         @Severity(SeverityLevel.BLOCKER)
@@ -70,7 +72,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testNumeroPaginaNaoLocalizado() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.numeroPaginaNaoLocalizado()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
@@ -83,7 +84,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testPathInvalido() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.pathInvalido()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                     .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -96,7 +96,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testNumeroPaginaZero() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.numeroPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -109,7 +108,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testNumeroPaginaInvalido() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.numeroPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -122,7 +120,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testTamanhoPaginaZero() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.tamanhoPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -135,7 +132,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testTamanhoPaginaInvalido() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.tamanhoPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -148,7 +144,6 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         public void testTamanhoPaginaSuperior() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.tamanhoPaginaSuperior()
                     .then()
-                    .log().all()
                     .statusCode(422)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
@@ -159,11 +154,10 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
         @DisplayName("Validar retorno 405 -Método não suportado no endpoint de cartão de empréstipo pessoa jurídica")
         public void testMetodoNaoSuportado() throws Exception {
                 getEmprestimoPessoaJuridicaRequest.metodoNaoSuportado()
-                        .then()
-                        .log().all()
-                        .statusCode(405)
-                        .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
-                        .body("errors.detail", hasItem("Request method 'POST' not supported"));
+                    .then()
+                    .statusCode(405)
+                    .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
+                    .body("errors.detail", hasItem("Request method 'POST' not supported"));
         }
 
 }

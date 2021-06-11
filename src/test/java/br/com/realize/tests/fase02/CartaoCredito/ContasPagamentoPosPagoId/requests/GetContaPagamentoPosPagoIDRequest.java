@@ -30,7 +30,6 @@ public class GetContaPagamentoPosPagoIDRequest {
     @Step("Retorna as Contas de Pagamento pós-pago.")
     public Response retornaContasPagamentoPosPagoID() {
         return given()
-                .log().all()
                 .queryParam("cpf", cpf)
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")

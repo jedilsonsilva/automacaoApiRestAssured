@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "companies": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "cnpjNumber": {
+                  "type": "string"
+                },
+                "personalLoans": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "null"
+                        },
+                        "fees": {
+                          "type": "null"
+                        },
+                        "interestRates": {
+                          "type": "null"
+                        },
+                        "requiredWarranties": {
+                          "type": "null"
+                        },
+                        "termsConditions": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "fees",
+                        "interestRates",
+                        "requiredWarranties",
+                        "termsConditions"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "cnpjNumber",
+                "personalLoans"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "companies"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

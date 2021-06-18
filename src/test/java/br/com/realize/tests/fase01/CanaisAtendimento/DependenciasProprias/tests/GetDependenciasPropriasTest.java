@@ -35,6 +35,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     public void testDependenciasProprias() throws Exception {
         getDependenciasPropriasRequest.obterInformacoesDependenciasProprias()
                 .then()
+                .log().all()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))

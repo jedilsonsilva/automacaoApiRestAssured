@@ -29,7 +29,7 @@
             "checkDigit": {
               "type": "string"
             },
-            "accountID": {
+            "accountId": {
               "type": "string"
             }
           },
@@ -41,7 +41,7 @@
             "branchCode",
             "number",
             "checkDigit",
-            "accountID"
+            "accountId"
           ]
         }
       ]
@@ -53,16 +53,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [
@@ -83,30 +83,7 @@
           "type": "integer"
         },
         "requestDateTime": {
-          "type": "array",
-          "items": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            }
-          ]
+          "type": "string"
         }
       },
       "required": [

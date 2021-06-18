@@ -13,7 +13,7 @@ import br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.Get
 import br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaJuridica.tests.GetEmprestimoPessoaJuridicaTest;
 import br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaNatural.tests.GetEmprestimoPessoaNaturalTest;
 import br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest;
-import br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPagoId.tests.GetContaPagamentoPosPagoIDTest;
+import br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest;
 import br.com.realize.tests.fase02.CartaoCredito.LimitesCreditoContaPosPago.requests.GetLimiteCartaoCreditoRequest;
 import br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest;
 import br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest;
@@ -50,7 +50,7 @@ import org.junit.runners.Suite;
 
 //Feature - Cartão de Crédito
         GetContaPagamentoPosPagoTest.class,
-        GetContaPagamentoPosPagoIDTest.class,
+        GetContaIdentificadaPorCreditCardAccountIdTest.class,
         GetLimiteCartaoCreditoRequest.class,
 //Feature - Contas
         GetContaTest.class,

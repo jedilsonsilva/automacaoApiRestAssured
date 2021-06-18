@@ -5,162 +5,127 @@
     "data": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "companies": {
-          "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "cnpjNumber": {
-                  "type": "string"
-                },
-                "electronicChannels": {
-                  "type": "array",
-                  "items": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "identification": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string"
-                            },
-                            "additionalInfo": {
-                              "type": "string"
-                            },
-                            "urls": {
-                              "type": "array",
-                              "items": [
-                                {
-                                  "type": "string"
-                                },
-                                {
-                                  "type": "string"
-                                }
-                              ]
-                            }
-                          },
-                          "required": [
-                            "type",
-                            "additionalInfo",
-                            "urls"
-                          ]
-                        },
-                        "services": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "name": {
-                                  "type": "string"
-                                },
-                                "code": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "name",
-                                "code"
-                              ]
-                            }
-                          ]
-                        }
-                      },
-                      "required": [
-                        "identification",
-                        "services"
-                      ]
+        "brand": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "companies": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
                     },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "identification": {
+                    "cnpjNumber": {
+                      "type": "string"
+                    },
+                    "urlComplementaryList": {
+                      "type": "string"
+                    },
+                    "electronicChannels": {
+                      "type": "array",
+                      "items": [
+                        {
                           "type": "object",
                           "properties": {
-                            "type": {
-                              "type": "string"
+                            "identification": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "additionalInfo": {
+                                  "type": "string"
+                                },
+                                "urls": {
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "type": "string"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "additionalInfo",
+                                "urls"
+                              ]
                             },
-                            "urls": {
+                            "services": {
                               "type": "array",
                               "items": [
                                 {
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "additionalInfo": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "code",
+                                    "additionalInfo"
+                                  ]
                                 },
                                 {
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "additionalInfo": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "code",
+                                    "additionalInfo"
+                                  ]
                                 }
                               ]
                             }
                           },
                           "required": [
-                            "type",
-                            "urls"
-                          ]
-                        },
-                        "services": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "name": {
-                                  "type": "string"
-                                },
-                                "code": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "name",
-                                "code"
-                              ]
-                            },
-                            {
-                              "type": "object",
-                              "properties": {
-                                "name": {
-                                  "type": "string"
-                                },
-                                "code": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "name",
-                                "code"
-                              ]
-                            }
+                            "identification",
+                            "services"
                           ]
                         }
-                      },
-                      "required": [
-                        "identification",
-                        "services"
                       ]
                     }
+                  },
+                  "required": [
+                    "name",
+                    "cnpjNumber",
+                    "urlComplementaryList",
+                    "electronicChannels"
                   ]
                 }
-              },
-              "required": [
-                "name",
-                "cnpjNumber",
-                "electronicChannels"
               ]
             }
+          },
+          "required": [
+            "name",
+            "companies"
           ]
         }
       },
       "required": [
-        "name",
-        "companies"
+        "brand"
       ]
     },
     "links": {
@@ -170,16 +135,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [

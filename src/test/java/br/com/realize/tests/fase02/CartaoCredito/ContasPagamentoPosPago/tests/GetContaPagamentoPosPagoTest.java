@@ -29,13 +29,13 @@ import static org.hamcrest.Matchers.*;
 public class GetContaPagamentoPosPagoTest extends BaseTest {
 
     GetContaPagamentoPosPagoRequest getContaPagamentoPosPagoRequest = new GetContaPagamentoPosPagoRequest();
-    String linkSelf = getContaPagamentoPosPagoRequest.obterLinkSelf();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
     @DisplayName("Validar o retorno do endpoint de contas de pagamento pós-pago")
     public void testValidarinformacoesConta() throws Exception {
+        String linkSelf = getContaPagamentoPosPagoRequest.obterLinkSelf();
         getContaPagamentoPosPagoRequest.retornaContasPagamentoPosPago()
                 .then()
                 .statusCode(200)

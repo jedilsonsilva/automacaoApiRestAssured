@@ -1,11 +1,11 @@
-package br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests;
+package br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests;
 
 import br.com.realize.runners.fase02;
 import br.com.realize.suites.AllTests;
 import br.com.realize.suites.Contract;
-import br.com.realize.tests.fase02.Contas.IdentificacaoConta.requests.GetIdentificacaoContaRequest;
 import br.com.realize.tests.base.tests.BaseTest;
 import br.com.realize.suites.Healthcheck;
+import br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.requests.GetIdentificacaoPessoaNaturalRequest;
 import br.com.realize.utils.Utils;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -22,20 +22,20 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
 @Epic("Fase 02")
-@Feature("Contas")
-@DisplayName("Identificação da Conta")
+@Feature("Dados Cadastrais")
+@DisplayName("Identificação Pessoa Natural")
 
-public class GetIdentificacaoContaTest extends BaseTest {
+public class GetIdentificacaoPessoaNaturalTest extends BaseTest {
 
-    GetIdentificacaoContaRequest getIdentificacaoContaRequest = new GetIdentificacaoContaRequest();
+    GetIdentificacaoPessoaNaturalRequest getIdentificacaoPessoaNaturalRequest = new GetIdentificacaoPessoaNaturalRequest();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de informações da conta pelo enpoint de indentificação da conta")
-    public void testValidarIdentificacaoConta() throws Exception {
-        String linkSelf = getIdentificacaoContaRequest.obterLinkSelf();
-        getIdentificacaoContaRequest.obterInformacoesContaPeloId()
+    @DisplayName("Validar o retorno do endpoint de indentificação de pessoa natural")
+    public void testValidarIdentificacaoPessoaNatural() throws Exception {
+        String linkSelf = getIdentificacaoPessoaNaturalRequest.obterLinkSelf();
+        getIdentificacaoPessoaNaturalRequest.obterIdentificacaoPessoaNatural()
                 .then()
                 .log().all()
                 .statusCode(200)
@@ -49,31 +49,20 @@ public class GetIdentificacaoContaTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class, fase02.class})
     @DisplayName("Validar a garantia do contrato do retorno da conta por ID")
-    public void testGarantirContratosInformacoesConta() throws Exception {
-        getIdentificacaoContaRequest.obterInformacoesContaPeloId()
+    public void testGarantirContratosIdentificacaoPessoaNatural() throws Exception {
+        getIdentificacaoPessoaNaturalRequest.obterIdentificacaoPessoaNatural()
                 .then()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
-                new File(Utils.getContractsBasePath("fase02/Contas/IdentificacaoConta", "IdentificacaoConta"))));
+                new File(Utils.getContractsBasePath("fase02/Contas/IdentificacaoPessoaNatural", "IdentificacaoPessoaNatural"))));
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar a obtenção de contas consentidas com ID inválido.")
-    public void testIdInvalido() throws Exception {
-        getIdentificacaoContaRequest.accountIdInvalido()
-                .then()
-                .statusCode(404)
-                .body("errors[0].title", equalTo("O recurso solicitado não existe."))
-                .body("errors[0].detail", equalTo("Nenhuma conta encontrada para o id e92c51df-b68c-4faa-9cbc-5555555555."));
-    }
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de identificação da conta")
+    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint de identificação de pessoa natural")
     public void testPathInvalido() throws Exception {
-        getIdentificacaoContaRequest.pathInvalido()
+        getIdentificacaoPessoaNaturalRequest.pathInvalido()
                 .then()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
@@ -82,12 +71,23 @@ public class GetIdentificacaoContaTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de identificação da conta")
+    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de identificação de pessoa natural")
     public void testMetodoNaoSuportado() throws Exception {
-        getIdentificacaoContaRequest.metodoNaoSuportado()
+        getIdentificacaoPessoaNaturalRequest.metodoNaoSuportado()
                 .then()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));
+    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
+    @DisplayName("400 - Validar o retorno do endpoint de indentificação de pessoa natural informando um CPF inválido.")
+    public void testCpfInvalido() throws Exception {
+        getIdentificacaoPessoaNaturalRequest.cpfInvalido()
+                .then()
+                .statusCode(400)
+                .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
+                .body("errors[0].detail", equalTo("O CPF informado é inválido."));
     }
 }

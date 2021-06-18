@@ -6,19 +6,19 @@
       "type": "object",
       "properties": {
         "overdraftContractedLimit": {
-          "type": "integer"
+          "type": "number"
         },
         "overdraftContractedLimitCurrency": {
           "type": "string"
         },
         "overdraftUsedLimit": {
-          "type": "integer"
+          "type": "number"
         },
         "overdraftUsedLimitCurrency": {
           "type": "string"
         },
         "unarrangedOverdraftAmount": {
-          "type": "integer"
+          "type": "number"
         },
         "unarrangedOverdraftAmountCurrency": {
           "type": "string"
@@ -40,16 +40,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [
@@ -70,30 +70,7 @@
           "type": "integer"
         },
         "requestDateTime": {
-          "type": "array",
-          "items": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "integer"
-            }
-          ]
+          "type": "string"
         }
       },
       "required": [

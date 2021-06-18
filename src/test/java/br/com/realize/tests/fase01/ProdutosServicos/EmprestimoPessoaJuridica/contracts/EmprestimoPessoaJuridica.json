@@ -5,49 +5,243 @@
     "data": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "companies": {
-          "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "cnpjNumber": {
-                  "type": "string"
-                },
-                "businessLoans": {
-                  "type": "array",
-                  "items": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "fees": {
+        "brand": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "companies": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "cnpjNumber": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "urlComplementaryList": {
+                      "type": "string"
+                    },
+                    "businessLoans": {
+                      "type": "array",
+                      "items": [
+                        {
                           "type": "object",
                           "properties": {
-                            "services": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "fees": {
+                              "type": "object",
+                              "properties": {
+                                "services": {
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "code": {
+                                          "type": "string"
+                                        },
+                                        "chargingTriggerInfo": {
+                                          "type": "string"
+                                        },
+                                        "prices": {
+                                          "type": "array",
+                                          "items": [
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "interval": {
+                                                  "type": "string"
+                                                },
+                                                "value": {
+                                                  "type": "string"
+                                                },
+                                                "currency": {
+                                                  "type": "string"
+                                                },
+                                                "customers": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "rate": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "rate"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "interval",
+                                                "value",
+                                                "currency",
+                                                "customers"
+                                              ]
+                                            },
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "interval": {
+                                                  "type": "string"
+                                                },
+                                                "value": {
+                                                  "type": "string"
+                                                },
+                                                "currency": {
+                                                  "type": "string"
+                                                },
+                                                "customers": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "rate": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "rate"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "interval",
+                                                "value",
+                                                "currency",
+                                                "customers"
+                                              ]
+                                            },
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "interval": {
+                                                  "type": "string"
+                                                },
+                                                "value": {
+                                                  "type": "string"
+                                                },
+                                                "currency": {
+                                                  "type": "string"
+                                                },
+                                                "customers": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "rate": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "rate"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "interval",
+                                                "value",
+                                                "currency",
+                                                "customers"
+                                              ]
+                                            },
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "interval": {
+                                                  "type": "string"
+                                                },
+                                                "value": {
+                                                  "type": "string"
+                                                },
+                                                "currency": {
+                                                  "type": "string"
+                                                },
+                                                "customers": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "rate": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "rate"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "interval",
+                                                "value",
+                                                "currency",
+                                                "customers"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "minimum": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string"
+                                            },
+                                            "currency": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "value",
+                                            "currency"
+                                          ]
+                                        },
+                                        "maximum": {
+                                          "type": "object",
+                                          "properties": {
+                                            "value": {
+                                              "type": "string"
+                                            },
+                                            "currency": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "value",
+                                            "currency"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "name",
+                                        "code",
+                                        "chargingTriggerInfo",
+                                        "prices",
+                                        "minimum",
+                                        "maximum"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "services"
+                              ]
+                            },
+                            "interestRates": {
                               "type": "array",
                               "items": [
                                 {
                                   "type": "object",
                                   "properties": {
-                                    "name": {
+                                    "referentialRateIndexer": {
                                       "type": "string"
                                     },
-                                    "code": {
+                                    "rate": {
                                       "type": "string"
                                     },
-                                    "chargingTriggerInfo": {
-                                      "type": "string"
-                                    },
-                                    "prices": {
+                                    "applications": {
                                       "type": "array",
                                       "items": [
                                         {
@@ -56,11 +250,16 @@
                                             "interval": {
                                               "type": "string"
                                             },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
+                                            "indexer": {
+                                              "type": "object",
+                                              "properties": {
+                                                "rate": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "rate"
+                                              ]
                                             },
                                             "customers": {
                                               "type": "object",
@@ -76,8 +275,7 @@
                                           },
                                           "required": [
                                             "interval",
-                                            "value",
-                                            "currency",
+                                            "indexer",
                                             "customers"
                                           ]
                                         },
@@ -87,11 +285,16 @@
                                             "interval": {
                                               "type": "string"
                                             },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
+                                            "indexer": {
+                                              "type": "object",
+                                              "properties": {
+                                                "rate": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "rate"
+                                              ]
                                             },
                                             "customers": {
                                               "type": "object",
@@ -107,8 +310,7 @@
                                           },
                                           "required": [
                                             "interval",
-                                            "value",
-                                            "currency",
+                                            "indexer",
                                             "customers"
                                           ]
                                         },
@@ -118,11 +320,16 @@
                                             "interval": {
                                               "type": "string"
                                             },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
+                                            "indexer": {
+                                              "type": "object",
+                                              "properties": {
+                                                "rate": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "rate"
+                                              ]
                                             },
                                             "customers": {
                                               "type": "object",
@@ -138,8 +345,7 @@
                                           },
                                           "required": [
                                             "interval",
-                                            "value",
-                                            "currency",
+                                            "indexer",
                                             "customers"
                                           ]
                                         },
@@ -149,11 +355,16 @@
                                             "interval": {
                                               "type": "string"
                                             },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
+                                            "indexer": {
+                                              "type": "object",
+                                              "properties": {
+                                                "rate": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "rate"
+                                              ]
                                             },
                                             "customers": {
                                               "type": "object",
@@ -169,2237 +380,70 @@
                                           },
                                           "required": [
                                             "interval",
-                                            "value",
-                                            "currency",
+                                            "indexer",
                                             "customers"
                                           ]
                                         }
                                       ]
                                     },
-                                    "minimum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
+                                    "minimumRate": {
+                                      "type": "string"
                                     },
-                                    "maximum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
+                                    "maximumRate": {
+                                      "type": "string"
                                     }
                                   },
                                   "required": [
-                                    "name",
-                                    "code",
-                                    "chargingTriggerInfo",
-                                    "prices",
-                                    "minimum",
-                                    "maximum"
+                                    "referentialRateIndexer",
+                                    "rate",
+                                    "applications",
+                                    "minimumRate",
+                                    "maximumRate"
                                   ]
                                 }
                               ]
-                            }
-                          },
-                          "required": [
-                            "services"
-                          ]
-                        },
-                        "interestRates": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "referentialRateIndexer": {
-                                  "type": "string"
-                                },
-                                "rate": {
-                                  "type": "string"
-                                },
-                                "applications": {
-                                  "type": "array",
-                                  "items": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "minimumRate": {
-                                  "type": "string"
-                                },
-                                "maximumRate": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "referentialRateIndexer",
-                                "rate",
-                                "applications",
-                                "minimumRate",
-                                "maximumRate"
-                              ]
-                            }
-                          ]
-                        },
-                        "requiredWarranties": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "termsConditions": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "fees",
-                        "interestRates",
-                        "requiredWarranties",
-                        "termsConditions"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "fees": {
-                          "type": "object",
-                          "properties": {
-                            "services": {
+                            },
+                            "requiredWarranties": {
                               "type": "array",
                               "items": [
                                 {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "code": {
-                                      "type": "string"
-                                    },
-                                    "chargingTriggerInfo": {
-                                      "type": "string"
-                                    },
-                                    "prices": {
-                                      "type": "array",
-                                      "items": [
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "minimum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    },
-                                    "maximum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "code",
-                                    "chargingTriggerInfo",
-                                    "prices",
-                                    "minimum",
-                                    "maximum"
-                                  ]
+                                  "type": "string"
                                 }
                               ]
+                            },
+                            "termsConditions": {
+                              "type": "string"
                             }
                           },
                           "required": [
-                            "services"
+                            "type",
+                            "fees",
+                            "interestRates",
+                            "requiredWarranties",
+                            "termsConditions"
                           ]
-                        },
-                        "interestRates": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "referentialRateIndexer": {
-                                  "type": "string"
-                                },
-                                "rate": {
-                                  "type": "string"
-                                },
-                                "applications": {
-                                  "type": "array",
-                                  "items": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "minimumRate": {
-                                  "type": "string"
-                                },
-                                "maximumRate": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "referentialRateIndexer",
-                                "rate",
-                                "applications",
-                                "minimumRate",
-                                "maximumRate"
-                              ]
-                            }
-                          ]
-                        },
-                        "requiredWarranties": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "termsConditions": {
-                          "type": "string"
                         }
-                      },
-                      "required": [
-                        "type",
-                        "fees",
-                        "interestRates",
-                        "requiredWarranties",
-                        "termsConditions"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "fees": {
-                          "type": "object",
-                          "properties": {
-                            "services": {
-                              "type": "array",
-                              "items": [
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "code": {
-                                      "type": "string"
-                                    },
-                                    "chargingTriggerInfo": {
-                                      "type": "string"
-                                    },
-                                    "prices": {
-                                      "type": "array",
-                                      "items": [
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "minimum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    },
-                                    "maximum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "code",
-                                    "chargingTriggerInfo",
-                                    "prices",
-                                    "minimum",
-                                    "maximum"
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          "required": [
-                            "services"
-                          ]
-                        },
-                        "interestRates": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "referentialRateIndexer": {
-                                  "type": "string"
-                                },
-                                "rate": {
-                                  "type": "string"
-                                },
-                                "applications": {
-                                  "type": "array",
-                                  "items": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "minimumRate": {
-                                  "type": "string"
-                                },
-                                "maximumRate": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "referentialRateIndexer",
-                                "rate",
-                                "applications",
-                                "minimumRate",
-                                "maximumRate"
-                              ]
-                            }
-                          ]
-                        },
-                        "requiredWarranties": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "termsConditions": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "fees",
-                        "interestRates",
-                        "requiredWarranties",
-                        "termsConditions"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "fees": {
-                          "type": "object",
-                          "properties": {
-                            "services": {
-                              "type": "array",
-                              "items": [
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "code": {
-                                      "type": "string"
-                                    },
-                                    "chargingTriggerInfo": {
-                                      "type": "string"
-                                    },
-                                    "prices": {
-                                      "type": "array",
-                                      "items": [
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "minimum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    },
-                                    "maximum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "code",
-                                    "chargingTriggerInfo",
-                                    "prices",
-                                    "minimum",
-                                    "maximum"
-                                  ]
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "code": {
-                                      "type": "string"
-                                    },
-                                    "chargingTriggerInfo": {
-                                      "type": "string"
-                                    },
-                                    "prices": {
-                                      "type": "array",
-                                      "items": [
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "minimum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    },
-                                    "maximum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "code",
-                                    "chargingTriggerInfo",
-                                    "prices",
-                                    "minimum",
-                                    "maximum"
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          "required": [
-                            "services"
-                          ]
-                        },
-                        "interestRates": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "referentialRateIndexer": {
-                                  "type": "string"
-                                },
-                                "rate": {
-                                  "type": "string"
-                                },
-                                "applications": {
-                                  "type": "array",
-                                  "items": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "minimumRate": {
-                                  "type": "string"
-                                },
-                                "maximumRate": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "referentialRateIndexer",
-                                "rate",
-                                "applications",
-                                "minimumRate",
-                                "maximumRate"
-                              ]
-                            }
-                          ]
-                        },
-                        "requiredWarranties": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "termsConditions": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "fees",
-                        "interestRates",
-                        "requiredWarranties",
-                        "termsConditions"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "fees": {
-                          "type": "object",
-                          "properties": {
-                            "services": {
-                              "type": "null"
-                            }
-                          },
-                          "required": [
-                            "services"
-                          ]
-                        },
-                        "interestRates": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "referentialRateIndexer": {
-                                  "type": "string"
-                                },
-                                "rate": {
-                                  "type": "string"
-                                },
-                                "applications": {
-                                  "type": "array",
-                                  "items": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "minimumRate": {
-                                  "type": "string"
-                                },
-                                "maximumRate": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "referentialRateIndexer",
-                                "rate",
-                                "applications",
-                                "minimumRate",
-                                "maximumRate"
-                              ]
-                            }
-                          ]
-                        },
-                        "requiredWarranties": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "termsConditions": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "fees",
-                        "interestRates",
-                        "requiredWarranties",
-                        "termsConditions"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string"
-                        },
-                        "fees": {
-                          "type": "object",
-                          "properties": {
-                            "services": {
-                              "type": "array",
-                              "items": [
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "code": {
-                                      "type": "string"
-                                    },
-                                    "chargingTriggerInfo": {
-                                      "type": "string"
-                                    },
-                                    "prices": {
-                                      "type": "array",
-                                      "items": [
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "interval": {
-                                              "type": "string"
-                                            },
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "currency": {
-                                              "type": "string"
-                                            },
-                                            "customers": {
-                                              "type": "object",
-                                              "properties": {
-                                                "rate": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "rate"
-                                              ]
-                                            }
-                                          },
-                                          "required": [
-                                            "interval",
-                                            "value",
-                                            "currency",
-                                            "customers"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "minimum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    },
-                                    "maximum": {
-                                      "type": "object",
-                                      "properties": {
-                                        "value": {
-                                          "type": "string"
-                                        },
-                                        "currency": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [
-                                        "value",
-                                        "currency"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "code",
-                                    "chargingTriggerInfo",
-                                    "prices",
-                                    "minimum",
-                                    "maximum"
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          "required": [
-                            "services"
-                          ]
-                        },
-                        "interestRates": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "referentialRateIndexer": {
-                                  "type": "string"
-                                },
-                                "rate": {
-                                  "type": "string"
-                                },
-                                "applications": {
-                                  "type": "array",
-                                  "items": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "interval": {
-                                          "type": "string"
-                                        },
-                                        "indexer": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        },
-                                        "customers": {
-                                          "type": "object",
-                                          "properties": {
-                                            "rate": {
-                                              "type": "string"
-                                            }
-                                          },
-                                          "required": [
-                                            "rate"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "interval",
-                                        "indexer",
-                                        "customers"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "minimumRate": {
-                                  "type": "string"
-                                },
-                                "maximumRate": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "referentialRateIndexer",
-                                "rate",
-                                "applications",
-                                "minimumRate",
-                                "maximumRate"
-                              ]
-                            }
-                          ]
-                        },
-                        "requiredWarranties": {
-                          "type": "array",
-                          "items": [
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "termsConditions": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "fees",
-                        "interestRates",
-                        "requiredWarranties",
-                        "termsConditions"
                       ]
                     }
+                  },
+                  "required": [
+                    "cnpjNumber",
+                    "name",
+                    "urlComplementaryList",
+                    "businessLoans"
                   ]
                 }
-              },
-              "required": [
-                "name",
-                "cnpjNumber",
-                "businessLoans"
               ]
             }
+          },
+          "required": [
+            "name",
+            "companies"
           ]
         }
       },
       "required": [
-        "name",
-        "companies"
+        "brand"
       ]
     },
     "links": {
@@ -2409,16 +453,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [

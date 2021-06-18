@@ -18,31 +18,31 @@
               "type": "string"
             },
             "lineName": {
-              "type": "null"
+              "type": "string"
             },
             "lineNameAdditionalInfo": {
-              "type": "null"
+              "type": "string"
             },
             "isLimitFlexible": {
               "type": "boolean"
             },
-            "limitAmount": {
-              "type": "integer"
-            },
             "limitAmountCurrency": {
               "type": "string"
             },
-            "usedAmount": {
+            "limitAmount": {
               "type": "number"
             },
             "usedAmountCurrency": {
               "type": "string"
             },
-            "availableAmount": {
-              "type": "integer"
+            "usedAmount": {
+              "type": "number"
             },
             "availableAmountCurrency": {
               "type": "string"
+            },
+            "availableAmount": {
+              "type": "number"
             }
           },
           "required": [
@@ -52,122 +52,12 @@
             "lineName",
             "lineNameAdditionalInfo",
             "isLimitFlexible",
-            "limitAmount",
             "limitAmountCurrency",
-            "usedAmount",
-            "usedAmountCurrency",
-            "availableAmount",
-            "availableAmountCurrency"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "creditLineLimitType": {
-              "type": "string"
-            },
-            "consolidationType": {
-              "type": "string"
-            },
-            "identificationNumber": {
-              "type": "string"
-            },
-            "lineName": {
-              "type": "string"
-            },
-            "lineNameAdditionalInfo": {
-              "type": "string"
-            },
-            "isLimitFlexible": {
-              "type": "boolean"
-            },
-            "limitAmount": {
-              "type": "integer"
-            },
-            "limitAmountCurrency": {
-              "type": "string"
-            },
-            "usedAmount": {
-              "type": "number"
-            },
-            "usedAmountCurrency": {
-              "type": "string"
-            },
-            "availableAmount": {
-              "type": "integer"
-            },
-            "availableAmountCurrency": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "creditLineLimitType",
-            "consolidationType",
-            "identificationNumber",
-            "lineName",
-            "lineNameAdditionalInfo",
-            "isLimitFlexible",
             "limitAmount",
-            "limitAmountCurrency",
-            "usedAmount",
             "usedAmountCurrency",
-            "availableAmount",
-            "availableAmountCurrency"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "creditLineLimitType": {
-              "type": "string"
-            },
-            "consolidationType": {
-              "type": "string"
-            },
-            "identificationNumber": {
-              "type": "string"
-            },
-            "lineName": {
-              "type": "string"
-            },
-            "lineNameAdditionalInfo": {
-              "type": "null"
-            },
-            "isLimitFlexible": {
-              "type": "boolean"
-            },
-            "limitAmount": {
-              "type": "integer"
-            },
-            "limitAmountCurrency": {
-              "type": "string"
-            },
-            "usedAmount": {
-              "type": "number"
-            },
-            "usedAmountCurrency": {
-              "type": "string"
-            },
-            "availableAmount": {
-              "type": "integer"
-            },
-            "availableAmountCurrency": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "creditLineLimitType",
-            "consolidationType",
-            "identificationNumber",
-            "lineName",
-            "lineNameAdditionalInfo",
-            "isLimitFlexible",
-            "limitAmount",
-            "limitAmountCurrency",
             "usedAmount",
-            "usedAmountCurrency",
-            "availableAmount",
-            "availableAmountCurrency"
+            "availableAmountCurrency",
+            "availableAmount"
           ]
         }
       ]
@@ -179,16 +69,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [
@@ -207,11 +97,15 @@
         },
         "totalPages": {
           "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "string"
         }
       },
       "required": [
         "totalRecords",
-        "totalPages"
+        "totalPages",
+        "requestDateTime"
       ]
     }
   },

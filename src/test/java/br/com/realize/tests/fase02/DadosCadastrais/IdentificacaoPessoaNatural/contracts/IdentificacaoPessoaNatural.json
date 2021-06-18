@@ -1,0 +1,404 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "updateDateTime": {
+              "type": "string"
+            },
+            "personalId": {
+              "type": "string"
+            },
+            "brandName": {
+              "type": "string"
+            },
+            "civilName": {
+              "type": "string"
+            },
+            "socialName": {
+              "type": "string"
+            },
+            "birthDate": {
+              "type": "string"
+            },
+            "maritalStatusCode": {
+              "type": "string"
+            },
+            "maritalStatusAdditionalInfo": {
+              "type": "string"
+            },
+            "sex": {
+              "type": "string"
+            },
+            "companyCnpj": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "documents": {
+              "type": "object",
+              "properties": {
+                "cpfNumber": {
+                  "type": "string"
+                },
+                "passportNumber": {
+                  "type": "string"
+                },
+                "passportCountry": {
+                  "type": "string"
+                },
+                "passportExpirationDate": {
+                  "type": "string"
+                },
+                "passportIssueDate": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cpfNumber",
+                "passportNumber",
+                "passportCountry",
+                "passportExpirationDate",
+                "passportIssueDate"
+              ]
+            },
+            "otherDocuments": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "typeAdditionalInfo": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "checkDigit": {
+                      "type": "string"
+                    },
+                    "additionalInfo": {
+                      "type": "string"
+                    },
+                    "expirationDate": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "typeAdditionalInfo",
+                    "number",
+                    "checkDigit",
+                    "additionalInfo",
+                    "expirationDate"
+                  ]
+                }
+              ]
+            },
+            "hasBrazilianNationality": {
+              "type": "boolean"
+            },
+            "nationality": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "otherNationalitiesInfo": {
+                      "type": "string"
+                    },
+                    "documents": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "number": {
+                              "type": "string"
+                            },
+                            "expirationDate": {
+                              "type": "string"
+                            },
+                            "issueDate": {
+                              "type": "string"
+                            },
+                            "country": {
+                              "type": "string"
+                            },
+                            "typeAdditionalInfo": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "number",
+                            "expirationDate",
+                            "issueDate",
+                            "country",
+                            "typeAdditionalInfo"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "otherNationalitiesInfo",
+                    "documents"
+                  ]
+                }
+              ]
+            },
+            "filiation": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "civilName": {
+                      "type": "string"
+                    },
+                    "socialName": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "civilName",
+                    "socialName"
+                  ]
+                }
+              ]
+            },
+            "contacts": {
+              "type": "object",
+              "properties": {
+                "postalAddresses": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "isMain": {
+                          "type": "boolean"
+                        },
+                        "address": {
+                          "type": "string"
+                        },
+                        "additionalInfo": {
+                          "type": "string"
+                        },
+                        "districtName": {
+                          "type": "string"
+                        },
+                        "townName": {
+                          "type": "string"
+                        },
+                        "ibgeTownCode": {
+                          "type": "string"
+                        },
+                        "countrySubDivision": {
+                          "type": "string"
+                        },
+                        "postCode": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "countryCode": {
+                          "type": "string"
+                        },
+                        "geographicCoordinates": {
+                          "type": "object",
+                          "properties": {
+                            "latitude": {
+                              "type": "string"
+                            },
+                            "longitude": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "latitude",
+                            "longitude"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "isMain",
+                        "address",
+                        "additionalInfo",
+                        "districtName",
+                        "townName",
+                        "ibgeTownCode",
+                        "countrySubDivision",
+                        "postCode",
+                        "country",
+                        "countryCode",
+                        "geographicCoordinates"
+                      ]
+                    }
+                  ]
+                },
+                "phones": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "isMain": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "additionalInfo": {
+                          "type": "string"
+                        },
+                        "countryCallingCode": {
+                          "type": "string"
+                        },
+                        "areaCode": {
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "phoneExtension": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "isMain",
+                        "type",
+                        "additionalInfo",
+                        "countryCallingCode",
+                        "areaCode",
+                        "number",
+                        "phoneExtension"
+                      ]
+                    }
+                  ]
+                },
+                "emails": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "isMain": {
+                          "type": "boolean"
+                        },
+                        "email": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "isMain",
+                        "email"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "postalAddresses",
+                "phones",
+                "emails"
+              ]
+            }
+          },
+          "required": [
+            "updateDateTime",
+            "personalId",
+            "brandName",
+            "civilName",
+            "socialName",
+            "birthDate",
+            "maritalStatusCode",
+            "maritalStatusAdditionalInfo",
+            "sex",
+            "companyCnpj",
+            "documents",
+            "otherDocuments",
+            "hasBrazilianNationality",
+            "nationality",
+            "filiation",
+            "contacts"
+          ]
+        }
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "string"
+        },
+        "prev": {
+          "type": "string"
+        },
+        "next": {
+          "type": "string"
+        },
+        "last": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages",
+        "requestDateTime"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

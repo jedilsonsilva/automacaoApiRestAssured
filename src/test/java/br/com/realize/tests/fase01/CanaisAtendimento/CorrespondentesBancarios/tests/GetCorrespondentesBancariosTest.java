@@ -46,6 +46,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
+                .body("meta.totalRecords", lessThan(367))
                 .body("links.self", equalTo(linkSelf))
                 .body("links.first", equalTo(linkFirst))
                 .body("links.prev", equalTo(linkPrev))

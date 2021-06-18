@@ -38,6 +38,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         public void testAtendimentoEletronico() throws Exception {
             getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
                     .then()
+                    .log().all()
                     .statusCode(200)
                     .time(lessThan(4L), TimeUnit.SECONDS)
                     .body("meta.totalPages", greaterThan(0))

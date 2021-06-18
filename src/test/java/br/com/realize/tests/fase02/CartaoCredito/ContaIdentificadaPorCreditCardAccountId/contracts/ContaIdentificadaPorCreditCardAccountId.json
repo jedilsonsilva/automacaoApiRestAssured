@@ -12,13 +12,13 @@
           "type": "string"
         },
         "productAdditionalInfo": {
-          "type": "null"
+          "type": "string"
         },
         "creditCardNetwork": {
           "type": "string"
         },
         "networkAdditionalInfo": {
-          "type": "null"
+          "type": "string"
         },
         "paymentMethod": {
           "type": "array",
@@ -57,16 +57,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [
@@ -85,11 +85,15 @@
         },
         "totalPages": {
           "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "string"
         }
       },
       "required": [
         "totalRecords",
-        "totalPages"
+        "totalPages",
+        "requestDateTime"
       ]
     }
   },

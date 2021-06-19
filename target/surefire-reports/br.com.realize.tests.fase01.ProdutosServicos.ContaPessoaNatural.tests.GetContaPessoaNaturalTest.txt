@@ -1,0 +1,81 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 11, Errors: 0, Skipped: 0, Time elapsed: 0.453 s <<< FAILURE! - in br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest
+testNumeroPaginaInvalido(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testTamanhoPaginaSuperior(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testNumeroPaginaZero(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testMetodoNaoSuportado(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testPathInvalido(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testTamanhoPaginaInvalido(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testTamanhoPaginaInferiorDez(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testTamanhoPaginaZero(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testNumeroPaginaNaoLocalizado(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testGarantirContratosContaPessoaNatural(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+
+testContaPessoaNatural(br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
+

@@ -1,3 +1,4 @@
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\DadosCadastrais\QualificacaoPessoaNatural\tests\GetQualificacaoPessoaNaturalTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\suites\AllTests.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\base\tests\BaseTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\fase01.java
@@ -8,9 +9,9 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\tests\base\tests\Constantes
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaNatural\tests\GetEmprestimoPessoaNaturalTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ContasPagamentoPosPago\tests\GetContaPagamentoPosPagoTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\CartaoCreditoPessoaNatural\tests\GetCartaoCreditoPessoaNaturalTest.java
-C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ContasPagamentoPosPagoId\requests\GetContaPagamentoPosPagoIDRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\utils\Utils.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\LimitesCreditoContaPosPago\requests\GetLimiteCartaoCreditoRequest.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ApiPrivateConta\requests\GetPrivateContaCartaoCompraCreditoRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\E2e.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\ContaPessoaNatural\requests\GetContaPessoaNaturalRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\CanaisAtendimento\DependenciasProprias\tests\GetDependenciasPropriasTest.java
@@ -23,9 +24,13 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\utils\DataUtils.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaJuridica\requests\GetEmprestimoPessoaJuridicaRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\EmprestimoPessoaJuridica\tests\GetEmprestimoPessoaJuridicaTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Saldos\tests\GetSaldoTest.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\DadosCadastrais\QualificacaoPessoaNatural\requests\GetQualificacaoPessoaNaturalRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\users\models\BaseUsersGeneric.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ContaIdentificadaPorCreditCardAccountId\tests\GetContaIdentificadaPorCreditCardAccountIdTest.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\DadosCadastrais\IdentificacaoPessoaNatural\tests\GetIdentificacaoPessoaNaturalTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ContasPagamentoPosPago\requests\GetContaPagamentoPosPagoRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\AllTests.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ContaIdentificadaPorCreditCardAccountId\requests\GetContaIdentificadaPorCreditCardAccountIdRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\CanaisAtendimento\CorrespondentesBancarios\tests\GetCorrespondentesBancariosTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\CanaisAtendimento\CorrespondentesBancarios\requests\GetCorrespondentesBancariosRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\utils\HeaderUtils.java
@@ -39,6 +44,7 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\users\models\UsersGeneric.j
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServicos\CartaoCreditoPessoaNatural\requests\GetCartaoCreditoPessoaNaturalRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\API_ComunsInternas\BackofficeOutages\tests\DelBackoffideOutagesTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Limites\requests\GetLimiteRequest.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\DadosCadastrais\IdentificacaoPessoaNatural\requests\GetIdentificacaoPessoaNaturalRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\suites\Contract.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\suites\E2e.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Limites\tests\GetLimiteTest.java
@@ -51,7 +57,6 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\ProdutosServic
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\IdentificacaoConta\tests\GetIdentificacaoContaTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\API_ComunsInternas\BackofficeOutages\tests\PutBackoffideOutagesTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\fase02.java
-C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ContasPagamentoPosPagoId\tests\GetContaPagamentoPosPagoIDTest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\Contas\Saldos\requests\GetSaldoRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase01\CanaisAtendimento\AtendimentoEletronico\requests\GetAtendimentoEletronicoRequest.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\tests\base\requests\BaseRequest.java
@@ -60,3 +65,4 @@ C:\Projetos\openbanking\src\test\java\br\com\realize\tests\auth\requests\PostAut
 C:\Projetos\openbanking\src\test\java\br\com\realize\utils\geradorCpfCnpjRG.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\runners\Contracts.java
 C:\Projetos\openbanking\src\test\java\br\com\realize\suites\Healthcheck.java
+C:\Projetos\openbanking\src\test\java\br\com\realize\tests\fase02\CartaoCredito\ApiPrivateConta\tests\GetPrivateContaCartaoCompraCreditoTest.java

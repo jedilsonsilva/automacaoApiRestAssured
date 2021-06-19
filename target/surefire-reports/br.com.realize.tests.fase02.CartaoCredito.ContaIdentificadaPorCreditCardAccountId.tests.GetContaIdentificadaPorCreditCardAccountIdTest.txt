@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.148 s <<< FAILURE! - in br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest
+testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest)  Time elapsed: 0.044 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest.testCpfSemConta(GetContaIdentificadaPorCreditCardAccountIdTest.java:64)
+
+testGarantirContratosContaIdentificadaPorCreditCardAccountId(br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest)  Time elapsed: 0.057 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data/properties/networkAdditionalInfo"}
+    instance: {"pointer":"/data/networkAdditionalInfo"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data/properties/productAdditionalInfo"}
+    instance: {"pointer":"/data/productAdditionalInfo"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: object has missing required properties (["requestDateTime"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/meta"}
+    instance: {"pointer":"/meta"}
+    domain: "validation"
+    keyword: "required"
+    required: ["requestDateTime","totalPages","totalRecords"]
+    missing: ["requestDateTime"]
+
+  Actual: {"data":{"name":"CARTAO RENNER","productType":"COMPRAS","productAdditionalInfo":null,"creditCardNetwork":"OUTRAS","networkAdditionalInfo":null,"paymentMethod":[{"identificationNumber":"6920","isMultipleCreditCard":false}]},"links":{"self":"http://10.120.192.16/open-banking/credit-cards-accounts/v1/accounts/478023669","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1}}
+
+	at br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest.testGarantirContratosContaIdentificadaPorCreditCardAccountId(GetContaIdentificadaPorCreditCardAccountIdTest.java:53)
+

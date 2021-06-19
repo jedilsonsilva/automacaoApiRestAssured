@@ -1,6 +1,7 @@
 package br.com.realize.tests.auth.requests;
 
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 
@@ -31,6 +32,16 @@ public class PostAuthRequest {
                 .then()
                 .statusCode(200)
                 .extract().path("token");
+    }
+
+    @Step("Obtém o token da api Private do ambiente de homologação - https://api-mobilidade-hml.lojasrenner.com.br")
+    public Response tokenPrivate()throws Exception{
+        RestAssured.baseURI = "https://api-mobilidade-hml.lojasrenner.com.br";
+        return given()
+         .header("Authorization", "Basic cmVubmVyLXBhcmNlaXJvOnBhcmNlaXJv")
+         .contentType("application/json")
+        .when().post("api/private/autenticacao/parceiro");
+
     }
 
 }

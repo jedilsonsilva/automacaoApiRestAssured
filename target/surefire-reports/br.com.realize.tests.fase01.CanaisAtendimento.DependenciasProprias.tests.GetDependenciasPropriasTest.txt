@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.483 s <<< FAILURE! - in br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest
+testGarantirContratosDependenciasProprias(br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest)  Time elapsed: 0.245 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: object has missing required properties (["brand"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data"}
+    instance: {"pointer":"/data"}
+    domain: "validation"
+    keyword: "required"
+    required: ["brand"]
+    missing: ["brand"]
+
+  Actual: {"data":{"name":"REALIZE CFI S.A.","companies":[{"name":"REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.","cnpjNumber":"27351731","branches":[{"identification":{"type":"AGENCIA","code":"0001","checkDigit":"0","name":"REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A."},"postalAddress":{"address":"Avenida Dolores Alcaras Caldas, 90","additionalInfo":"9º andar","districtName":"Praia de Belas","townName":"Porto Alegre","ibgeCode":"4314902","countrySubDivision":"RS","postCode":"90110-180","country":"Brasil","countryCode":"BRA","geographicCoordinates":{"longitude":"-51.23049823738758","latitude":"-30.046094845327126"}},"availability":{"standards":[{"weekday":"SEGUNDA_FEIRA","openingTime":"12:00:00Z","closingTime":"19:00:00Z"},{"weekday":"TERCA_FEIRA","openingTime":"12:00:00Z","closingTime":"19:00:00Z"},{"weekday":"QUARTA_FEIRA","openingTime":"12:00:00Z","closingTime":"19:00:00Z"},{"weekday":"QUINTA_FEIRA","openingTime":"12:00:00Z","closingTime":"19:00:00Z"},{"weekday":"SEXTA_FEIRA","openingTime":"12:00:00Z","closingTime":"19:00:00Z"}],"exception":"Exceto feriados municipais, estaduais e nacionais"},"phones":[{"type":"FIXO","countryCallingCode":"55","areaCode":"51","number":"30045060"},{"type":"FIXO","countryCallingCode":"55","areaCode":"51","number":"08000736637"}],"services":[{"name":"INFORMACOES","code":"INFORMACOES"},{"name":"RECLAMACOES","code":"RECLAMACOES"}]}]}]},"links":{"self":"http://10.120.192.16/open-banking/channels/v1/branches?page=1&page-size=25","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1}}
+
+	at br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest.testGarantirContratosDependenciasProprias(GetDependenciasPropriasTest.java:54)
+

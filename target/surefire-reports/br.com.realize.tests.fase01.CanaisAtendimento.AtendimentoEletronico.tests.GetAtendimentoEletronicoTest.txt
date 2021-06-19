@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.25 s <<< FAILURE! - in br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest
+testGarantirContratosAtendimentoEletronico(br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest)  Time elapsed: 0.133 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: object has missing required properties (["brand"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data"}
+    instance: {"pointer":"/data"}
+    domain: "validation"
+    keyword: "required"
+    required: ["brand"]
+    missing: ["brand"]
+
+  Actual: {"data":{"name":"REALIZE CFI S.A.","companies":[{"name":"REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.","cnpjNumber":"27351731","electronicChannels":[{"identification":{"type":"INTERNET_BANKING","additionalInfo":"Pagamento de contas e visualização de limites.","urls":["https://www.realizesolucoesfinanceiras.com.br/cartoes-renner/login","https://www.realizesolucoesfinanceiras.com.br/cartoes-renner/login/data-nascimento"]},"services":[{"name":"CARTAO_CREDITO","code":"CARTAO_CREDITO"}]},{"identification":{"type":"MOBILE_BANKING","urls":["https://play.google.com/store/apps/details?id=br.com.lojasrenner&hl=pt_BR","https://apps.apple.com/br/app/lojas-renner-roupas-e-sapatos/id567763947"]},"services":[{"name":"CARTAO_CREDITO","code":"CARTAO_CREDITO"},{"name":"SEGUROS","code":"SEGUROS"}]}]}]},"links":{"self":"http://10.120.192.16/open-banking/channels/v1/electronic-channels?page=1&page-size=10","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":2,"totalPages":1}}
+
+	at br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest.testGarantirContratosAtendimentoEletronico(GetAtendimentoEletronicoTest.java:90)
+

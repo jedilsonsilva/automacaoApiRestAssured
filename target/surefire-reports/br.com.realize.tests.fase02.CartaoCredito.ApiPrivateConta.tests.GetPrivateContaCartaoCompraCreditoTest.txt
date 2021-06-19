@@ -1,0 +1,46 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.206 s <<< FAILURE! - in br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest
+testCpfInvalido(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.032 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testCpfInvalido(GetPrivateContaCartaoCompraCreditoTest.java:83)
+
+testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.039 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testCpfSemConta(GetPrivateContaCartaoCompraCreditoTest.java:73)
+
+testValidarCartaoMeuCartao(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.033 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testValidarCartaoMeuCartao(GetPrivateContaCartaoCompraCreditoTest.java:49)
+
+testValidarCartaoBandeiraPropria(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.033 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testValidarCartaoBandeiraPropria(GetPrivateContaCartaoCompraCreditoTest.java:37)
+
+testMetodoNaoSuportado(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.032 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testMetodoNaoSuportado(GetPrivateContaCartaoCompraCreditoTest.java:102)
+
+testGarantirContratosContaIdentificadaPorCreditCardAccountId(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.032 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testGarantirContratosContaIdentificadaPorCreditCardAccountId(GetPrivateContaCartaoCompraCreditoTest.java:61)
+

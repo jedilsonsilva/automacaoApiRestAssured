@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.107 s <<< FAILURE! - in br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest
+testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest)  Time elapsed: 0.042 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest.testCpfSemConta(GetContaPagamentoPosPagoTest.java:65)
+
+testGarantirContratosContaPagamentoPosPago(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest)  Time elapsed: 0.059 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data/items/0/properties/networkAdditionalInfo"}
+    instance: {"pointer":"/data/0/networkAdditionalInfo"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data/items/0/properties/productAdditionalInfo"}
+    instance: {"pointer":"/data/0/productAdditionalInfo"}
+    domain: "validation"
+    keyword: "type"
+    found: "null"
+    expected: ["string"]
+error: object has missing required properties (["requestDateTime"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/meta"}
+    instance: {"pointer":"/meta"}
+    domain: "validation"
+    keyword: "required"
+    required: ["requestDateTime","totalPages","totalRecords"]
+    missing: ["requestDateTime"]
+
+  Actual: {"data":[{"creditCardAccountId":"739572113","brandName":"REALIZE CFI S.A.","companyCnpj":"27351731000138","name":"CARTAO RENNER","productType":"COMPRAS","productAdditionalInfo":null,"creditCardNetwork":"OUTRAS","networkAdditionalInfo":null}],"links":{"self":"http://10.120.192.16/open-banking/credit-cards-accounts/v1/accounts?cpf=52242641468&page=1&page-size=25","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1}}
+
+	at br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest.testGarantirContratosContaPagamentoPosPago(GetContaPagamentoPosPagoTest.java:55)
+

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 50.766 s <<< FAILURE! - in br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest
+testValidarinformacoesConta(br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest)  Time elapsed: 4.6 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected response time was not a value less than <4L> seconds, was 4502 milliseconds (4 seconds).
+	at br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest.testValidarinformacoesConta(GetContaTest.java:49)
+
+testGarantirContratosInformacoesConta(br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest)  Time elapsed: 4.975 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: The content to match the given JSON schema.
+error: object has missing required properties (["accountId"])
+    level: "error"
+    schema: {"loadingURI":"#","pointer":"/properties/data/items/0"}
+    instance: {"pointer":"/data/0"}
+    domain: "validation"
+    keyword: "required"
+    required: ["accountId","branchCode","brandName","checkDigit","companyCnpj","compeCode","number","type"]
+    missing: ["accountId"]
+
+  Actual: {"data":[{"brandName":"REALIZE CFI S.A.","companyCnpj":"27351731000138","type":"CONTA_PAGAMENTO_PRE_PAGA","compeCode":"374","branchCode":"0001","number":"158076326","checkDigit":"6","accountID":"e92c51df-b68c-4faa-9cbc-4cb1b232781f"}],"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,18,23,41,44,816847000]}}
+
+	at br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest.testGarantirContratosInformacoesConta(GetContaTest.java:62)
+

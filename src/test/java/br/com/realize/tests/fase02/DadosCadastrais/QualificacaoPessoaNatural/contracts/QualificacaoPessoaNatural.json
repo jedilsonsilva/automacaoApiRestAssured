@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "updateDateTime": {
+          "type": "string"
+        },
+        "companyCnpj": {
+          "type": "string"
+        },
+        "occupationCode": {
+          "type": "string"
+        },
+        "occupationDescription": {
+          "type": "string"
+        },
+        "informedIncome": {
+          "type": "object",
+          "properties": {
+            "frequency": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "frequency",
+            "amount",
+            "currency",
+            "date"
+          ]
+        },
+        "informedPatrimony": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "year": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "amount",
+            "currency",
+            "year"
+          ]
+        }
+      },
+      "required": [
+        "updateDateTime",
+        "companyCnpj",
+        "occupationCode",
+        "occupationDescription",
+        "informedIncome",
+        "informedPatrimony"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "string"
+        },
+        "prev": {
+          "type": "string"
+        },
+        "next": {
+          "type": "string"
+        },
+        "last": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages",
+        "requestDateTime"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

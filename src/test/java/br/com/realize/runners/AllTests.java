@@ -12,6 +12,7 @@ import br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.t
 import br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest;
 import br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaJuridica.tests.GetEmprestimoPessoaJuridicaTest;
 import br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaNatural.tests.GetEmprestimoPessoaNaturalTest;
+import br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest;
 import br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest;
 import br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest;
 import br.com.realize.tests.fase02.CartaoCredito.LimitesCreditoContaPosPago.requests.GetLimiteCartaoCreditoRequest;
@@ -19,6 +20,8 @@ import br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentifica
 import br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest;
 import br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest;
 import br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest;
+import br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest;
+import br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -27,7 +30,7 @@ import org.junit.runners.Suite;
 @Categories.IncludeCategory(br.com.realize.suites.AllTests.class)
 @Suite.SuiteClasses({
 
-//***************FASE 01***************
+        //***************FASE 01***************
 
 //Feature - Canais de Atendimento
         GetAtendimentoEletronicoTest.class,
@@ -52,11 +55,15 @@ import org.junit.runners.Suite;
         GetContaPagamentoPosPagoTest.class,
         GetContaIdentificadaPorCreditCardAccountIdTest.class,
         GetLimiteCartaoCreditoRequest.class,
+        GetPrivateContaCartaoCompraCreditoTest.class,
 //Feature - Contas
         GetContaTest.class,
         GetSaldoTest.class,
         GetLimiteTest.class,
-        GetIdentificacaoContaTest.class
+        GetIdentificacaoContaTest.class,
+//Feature - Dados Cadastrais
+        GetIdentificacaoPessoaNaturalTest.class,
+        GetQualificacaoPessoaNaturalTest.class
 })
 public class AllTests {
 }

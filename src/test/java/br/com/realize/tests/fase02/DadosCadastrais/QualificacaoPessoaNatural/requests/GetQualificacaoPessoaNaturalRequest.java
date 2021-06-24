@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetQualificacaoPessoaNaturalRequest {
     Faker fake = new Faker(new Locale("pt-br"));
-    String cpf = fake.options().option("11162630094","15218532827");
+    String cpf = fake.options().option("11162630094","15218532827", "75629018051");
     String url = "customers/v1/personal/qualifications";
 
 

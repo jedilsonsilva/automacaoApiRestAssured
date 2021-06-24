@@ -55,7 +55,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({Contract.class, AllTests.class, fase01.class})
+    @Category({AllTests.class, fase01.class})
     @DisplayName("Navegar na primeira página")
     public void testNavegarPrimeiraPagina() throws Exception {
         String linkFirst = getCorrespondentesBancariosRequest.obterLinkFirstCorrespondentesBancarios();
@@ -66,7 +66,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({Contract.class, AllTests.class, fase01.class})
+    @Category({AllTests.class, fase01.class})
     @DisplayName("Navegar para a próxima página")
     public void testNavegarProximaPagina() throws Exception {
         String linkNext = getCorrespondentesBancariosRequest.obterLinkNextCorrespondentesBancarios();
@@ -77,7 +77,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({Contract.class, AllTests.class, fase01.class})
+    @Category({AllTests.class, fase01.class})
     @DisplayName("Navegar para a página anterior")
     public void testNavegarPaginaAnterior() throws Exception {
         String linkPrev = getCorrespondentesBancariosRequest.obterLinkPrevCorrespondentesBancarios();
@@ -88,7 +88,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({Contract.class, AllTests.class, fase01.class})
+    @Category({AllTests.class, fase01.class})
     @DisplayName("Navegar para a última página")
     public void testNavegarUltimaPagina() throws Exception {
         String linkLast = getCorrespondentesBancariosRequest.obterLinkLastCorrespondentesBancarios();

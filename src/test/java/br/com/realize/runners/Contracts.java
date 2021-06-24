@@ -1,16 +1,31 @@
 package br.com.realize.runners;
 
 import br.com.realize.suites.Contract;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.DelBackoffideOutagesTest;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest;
+import br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest;
+import br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest;
 import br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.tests.GetCartaoCreditoPessoaNaturalTest;
+import br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest;
 import br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaJuridica.tests.GetEmprestimoPessoaJuridicaTest;
+import br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaNatural.tests.GetEmprestimoPessoaNaturalTest;
+import br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest;
+import br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest;
+import br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest;
+import br.com.realize.tests.fase02.CartaoCredito.LimitesCreditoContaPosPago.requests.GetLimiteCartaoCreditoRequest;
+import br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest;
 import br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest;
 import br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest;
 import br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest;
 import br.com.realize.tests.auth.tests.PostAuthTest;
 import br.com.realize.tests.base.tests.BaseTest;
 
+import br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest;
+import br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -18,25 +33,40 @@ import org.junit.runners.Suite;
 @RunWith(Categories.class)
 @Categories.IncludeCategory(Contract.class)
 @Suite.SuiteClasses({
-        //base
-        BaseTest.class,
-        //auth
-        PostAuthTest.class,
-        //AtendimentoAletronico
-        GetAtendimentoEletronicoTest.class,
-        //AtendimentoTelefonico
-        GetAtendimentoTelefonicoTest.class,
-        //CartoCreditoPessoaNatural
-        GetCartaoCreditoPessoaNaturalTest.class,
-        //EmprestimoPessoaJuridica
-        GetEmprestimoPessoaJuridicaTest.class,
-        //ListaContas
-        GetContaTest.class,
-        //SaldoContas
-        GetSaldoTest.class,
-        //LimiteContas
-        GetLimiteTest.class
+        //***************FASE 01***************
 
+//Feature - Canais de Atendimento
+        GetAtendimentoEletronicoTest.class,
+        GetAtendimentoTelefonicoTest.class,
+        GetDependenciasPropriasTest.class,
+        GetCorrespondentesBancariosTest.class,
+//Feature - Produtos e Serviços
+        GetCartaoCreditoPessoaNaturalTest.class,
+        GetContaPessoaNaturalTest.class,
+        GetEmprestimoPessoaJuridicaTest.class,
+        GetEmprestimoPessoaNaturalTest.class,
+//Feature - API's Comuns e Internas
+        //Backoffice/Outages
+        GetBackoffideOutagesTest.class,
+        PostBackoffideOutagesTest.class,
+        PutBackoffideOutagesTest.class,
+        DelBackoffideOutagesTest.class,
+
+//***************FASE 02***************
+
+//Feature - Cartão de Crédito
+        GetContaPagamentoPosPagoTest.class,
+        GetContaIdentificadaPorCreditCardAccountIdTest.class,
+        GetLimiteCartaoCreditoRequest.class,
+        GetPrivateContaCartaoCompraCreditoTest.class,
+//Feature - Contas
+        GetContaTest.class,
+        GetSaldoTest.class,
+        GetLimiteTest.class,
+        GetIdentificacaoContaTest.class,
+//Feature - Dados Cadastrais
+        GetIdentificacaoPessoaNaturalTest.class,
+        GetQualificacaoPessoaNaturalTest.class
 })
 public class Contracts {
 }

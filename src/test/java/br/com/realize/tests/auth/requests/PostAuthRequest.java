@@ -27,7 +27,7 @@ public class PostAuthRequest {
     @Step("Retornar o token")
     public String getToken() {
 
-        return "token="+this
+        return "token=" + this
                 .token()
                 .then()
                 .statusCode(200)
@@ -35,13 +35,12 @@ public class PostAuthRequest {
     }
 
     @Step("Obtém o token da api Private do ambiente de homologação - https://api-mobilidade-hml.lojasrenner.com.br")
-    public Response tokenPrivate()throws Exception{
+    public Response tokenPrivate() throws Exception {
         RestAssured.baseURI = "https://api-mobilidade-hml.lojasrenner.com.br";
         return given()
-         .header("Authorization", "Basic cmVubmVyLXBhcmNlaXJvOnBhcmNlaXJv")
-         .contentType("application/json")
-        .when().post("api/private/autenticacao/parceiro");
+                .header("Authorization", "Basic cmVubmVyLXBhcmNlaXJvOnBhcmNlaXJv")
+                .contentType("application/json")
+                .when().post("api/private/autenticacao/parceiro");
 
     }
-
 }

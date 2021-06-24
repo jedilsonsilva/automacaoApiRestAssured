@@ -53,16 +53,16 @@
           "type": "string"
         },
         "first": {
-          "type": "string"
+          "type": "null"
         },
         "prev": {
-          "type": "string"
+          "type": "null"
         },
         "next": {
-          "type": "string"
+          "type": "null"
         },
         "last": {
-          "type": "string"
+          "type": "null"
         }
       },
       "required": [

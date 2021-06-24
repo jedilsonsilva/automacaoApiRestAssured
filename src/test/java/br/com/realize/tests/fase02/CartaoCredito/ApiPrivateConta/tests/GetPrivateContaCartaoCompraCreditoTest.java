@@ -60,6 +60,7 @@ public class GetPrivateContaCartaoCompraCreditoTest {
     public void testGarantirContratosContaIdentificadaPorCreditCardAccountId() throws Exception {
         getPrivateContaCartaoCompraCreditoRequest.retornaCartaoMeuCartao()
                 .then()
+                .log().all()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/CartaoCredito/ApiPrivateConta", "PrivateContaCartaoCompraCredito"))));

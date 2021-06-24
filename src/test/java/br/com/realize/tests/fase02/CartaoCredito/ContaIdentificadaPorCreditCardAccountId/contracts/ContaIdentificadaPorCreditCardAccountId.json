@@ -12,13 +12,13 @@
           "type": "string"
         },
         "productAdditionalInfo": {
-          "type": "string"
+          "type": "null"
         },
         "creditCardNetwork": {
           "type": "string"
         },
         "networkAdditionalInfo": {
-          "type": "string"
+          "type": "null"
         },
         "paymentMethod": {
           "type": "array",
@@ -57,16 +57,16 @@
           "type": "string"
         },
         "first": {
-          "type": "string"
+          "type": "null"
         },
         "prev": {
-          "type": "string"
+          "type": "null"
         },
         "next": {
-          "type": "string"
+          "type": "null"
         },
         "last": {
-          "type": "string"
+          "type": "null"
         }
       },
       "required": [

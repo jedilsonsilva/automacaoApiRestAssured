@@ -1,5 +1,6 @@
 package br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests;
 
+import br.com.realize.runners.Contracts;
 import br.com.realize.runners.fase01;
 import br.com.realize.suites.AllTests;
 import br.com.realize.tests.base.tests.BaseTest;
@@ -46,7 +47,7 @@ public class GetDependenciasPropriasTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Garantir o contrato do retorno de dependências próprias")
-    @Category({AllTests.class, fase01.class})
+    @Category({Contracts.class, AllTests.class, fase01.class})
     public void testGarantirContratosDependenciasProprias() throws Exception {
         getDependenciasPropriasRequest.obterInformacoesDependenciasProprias()
                 .then()

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.com.realize.runners.AllTests
 -------------------------------------------------------------------------------
-Tests run: 160, Failures: 38, Errors: 0, Skipped: 0, Time elapsed: 226.113 s <<< FAILURE! - in br.com.realize.runners.AllTests
-testGarantirContratosAtendimentoEletronico(br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest)  Time elapsed: 0.645 s  <<< FAILURE!
+Tests run: 175, Failures: 51, Errors: 0, Skipped: 0, Time elapsed: 195.524 s <<< FAILURE! - in br.com.realize.runners.AllTests
+testGarantirContratosAtendimentoEletronico(br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest)  Time elapsed: 0.523 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -20,7 +20,7 @@ error: object has missing required properties (["brand"])
 
 	at br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest.testGarantirContratosAtendimentoEletronico(GetAtendimentoEletronicoTest.java:90)
 
-testGarantirContratosInformacoesConta(br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest)  Time elapsed: 0.483 s  <<< FAILURE!
+testGarantirContratosInformacoesConta(br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest)  Time elapsed: 0.193 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -38,7 +38,7 @@ error: object has missing required properties (["brand"])
 
 	at br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest.testGarantirContratosInformacoesConta(GetAtendimentoTelefonicoTest.java:117)
 
-testGarantirContratosDependenciasProprias(br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest)  Time elapsed: 0.324 s  <<< FAILURE!
+testGarantirContratosDependenciasProprias(br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest)  Time elapsed: 0.143 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -56,7 +56,7 @@ error: object has missing required properties (["brand"])
 
 	at br.com.realize.tests.fase01.CanaisAtendimento.DependenciasProprias.tests.GetDependenciasPropriasTest.testGarantirContratosDependenciasProprias(GetDependenciasPropriasTest.java:54)
 
-testGarantirContratosCorrespondentesBancarios(br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest)  Time elapsed: 6.627 s  <<< FAILURE!
+testGarantirContratosCorrespondentesBancarios(br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest)  Time elapsed: 1.633 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -74,7 +74,7 @@ error: object has missing required properties (["brand"])
 
 	at br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest.testGarantirContratosCorrespondentesBancarios(GetCorrespondentesBancariosTest.java:108)
 
-testGarantirContratosCreditoPessoaNatural(br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.tests.GetCartaoCreditoPessoaNaturalTest)  Time elapsed: 5.136 s  <<< FAILURE!
+testGarantirContratosCreditoPessoaNatural(br.com.realize.tests.fase01.ProdutosServicos.CartaoCreditoPessoaNatural.tests.GetCartaoCreditoPessoaNaturalTest)  Time elapsed: 1.479 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -169,7 +169,7 @@ Expected status code <200> but was <500>.
 
 	at br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.tests.GetContaPessoaNaturalTest.<init>(GetContaPessoaNaturalTest.java:31)
 
-testGarantirEmprestimoPessoaJuridica(br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaJuridica.tests.GetEmprestimoPessoaJuridicaTest)  Time elapsed: 1.798 s  <<< FAILURE!
+testGarantirEmprestimoPessoaJuridica(br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaJuridica.tests.GetEmprestimoPessoaJuridicaTest)  Time elapsed: 0.476 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -187,7 +187,7 @@ error: object has missing required properties (["brand"])
 
 	at br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaJuridica.tests.GetEmprestimoPessoaJuridicaTest.testGarantirEmprestimoPessoaJuridica(GetEmprestimoPessoaJuridicaTest.java:63)
 
-testGarantirContratosEmprestimoPessoaNatural(br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaNatural.tests.GetEmprestimoPessoaNaturalTest)  Time elapsed: 0.335 s  <<< FAILURE!
+testGarantirContratosEmprestimoPessoaNatural(br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaNatural.tests.GetEmprestimoPessoaNaturalTest)  Time elapsed: 0.155 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -205,111 +205,95 @@ error: object has missing required properties (["brand"])
 
 	at br.com.realize.tests.fase01.ProdutosServicos.EmprestimoPessoaNatural.tests.GetEmprestimoPessoaNaturalTest.testGarantirContratosEmprestimoPessoaNatural(GetEmprestimoPessoaNaturalTest.java:56)
 
-testIndisponibilidadeDataFinalInvalida(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.139 s  <<< FAILURE!
+testIndisponibilidadeDataFinalInvalida(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.103 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <400> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest.testIndisponibilidadeDataFinalInvalida(GetBackoffideOutagesTest.java:111)
 
-testMetodoNaoSuportado(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.091 s  <<< FAILURE!
+testMetodoNaoSuportado(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.02 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <405> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest.testMetodoNaoSuportado(GetBackoffideOutagesTest.java:221)
 
-testNumeroPaginaNaoLocalizado(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.087 s  <<< FAILURE!
+testNumeroPaginaNaoLocalizado(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.097 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <404> but was <200>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest.testNumeroPaginaNaoLocalizado(GetBackoffideOutagesTest.java:137)
 
-testIndisponibilidadeDataInicialInvalida(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.096 s  <<< FAILURE!
+testIndisponibilidadeDataInicialInvalida(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest)  Time elapsed: 0.091 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <400> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest.testIndisponibilidadeDataInicialInvalida(GetBackoffideOutagesTest.java:97)
 
-testIncluirIndisponibilidadeDataInferiorAtual(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest)  Time elapsed: 0.072 s  <<< FAILURE!
+testIncluirIndisponibilidadeDataInferiorAtual(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest)  Time elapsed: 0.104 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <400> but was <200>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest.testIncluirIndisponibilidadeDataInferiorAtual(PostBackoffideOutagesTest.java:50)
 
-testIncluirIndisponibilidadeCampoObrigatorioNaoPreenchido(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest)  Time elapsed: 0.079 s  <<< FAILURE!
+testIncluirIndisponibilidadeCampoObrigatorioNaoPreenchido(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest)  Time elapsed: 0.215 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <400> but was <200>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest.testIncluirIndisponibilidadeCampoObrigatorioNaoPreenchido(PostBackoffideOutagesTest.java:70)
 
-testAlterarIndisponibilidadeCampoObrigatorioNaoPreenchido(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.137 s  <<< FAILURE!
+testAlterarIndisponibilidadeCampoObrigatorioNaoPreenchido(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.105 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <400> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest.testAlterarIndisponibilidadeCampoObrigatorioNaoPreenchido(PutBackoffideOutagesTest.java:71)
 
-testAlterarIndisponibilidadeDataInferiorAtual(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.185 s  <<< FAILURE!
+testAlterarIndisponibilidadeDataInferiorAtual(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.112 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <400> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest.testAlterarIndisponibilidadeDataInferiorAtual(PutBackoffideOutagesTest.java:51)
 
-testGarantirContratosAlteracaoIndisponibilidade(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.101 s  <<< FAILURE!
+testGarantirContratosAlteracaoIndisponibilidade(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.083 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <200> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest.testGarantirContratosAlteracaoIndisponibilidade(PutBackoffideOutagesTest.java:94)
 
-testAlterarIndisponibilidade(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.135 s  <<< FAILURE!
+testAlterarIndisponibilidade(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.098 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <200> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest.testAlterarIndisponibilidade(PutBackoffideOutagesTest.java:41)
 
-testAlterarIndisponibilidadeIsPartialTrue(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.136 s  <<< FAILURE!
+testAlterarIndisponibilidadeIsPartialTrue(br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest)  Time elapsed: 0.117 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <200> but was <500>.
 
 	at br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest.testAlterarIndisponibilidadeIsPartialTrue(PutBackoffideOutagesTest.java:61)
 
-testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest)  Time elapsed: 0.046 s  <<< FAILURE!
+testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest)  Time elapsed: 0.36 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <200> but was <500>.
 
 	at br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest.testCpfSemConta(GetContaPagamentoPosPagoTest.java:65)
 
-testGarantirContratosContaPagamentoPosPago(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest)  Time elapsed: 0.061 s  <<< FAILURE!
+testGarantirContratosContaPagamentoPosPago(br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest)  Time elapsed: 0.119 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
 Expected: The content to match the given JSON schema.
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/data/items/0/properties/networkAdditionalInfo"}
-    instance: {"pointer":"/data/0/networkAdditionalInfo"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/data/items/0/properties/productAdditionalInfo"}
-    instance: {"pointer":"/data/0/productAdditionalInfo"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
 error: object has missing required properties (["requestDateTime"])
     level: "error"
     schema: {"loadingURI":"#","pointer":"/properties/meta"}
@@ -323,34 +307,18 @@ error: object has missing required properties (["requestDateTime"])
 
 	at br.com.realize.tests.fase02.CartaoCredito.ContasPagamentoPosPago.tests.GetContaPagamentoPosPagoTest.testGarantirContratosContaPagamentoPosPago(GetContaPagamentoPosPagoTest.java:55)
 
-testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest)  Time elapsed: 0.043 s  <<< FAILURE!
+testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest)  Time elapsed: 0.193 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <200> but was <500>.
 
 	at br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest.testCpfSemConta(GetContaIdentificadaPorCreditCardAccountIdTest.java:64)
 
-testGarantirContratosContaIdentificadaPorCreditCardAccountId(br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest)  Time elapsed: 0.058 s  <<< FAILURE!
+testGarantirContratosContaIdentificadaPorCreditCardAccountId(br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest)  Time elapsed: 0.238 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
 Expected: The content to match the given JSON schema.
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/data/properties/networkAdditionalInfo"}
-    instance: {"pointer":"/data/networkAdditionalInfo"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/data/properties/productAdditionalInfo"}
-    instance: {"pointer":"/data/productAdditionalInfo"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
 error: object has missing required properties (["requestDateTime"])
     level: "error"
     schema: {"loadingURI":"#","pointer":"/properties/meta"}
@@ -360,14 +328,56 @@ error: object has missing required properties (["requestDateTime"])
     required: ["requestDateTime","totalPages","totalRecords"]
     missing: ["requestDateTime"]
 
-  Actual: {"data":{"name":"CARTAO RENNER","productType":"COMPRAS","productAdditionalInfo":null,"creditCardNetwork":"OUTRAS","networkAdditionalInfo":null,"paymentMethod":[{"identificationNumber":"7462","isMultipleCreditCard":false}]},"links":{"self":"http://10.120.192.16/open-banking/credit-cards-accounts/v1/accounts/739572113","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1}}
+  Actual: {"data":{"name":"MEU CARTAO","productType":"STANDARD_INTERNACIONAL","productAdditionalInfo":null,"creditCardNetwork":"OUTRAS","networkAdditionalInfo":null,"paymentMethod":[{"identificationNumber":"0966","isMultipleCreditCard":false}]},"links":{"self":"http://10.120.192.16/open-banking/credit-cards-accounts/v1/accounts/2355628","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1}}
 
 	at br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.tests.GetContaIdentificadaPorCreditCardAccountIdTest.testGarantirContratosContaIdentificadaPorCreditCardAccountId(GetContaIdentificadaPorCreditCardAccountIdTest.java:53)
 
-testValidarinformacoesConta(br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest)  Time elapsed: 5.132 s  <<< FAILURE!
+testCpfInvalido(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.253 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
-Expected response time was not a value less than <4L> seconds, was 5026 milliseconds (5 seconds).
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testCpfInvalido(GetPrivateContaCartaoCompraCreditoTest.java:84)
+
+testCpfSemConta(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.07 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testCpfSemConta(GetPrivateContaCartaoCompraCreditoTest.java:74)
+
+testValidarCartaoMeuCartao(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.066 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testValidarCartaoMeuCartao(GetPrivateContaCartaoCompraCreditoTest.java:49)
+
+testValidarCartaoBandeiraPropria(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.078 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testValidarCartaoBandeiraPropria(GetPrivateContaCartaoCompraCreditoTest.java:37)
+
+testMetodoNaoSuportado(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.066 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testMetodoNaoSuportado(GetPrivateContaCartaoCompraCreditoTest.java:103)
+
+testGarantirContratosContaIdentificadaPorCreditCardAccountId(br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest)  Time elapsed: 0.097 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <404>.
+
+	at br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.tests.GetPrivateContaCartaoCompraCreditoTest.testGarantirContratosContaIdentificadaPorCreditCardAccountId(GetPrivateContaCartaoCompraCreditoTest.java:61)
+
+testValidarinformacoesConta(br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest)  Time elapsed: 5.575 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected response time was not a value less than <4L> seconds, was 5498 milliseconds (5 seconds).
 	at br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest.testValidarinformacoesConta(GetContaTest.java:49)
 
 testGarantirContratosInformacoesConta(br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest)  Time elapsed: 5.644 s  <<< FAILURE!
@@ -384,11 +394,11 @@ error: object has missing required properties (["accountId"])
     required: ["accountId","branchCode","brandName","checkDigit","companyCnpj","compeCode","number","type"]
     missing: ["accountId"]
 
-  Actual: {"data":[{"brandName":"REALIZE CFI S.A.","companyCnpj":"27351731000138","type":"CONTA_PAGAMENTO_PRE_PAGA","compeCode":"374","branchCode":"0001","number":"158076326","checkDigit":"6","accountID":"e92c51df-b68c-4faa-9cbc-4cb1b232781f"}],"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,18,23,37,6,641622000]}}
+  Actual: {"data":[{"brandName":"REALIZE CFI S.A.","companyCnpj":"27351731000138","type":"CONTA_PAGAMENTO_PRE_PAGA","compeCode":"374","branchCode":"0001","number":"158076326","checkDigit":"6","accountID":"e92c51df-b68c-4faa-9cbc-4cb1b232781f"}],"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/?accountType=CONTA_PAGAMENTO_PRE_PAGA&cpfCnpj=15218532827&page=1&page-size=1","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,23,22,52,55,297050000]}}
 
 	at br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest.testGarantirContratosInformacoesConta(GetContaTest.java:62)
 
-testGarantirContratosSaldoConta(br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest)  Time elapsed: 6.587 s  <<< FAILURE!
+testGarantirContratosSaldoConta(br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest)  Time elapsed: 5.104 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
@@ -402,91 +412,92 @@ error: object has missing required properties (["availableAmount"])
     required: ["automaticallyInvestedAmount","automaticallyInvestedAmountCurrency","availableAmount","availableAmountCurrency","blockedAmount","blockedAmountCurrency"]
     missing: ["availableAmount"]
 
-  Actual: {"data":{"avaiableAmount":5988994811.9800,"availableAmountCurrency":"BRL","blockedAmount":0.0000,"blockedAmountCurrency":"BRL","automaticallyInvestedAmount":0.0000,"automaticallyInvestedAmountCurrency":"BRL"},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f/balances","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,18,23,37,17,306872000]}}
+  Actual: {"data":{"avaiableAmount":0.0000,"availableAmountCurrency":"BRL","blockedAmount":0.0000,"blockedAmountCurrency":"BRL","automaticallyInvestedAmount":0.0000,"automaticallyInvestedAmountCurrency":"BRL"},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/28ef66f8-8e67-4d66-9420-9ce873f78214/balances","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,23,22,53,5,641912000]}}
 
 	at br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest.testGarantirContratosSaldoConta(GetSaldoTest.java:53)
 
-testGarantirContratosLimitesConta(br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest)  Time elapsed: 11.005 s  <<< FAILURE!
+testGarantirContratosLimitesConta(br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest)  Time elapsed: 7.256 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
 Expected: The content to match the given JSON schema.
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+error: instance type (array) does not match any allowed primitive type (allowed: ["string"])
     level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/first"}
-    instance: {"pointer":"/links/first"}
+    schema: {"loadingURI":"#","pointer":"/properties/meta/properties/requestDateTime"}
+    instance: {"pointer":"/meta/requestDateTime"}
     domain: "validation"
     keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/last"}
-    instance: {"pointer":"/links/last"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/next"}
-    instance: {"pointer":"/links/next"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/prev"}
-    instance: {"pointer":"/links/prev"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
+    found: "array"
     expected: ["string"]
 
-  Actual: {"data":{"overdraftContractedLimit":0,"overdraftContractedLimitCurrency":"BRL","overdraftUsedLimit":0,"overdraftUsedLimitCurrency":"BRL","unarrangedOverdraftAmount":0,"unarrangedOverdraftAmountCurrency":"BRL"},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f/overdraft-limits","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,18,23,38,22,94468000]}}
+  Actual: {"data":{"overdraftContractedLimit":0,"overdraftContractedLimitCurrency":"BRL","overdraftUsedLimit":0,"overdraftUsedLimitCurrency":"BRL","unarrangedOverdraftAmount":0,"unarrangedOverdraftAmountCurrency":"BRL"},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f/overdraft-limits","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,23,22,53,47,105080000]}}
 
 	at br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest.testGarantirContratosLimitesConta(GetLimiteTest.java:92)
 
-testGarantirContratosInformacoesConta(br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest)  Time elapsed: 6.056 s  <<< FAILURE!
+testGarantirContratosInformacoesConta(br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest)  Time elapsed: 1.692 s  <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Response body doesn't match expectation.
 Expected: The content to match the given JSON schema.
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
+error: instance type (array) does not match any allowed primitive type (allowed: ["string"])
     level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/first"}
-    instance: {"pointer":"/links/first"}
+    schema: {"loadingURI":"#","pointer":"/properties/meta/properties/requestDateTime"}
+    instance: {"pointer":"/meta/requestDateTime"}
     domain: "validation"
     keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/last"}
-    instance: {"pointer":"/links/last"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/next"}
-    instance: {"pointer":"/links/next"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
-    expected: ["string"]
-error: instance type (null) does not match any allowed primitive type (allowed: ["string"])
-    level: "error"
-    schema: {"loadingURI":"#","pointer":"/properties/links/properties/prev"}
-    instance: {"pointer":"/links/prev"}
-    domain: "validation"
-    keyword: "type"
-    found: "null"
+    found: "array"
     expected: ["string"]
 
-  Actual: {"data":{"compeCode":"374","branchCode":"0001","number":"158076326","checkDigit":"6","type":"CONTA_PAGAMENTO_PRE_PAGA","subtype":"INDIVIDUAL","currency":"BRL"},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/e92c51df-b68c-4faa-9cbc-4cb1b232781f","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,18,23,39,16,183794000]}}
+  Actual: {"data":{"compeCode":"374","branchCode":"0001","number":"681819020","checkDigit":"6","type":"CONTA_PAGAMENTO_PRE_PAGA","subtype":"INDIVIDUAL","currency":"BRL"},"links":{"self":"http://10.120.192.16/open-banking/accounts/v1/accounts/28ef66f8-8e67-4d66-9420-9ce873f78214","first":null,"prev":null,"next":null,"last":null},"meta":{"totalRecords":1,"totalPages":1,"requestDateTime":[2021,6,23,22,54,39,279091000]}}
 
 	at br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest.testGarantirContratosInformacoesConta(GetIdentificacaoContaTest.java:56)
+
+testCpfInvalido(br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest)  Time elapsed: 0.065 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <400> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest.testCpfInvalido(GetIdentificacaoPessoaNaturalTest.java:89)
+
+testGarantirContratosIdentificacaoPessoaNatural(br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest)  Time elapsed: 0.074 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest.testGarantirContratosIdentificacaoPessoaNatural(GetIdentificacaoPessoaNaturalTest.java:55)
+
+testMetodoNaoSuportado(br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest)  Time elapsed: 0.066 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <405> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest.testMetodoNaoSuportado(GetIdentificacaoPessoaNaturalTest.java:78)
+
+testValidarIdentificacaoPessoaNatural(br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest)  Time elapsed: 0.083 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest.testValidarIdentificacaoPessoaNatural(GetIdentificacaoPessoaNaturalTest.java:37)
+
+testGarantirContratosIdentificacaoPessoaNatural(br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest)  Time elapsed: 0.076 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest.testGarantirContratosIdentificacaoPessoaNatural(GetQualificacaoPessoaNaturalTest.java:56)
+
+testMetodoNaoSuportado(br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest)  Time elapsed: 0.071 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <405> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest.testMetodoNaoSuportado(GetQualificacaoPessoaNaturalTest.java:79)
+
+testValidarIdentificacaoPessoaNatural(br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest)  Time elapsed: 0.083 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest.testValidarIdentificacaoPessoaNatural(GetQualificacaoPessoaNaturalTest.java:38)
 

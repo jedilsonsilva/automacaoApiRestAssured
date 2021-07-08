@@ -14,6 +14,7 @@ public class GetDependenciasPropriasRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
+                .log().all()
                 .get("channels/v1/branches");
     }
     public String obterLinkSelfDependenciasProprias() {

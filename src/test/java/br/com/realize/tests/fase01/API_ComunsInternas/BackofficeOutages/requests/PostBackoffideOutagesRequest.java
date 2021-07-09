@@ -108,7 +108,5 @@ public class PostBackoffideOutagesRequest {
                 .when()
                 .post("backoffice/v1/outagess");
     }
-
-
 }
 

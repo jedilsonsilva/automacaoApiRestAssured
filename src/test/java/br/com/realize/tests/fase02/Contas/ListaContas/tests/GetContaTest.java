@@ -45,8 +45,8 @@ public class GetContaTest extends BaseTest {
                 .body("data.branchCode", hasItem("0001"))
                 .body("data.number", hasItem("158076326"))
                 .body("data.checkDigit", hasItem("6"))
-                .body("data.accountID", hasItem("e92c51df-b68c-4faa-9cbc-4cb1b232781f"))
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("data.accountId", hasItem("e92c51df-b68c-4faa-9cbc-4cb1b232781f"))
+                .time(lessThan(6L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
                 .body("links.self", is(linkSelf));

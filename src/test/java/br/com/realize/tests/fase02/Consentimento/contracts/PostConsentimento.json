@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "consentId": {
+          "type": "string"
+        },
+        "creationDateTime": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusUpdateDateTime": {
+          "type": "null"
+        },
+        "permissions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "expirationDateTime": {
+          "type": "string"
+        },
+        "transactionFromDateTime": {
+          "type": "string"
+        },
+        "transactionToDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "consentId",
+        "creationDateTime",
+        "status",
+        "statusUpdateDateTime",
+        "permissions",
+        "expirationDateTime",
+        "transactionFromDateTime",
+        "transactionToDateTime"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "first": {
+          "type": "null"
+        },
+        "prev": {
+          "type": "null"
+        },
+        "next": {
+          "type": "null"
+        },
+        "last": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "requestDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages",
+        "requestDateTime"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

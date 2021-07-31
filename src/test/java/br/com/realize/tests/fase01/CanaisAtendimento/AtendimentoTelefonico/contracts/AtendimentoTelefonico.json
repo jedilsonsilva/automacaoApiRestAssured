@@ -60,8 +60,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     },
                                     {
@@ -83,8 +83,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     }
                                   ]
@@ -143,8 +143,8 @@
                                   },
                                   "required": [
                                     "name",
-                                    "code",
-                                    "additionalInfo"
+                                    "code"
+
                                   ]
                                 }
                               ]
@@ -186,8 +186,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     },
                                     {
@@ -209,8 +209,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     },
                                     {
@@ -232,8 +232,7 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
                                       ]
                                     }
                                   ]
@@ -331,8 +330,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     },
                                     {
@@ -354,8 +353,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     },
                                     {
@@ -377,8 +376,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     }
                                   ]
@@ -464,8 +463,8 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
+
                                       ]
                                     },
                                     {
@@ -487,8 +486,7 @@
                                       "required": [
                                         "countryCallingCode",
                                         "areaCode",
-                                        "number",
-                                        "additionalInfo"
+                                        "number"
                                       ]
                                     }
                                   ]
@@ -496,7 +494,6 @@
                               },
                               "required": [
                                 "type",
-                                "additionalInfo",
                                 "phones"
                               ]
                             },
@@ -518,8 +515,8 @@
                                   },
                                   "required": [
                                     "name",
-                                    "code",
-                                    "additionalInfo"
+                                    "code"
+
                                   ]
                                 }
                               ]
@@ -536,7 +533,6 @@
                   "required": [
                     "name",
                     "cnpjNumber",
-                    "urlComplementaryList",
                     "phoneChannels"
                   ]
                 }

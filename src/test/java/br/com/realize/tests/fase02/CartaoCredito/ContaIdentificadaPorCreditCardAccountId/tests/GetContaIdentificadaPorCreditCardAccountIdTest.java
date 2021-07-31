@@ -14,10 +14,8 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
@@ -53,7 +51,6 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/CartaoCredito/ContaIdentificadaPorCreditCardAccountId", "ContaIdentificadaPorCreditCardAccountId"))));
     }
-
    @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -62,9 +59,9 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
        getContaIdentificadaPorCreditCardAccountIdRequest.cpfSemConta()
                 .then()
                 .statusCode(200)
+                .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("data", is(empty()));
     }
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -73,6 +70,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.cpfInvalido()
                 .then()
                 .statusCode(400)
+                .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                 .body("errors[0].detail", equalTo("O CPF informado é inválido."));
     }
@@ -84,6 +82,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.cpfdiferenteCreditCard()
                 .then()
                 .statusCode(404)
+                .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
     }
@@ -96,8 +95,21 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.pathInvalido()
                 .then()
                 .statusCode(404)
+                .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
+    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
+    @DisplayName("Validar o retorno 404 - CreditCardAccountIdInvalido inválido")
+    public void testcreditCardAccountIdInvalido() throws Exception {
+        getContaIdentificadaPorCreditCardAccountIdRequest.creditCardAccountIdInvalido()
+                .then()
+                .statusCode(404)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("errors[0].title", equalTo("O recurso solicitado não existe."))
+                .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
     }
 
     @Test
@@ -108,8 +120,30 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.metodoNaoSuportado()
                 .then()
                 .statusCode(405)
+                .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));
     }
-
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
+    @DisplayName("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8")
+    public void testAcceptDiferente() throws Exception {
+        getContaIdentificadaPorCreditCardAccountIdRequest.acceptDiferente()
+                .then()
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .statusCode(406);
+    }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase02.class})
+    @DisplayName("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8")
+    public void testerroGateway() throws Exception {
+        getContaIdentificadaPorCreditCardAccountIdRequest.erroGateway()
+                .then()
+                .statusCode(500)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
+                .body("errors.detail", hasItem("Required String parameter 'cpf' is not present"));
+    }
 }

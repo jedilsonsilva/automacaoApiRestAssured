@@ -58,9 +58,7 @@
                                 "type",
                                 "code",
                                 "checkDigit",
-                                "name",
-                                "relatedBranch",
-                                "openingDate"
+                                "name"
                               ]
                             },
                             "postalAddress": {
@@ -111,7 +109,6 @@
                               },
                               "required": [
                                 "address",
-                                "additionalInfo",
                                 "districtName",
                                 "townName",
                                 "ibgeCode",
@@ -234,8 +231,7 @@
                               },
                               "required": [
                                 "standards",
-                                "exception",
-                                "isPublicAccessAllowed"
+                                "exception"
                               ]
                             },
                             "phones": {
@@ -322,8 +318,7 @@
                                   },
                                   "required": [
                                     "name",
-                                    "code",
-                                    "additionalInfo"
+                                    "code"
                                   ]
                                 }
                               ]
@@ -343,7 +338,6 @@
                   "required": [
                     "name",
                     "cnpjNumber",
-                    "urlComplementaryList",
                     "branches"
                   ]
                 }
@@ -367,16 +361,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "prev": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "next": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "last": {
-          "type": "null"
+          "type": ["string", "null"]
         }
       },
       "required": [

@@ -38,7 +38,6 @@ public class GetEmprestimoPessoaNaturalTest extends BaseTest{
         public void testValidarEmprestimoPessoaNatural() throws Exception {
                 getEmprestimoPessoaNaturalRequest.obterInformacoesEmprestimoPessoaNatural()
                     .then()
-                        .log().all()
                     .statusCode(200)
                     .time(lessThan(4L), TimeUnit.SECONDS)
                     .body("meta.totalPages", greaterThan(0))

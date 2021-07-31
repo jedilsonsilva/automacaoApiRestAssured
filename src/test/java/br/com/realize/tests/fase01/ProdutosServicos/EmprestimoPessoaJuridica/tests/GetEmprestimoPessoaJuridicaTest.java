@@ -39,7 +39,7 @@ public class GetEmprestimoPessoaJuridicaTest extends BaseTest{
                 getEmprestimoPessoaJuridicaRequest.obterInformacoesEmprestimoPessoaJuridica()
                     .then()
                     .statusCode(200)
-                    .rootPath("data.companies[0].businessLoans")
+                    .rootPath("data.brand.companies[0].businessLoans")
                     .body("type[0]", equalTo("EMPRESTIMO_MICROCREDITO_PRODUTIVO_ORIENTADO"))
                     .body("type[1]", equalTo("EMPRESTIMO_CHEQUE_ESPECIAL"))
                     .body("type[2]", equalTo("EMPRESTIMO_CONTA_GARANTIDA"))

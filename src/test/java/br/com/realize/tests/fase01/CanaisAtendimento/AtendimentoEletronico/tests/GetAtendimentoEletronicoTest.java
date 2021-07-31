@@ -38,7 +38,6 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
         public void testAtendimentoEletronico() throws Exception {
             getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
                     .then()
-                    .log().all()
                     .statusCode(200)
                     .time(lessThan(4L), TimeUnit.SECONDS)
                     .body("meta.totalPages", greaterThan(0))
@@ -54,7 +53,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
             getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
                     .then()
                     .statusCode(200)
-                    .rootPath("data.companies.electronicChannels")
+                    .rootPath("data.brand.companies.electronicChannels")
                     .body("identification[0].type[0]", equalTo("INTERNET_BANKING"))
                     .body("identification[0].additionalInfo[0]", equalTo("Pagamento de contas e visualização de limites."))
                     .body("identification[0].urls[0]", hasItems("https://www.realizesolucoesfinanceiras.com.br/cartoes-renner/login",
@@ -71,7 +70,7 @@ public class GetAtendimentoEletronicoTest  extends BaseTest{
             getAtendimentoEletronicoRequest.obterInformacoesAtendimentoEletronico()
                     .then()
                     .statusCode(200)
-                    .rootPath("data.companies.electronicChannels")
+                    .rootPath("data.brand.companies.electronicChannels")
                     .body("identification[0].type[1]", equalTo("MOBILE_BANKING"))
                     .body("identification[0].urls[1]", hasItems("https://play.google.com/store/apps/details?id=br.com.lojasrenner&hl=pt_BR",
                             "https://apps.apple.com/br/app/lojas-renner-roupas-e-sapatos/id567763947"))

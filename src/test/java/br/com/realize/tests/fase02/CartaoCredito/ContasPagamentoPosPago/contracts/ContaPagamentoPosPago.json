@@ -24,13 +24,13 @@
               "type": "string"
             },
             "productAdditionalInfo": {
-              "type": "null"
+              "type": ["string", "null"]
             },
             "creditCardNetwork": {
               "type": "string"
             },
             "networkAdditionalInfo": {
-              "type": "null"
+              "type": ["string", "null"]
             }
           },
           "required": [
@@ -53,16 +53,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "prev": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "next": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "last": {
-          "type": "null"
+          "type": ["string", "null"]
         }
       },
       "required": [

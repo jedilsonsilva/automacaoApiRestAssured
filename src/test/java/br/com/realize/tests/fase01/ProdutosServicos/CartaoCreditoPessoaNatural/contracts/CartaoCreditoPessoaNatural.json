@@ -49,8 +49,7 @@
                                     }
                                   },
                                   "required": [
-                                    "type",
-                                    "additionalInfo"
+                                    "type"
                                   ]
                                 },
                                 "creditCard": {
@@ -64,8 +63,7 @@
                                     }
                                   },
                                   "required": [
-                                    "network",
-                                    "additionalInfo"
+                                    "network"
                                   ]
                                 }
                               },
@@ -85,8 +83,7 @@
                                 }
                               },
                               "required": [
-                                "hasRewardProgram",
-                                "rewardProgramInfo"
+                                "hasRewardProgram"
                               ]
                             },
                             "fees": {
@@ -648,8 +645,7 @@
                                         }
                                       },
                                       "required": [
-                                        "code",
-                                        "additionalInfo"
+                                        "code"
                                       ]
                                     }
                                   ]
@@ -700,7 +696,6 @@
                   "required": [
                     "cnpjNumber",
                     "name",
-                    "urlComplementaryList",
                     "personalCreditCards"
                   ]
                 }

@@ -16,6 +16,7 @@
               "items": [
                 {
                   "type": "object",
+
                   "properties": {
                     "name": {
                       "type": "string"
@@ -52,7 +53,6 @@
                               },
                               "required": [
                                 "type",
-                                "additionalInfo",
                                 "urls"
                               ]
                             },
@@ -74,8 +74,7 @@
                                   },
                                   "required": [
                                     "name",
-                                    "code",
-                                    "additionalInfo"
+                                    "code"
                                   ]
                                 },
                                 {
@@ -111,7 +110,6 @@
                   "required": [
                     "name",
                     "cnpjNumber",
-                    "urlComplementaryList",
                     "electronicChannels"
                   ]
                 }
@@ -135,24 +133,20 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "prev": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "next": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "last": {
-          "type": "null"
+          "type": ["string", "null"]
         }
       },
       "required": [
-        "self",
-        "first",
-        "prev",
-        "next",
-        "last"
+        "self"
       ]
     },
     "meta": {

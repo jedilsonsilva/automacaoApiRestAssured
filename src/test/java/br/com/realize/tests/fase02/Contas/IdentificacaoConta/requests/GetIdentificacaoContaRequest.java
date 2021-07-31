@@ -2,6 +2,7 @@ package br.com.realize.tests.fase02.Contas.IdentificacaoConta.requests;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 import java.util.Locale;
@@ -9,6 +10,9 @@ import java.util.Locale;
 import static io.restassured.RestAssured.given;
 
 public class GetIdentificacaoContaRequest {
+
+    String id;
+
     Faker fake = new Faker(new Locale("pt-br"));
     String cpf = fake.options().option("11162630094","15218532827");
     public GetIdentificacaoContaRequest idInvalido(){
@@ -16,9 +20,8 @@ public class GetIdentificacaoContaRequest {
         return this;
     }
 
-    String id = obterIdConta();
-    public String obterIdConta() {
-        String id = given()
+    public void obterIdConta() {
+        Response response = (Response) given()
                 .queryParam("accountType", "CONTA_PAGAMENTO_PRE_PAGA")
                 .queryParam("cpfCnpj", ""+cpf+"")
                 .queryParam("page", "1")
@@ -27,12 +30,13 @@ public class GetIdentificacaoContaRequest {
                 .get("accounts/v1/accounts/")
                 .then()
                 .statusCode(200)
-                .extract().path("data[0].accountID");
-        return id;
+                .extract().response();
+        JsonPath extractor = response.jsonPath();
+        id = extractor.get("data[0].accountId");
     }
     @Step("Buscar Conta pelo accountId.")
-
     public Response obterInformacoesContaPeloId() {
+        obterIdConta();
         return given()
                 .when()
                 .get("accounts/v1/accounts/"+id);

@@ -85,7 +85,7 @@ public class geradorCpfCnpjRG {
         return resultadoCPF;
     }
 
-    public String geraCNPJ() throws Exception {
+    public static String geraCNPJ() throws Exception {
 
         int digito1 = 0, digito2 = 0, resto = 0;
         String  nDigResult;
@@ -142,18 +142,24 @@ public class geradorCpfCnpjRG {
             digito2 = 11-resto;
         }
 
-        //Conctenando os numeros
+        /*//Conctenando os numeros
         numerosContatenados = String.valueOf(n1) + String.valueOf(n2) +"."+ String.valueOf(n3) + String.valueOf(n4) +
                 String.valueOf(n5) +"."+ String.valueOf(n6) + String.valueOf(n7) +String.valueOf(n8)+"/"+
                 String.valueOf(n9) + String.valueOf(n10) + String.valueOf(n11) +
-                String.valueOf(n12)+"-";
+                String.valueOf(n12)+"-";*/
+
+        //Conctenando os numeros sem ponto e hífen
+        numerosContatenados = String.valueOf(n1) + String.valueOf(n2) + String.valueOf(n3) + String.valueOf(n4) +
+                String.valueOf(n5) + String.valueOf(n6) + String.valueOf(n7) +String.valueOf(n8)+
+                String.valueOf(n9) + String.valueOf(n10) + String.valueOf(n11) +
+                String.valueOf(n12);
 
         //Concatenando o primeiro resto com o segundo.
         nDigResult = String.valueOf(digito1) + String.valueOf(digito2);
 
         numeroGerado = numerosContatenados+nDigResult;
 
-        System.out.println("Digito 2 ->"+digito2);
+       // System.out.println("Digito 2 ->"+digito2);
 
         System.out.println("CNPJ Gerado " + numeroGerado);
 
@@ -198,10 +204,47 @@ public class geradorCpfCnpjRG {
         return numeroGerado;
     }
 
+    public class GeraNumero {
+        String retorno;
+        String digitos = "99";
+        Random r = new Random();
+
+        public GeraNumero() {
+            retorno = nDDD() + nPrefixo() + nFinal();
+        }
+
+        public String toString() {
+            return retorno;
+        }
+
+        //Gera o prefixo do telefone.
+        private String nDDD() {
+            int codArea = 19 - r.nextInt(9);
+            return "("+codArea+") ";
+        }
+
+        //Gera os primeiros Numeros
+        private String nPrefixo() {
+            String compl[] = {"51", "59", "05"};
+            digitos += compl[r.nextInt(3)];
+            return digitos + '-';
+        }
+
+        //Gera a Numeracao final baseando-se em numeros aleatorios
+        private String nFinal() {
+            digitos = "";
+            for (int i=0; i<4;i++)
+                digitos += r.nextInt(10);
+            return digitos;
+        }
+
    /* public String mostraResultado() throws Exception{
 
         String resultadoRG = gerarRg();
 
         return resultadoRG;
     }*/
+
 }
+}
+

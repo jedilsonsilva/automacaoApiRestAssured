@@ -90,7 +90,7 @@ public class GetBackoffideOutagesRequest {
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {
         return given()
-                .queryParam("page", 10)
+                .queryParam("page", "9rrtrt222")
                 .queryParam("page-size", "10")
                 .when()
                 .get("backoffice/v1/outage");

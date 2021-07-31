@@ -37,7 +37,6 @@ public class GetIdentificacaoContaTest extends BaseTest {
         String linkSelf = getIdentificacaoContaRequest.obterLinkSelf();
         getIdentificacaoContaRequest.obterInformacoesContaPeloId()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))

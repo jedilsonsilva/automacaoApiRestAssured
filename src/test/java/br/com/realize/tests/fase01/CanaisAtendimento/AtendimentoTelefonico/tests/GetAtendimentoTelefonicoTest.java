@@ -36,8 +36,10 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
         getAtendimentoTelefonicooRequest.obterInformacoesAtendimentoTelefonico()
                 .then()
                 .statusCode(200)
-                .body("data.companies[0].cnpjNumber", equalTo("27351731"))
-                .body("data.companies[0].name", equalTo("REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A."))
+                .rootPath("data.brand.companies[0]")
+                .body("cnpjNumber", equalTo("27351731"))
+                .body("name", equalTo("REALIZE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A."))
+                .noRootPath()
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
@@ -50,9 +52,8 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testInformacoesCentralTelefonica() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
-                .log().all()
                 .statusCode(200)
-                .rootPath("data.companies.phoneChannels")
+                .rootPath("data.brand.companies.phoneChannels")
                 .body("identification[0].additionalInfo[0]", equalTo("Central de atendimento"))
                 .body("identification[0].phones[0].number", hasItems("30045060", "0800 073 6637", "40042900", "39215464", "0800 727 9505", "0800 722 9855"))
                 .body("services[0].name[0]", hasItems("CARTAO_CREDITO", "SEGUROS"))
@@ -65,9 +66,8 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testInformacoesSAC() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
-                .log().all()
                 .statusCode(200)
-                .rootPath("data.companies.phoneChannels")
+                .rootPath("data.brand.companies.phoneChannels")
                 .body("identification[0].additionalInfo[1]", equalTo("Canal exclusivo para reclamações, informações e cancelamentos."))
                 .body("identification[0].phones[1].number[0]", equalTo("0800 600 6601"))
                 .body("services[0].name[1]", hasItems("RECLAMACOES", "INFORMACOES", "CANCELAMENTO"))
@@ -80,9 +80,8 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testInformacoesOuvidoria() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
-                .log().all()
                 .statusCode(200)
-                .rootPath("data.companies.phoneChannels")
+                .rootPath("data.brand.companies.phoneChannels")
                 .body("identification[0].additionalInfo[2]", equalTo("Atuação na mediação de conflitos."))
                 .body("identification[0].phones[2].number[0]", equalTo("0800 727 0127"))
                 .body("services[0].name[2]", hasItem("CARTAO_CREDITO"))
@@ -95,9 +94,8 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testInformacoesOutros() throws Exception {
         getAtendimentoTelefonicooRequest.canaisTelefonicos()
                 .then()
-                .log().all()
                 .statusCode(200)
-                .rootPath("data.companies.phoneChannels")
+                .rootPath("data.brand.companies.phoneChannels")
                 .body("identification[0].additionalInfo[3]", equalTo("Assitente virtual cartões RENNER"))
                 .body("identification[0].phones[3].number[0]", equalTo("39214004"))
                 .body("services[0].name[3]", hasItem("CARTAO_CREDITO"))
@@ -126,7 +124,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testNumeroPaginaNaoLocalizado() throws Exception {
         getAtendimentoTelefonicooRequest.numeroPaginaNaoLocalizado()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                 .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
@@ -138,7 +135,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getAtendimentoTelefonicooRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -150,7 +146,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testNumeroPaginaZero() throws Exception {
         getAtendimentoTelefonicooRequest.numeroPaginaZero()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Número da página inválido."))
                 .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -162,7 +157,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testNumeroPaginaInvalido() throws Exception {
         getAtendimentoTelefonicooRequest.numeroPaginaInvalido()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Número da página inválido."))
                 .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -174,7 +168,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testTamanhoPaginaZero() throws Exception {
         getAtendimentoTelefonicooRequest.tamanhoPaginaZero()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Tamanho da página inválido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -186,7 +179,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testTamanhoPaginaInvalido() throws Exception {
         getAtendimentoTelefonicooRequest.tamanhoPaginaInvalido()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("Tamanho da página inválido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -198,7 +190,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testTamanhoPaginaSuperior() throws Exception {
         getAtendimentoTelefonicooRequest.tamanhoPaginaSuperior()
                 .then()
-                .log().all()
                 .statusCode(422)
                 .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                 .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
@@ -210,7 +201,6 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getAtendimentoTelefonicooRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));

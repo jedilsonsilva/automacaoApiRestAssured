@@ -266,7 +266,8 @@ public class PostConsentimentoPagamentoRequest {
                 .contentType("application/json")
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .put(url);
+                .head(url);
+
     }
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
     public Response acceptDiferente() throws Exception {
@@ -352,7 +353,7 @@ public class PostConsentimentoPagamentoRequest {
 
         return given()
                 .header("Authorization", token)
-                .contentType("application/xml")
+                .contentType("text/plain")
                 .body("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" +
                 "<receita nome=\"pão\" tempo_de_preparo=\"5 minutos\" tempo_de_cozimento=\"1 hora\">\n" +
                 "  <titulo>Pão simples</titulo>\n" +

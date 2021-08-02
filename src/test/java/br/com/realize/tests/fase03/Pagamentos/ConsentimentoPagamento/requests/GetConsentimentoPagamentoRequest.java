@@ -123,7 +123,7 @@ public class GetConsentimentoPagamentoRequest {
                 .header("Authorization", token)
                 .contentType("application/json")
                 .when()
-                .post(url + consentId);
+                .put(url + consentId);
     }
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
     public Response acceptDiferente() throws Exception {

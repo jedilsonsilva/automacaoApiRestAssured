@@ -157,7 +157,7 @@ public class PostConsetimentoPagamentoTest extends BaseTest {
                 .statusCode(415)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("O formato do payload não é um formato suportado."))
-                .body("errors.detail", hasItem("Content type 'application/xml;charset=ISO-8859-1' not supported"));
+                .body("errors.detail", hasItem("Content type 'text/plain;charset=ISO-8859-1' not supported"));
 
     }
     @Ignore

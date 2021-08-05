@@ -4,9 +4,7 @@ import br.com.realize.runners.fase02;
 import br.com.realize.suites.AllTests;
 import br.com.realize.suites.Contract;
 import br.com.realize.suites.Healthcheck;
-import br.com.realize.tests.base.tests.BaseTest;
 import br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.requests.GetPrivateContaCartaoCompraCreditoRequest;
-import br.com.realize.tests.fase02.CartaoCredito.ContaIdentificadaPorCreditCardAccountId.requests.GetContaIdentificadaPorCreditCardAccountIdRequest;
 import br.com.realize.utils.Utils;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -37,7 +35,7 @@ public class GetPrivateContaCartaoCompraCreditoTest {
         getPrivateContaCartaoCompraCreditoRequest.retornaCartaoBandeiraPropria()
                 .then()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("produto", equalTo("CCR"))
                 .body("cartao", notNullValue());
     }
@@ -49,7 +47,7 @@ public class GetPrivateContaCartaoCompraCreditoTest {
         getPrivateContaCartaoCompraCreditoRequest.retornaCartaoMeuCartao()
                 .then()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("produto", equalTo("CBR"))
                 .body("cartao", notNullValue());
     }
@@ -60,8 +58,8 @@ public class GetPrivateContaCartaoCompraCreditoTest {
     public void testGarantirContratosContaIdentificadaPorCreditCardAccountId() throws Exception {
         getPrivateContaCartaoCompraCreditoRequest.retornaCartaoMeuCartao()
                 .then()
-                .log().all()
                 .statusCode(200)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/CartaoCredito/ApiPrivateConta", "PrivateContaCartaoCompraCredito"))));
     }
@@ -73,7 +71,8 @@ public class GetPrivateContaCartaoCompraCreditoTest {
     public void testCpfSemConta() throws Exception {
        getPrivateContaCartaoCompraCreditoRequest.cpfSemConta()
                 .then()
-                .statusCode(404);
+                .statusCode(404)
+               .time(lessThan(10L), TimeUnit.SECONDS);
     }
 
     @Test
@@ -83,7 +82,8 @@ public class GetPrivateContaCartaoCompraCreditoTest {
     public void testCpfInvalido() throws Exception {
         getPrivateContaCartaoCompraCreditoRequest.cpfInvalido()
                 .then()
-                .statusCode(400);
+                .statusCode(400)
+                .time(lessThan(10L), TimeUnit.SECONDS);
     }
 
   /*  @Test
@@ -95,14 +95,4 @@ public class GetPrivateContaCartaoCompraCreditoTest {
                 .then()
                 .statusCode(404);
     }*/
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("405 - Validar o status code informando um método não suportado no endpoint API private conta cartão de compra/crédito")
-    public void testMetodoNaoSuportado() throws Exception {
-        getPrivateContaCartaoCompraCreditoRequest.metodoNaoSuportado()
-                .then()
-                .statusCode(500);
-    }
-
 }

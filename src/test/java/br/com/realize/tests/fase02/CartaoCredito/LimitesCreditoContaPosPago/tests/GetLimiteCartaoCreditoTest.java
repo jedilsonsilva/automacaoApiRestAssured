@@ -39,7 +39,6 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
     public void testValidarInformacoesLimiteCartaoCredito() throws Exception {
         getLimiteCartaoCreditoRequest.retornaLimitesCartaoCredito()
                 .then()
-                .log().all()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
@@ -65,7 +64,6 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
     public void testCpfInvalido() throws Exception {
         getLimiteCartaoCreditoRequest.cpfInvalido()
                 .then()
-                .log().all()
                 .statusCode(400)
                 .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                 .body("errors[0].detail", equalTo("O CPF informado é inválido."));
@@ -77,7 +75,6 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
     public void testCpfSemCartaoCredito() throws Exception {
         getLimiteCartaoCreditoRequest.cpfSemCartaoCredito()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
@@ -89,7 +86,6 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
     public void testcontaDiferenteCreditCardAccountId() throws Exception {
         getLimiteCartaoCreditoRequest.contaDiferenteCreditCardAccountId()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
@@ -101,7 +97,6 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
     public void testPathInvalido() throws Exception {
         getLimiteCartaoCreditoRequest.pathInvalido()
                 .then()
-                .log().all()
                 .statusCode(404)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -114,7 +109,6 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
     public void testMetodoNaoSuportado() throws Exception {
         getLimiteCartaoCreditoRequest.metodoNaoSuportado()
                 .then()
-                .log().all()
                 .statusCode(405)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));

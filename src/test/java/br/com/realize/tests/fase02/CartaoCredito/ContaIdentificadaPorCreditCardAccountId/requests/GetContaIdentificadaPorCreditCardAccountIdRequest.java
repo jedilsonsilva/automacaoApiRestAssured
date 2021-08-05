@@ -62,7 +62,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdRequest {
     @Step("CPF sem conta de cartão de crédito")
     public Response cpfSemConta() {
         return given()
-                .queryParam("cpf", "83654030050")
+                .queryParam("cpf", "10056267070")
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()

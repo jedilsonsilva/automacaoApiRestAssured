@@ -34,7 +34,7 @@ public class DelConsetimentoTest extends BaseTest {
     public void testValidarExclusaoConsentimento() throws Exception {
 //EXCLUIR O CONSENTIMENTO
         delConsentimentoRequest.deletarPedidoConsetimento()
-                .then()
+                .then().log().body()
                 .statusCode(204)
                 .time(lessThan(4L), TimeUnit.SECONDS);
 //VALIDAR QUE O CONSENTIMENTO FOI EXCLUÍDO. O STATUS DEVE SER "REJECTED".

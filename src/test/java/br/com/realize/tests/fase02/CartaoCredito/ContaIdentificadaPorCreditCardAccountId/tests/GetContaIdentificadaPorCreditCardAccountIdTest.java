@@ -103,7 +103,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
     @DisplayName("Validar o retorno 404 - CreditCardAccountIdInvalido inválido")
-    public void testcreditCardAccountIdInvalido() throws Exception {
+    public void testCreditCardAccountIdInvalido() throws Exception {
         getContaIdentificadaPorCreditCardAccountIdRequest.creditCardAccountIdInvalido()
                 .then()
                 .statusCode(404)

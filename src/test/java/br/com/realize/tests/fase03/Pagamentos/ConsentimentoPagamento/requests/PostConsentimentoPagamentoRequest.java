@@ -1,17 +1,26 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.requests;
 
 import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento.*;
+import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
+import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+
+import java.util.Date;
+import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
 
 public class PostConsentimentoPagamentoRequest {
 
+    Faker fake = new Faker(new Locale("pt-br"));
+    String idempotency = String.valueOf(fake.random());
     String token = "676378126781236";
     String url = "/payments/v1/consents";
+    String mesmoIdempotency = "1234567890";
     String tokenInvalido = "11223344556677";
+
 
     @Step("Insere um pedido de consentimento de pagamento")
 
@@ -38,26 +47,73 @@ public class PostConsentimentoPagamentoRequest {
                 bodyDocumentCnpjPagamento.setRel("CNPJ");
           bodyDataPagamento.setCreditor(bodyCreditor);
             bodyCreditor.setPersonType("PESSOA_NATURAL");
-            bodyCreditor.setCpfCnpj("");
-            bodyCreditor.setName("");
+            bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
+            bodyCreditor.setName("Ana Maria");
           bodyDataPagamento.setPayment(bodyPayment);
             bodyPayment.setType("PIX");
-            bodyPayment.setDate("2021-01-01");
+            bodyPayment.setDate(DataUtils.getDateTime());
             bodyPayment.setCurrency("BRL");
             bodyPayment.setAmount("100000.12");
           bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-            bodyDebtorAccount.setIspb("12345678");
-            bodyDebtorAccount.setIssuer("1774");
-            bodyDebtorAccount.setNumber("1234567890");
-            bodyDebtorAccount.setAccountType("CACC");
+            bodyDebtorAccount.setIspb("27351731");
+            bodyDebtorAccount.setIssuer("1111");
+            bodyDebtorAccount.setNumber("0006225246");
+            bodyDebtorAccount.setAccountType("TRAN");
 
 
             return  given()
                     .header("Authorization", token)
                     .contentType("application/json")
+                    .header("x-idempotency-key", idempotency)
                     .body(bodyConsentimentoPagamento)
                     .when()
                     .post(url);
+    }
+    @Step("Inserir um pedido de consentimento de pagamento com um idempotency-key já usado mas com dados diferentes")
+
+    public Response idempotencyUsadoDadosDiferentes() throws Exception {
+
+        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
+        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
+        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
+        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
+        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
+        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
+        bodyCreditor bodyCreditor = new bodyCreditor();
+        bodyPayment bodyPayment = new bodyPayment();
+        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
+
+        bodyConsentimentoPagamento.setData(bodyDataPagamento);
+        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
+        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
+        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
+        bodyDocumentCpfPagamento.setRel("CPF");
+        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
+        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
+        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
+        bodyDocumentCnpjPagamento.setRel("CNPJ");
+        bodyDataPagamento.setCreditor(bodyCreditor);
+        bodyCreditor.setPersonType("PESSOA_NATURAL");
+        bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
+        bodyCreditor.setName("Ana Maria");
+        bodyDataPagamento.setPayment(bodyPayment);
+        bodyPayment.setType("PIX");
+        bodyPayment.setDate(DataUtils.getDateTime());
+        bodyPayment.setCurrency("BRL");
+        bodyPayment.setAmount("100000.12");
+        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
+        bodyDebtorAccount.setIspb("12345678");
+        bodyDebtorAccount.setIssuer("1774");
+        bodyDebtorAccount.setNumber("0006225246");
+        bodyDebtorAccount.setAccountType("TRAN");
+
+        return  given()
+                .header("Authorization", token)
+                .contentType("application/json")
+                .header("x-idempotency-key", mesmoIdempotency)
+                .body(bodyConsentimentoPagamento)
+                .when()
+                .post(url);
     }
 
     @Step("404 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
@@ -84,11 +140,11 @@ public class PostConsentimentoPagamentoRequest {
         bodyDocumentCnpjPagamento.setRel("CNPJ");
         bodyDataPagamento.setCreditor(bodyCreditor);
         bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
+        bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
+        bodyCreditor.setName("Ana Maria");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -97,9 +153,10 @@ public class PostConsentimentoPagamentoRequest {
         bodyDebtorAccount.setNumber("1234567890");
         bodyDebtorAccount.setAccountType("CACC");
 
-        return given()
+        return given().log().body()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url + "ss");
@@ -163,7 +220,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -175,6 +232,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url);
@@ -207,7 +265,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -219,6 +277,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post("consents/v2/oconsents");
@@ -251,7 +310,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -264,9 +323,10 @@ public class PostConsentimentoPagamentoRequest {
         return  given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .head(url);
+                .delete(url);
 
     }
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
@@ -297,7 +357,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -309,6 +369,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .accept("application/xml")
                 .body(bodyConsentimentoPagamento)
                 .when()
@@ -342,7 +403,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -354,6 +415,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("text/plain")
+                .header("x-idempotency-key", idempotency)
                 .body("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" +
                 "<receita nome=\"pão\" tempo_de_preparo=\"5 minutos\" tempo_de_cozimento=\"1 hora\">\n" +
                 "  <titulo>Pão simples</titulo>\n" +
@@ -400,7 +462,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -412,6 +474,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url);
@@ -445,7 +508,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -457,6 +520,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url);
@@ -489,7 +553,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -501,6 +565,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url);
@@ -533,7 +598,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -544,6 +609,7 @@ public class PostConsentimentoPagamentoRequest {
 
         return given()
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url);
@@ -576,7 +642,7 @@ public class PostConsentimentoPagamentoRequest {
         bodyCreditor.setName("");
         bodyDataPagamento.setPayment(bodyPayment);
         bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
+        bodyPayment.setDate(DataUtils.getDateTime());
         bodyPayment.setCurrency("BRL");
         bodyPayment.setAmount("100000.12");
         bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
@@ -589,6 +655,7 @@ public class PostConsentimentoPagamentoRequest {
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body("Body preenchido para simular o erro 500")
                 .when()
                 .post(url);

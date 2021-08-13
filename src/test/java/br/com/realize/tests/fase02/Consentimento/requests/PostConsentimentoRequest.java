@@ -20,27 +20,29 @@ public class PostConsentimentoRequest {
 
     public Response inserirPedidoConsetimento() throws Exception {
 
-            bodyConsentimento bodyConsentimento = new bodyConsentimento();
-            bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-            bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-            bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-            bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+            BodyData bodyData = new BodyData();
+            BodyConsentimento bodyConsentimento = new BodyConsentimento();
+            BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+            BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+            BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+            BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
-            bodyBusinessEntity.setDocument(bodyDocumentCnpj);
-                bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-                bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
-            bodyLoggedUser.setDocument(bodyDocumentCpf);
-                bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
-                bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyConsentimento.setData(bodyData);
+            bodyData.setBusinessEntity(bodyBusinessEntity);
+                bodyBusinessEntity.setDocument(bodyDocumentCnpj);
+                    bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
+                    bodyDocumentCnpj.setRel("CNPJ");
+            bodyData.setExpirationDateTime(expirationDateTime);
+            bodyData.setLoggedUser(bodyLoggedUser);
+                bodyLoggedUser.setDocument(bodyDocumentCpf);
+                    bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
+                    bodyDocumentCpf.setRel("CPF");
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+            bodyData.setTransactionFromDateTime(transactionFromDateTime);
+            bodyData.setTransactionToDateTime(transactionToDateTime);
 
-            return  given()
-                    .header("Authorization", token)
+            return  given().log().all()
+                   // .header("Authorization", token)
                     .contentType("application/json")
                     .body(bodyConsentimento)
                     .when()
@@ -50,27 +52,29 @@ public class PostConsentimentoRequest {
     @Step("404 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response pathInvalido() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
-                .header("Authorization", token)
+               // .header("Authorization", token)
                 .contentType("application/json")
                 .body(bodyConsentimento)
                 .when()
@@ -110,24 +114,26 @@ public class PostConsentimentoRequest {
     @Step("403 - O token tem escopo incorreto ou uma política de segurança foi violada.")
     public Response politicaSegurancaVioalada() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -139,24 +145,26 @@ public class PostConsentimentoRequest {
     @Step("404 - O recurso solicitado não existe ou não foi implementado.")
     public Response recursoInexistente() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -168,24 +176,26 @@ public class PostConsentimentoRequest {
     @Step("405 - O consumidor tentou acessar o recurso com um método não suportado.")
     public Response metodoNaoSuportado() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
 
         return  given()
@@ -198,24 +208,26 @@ public class PostConsentimentoRequest {
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
     public Response acceptDiferente() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -228,24 +240,26 @@ public class PostConsentimentoRequest {
     @Step("415 - O formato do payload não é um formato suportado.")
     public Response payloadNaoSuportado() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -271,24 +285,26 @@ public class PostConsentimentoRequest {
     @Step("422 - A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes..")
     public Response impossivelProcessarInstrucoes() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -301,24 +317,26 @@ public class PostConsentimentoRequest {
     @Step("429 - A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido.")
     public Response muitasSolicitacoesFeitas() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -330,24 +348,26 @@ public class PostConsentimentoRequest {
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response requisicaoMalFormada() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
-        bodyDocumentCpf.setIdentification("teste123");
+        bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return given()
                 .header("Authorization", token)
@@ -359,24 +379,26 @@ public class PostConsentimentoRequest {
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response informacoesObrigatorias() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime("");
 
         return given()
                 .contentType("application/json")
@@ -387,24 +409,26 @@ public class PostConsentimentoRequest {
     @Step("500 - Ocorreu um erro no gateway da API ou no microsserviço.")
     public Response erroGateway() throws Exception {
 
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
 
         return given()

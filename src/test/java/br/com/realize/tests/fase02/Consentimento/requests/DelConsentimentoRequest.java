@@ -20,24 +20,26 @@ public class DelConsentimentoRequest {
     String consentIdInvalido = "urn:realizecfi:f5428c42-11ac-422d-a7c3-e57bInvalido";
 
     public void obterConsentId() throws Exception {
-        bodyConsentimento bodyConsentimento = new bodyConsentimento();
-        bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-        bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-        bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-        bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
         bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         Response response = (Response)  given()
                 .header("Authorization", token)

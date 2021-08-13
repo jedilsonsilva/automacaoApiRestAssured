@@ -66,6 +66,7 @@ public class PostConsetimentoTest extends BaseTest {
                 .body("errors.title", hasItem("O recurso solicitado não existe."))
                 .body("errors.detail", hasItem("O endereço informado para esse endpoint está incorreto."));
     }
+    @Ignore
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -77,6 +78,7 @@ public class PostConsetimentoTest extends BaseTest {
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."));
     }
+    @Ignore
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})

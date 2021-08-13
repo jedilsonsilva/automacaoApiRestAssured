@@ -31,7 +31,7 @@ public class bodyDebtorAccount {
         this.number = number;
     }
 
-    public String getAccountType() {
+    public String getType() {
         return accountType;
     }
 

@@ -55,7 +55,7 @@ public class GetConsetimentoPagamentoTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
-                new File(Utils.getContractsBasePath("fase02/Consentimento", "GetConsentimento"))));
+                new File(Utils.getContractsBasePath("fase03/Pagamentos/ConsentimentoPagamento", "GetConsentimentoPagamento"))));
     }
     @Test
     @Severity(SeverityLevel.NORMAL)

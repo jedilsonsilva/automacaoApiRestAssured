@@ -16,24 +16,26 @@ public class consentimentoPayload {
     public JSONObject consetimento() throws Exception {
         JSONObject jsonObject = new JSONObject();
 
-    br.com.realize.tests.fase02.Consentimento.pojo.bodyConsentimento bodyConsentimento = new bodyConsentimento();
-    br.com.realize.tests.fase02.Consentimento.pojo.bodyDocumentCpf bodyDocumentCpf = new bodyDocumentCpf();
-    br.com.realize.tests.fase02.Consentimento.pojo.bodyDocumentCnpj bodyDocumentCnpj = new bodyDocumentCnpj();
-    br.com.realize.tests.fase02.Consentimento.pojo.bodyBusinessEntity bodyBusinessEntity = new bodyBusinessEntity();
-    br.com.realize.tests.fase02.Consentimento.pojo.bodyLoggedUser bodyLoggedUser = new bodyLoggedUser();
+        BodyData bodyData = new BodyData();
+        BodyConsentimento bodyConsentimento = new BodyConsentimento();
+        BodyDocumentCpf bodyDocumentCpf = new BodyDocumentCpf();
+        BodyDocumentCnpj bodyDocumentCnpj = new BodyDocumentCnpj();
+        BodyBusinessEntity bodyBusinessEntity = new BodyBusinessEntity();
+        BodyLoggedUser bodyLoggedUser = new BodyLoggedUser();
 
-        bodyConsentimento.setBusinessEntity(bodyBusinessEntity);
-            bodyBusinessEntity.setDocument(bodyDocumentCnpj);
-                bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-                bodyDocumentCnpj.setRel("CNPJ");
-        bodyConsentimento.setExpirationDateTime(expirationDateTime);
-        bodyConsentimento.setLoggedUser(bodyLoggedUser);
-            bodyLoggedUser.setDocument(bodyDocumentCpf);
-                bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
-                bodyDocumentCpf.setRel("CPF");
-        bodyConsentimento.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
-        bodyConsentimento.setTransactionFromDateTime(transactionFromDateTime);
-        bodyConsentimento.setTransactionToDateTime(transactionToDateTime);
+        bodyConsentimento.setData(bodyData);
+        bodyData.setBusinessEntity(bodyBusinessEntity);
+        bodyBusinessEntity.setDocument(bodyDocumentCnpj);
+        bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
+        bodyDocumentCnpj.setRel("CNPJ");
+        bodyData.setExpirationDateTime(expirationDateTime);
+        bodyData.setLoggedUser(bodyLoggedUser);
+        bodyLoggedUser.setDocument(bodyDocumentCpf);
+        bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());
+        bodyDocumentCpf.setRel("CPF");
+        bodyData.setPermissions(Collections.singletonList("ACCOUNTS_READ"));
+        bodyData.setTransactionFromDateTime(transactionFromDateTime);
+        bodyData.setTransactionToDateTime(transactionToDateTime);
 
         return jsonObject;
 

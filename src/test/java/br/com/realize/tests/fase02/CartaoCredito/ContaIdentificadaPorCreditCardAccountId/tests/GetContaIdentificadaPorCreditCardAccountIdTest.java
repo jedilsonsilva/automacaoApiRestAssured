@@ -12,6 +12,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import java.io.File;
@@ -51,6 +52,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/CartaoCredito/ContaIdentificadaPorCreditCardAccountId", "ContaIdentificadaPorCreditCardAccountId"))));
     }
+    @Ignore
    @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})

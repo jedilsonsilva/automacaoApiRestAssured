@@ -1,12 +1,10 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.tests;
 
-import br.com.realize.runners.fase02;
 import br.com.realize.runners.fase03;
 import br.com.realize.suites.AllTests;
 import br.com.realize.suites.Contract;
 import br.com.realize.suites.Healthcheck;
 import br.com.realize.tests.base.tests.BaseTest;
-import br.com.realize.tests.fase02.Consentimento.requests.PostConsentimentoRequest;
 import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.requests.PostConsentimentoPagamentoRequest;
 import br.com.realize.utils.Utils;
 import io.qameta.allure.Epic;
@@ -40,13 +38,25 @@ public class PostConsetimentoPagamentoTest extends BaseTest {
     public void testValidarInclusaoConsentimentoPagamento() throws Exception {
         postConsentimentoPagamentoRequest.inserirPedidoConsetimentoPagamento()
                 .then()
-                .log().body()
-                .statusCode(201)
+                .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
                 .body("data.status", equalTo("AWAITING_AUTHORISATION"));
     }
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({Healthcheck.class, AllTests.class, fase03.class})
+    @DisplayName("Validar a inclusão de consentimento de iniciação de Pagamento")
+    public void testValidaridempotencyUsadoDadosDiferentes() throws Exception {
+        postConsentimentoPagamentoRequest.idempotencyUsadoDadosDiferentes()
+                .then()
+                .statusCode(400)
+                .time(lessThan(4L), TimeUnit.SECONDS)
+                .body("errors.title", hasItem("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
+                .body("errors.detail", hasItem("Dados do objeto Payment diferente do informado para este x-idempotency-key"));
+    }
+
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class, fase03.class})
@@ -54,9 +64,9 @@ public class PostConsetimentoPagamentoTest extends BaseTest {
     public void testGarantirContratosInclusaoConsentimento() throws Exception {
         postConsentimentoPagamentoRequest.inserirPedidoConsetimentoPagamento()
                 .then()
-                .statusCode(201)
+                .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
-                new File(Utils.getContractsBasePath("fase02/Consentimento", "PostConsentimento"))));
+                new File(Utils.getContractsBasePath("fase03/Pagamentos/ConsentimentoPagamento", "PostConsentimentoPagamento"))));
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -102,18 +112,8 @@ public class PostConsetimentoPagamentoTest extends BaseTest {
                 .statusCode(405)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
-                .body("errors.detail", hasItem("Request method 'PUT' not supported"));
+                .body("errors.detail", hasItem("Request method 'DELETE' not supported"));
     }
-    /*@Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase03.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando informando um token inválido.")
-    public void testTokenInvalido() throws Exception {
-        postConsentimentoRequest.tokenInvalido()
-                .then()
-                .statusCode(401)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }*/
     @Ignore
     @Test
     @Severity(SeverityLevel.NORMAL)

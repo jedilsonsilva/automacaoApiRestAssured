@@ -1,57 +1,66 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.requests;
 
 import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento.*;
+import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
+import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.Test;
+
+import java.util.Locale;
+
 import static io.restassured.RestAssured.given;
 public class GetConsentimentoPagamentoRequest {
 
+    Faker fake = new Faker(new Locale("pt-br"));
+    String idempotency = String.valueOf(fake.random());
     String token = "004904950354";
     String tokenInvalido = "11223344556677";
-    String url = "/payments/v1/consents/{consentId}";
+    String url = "/payments/v1/consents/";
     String consentId;
     String consentIdInvalido = "urn:realizecfi:f5428c42-11ac-422d-a7c3-e57bInvalido";
-
+@Test
     public void obterConsentId() throws Exception {
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
+    bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
+    bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
+    bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
+    bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
+    bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
+    bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
+    bodyCreditor bodyCreditor = new bodyCreditor();
+    bodyPayment bodyPayment = new bodyPayment();
+    bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
 
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate("2021-01-01");
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
+    bodyConsentimentoPagamento.setData(bodyDataPagamento);
+    bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
+    bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
+    bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
+    bodyDocumentCpfPagamento.setRel("CPF");
+    bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
+    bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
+    bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
+    bodyDocumentCnpjPagamento.setRel("CNPJ");
+    bodyDataPagamento.setCreditor(bodyCreditor);
+    bodyCreditor.setPersonType("PESSOA_NATURAL");
+    bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
+    bodyCreditor.setName("Ana Maria");
+    bodyDataPagamento.setPayment(bodyPayment);
+    bodyPayment.setType("PIX");
+    bodyPayment.setDate(DataUtils.getDateTime());
+    bodyPayment.setCurrency("BRL");
+    bodyPayment.setAmount("100000.12");
+    bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
+    bodyDebtorAccount.setIspb("12345678");
+    bodyDebtorAccount.setIssuer("1774");
+    bodyDebtorAccount.setNumber("0006225246");
+    bodyDebtorAccount.setAccountType("TRAN");
 
         Response response = (Response)  given()
                 .header("Authorization", token)
                 .contentType("application/json")
+                .header("x-idempotency-key", idempotency)
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url)

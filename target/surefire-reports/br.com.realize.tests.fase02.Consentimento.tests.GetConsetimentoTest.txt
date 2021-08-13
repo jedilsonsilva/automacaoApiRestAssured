@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.Consentimento.tests.GetConsetimentoTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 11.544 s - in br.com.realize.tests.fase02.Consentimento.tests.GetConsetimentoTest

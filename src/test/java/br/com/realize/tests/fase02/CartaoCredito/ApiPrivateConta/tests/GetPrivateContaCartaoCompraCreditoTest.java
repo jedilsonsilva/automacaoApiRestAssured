@@ -85,14 +85,4 @@ public class GetPrivateContaCartaoCompraCreditoTest {
                 .statusCode(400)
                 .time(lessThan(10L), TimeUnit.SECONDS);
     }
-
-  /*  @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno 404 - Path da API inválido no endpoint API private conta cartão de compra/crédito")
-    public void testPathInvalido() throws Exception {
-        getPrivateContaCartaoCompraCreditoRequest.pathInvalido()
-                .then()
-                .statusCode(404);
-    }*/
 }

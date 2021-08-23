@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento;
 
-public class bodyPayment {
+public class BodyPayment {
 
     private String type;
     private String date;

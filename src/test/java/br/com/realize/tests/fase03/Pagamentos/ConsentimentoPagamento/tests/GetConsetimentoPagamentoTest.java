@@ -39,7 +39,7 @@ public class GetConsetimentoPagamentoTest extends BaseTest {
     @DisplayName("Validar a consulta de consentimento de iniciação de pagamento")
     public void testConsultarConsentimento() throws Exception {
         getConsentimentoPagamentoRequestRequest.obterConsetimentoPamento()
-                .then()
+                .then().log().body()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))

@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.requests;
 
-import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.AtualizacaoContaDebito.bodyAtualizacaoContaDebito;
+import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.AtualizacaoContaDebito.BodyAtualizacaoContaDebito;
 import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento.*;
 import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
@@ -27,15 +27,15 @@ public class PostRejeitarConsentimentoPagamentoRequest {
 
     public void obterConsentId() throws Exception {
 
-            bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-            bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-            bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-            bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-            bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-            bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-            bodyCreditor bodyCreditor = new bodyCreditor();
-            bodyPayment bodyPayment = new bodyPayment();
-            bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
+            BodyConsentimentoPagamento bodyConsentimentoPagamento = new BodyConsentimentoPagamento();
+            BodyDataPagamento bodyDataPagamento = new BodyDataPagamento();
+            BodyDocumentCpfPagamento bodyDocumentCpfPagamento = new BodyDocumentCpfPagamento();
+            BodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new BodyDocumentCnpjPagamento();
+            BodyBusinessEntityPagamento bodyBusinessEntityPagamento = new BodyBusinessEntityPagamento();
+            BodyLoggedUserPagamento bodyLoggedUserPagamento = new BodyLoggedUserPagamento();
+            BodyCreditor bodyCreditor = new BodyCreditor();
+            BodyPayment bodyPayment = new BodyPayment();
+            BodyDebtorAccount bodyDebtorAccount = new BodyDebtorAccount();
 
             bodyConsentimentoPagamento.setData(bodyDataPagamento);
             bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
@@ -84,7 +84,7 @@ public class PostRejeitarConsentimentoPagamentoRequest {
     @Step("200 - Autorizar um consentimento de pagamento")
     public Response rejeitarConsentimentoPagamento() throws Exception {
         obterConsentId();
-        bodyAtualizacaoContaDebito bodyAtualizacaoContaDebito = new bodyAtualizacaoContaDebito();
+        BodyAtualizacaoContaDebito bodyAtualizacaoContaDebito = new BodyAtualizacaoContaDebito();
         bodyAtualizacaoContaDebito.setIspb(ispb);
         bodyAtualizacaoContaDebito.setIssuer(issuer);
         bodyAtualizacaoContaDebito.setNumber(number);
@@ -97,7 +97,7 @@ public class PostRejeitarConsentimentoPagamentoRequest {
     @Step("200 - Autorizar um consentimento de pagamento")
     public Response rejeitarConsentimentoPagamentoRejeitado() throws Exception {
         rejeitarConsentimentoPagamento();
-        bodyAtualizacaoContaDebito bodyAtualizacaoContaDebito = new bodyAtualizacaoContaDebito();
+        BodyAtualizacaoContaDebito bodyAtualizacaoContaDebito = new BodyAtualizacaoContaDebito();
         bodyAtualizacaoContaDebito.setIspb(ispb);
         bodyAtualizacaoContaDebito.setIssuer(issuer);
         bodyAtualizacaoContaDebito.setNumber(number);

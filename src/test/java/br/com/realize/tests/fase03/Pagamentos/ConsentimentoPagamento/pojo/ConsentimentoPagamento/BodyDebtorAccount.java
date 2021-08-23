@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento;
 
-public class bodyDebtorAccount {
+public class BodyDebtorAccount {
 
     private String ispb;
     private String issuer;

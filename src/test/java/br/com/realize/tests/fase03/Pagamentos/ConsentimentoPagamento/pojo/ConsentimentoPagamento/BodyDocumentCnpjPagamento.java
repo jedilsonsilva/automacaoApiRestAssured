@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento;
 
-public class bodyDocumentCnpjPagamento {
+public class BodyDocumentCnpjPagamento {
 
     private String identification;
     private String rel;

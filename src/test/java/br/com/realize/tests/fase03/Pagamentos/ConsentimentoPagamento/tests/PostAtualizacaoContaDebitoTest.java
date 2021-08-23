@@ -26,7 +26,6 @@ public class PostAtualizacaoContaDebitoTest extends BaseTest {
 
     PostAtualizacaoContaDebitoRequest postAtualizacaoContaDebitoRequest = new PostAtualizacaoContaDebitoRequest();
 
-
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase03.class})

@@ -1,5 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.requests;
 
+import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.factory.ConsentimentoPagamentoDataFactory;
 import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento.*;
 import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
@@ -7,7 +8,6 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import java.util.Date;
 import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
@@ -26,42 +26,8 @@ public class PostConsentimentoPagamentoRequest {
 
     public Response inserirPedidoConsetimentoPagamento() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-          bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-            bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-                bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-                bodyDocumentCpfPagamento.setRel("CPF");
-          bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-            bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-                bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-                bodyDocumentCnpjPagamento.setRel("CNPJ");
-          bodyDataPagamento.setCreditor(bodyCreditor);
-            bodyCreditor.setPersonType("PESSOA_NATURAL");
-            bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
-            bodyCreditor.setName("Ana Maria");
-          bodyDataPagamento.setPayment(bodyPayment);
-            bodyPayment.setType("PIX");
-            bodyPayment.setDate(DataUtils.getDateTime());
-            bodyPayment.setCurrency("BRL");
-            bodyPayment.setAmount("100000.12");
-          bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-            bodyDebtorAccount.setIspb("27351731");
-            bodyDebtorAccount.setIssuer("1111");
-            bodyDebtorAccount.setNumber("0006225246");
-            bodyDebtorAccount.setAccountType("TRAN");
-
-
-            return  given()
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
+        return  given()
                     .header("Authorization", token)
                     .contentType("application/json")
                     .header("x-idempotency-key", idempotency)
@@ -73,40 +39,7 @@ public class PostConsentimentoPagamentoRequest {
 
     public Response idempotencyUsadoDadosDiferentes() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
-        bodyCreditor.setName("Ana Maria");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("0006225246");
-        bodyDebtorAccount.setAccountType("TRAN");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return  given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -119,40 +52,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("404 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response pathInvalido() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj(geradorCpfCnpjRG.geraCPF());
-        bodyCreditor.setName("Ana Maria");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given().log().body()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -195,40 +95,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("403 - O token tem escopo incorreto ou uma política de segurança foi violada.")
     public Response politicaSegurancaVioalada() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -240,40 +107,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("404 - O recurso solicitado não existe ou não foi implementado.")
     public Response recursoInexistente() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -285,41 +119,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("405 - O consumidor tentou acessar o recurso com um método não suportado.")
     public Response metodoNaoSuportado() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return  given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -332,40 +132,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
     public Response acceptDiferente() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -378,40 +145,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("415 - O formato do payload não é um formato suportado.")
     public Response payloadNaoSuportado() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("text/plain")
@@ -437,40 +171,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("422 - A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes..")
     public Response impossivelProcessarInstrucoes() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -483,40 +184,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("429 - A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido.")
     public Response muitasSolicitacoesFeitas() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -528,15 +196,15 @@ public class PostConsentimentoPagamentoRequest {
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response requisicaoMalFormada() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = new BodyConsentimentoPagamento();
+        BodyDataPagamento bodyDataPagamento = new BodyDataPagamento();
+        BodyDocumentCpfPagamento bodyDocumentCpfPagamento = new BodyDocumentCpfPagamento();
+        BodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new BodyDocumentCnpjPagamento();
+        BodyBusinessEntityPagamento bodyBusinessEntityPagamento = new BodyBusinessEntityPagamento();
+        BodyLoggedUserPagamento bodyLoggedUserPagamento = new BodyLoggedUserPagamento();
+        BodyCreditor bodyCreditor = new BodyCreditor();
+        BodyPayment bodyPayment = new BodyPayment();
+        BodyDebtorAccount bodyDebtorAccount = new BodyDebtorAccount();
 
         bodyConsentimentoPagamento.setData(bodyDataPagamento);
         bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
@@ -573,40 +241,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response informacoesObrigatorias() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .contentType("application/json")
                 .header("x-idempotency-key", idempotency)
@@ -617,41 +252,7 @@ public class PostConsentimentoPagamentoRequest {
     @Step("500 - Ocorreu um erro no gateway da API ou no microsserviço.")
     public Response erroGateway() throws Exception {
 
-        bodyConsentimentoPagamento bodyConsentimentoPagamento = new bodyConsentimentoPagamento();
-        bodyDataPagamento bodyDataPagamento = new bodyDataPagamento();
-        bodyDocumentCpfPagamento bodyDocumentCpfPagamento = new bodyDocumentCpfPagamento();
-        bodyDocumentCnpjPagamento bodyDocumentCnpjPagamento = new bodyDocumentCnpjPagamento();
-        bodyBusinessEntityPagamento bodyBusinessEntityPagamento = new bodyBusinessEntityPagamento();
-        bodyLoggedUserPagamento bodyLoggedUserPagamento = new bodyLoggedUserPagamento();
-        bodyCreditor bodyCreditor = new bodyCreditor();
-        bodyPayment bodyPayment = new bodyPayment();
-        bodyDebtorAccount bodyDebtorAccount = new bodyDebtorAccount();
-
-        bodyConsentimentoPagamento.setData(bodyDataPagamento);
-        bodyDataPagamento.setLoggedUser(bodyLoggedUserPagamento);
-        bodyLoggedUserPagamento.setDocument(bodyDocumentCpfPagamento);
-        bodyDocumentCpfPagamento.setIdentification(geradorCpfCnpjRG.geraCPF());
-        bodyDocumentCpfPagamento.setRel("CPF");
-        bodyDataPagamento.setBusinessEntity(bodyBusinessEntityPagamento);
-        bodyBusinessEntityPagamento.setDocument(bodyDocumentCnpjPagamento);
-        bodyDocumentCnpjPagamento.setIdentification(geradorCpfCnpjRG.geraCNPJ());
-        bodyDocumentCnpjPagamento.setRel("CNPJ");
-        bodyDataPagamento.setCreditor(bodyCreditor);
-        bodyCreditor.setPersonType("PESSOA_NATURAL");
-        bodyCreditor.setCpfCnpj("");
-        bodyCreditor.setName("");
-        bodyDataPagamento.setPayment(bodyPayment);
-        bodyPayment.setType("PIX");
-        bodyPayment.setDate(DataUtils.getDateTime());
-        bodyPayment.setCurrency("BRL");
-        bodyPayment.setAmount("100000.12");
-        bodyDataPagamento.setDebtorAccount(bodyDebtorAccount);
-        bodyDebtorAccount.setIspb("12345678");
-        bodyDebtorAccount.setIssuer("1774");
-        bodyDebtorAccount.setNumber("1234567890");
-        bodyDebtorAccount.setAccountType("CACC");
-
-
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosConsentId();
         return given()
                 .header("Authorization", token)
                 .contentType("application/json")

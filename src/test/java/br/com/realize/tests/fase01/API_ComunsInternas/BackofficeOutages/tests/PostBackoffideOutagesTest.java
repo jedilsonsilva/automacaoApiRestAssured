@@ -36,7 +36,7 @@ public class PostBackoffideOutagesTest extends BaseTest{
         public void testIncluirIndisponibilidade() throws Exception {
                 postBackoffideOutagesRequest.inserirIndisponibilidade()
                     .then()
-                    .log().all()
+                    .log().body()
                     .statusCode(200);
         }
         @Test

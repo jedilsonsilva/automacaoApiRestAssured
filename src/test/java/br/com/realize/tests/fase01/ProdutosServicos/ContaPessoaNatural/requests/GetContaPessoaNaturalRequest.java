@@ -2,11 +2,11 @@ package br.com.realize.tests.fase01.ProdutosServicos.ContaPessoaNatural.requests
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-
 import static io.restassured.RestAssured.given;
 
-
 public class GetContaPessoaNaturalRequest {
+
+    String url = "/products-services/v1/personal-accounts";
 
     public String obterLinkSelfContaNatural() {
         return obterInformacoesContaPessoaNatural()
@@ -21,7 +21,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
 
     @Step("Número da página informado é maior que o número de páginas calculadas.")
@@ -31,7 +31,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 10)
                 .queryParam("page-size", "10")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API")
     public Response pathInvalido() {
@@ -40,7 +40,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("/products-services/v1/personal-accountss");
+                .get(url + "s");
     }
     @Step("O número da página informado é zero.")
     public Response numeroPaginaZero() {
@@ -49,7 +49,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 0)
                 .queryParam("page-size", "10")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("O número da página informado contém letras ou caracteres especiais.")
     public Response numeroPaginaInvalido() {
@@ -58,7 +58,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", -8)
                 .queryParam("page-size", "10")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("O tamanho da página informado é zero.")
     public Response tamanhoPaginaZero() {
@@ -67,7 +67,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "0")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("O tamanho da página informado contém letras ou caracteres especiais.")
     public Response tamanhoPaginaInvalido() {
@@ -76,7 +76,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "1abc#")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("O tamanho da página informado é superior ao valor 1000.")
     public Response tamanhoPaginaSuperior() {
@@ -85,7 +85,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "1001")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("O tamanho da página informado é inferior a 11.")
     public Response tamanhoPaginaInveriorDez() {
@@ -94,7 +94,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "5")
                 .when()
-                .get("/products-services/v1/personal-accounts");
+                .get(url);
     }
     @Step("Método não suportado para a o endpoint informado")
     public Response metodoNaoSuportado() {
@@ -103,7 +103,7 @@ public class GetContaPessoaNaturalRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .post("/products-services/v1/personal-accounts");
+                .post(url);
     }
 }
 

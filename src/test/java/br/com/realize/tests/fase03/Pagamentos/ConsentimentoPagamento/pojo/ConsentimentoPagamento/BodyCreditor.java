@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento;
 
-public class bodyCreditor {
+public class BodyCreditor {
 
     private String personType;
     private String cpfCnpj;

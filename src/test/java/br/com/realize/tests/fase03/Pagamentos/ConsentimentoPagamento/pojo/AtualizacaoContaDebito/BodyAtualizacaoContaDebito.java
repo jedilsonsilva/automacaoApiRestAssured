@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.AtualizacaoContaDebito;
 
-public class bodyAtualizacaoContaDebito {
+public class BodyAtualizacaoContaDebito {
 
     private String ispb;
     private String issuer;

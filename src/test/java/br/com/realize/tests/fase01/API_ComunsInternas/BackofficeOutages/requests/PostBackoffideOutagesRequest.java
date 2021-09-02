@@ -6,17 +6,22 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
-
 public class PostBackoffideOutagesRequest {
-    String url = "backoffice/v1/outage";
-    Indisponibilidade bodyIndisponibilidade = IndisponibilidadeDataFactory.dadosIndisponibilidade();
-    Indisponibilidade bodyIndisponibilidadeDataInferiorDataAtual = IndisponibilidadeDataFactory.dadosIndisponibilidadeinserirOutageInferiorDataHoraAtual();
-    Indisponibilidade bodyIndisponibilidadeIspartialTrue = IndisponibilidadeDataFactory.dadosIndisponibilidadeInserirIsPartialTrue();
-    Indisponibilidade bodyIndisponibilidadeCamposObrigatorios = IndisponibilidadeDataFactory.dadosIndisponibilidadeInserirCampoObrigatorioNaoPreenchido();
+    String url = "backoffice/v1/outages";
 
     @Step("Inserir indisponibilidade.")
     public Response inserirIndisponibilidade() {
-        return given().log().body()
+        Indisponibilidade bodyIndisponibilidade = IndisponibilidadeDataFactory.dadosIndisponibilidade();
+        return given()
+                .body(bodyIndisponibilidade)
+                .when()
+                .post(url);
+        //Obs.: Quando o registro foi incluído com sucesso, retornar a mensagem: "Inclusão do registro realizada com sucesso".
+    }
+    @Step("Inserir indisponibilidade.")
+    public Response inserirIndisponibilidadeContrato() {
+        Indisponibilidade bodyIndisponibilidade = IndisponibilidadeDataFactory.dadosIndisponibilidadeContrato();
+        return given()
                 .body(bodyIndisponibilidade)
                 .when()
                 .post(url);
@@ -24,6 +29,7 @@ public class PostBackoffideOutagesRequest {
     }
     @Step("Inserir indisponibilidade informando a outageTime inferior a data atual.")
     public Response inserirOutageInferiorDataHoraAtual() {
+        Indisponibilidade bodyIndisponibilidadeDataInferiorDataAtual = IndisponibilidadeDataFactory.dadosIndisponibilidadeinserirOutageInferiorDataHoraAtual();
         return given()
                 .body(bodyIndisponibilidadeDataInferiorDataAtual)
                 .when()
@@ -34,6 +40,7 @@ public class PostBackoffideOutagesRequest {
 
     @Step("Inserir indisponibilidade com a flag 'isPartial' igual a 'true'.")
     public Response inserirIsPartialTrue() {
+        Indisponibilidade bodyIndisponibilidadeIspartialTrue = IndisponibilidadeDataFactory.dadosIndisponibilidadeInserirIsPartialTrue();
         return given()
                 .body(bodyIndisponibilidadeIspartialTrue)
                 .when()
@@ -42,6 +49,7 @@ public class PostBackoffideOutagesRequest {
     }
     @Step("Inserir indisponibilidade com a flag 'isPartial' igual a 'true' e o campo 'unavailableEndpoints' não preenchido.")
     public Response inserirCampoObrigatorioNaoPreenchido() {
+        Indisponibilidade bodyIndisponibilidadeCamposObrigatorios = IndisponibilidadeDataFactory.dadosIndisponibilidadeInserirCampoObrigatorioNaoPreenchido();
         return given()
                 .body(bodyIndisponibilidadeCamposObrigatorios)
                 .when()
@@ -53,6 +61,7 @@ public class PostBackoffideOutagesRequest {
 
     @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API")
     public Response pathInvalido() {
+        Indisponibilidade bodyIndisponibilidade = (Indisponibilidade) IndisponibilidadeDataFactory.dadosIndisponibilidade();
         return given()
                 .body(bodyIndisponibilidade)
                 .when()

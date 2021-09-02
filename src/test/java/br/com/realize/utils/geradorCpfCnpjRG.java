@@ -73,7 +73,7 @@ public class geradorCpfCnpjRG {
 
         numeroGerado = numerosContatenados+nDigResult;
 
-        System.out.println("CPF Gerado " + numeroGerado);
+    //    System.out.println("CPF Gerado " + numeroGerado);
 
         return numeroGerado;
     }//fim do metodo geraCPF
@@ -204,12 +204,12 @@ public class geradorCpfCnpjRG {
         return numeroGerado;
     }
 
-    public class GeraNumero {
+    public static class geraNumero {
         String retorno;
         String digitos = "99";
         Random r = new Random();
 
-        public GeraNumero() {
+        public geraNumero() {
             retorno = nDDD() + nPrefixo() + nFinal();
         }
 
@@ -244,7 +244,17 @@ public class geradorCpfCnpjRG {
 
         return resultadoRG;
     }*/
+   public static void numeroAleatorio() {
 
+       //instância um objeto da classe Random usando o construtor padrão
+       Random gerador = new Random();
+
+       //imprime sequência de 10 números inteiros aleatórios
+       for (int i = 0; i < 10; i++) {
+           System.out.println(gerador.nextInt());
+            }
+        }
+    }
 }
-}
+
 

@@ -7,79 +7,59 @@
       "properties": {
         "outages": {
           "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "outageTime": {
-                  "type": "string"
-                },
-                "duration": {
-                  "type": "string"
-                },
-                "explanation": {
-                  "type": "string"
-                },
-                "unavailableEndpoints": {
-                  "type": "array",
-                  "items": [
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "inclusitionTime": {
-                  "type": "array",
-                  "items": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "integer"
-                    }
-                  ]
-                },
-                "partial": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "id",
-                "outageTime",
-                "duration",
-                "explanation",
-                "unavailableEndpoints",
-                "inclusitionTime",
-                "partial"
-              ]
-            }
-          ]
+          "items": {}
         }
       },
       "required": [
         "outages"
       ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": ["null", "string"]
+        },
+        "first": {
+          "type":["null", "string"]
+        },
+        "prev": {
+          "type": ["null", "string"]
+        },
+        "next": {
+          "type": ["null", "string"]
+        },
+        "last": {
+          "type": ["null", "string"]
+        }
+      },
+      "required": [
+        "self",
+        "first",
+        "prev",
+        "next",
+        "last"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "totalRecords": {
+          "type": "integer"
+        },
+        "totalPages": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "totalRecords",
+        "totalPages"
+      ]
     }
   },
   "required": [
-    "data"
+    "data",
+    "links",
+    "meta"
   ]
 }

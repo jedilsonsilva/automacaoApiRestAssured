@@ -1,5 +1,7 @@
 package br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.requests;
 
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.factory.IndisponibilidadeDataFactory;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.pojo.Indisponibilidade;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -16,26 +18,19 @@ public class PutBackoffideOutagesRequest {
     int qtdHoras = fake.number().numberBetween(01, 23);
     String explanation = fake.backToTheFuture().character();
     String idPut = obterId();
+    String url = "backoffice/v1/outages";
+
     public String obterId() {
+        Indisponibilidade bodyIndisponibilidade = IndisponibilidadeDataFactory.dadosIndisponibilidade();
         String id = given()
-                .body("{\n" +
-                        "\"duration\": \"P"+qtdDias+"DT"+qtdHoras+"H\",\n" +
-                        "  \"explanation\": \"string\",\n" +
-                        "  \"outageTime\": \"2021-12-10T06:09:37Z\",\n" +
-                        "  \"partial\": true,\n" +
-                        "  \"unavailableEndpoints\": [\n" +
-                        "    \"string\"\n" +
-                        "  ],\n" +
-                        "  \"isPartial\": false" +
-                        "}")
+                .body(bodyIndisponibilidade)
                 .when()
-                .post("backoffice/v1/outage")
+                .post(url)
                 .then()
                 .statusCode(200)
                 .extract().path("id");
         return id;
     }
-
 
     @Step("Alterar indisponibilidade.")
     public Response alterarIndisponibilidade() {
@@ -55,7 +50,7 @@ public class PutBackoffideOutagesRequest {
                         "}")
                 .when()
                 .log().all()
-                .put("backoffice/v1/outage");
+                .put(url);
         //Obs.: Quando o registro foi incluído com sucesso, retornar a mensagem: "Inclusão do registro realizada com sucesso".
     }
     @Step("Inserir indisponibilidade informando a outageTime inferior a data atual.")
@@ -74,7 +69,7 @@ public class PutBackoffideOutagesRequest {
                         "  \"isPartial\": true\n" +
                         "}")
                 .when()
-                .put("backoffice/v1/outage");
+                .put(url);
         /*4) "Data e hora da indisponibilidade inferior a data atual - campo outageTime" (inclusão/alteração):
          Quando ocorrer este erro, retornar a mensagem "A data e hora da indisponibilidade deve ser maior que a data/hora atual." e o código de erro "400".*/
     }
@@ -95,7 +90,7 @@ public class PutBackoffideOutagesRequest {
                         "  \"isPartial\": true\n" +
                         "}")
                 .when()
-                .put("backoffice/v1/outage");
+                .put(url);
         // Deve-se informar quais são os endpoints indisponíveis para este agendamento no campo "unavailableEndpoints".
     }
     @Step("Inserir indisponibilidade com a flag 'isPartial' igual a 'true' e o campo 'unavailableEndpoints' não preenchido.")
@@ -114,7 +109,7 @@ public class PutBackoffideOutagesRequest {
                         "  \"isPartial\": true\n" +
                         "}")
                 .when()
-                .put("backoffice/v1/outage");
+                .put(url);
     }
     /*1) "Campo obrigatório não encontrado" (inclusão/alteração): Quando um campo "obrigatório" não for informado,
     retornar a mensagem de erro "O campo obrigatório <nome do campo> não foi preenchido." e o código de erro "400" para o endpoint.
@@ -137,7 +132,7 @@ public class PutBackoffideOutagesRequest {
                         "  \"isPartial\": true\n" +
                         "}")
                 .when()
-                .post("backoffice/v1/outagess");
+                .post(url+"s");
     }
 
 }

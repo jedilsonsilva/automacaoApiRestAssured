@@ -85,4 +85,16 @@ public Response dadosChavePix() throws SQLException, ClassNotFoundException {
             .extract().response();
     return response;
 }
-}
+    public Response dadosConsentimento() throws SQLException, ClassNotFoundException {
+        gerarToken();
+        obterDadosContaSaldo();
+        Response response = (Response) given()
+                .header("Authorization", "Bearer " + token)
+                .contentType("application/json")
+                .when()
+                .get("https://api-int-dev.realizecfi.io/orbi-bank-account-manager/accounts/" + id)
+                .then()
+                .statusCode(200)
+                .extract().response();
+        return response;
+}}

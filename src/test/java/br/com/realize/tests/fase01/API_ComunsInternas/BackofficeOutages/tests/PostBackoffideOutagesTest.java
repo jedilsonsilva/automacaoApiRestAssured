@@ -18,6 +18,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
@@ -35,9 +36,11 @@ public class PostBackoffideOutagesTest extends BaseTest{
         @DisplayName("Validar a inclusão de indisponibilidade")
         public void testIncluirIndisponibilidade() throws Exception {
                 postBackoffideOutagesRequest.inserirIndisponibilidade()
-                    .then()
-                    .log().body()
-                    .statusCode(200);
+                    .then().log().body()
+                    .statusCode(200)
+                    .time(lessThan(4L), TimeUnit.SECONDS)
+                    .body("id", not(empty()));
+
         }
         @Test
         @Severity(SeverityLevel.NORMAL)
@@ -88,8 +91,8 @@ public class PostBackoffideOutagesTest extends BaseTest{
         @Category({Contract.class, AllTests.class, fase01.class})
         @DisplayName("Garantir o contrato de inclusão de indisponibilidade")
         public void testGarantirContratosAtendimentoEletronico() throws Exception {
-                postBackoffideOutagesRequest.inserirIndisponibilidade()
-                    .then()
+                postBackoffideOutagesRequest.inserirIndisponibilidadeContrato()
+                    .then().log().all()
                     .statusCode(200)
                     .assertThat().body(matchesJsonSchema(
                     new File(Utils.getContractsBasePath("fase01/API_ComunsInternas/BackofficeOutages", "PostBackofficeOutages"))));

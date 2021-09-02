@@ -136,7 +136,7 @@ public class GetBackoffideOutagesTest extends BaseTest{
                     .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
-                    .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
+                    .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (6)."));
         }
         @Test
         @Severity(SeverityLevel.NORMAL)

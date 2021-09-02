@@ -1,5 +1,7 @@
 package br.com.realize.utils;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -25,6 +27,18 @@ public class DataUtils {
         return format.format(data);
     }
 
+
+    public static String getDataFormatadaIndisponibilidade(Date data) {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        return format.format(data);
+     //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+
+    }
+    public static String getDataIndisponibilidade(Integer qtdDias){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, qtdDias);
+        return getDataFormatadaIndisponibilidade(cal.getTime());
+    }
     public static Object getDataHoraAtual(){
         // data/hora atual
         LocalDateTime agora = LocalDateTime.now();

@@ -15,7 +15,7 @@
           "type": "string"
         },
         "statusUpdateDateTime": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "status": {
           "type": "string"

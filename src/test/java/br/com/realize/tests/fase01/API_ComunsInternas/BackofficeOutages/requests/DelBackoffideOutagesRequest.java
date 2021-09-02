@@ -1,5 +1,7 @@
 package br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.requests;
 
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.factory.IndisponibilidadeDataFactory;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.pojo.Indisponibilidade;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -13,23 +15,15 @@ public class DelBackoffideOutagesRequest {
     Faker fake = new Faker(new Locale("pt-br"));
     int qtdDias = fake.number().numberBetween(01, 100);
     int qtdHoras = fake.number().numberBetween(01, 23);
+    String url = "backoffice/v1/outages/";
 
     public String obterId() {
-       String id = given()
-                .body("{\n" +
-                        "\"duration\": \"P"+qtdDias+"DT"+qtdHoras+"H\",\n" +
-                        "  \"explanation\": \"string\",\n" +
-                        "  \"outageTime\": \"2021-12-10T06:09:37Z\",\n" +
-                        "  \"partial\": true,\n" +
-                        "  \"unavailableEndpoints\": [\n" +
-                        "    \"string\"\n" +
-                        "  ],\n" +
-                        "  \"isPartial\": false" +
-                        "}")
+        Indisponibilidade bodyIndisponibilidade = IndisponibilidadeDataFactory.dadosIndisponibilidade();
+        String id = given()
+                .body(bodyIndisponibilidade)
                 .when()
-                .post("backoffice/v1/outage")
+                .post(url)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .extract().path("id");
         return id;
@@ -39,9 +33,8 @@ public class DelBackoffideOutagesRequest {
     public Response deletarIndisponibilidade() {
         String id = obterId();
         return given()
-                .log().all()
                 .when()
-                .delete("backoffice/v1/outage/"+id);
+                .delete(url + id);
     }
 }
 

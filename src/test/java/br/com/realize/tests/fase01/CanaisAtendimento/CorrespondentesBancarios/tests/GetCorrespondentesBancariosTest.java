@@ -36,7 +36,7 @@ public class GetCorrespondentesBancariosTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase01.class})
     @DisplayName("Validar o retorno das informações gerais de correspondentes bancários")
-    public void testCorrespondentesBancarios() throws Exception {
+    public void testConsultarCorrespondentesBancarios() throws Exception {
 
         getCorrespondentesBancariosRequest.obterInformacoesCorrespondentesBancarios()
                 .then()

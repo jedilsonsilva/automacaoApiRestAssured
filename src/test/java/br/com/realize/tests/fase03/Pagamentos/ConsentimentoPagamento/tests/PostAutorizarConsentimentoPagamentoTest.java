@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;
+import static br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.factory.ConsentimentoPagamentoDataFactory.*;
+
 
 @Epic("Fase 03")
 @Feature("Pagamento")
@@ -35,10 +37,9 @@ public class PostAutorizarConsentimentoPagamentoTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS);
-        given()
+       given()
                 .when()
-                .get(postAutorizarConsentimentoPagamentoRequest.url
-                        + postAutorizarConsentimentoPagamentoRequest.consentId)
+                .get(url + consentIdParaAutorizar)
                 .then()
                 .body("data.status", equalTo("AUTHORISED"));
     }

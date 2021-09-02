@@ -2,54 +2,40 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string"
-    },
-    "outageTime": {
-      "type": "string"
-    },
     "duration": {
       "type": "string"
     },
     "explanation": {
       "type": "string"
     },
-    "inclusitionTime": {
-      "type": "array",
-      "items": [
-        {
-          "type": "integer"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "integer"
-        },
-        {
-          "type": "integer"
-        }
-      ]
+    "id": {
+      "type": "string"
+    },
+    "inclusionTime": {
+      "type": "string"
+    },
+    "outageTime": {
+      "type": "string"
     },
     "partial": {
       "type": "boolean"
+    },
+    "unavailableEndpoints": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
     }
   },
   "required": [
-    "id",
-    "outageTime",
     "duration",
     "explanation",
-    "inclusitionTime",
-    "partial"
+    "id",
+    "inclusionTime",
+    "outageTime",
+    "partial",
+    "unavailableEndpoints"
   ]
 }

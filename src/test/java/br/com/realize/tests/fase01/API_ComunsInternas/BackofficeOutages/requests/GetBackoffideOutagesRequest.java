@@ -1,19 +1,34 @@
 package br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.requests;
 
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.factory.IndisponibilidadeDataFactory;
+import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.pojo.Indisponibilidade;
 import br.com.realize.utils.DataUtils;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-
-import java.util.Date;
 import java.util.Locale;
-
 import static io.restassured.RestAssured.given;
-
 
 public class GetBackoffideOutagesRequest {
 
     Faker fake = new Faker(new Locale("pt-br"));
+    String url = "backoffice/v1/outages";
+    public static String totalPages;
+
+    public Response obterTotalPages() {
+        Indisponibilidade bodyIndisponibilidade = IndisponibilidadeDataFactory.dadosIndisponibilidade();
+        Response response = (Response)   given()
+                .body(bodyIndisponibilidade)
+                .when()
+                .post(url)
+                .then()
+                .extract().response();
+
+        JsonPath extractor = response.jsonPath();
+        totalPages = extractor.get("meta.totalPages");
+        return response;
+    }
 
     @Step("Obtém as indisponibilidades iniciando a partir da data atual até 7 dias após data de início.")
     public Response obterIndisponibilidadeSemPeriodoInformado() {
@@ -21,7 +36,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Obtém as indisponibilidades previstas a partir da data inicial informada e a data final até 7 dias após da data informada no início.")
     public Response obterIndisponibilidadeSomenteDataInicioInformada() {
@@ -31,27 +46,29 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Obtém as indisponibilidades previstas a partir da data inicial informada e a data final até 7 dias após da data informada no início.")
     public Response obterIndisponibilidadeDataInicialInvalida() {
         return given()
                 .log().all()
-                .queryParam("dateFrom", "2021-05-32")
+                .queryParam("dateFrom", "30-05-2021")
+                .queryParam("dateTo", DataUtils.getDataDiferencaDias(0))
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Obtém as indisponibilidades previstas a partir da data inicial informada e a data final até 7 dias após da data informada no início.")
     public Response obterIndisponibilidadeDataFinalInvalida() {
         return given()
                 .log().all()
-                .queryParam("dateTo", "2021-05-32")
+                .queryParam("dateFrom", "2021-05-20")
+                .queryParam("dateTo", "30-05-2021")
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Obtém as indisponibilidades a partir da data atual até a data final informada.")
     public Response obterIndisponibilidadeDataInicioFimInformadas() {
@@ -62,7 +79,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Obtém as indisponibilidades a partir da data atual até a data final informada.")
     public Response obterIndisponibilidadeDataInicioMaiorDataFim() {
@@ -73,7 +90,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Obtém as indisponibilidades a partir da data atual até a data final informada.")
     public Response obterIndisponibilidadeSomenteDataFimInformada() {
@@ -83,17 +100,17 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
 
 
     @Step("Número da página informado é maior que o número de páginas calculadas..")
     public Response numeroPaginaNaoLocalizado() {
         return given()
-                .queryParam("page", "9rrtrt222")
+                .queryParam("page", 7)
                 .queryParam("page-size", "10")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API")
     public Response pathInvalido() {
@@ -101,7 +118,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "10")
                 .when()
-                .get("backoffice/v1/outages");
+                .get(url+"s");
     }
     @Step("O número da página informado é zero.")
     public Response numeroPaginaZero() {
@@ -109,7 +126,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 0)
                 .queryParam("page-size", "10")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("O número da página informado contém letras ou caracteres especiais.")
     public Response numeroPaginaInvalido() {
@@ -117,7 +134,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", -8)
                 .queryParam("page-size", "10")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("O tamanho da página informado é zero.")
     public Response tamanhoPaginaZero() {
@@ -125,7 +142,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "0")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("O tamanho da página informado contém letras ou caracteres especiais.")
     public Response tamanhoPaginaInvalido() {
@@ -133,7 +150,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "1abc#")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("O tamanho da página informado é superior ao valor 1000.")
     public Response tamanhoPaginaSuperior() {
@@ -141,7 +158,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "1001")
                 .when()
-                .get("backoffice/v1/outage");
+                .get(url);
     }
     @Step("Método não suportado para a o endpoint informado")
     public Response metodoNaoSuportado() {
@@ -149,7 +166,7 @@ public class GetBackoffideOutagesRequest {
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()
-                .post("backoffice/v1/outage");
+                .post(url);
     }
 
     /*public String obterLinkSelfBackofficeOutage() {

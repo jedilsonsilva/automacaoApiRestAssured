@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.given;
 public class GetConsentimentoPagamentoRequest {
 
     static Faker fake = new Faker(new Locale("pt-br"));
-    static String idempotency = String.valueOf(fake.random());
+    String idempotency = fake.hacker().toString();
     static String token = "004904950354";
     String tokenInvalido = "11223344556677";
     String url = "/payments/v1/consents/";
@@ -29,16 +29,15 @@ public class GetConsentimentoPagamentoRequest {
         Response response = (Response)  given()
                 .header("Authorization", token)
                 .contentType("application/json")
-                .header("x-idempotency-key", idempotency)
+                .header("x-idempotency-key", idempotency + geradorCpfCnpjRG.mostraResultado())
                 .body(bodyConsentimentoPagamento)
                 .when()
                 .post(url)
                 .then()
-                .extract().response();
-
+        .extract().response();
         JsonPath extractor = response.jsonPath();
         consentId = extractor.get("data.consentId");
-        System.out.println("O consentId é " + consentId);
+        System.out.println("O consentId do cliente é " + consentId);
         return response;
     }
     @Step("Consultar consentimento para iniciação de pagamento")

@@ -37,9 +37,9 @@ public class GetConsetimentoPagamentoTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("Validar a consulta de consentimento de iniciação de pagamento")
-    public void testConsultarConsentimento() throws Exception {
+    public void testConsultarConsentimentoPagamento() throws Exception {
         getConsentimentoPagamentoRequestRequest.obterConsetimentoPamento()
-                .then().log().body()
+                .then().log().all()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))

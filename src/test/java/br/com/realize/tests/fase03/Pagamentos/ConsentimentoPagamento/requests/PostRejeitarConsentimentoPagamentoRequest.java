@@ -1,6 +1,6 @@
 package br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.requests;
 
-import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.AtualizacaoContaDebito.BodyAtualizacaoContaDebito;
+import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.AuthorizeReject.BodyAuthorize;
 import br.com.realize.tests.fase03.Pagamentos.ConsentimentoPagamento.pojo.ConsentimentoPagamento.*;
 import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
@@ -84,11 +84,11 @@ public class PostRejeitarConsentimentoPagamentoRequest {
     @Step("200 - Autorizar um consentimento de pagamento")
     public Response rejeitarConsentimentoPagamento() throws Exception {
         obterConsentId();
-        BodyAtualizacaoContaDebito bodyAtualizacaoContaDebito = new BodyAtualizacaoContaDebito();
-        bodyAtualizacaoContaDebito.setIspb(ispb);
-        bodyAtualizacaoContaDebito.setIssuer(issuer);
-        bodyAtualizacaoContaDebito.setNumber(number);
-        bodyAtualizacaoContaDebito.setType(type);
+        BodyAuthorize bodyAuthorize = new BodyAuthorize();
+        bodyAuthorize.setIspb(ispb);
+        bodyAuthorize.setIssuer(issuer);
+        bodyAuthorize.setNumber(number);
+        bodyAuthorize.setType(type);
 
          return given()
                 .when()
@@ -97,11 +97,11 @@ public class PostRejeitarConsentimentoPagamentoRequest {
     @Step("200 - Autorizar um consentimento de pagamento")
     public Response rejeitarConsentimentoPagamentoRejeitado() throws Exception {
         rejeitarConsentimentoPagamento();
-        BodyAtualizacaoContaDebito bodyAtualizacaoContaDebito = new BodyAtualizacaoContaDebito();
-        bodyAtualizacaoContaDebito.setIspb(ispb);
-        bodyAtualizacaoContaDebito.setIssuer(issuer);
-        bodyAtualizacaoContaDebito.setNumber(number);
-        bodyAtualizacaoContaDebito.setType(type);
+        BodyAuthorize bodyAuthorize = new BodyAuthorize();
+        bodyAuthorize.setIspb(ispb);
+        bodyAuthorize.setIssuer(issuer);
+        bodyAuthorize.setNumber(number);
+        bodyAuthorize.setType(type);
 
         return given()
                 .when()

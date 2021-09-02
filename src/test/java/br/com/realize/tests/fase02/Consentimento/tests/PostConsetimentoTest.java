@@ -156,7 +156,6 @@ public class PostConsetimentoTest extends BaseTest {
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("O formato do payload não é um formato suportado."))
                 .body("errors.detail", hasItem("Content type 'application/xml;charset=ISO-8859-1' not supported"));
-
     }
     @Ignore
     @Test

@@ -29,7 +29,7 @@ public class DataUtils {
 
 
     public static String getDataFormatadaIndisponibilidade(Date data) {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS-03");
         return format.format(data);
      //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 

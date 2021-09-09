@@ -1,9 +1,9 @@
 package br.com.realize.runners;
 
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.DelBackoffideOutagesTest;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.DelBackofficeOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.GetBackofficeOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.PostBackofficeOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.PutBackofficeOutagesTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest;
@@ -44,10 +44,10 @@ import org.junit.runners.Suite;
         GetEmprestimoPessoaNaturalTest.class,
 //Feature - API's Comuns e Internas
         //Backoffice/Outages
-        GetBackoffideOutagesTest.class,
-        PostBackoffideOutagesTest.class,
-        PutBackoffideOutagesTest.class,
-        DelBackoffideOutagesTest.class,
+        GetBackofficeOutagesTest.class,
+        PostBackofficeOutagesTest.class,
+        PutBackofficeOutagesTest.class,
+        DelBackofficeOutagesTest.class,
 
 //***************FASE 02***************
 

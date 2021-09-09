@@ -1,0 +1,200 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "businessEntity": {
+          "type": "object",
+          "properties": {
+            "document": {
+              "type": "object",
+              "properties": {
+                "identification": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "identification",
+                "rel"
+              ]
+            }
+          },
+          "required": [
+            "document"
+          ]
+        },
+        "consentId": {
+          "type": "string"
+        },
+        "creationDateTime": {
+          "type": "string"
+        },
+        "creditor": {
+          "type": "object",
+          "properties": {
+            "cpfCnpj": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "personType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cpfCnpj",
+            "name",
+            "personType"
+          ]
+        },
+        "debtorAccount": {
+          "type": "object",
+          "properties": {
+            "ispb": {
+              "type": "string"
+            },
+            "issuer": {
+              "type": "integer"
+            },
+            "number": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ispb",
+            "issuer",
+            "number",
+            "type"
+          ]
+        },
+        "expirationDateTime": {
+          "type": "string"
+        },
+        "loggedUser": {
+          "type": "object",
+          "properties": {
+            "document": {
+              "type": "object",
+              "properties": {
+                "identification": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "identification",
+                "rel"
+              ]
+            }
+          },
+          "required": [
+            "document"
+          ]
+        },
+        "payment": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "amount",
+            "currency",
+            "date",
+            "type"
+          ]
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusUpdateDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "businessEntity",
+        "consentId",
+        "creationDateTime",
+        "creditor",
+        "debtorAccount",
+        "expirationDateTime",
+        "loggedUser",
+        "payment",
+        "status",
+        "statusUpdateDateTime"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "first": {
+          "type": "string"
+        },
+        "last": {
+          "type": "string"
+        },
+        "next": {
+          "type": "string"
+        },
+        "prev": {
+          "type": "string"
+        },
+        "self": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "first",
+        "last",
+        "next",
+        "prev",
+        "self"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "requestDateTime": {
+          "type": "string"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "totalRecords": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "requestDateTime",
+        "totalPages",
+        "totalRecords"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

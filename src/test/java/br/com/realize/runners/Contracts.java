@@ -1,10 +1,10 @@
 package br.com.realize.runners;
 
 import br.com.realize.suites.Contract;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.DelBackoffideOutagesTest;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.GetBackoffideOutagesTest;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PostBackoffideOutagesTest;
-import br.com.realize.tests.fase01.API_ComunsInternas.BackofficeOutages.tests.PutBackoffideOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.DelBackofficeOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.GetBackofficeOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.PostBackofficeOutagesTest;
+import br.com.realize.tests.fase01.apiComunsInternas.backofficeOutages.tests.PutBackofficeOutagesTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoEletronico.tests.GetAtendimentoEletronicoTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.AtendimentoTelefonico.tests.GetAtendimentoTelefonicoTest;
 import br.com.realize.tests.fase01.CanaisAtendimento.CorrespondentesBancarios.tests.GetCorrespondentesBancariosTest;
@@ -21,8 +21,6 @@ import br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentifica
 import br.com.realize.tests.fase02.Contas.Limites.tests.GetLimiteTest;
 import br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest;
 import br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest;
-import br.com.realize.tests.auth.tests.PostAuthTest;
-import br.com.realize.tests.base.tests.BaseTest;
 
 import br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest;
 import br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest;
@@ -47,10 +45,10 @@ import org.junit.runners.Suite;
         GetEmprestimoPessoaNaturalTest.class,
 //Feature - API's Comuns e Internas
         //Backoffice/Outages
-        GetBackoffideOutagesTest.class,
-        PostBackoffideOutagesTest.class,
-        PutBackoffideOutagesTest.class,
-        DelBackoffideOutagesTest.class,
+        GetBackofficeOutagesTest.class,
+        PostBackofficeOutagesTest.class,
+        PutBackofficeOutagesTest.class,
+        DelBackofficeOutagesTest.class,
 
 //***************FASE 02***************
 

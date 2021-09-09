@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "outageTime": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "unavailableEndpoints": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "inclusionTime": {
+      "type": "string"
+    },
+    "partial": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "outageTime",
+    "duration",
+    "explanation",
+    "unavailableEndpoints",
+    "inclusionTime",
+    "partial"
+  ]
+}

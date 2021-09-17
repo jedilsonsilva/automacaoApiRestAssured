@@ -16,7 +16,7 @@ public class DelBackofficeOutagesRequest {
                 .when()
                 .delete(urlOutages + idParaDeletar);
     }
-    @Step("Deletar indisponibilidade")
+    @Step("Deletar indisponibilidade informando um Id de uma indisponibilidade já excluída")
     public Response deletarIndisponibilidadeJaExcluido() {
         IndisponibilidadeDataFactory.obterDadosParaDeletarIndisponibilidade();
          given()
@@ -26,7 +26,7 @@ public class DelBackofficeOutagesRequest {
                  .when()
                  .delete(urlOutages + idParaDeletar);
     }
-    @Step("Deletar indisponibilidade")
+    @Step("Deletar indisponibilidade informando um Id inválido")
     public Response deletarIndisponibilidadeComIdInvalido() {
         IndisponibilidadeDataFactory.obterDadosParaDeletarIndisponibilidade();
         return given()

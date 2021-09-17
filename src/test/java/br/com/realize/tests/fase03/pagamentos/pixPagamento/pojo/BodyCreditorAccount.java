@@ -1,10 +1,18 @@
 package br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo;
 
 public class BodyCreditorAccount {
+    private String accountType;
     private String ispb;
     private String issuer;
     private String number;
-    private String type;
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
 
     public String getIspb() {
         return ispb;
@@ -28,13 +36,5 @@ public class BodyCreditorAccount {
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 }

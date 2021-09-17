@@ -37,7 +37,7 @@ public class PostConsetimentoPagamentoTest extends BaseTest {
     @DisplayName("Validar a inclusão de consentimento de iniciação de Pagamento")
     public void testValidarInclusaoConsentimentoPagamento() throws Exception {
         postConsentimentoPagamentoRequest.inserirPedidoConsetimentoPagamento()
-                .then()
+                .then().log().all()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))

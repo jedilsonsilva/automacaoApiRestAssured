@@ -36,7 +36,6 @@ public class DelBackofficeOutagesTest extends BaseTest{
                         .then()
                         .time(lessThan(4L), TimeUnit.SECONDS)
                         .statusCode(204);
-
         }
         @Test
         @Severity(SeverityLevel.NORMAL)

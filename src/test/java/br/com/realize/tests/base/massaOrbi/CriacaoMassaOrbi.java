@@ -14,9 +14,19 @@ public class CriacaoMassaOrbi {
 
     GerarTokenOrbi geradorTokenOrbi = new GerarTokenOrbi();
 
+//DADOS DA PESSOA
     public static String cpf;
+    public static String nameCliente;
+    public static int mailingAddressId;
+    public static int personDockId;
+    public static String personId;
+
     String token;
-    String idConta;
+//DADOS DA CONTA
+    static String idConta;
+    public static String agencia;
+    public static String conta;
+//DADOS DO CARTAO
     int externalCardId;
     int dockId;
     String tokenSaldo;
@@ -24,9 +34,8 @@ public class CriacaoMassaOrbi {
     String chaveGerada;
     String qrCode;
     String transactionId;
-    public static int mailingAddressId;
-    public static int personDockId;
-    public static String personId;
+
+
 
     public void gerarToken() {
 
@@ -57,10 +66,12 @@ public class CriacaoMassaOrbi {
         mailingAddressId = extractor.get("person.address.id");
         personDockId = extractor.get("person.dockId");
         personId = extractor.get("person.id");
+        nameCliente = extractor.get("person.name");
         //System.out.println("O CPF do cliente é " + cpf);
 
         return response;
     }
+
     public Response criarConta() {
         criarPessoa();
         gerarToken();
@@ -76,9 +87,24 @@ public class CriacaoMassaOrbi {
                 .extract().response();
         JsonPath extractor = response.jsonPath();
         idConta = extractor.get("id");
-       // System.out.println("O Id da conta é " + idConta);
+        agencia = extractor.get("branch");
+        conta = extractor.get("accountNumber");
         return response;
     }
+    /*public Response criarContaMock() {
+        criarPessoaMock();
+        Response response = (Response) given()
+                .contentType("application/json")
+                .when()
+                .get("http://localhost:4546/orbi-bank-account-manager/accounts/95460fff-48f1-4f95-94df-af84001e0d57")
+                .then()
+                .statusCode(200)
+                .extract().response();
+        JsonPath extractor = response.jsonPath();
+        idConta = extractor.get("id");
+        // System.out.println("O Id da conta é " + idConta);
+        return response;
+    }*/
     public Response dadosConsentimento() throws SQLException, ClassNotFoundException {
         gerarToken();
         criarConta();
@@ -87,7 +113,7 @@ public class CriacaoMassaOrbi {
                 .contentType("application/json")
                 .when()
                 .get("https://api-int-dev.realizecfi.io/orbi-bank-account-manager/accounts/" + idConta)
-                .then()
+                .then().log().all()
                 .statusCode(200)
                 .extract().response();
         return response;

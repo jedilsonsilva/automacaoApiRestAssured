@@ -2,8 +2,8 @@ package br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.requests;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import static br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory.*;
 import static io.restassured.RestAssured.given;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.*;
 
 public class GetConsentimentoPagamentoRequest {
 
@@ -13,7 +13,7 @@ public class GetConsentimentoPagamentoRequest {
                     .header("Authorization", token)
                     .contentType("application/json")
                     .when()
-                    .get(url + consentId);
+                    .get(urlConsetimentoPagamento + consentId);
     }
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response pathInvalido() throws Exception {
@@ -29,7 +29,7 @@ public class GetConsentimentoPagamentoRequest {
                 .header("Authorization", token)
                 .contentType("application/json")
                 .when()
-                .get(url + "testeRequisicaoMalFormada");
+                .get(urlConsetimentoPagamento + "testeRequisicaoMalFormada");
     }
    /* @Step("401 - Cabeçalho de autenticação ausente/inválido ou token inválido")
     public Response tokenInvalido() throws Exception {
@@ -47,7 +47,7 @@ public class GetConsentimentoPagamentoRequest {
                 .header("Authorization", token)
                 .contentType("application/json")
                 .when()
-                .get(url + consentId);
+                .get(urlConsetimentoPagamento + consentId);
     }
     @Step("404 - O recurso solicitado não existe ou não foi implementado.")
     public Response recursoInexistente() throws Exception {
@@ -55,7 +55,7 @@ public class GetConsentimentoPagamentoRequest {
                 .header("Authorization", token)
                 .contentType("application/json")
                 .when()
-                .get(url + consentIdInvalido);
+                .get(urlConsetimentoPagamento + consentIdInvalido);
     }
     @Step("405 - O consumidor tentou acessar o recurso com um método não suportado.")
     public Response metodoNaoSuportado() throws Exception {
@@ -63,7 +63,7 @@ public class GetConsentimentoPagamentoRequest {
                 .header("Authorization", token)
                 .contentType("application/json")
                 .when()
-                .put(url + consentId);
+                .put(urlConsetimentoPagamento + consentId);
     }
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
     public Response acceptDiferente() throws Exception {
@@ -72,7 +72,7 @@ public class GetConsentimentoPagamentoRequest {
                 .contentType("application/json")
                 .accept("application/xml")
                 .when()
-                .get(url + consentId);
+                .get(urlConsetimentoPagamento + consentId);
     }
     @Step("429 - A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido.")
     public Response muitasSolicitacoesFeitas() throws Exception {
@@ -80,7 +80,7 @@ public class GetConsentimentoPagamentoRequest {
                 .header("Authorization", token)
                 .contentType("application/json")
                 .when()
-                .get(url + consentId);
+                .get(urlConsetimentoPagamento + consentId);
     }
     @Step("500 - Ocorreu um erro no gateway da API ou no microsserviço.")
     public Response erroGateway() throws Exception {

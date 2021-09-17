@@ -13,12 +13,12 @@ public class PostBackofficeOutagesRequest {
     @Step("Inserir indisponibilidade.")
     public Response inserirIndisponibilidade() {
         BodyPostIndisponibilidade bodyPostIndisponibilidade = IndisponibilidadeDataFactory.dadosIncluirIndisponibilidade();
-        return given().log().all()
+        return given()
                 .body(bodyPostIndisponibilidade)
                 .when()
                 .post(urlOutages);
     }
-    @Step("Inserir indisponibilidade.")
+    @Step("Garantir o contrato de inclusão de indisponibilidade")
     public Response inserirIndisponibilidadeContrato() {
         BodyPostIndisponibilidade bodyPostIndisponibilidade = IndisponibilidadeDataFactory.dadosIncluirIndisponibilidadeContrato();
         return given()
@@ -73,7 +73,7 @@ public class PostBackofficeOutagesRequest {
     @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API")
     public Response pathInvalido() {
         BodyPostIndisponibilidade bodyPostIndisponibilidade = (BodyPostIndisponibilidade) IndisponibilidadeDataFactory.dadosIncluirIndisponibilidade();
-        return given().log().all()
+        return given()
                 .body(bodyPostIndisponibilidade)
                 .when()
                 .post("backoffice/v3/outages/");

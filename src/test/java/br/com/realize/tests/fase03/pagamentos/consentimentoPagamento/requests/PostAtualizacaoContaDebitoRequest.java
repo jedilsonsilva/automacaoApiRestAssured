@@ -1,11 +1,11 @@
 package br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.requests;
 
-import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory;
+import br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.pojo.AuthorizeReject.BodyAuthorize;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import static br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory.*;
 import static io.restassured.RestAssured.given;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.*;
 
 public class PostAtualizacaoContaDebitoRequest {
 
@@ -17,7 +17,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentId + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentId + "/authorize");
     }
     @Step("404 - Informar um endpoint incorreto")
     public Response pathInvalido() throws Exception {
@@ -27,7 +27,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentId + "/authorizee");
+                .post(urlAuthorizeConsentimentoPagamento + consentId + "/authorizee");
     }
 
     @Step("400 - Solicitar atualização de conta de débito sem informa")
@@ -37,7 +37,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentId + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentId + "/authorize");
     }
     @Step("401 - Informar token inválido")
     public Response tokenInvalido() throws Exception {
@@ -47,7 +47,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentId + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentId + "/authorize");
     }
     @Step("404 - Informar um consentId não cadastrado")
     public Response consentIdNaoEncontrado() throws Exception {
@@ -57,7 +57,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentIdInvalido + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentIdInvalido + "/authorize");
     }
     @Step("409 - Status do consentimento igual a 'AUTHORISED'")
     public Response consentIdAuthorized() throws Exception {
@@ -67,7 +67,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentIdAutorizado + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentId + "/authorize");
     }
     @Step("409 - Status do consentimento igual a 'REJECTED'")
     public Response consentIdRejected() throws Exception {
@@ -77,7 +77,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentId + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentId + "/authorize");
     }
     @Step("409 - Status do consentimento igual a 'CONSUMED'")
     public Response consentIdConsumed() throws Exception {
@@ -87,7 +87,7 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentIdConsumed + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentIdConsumed + "/authorize");
     }
     @Step("412 - Status do consentimento igual a 'CONSUMED'")
     public Response expirationDateTime() throws Exception {
@@ -97,6 +97,6 @@ public class PostAtualizacaoContaDebitoRequest {
                 .contentType("application/json")
                 .body(bodyAuthorize)
                 .when()
-                .post(url + "urn:realizecfi:59e651b8-07ca-465d-ad26-d62f63004791/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + "urn:realizecfi:59e651b8-07ca-465d-ad26-d62f63004791/authorize");
     }
 }

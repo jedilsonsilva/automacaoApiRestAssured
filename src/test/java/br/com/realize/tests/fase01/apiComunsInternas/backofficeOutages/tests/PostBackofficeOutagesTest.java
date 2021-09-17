@@ -33,7 +33,6 @@ import static org.hamcrest.Matchers.*;
 public class PostBackofficeOutagesTest extends BaseTest{
 
         PostBackofficeOutagesRequest postBackofficeOutagesRequest = new PostBackofficeOutagesRequest();
-        DelBackofficeOutagesRequest delBackofficeOutagesRequest = new DelBackofficeOutagesRequest();
 
         @Test
         @Severity(SeverityLevel.NORMAL)
@@ -42,7 +41,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
         public void testIncluirIndisponibilidade() throws Exception {
                 String id;
                 Response response = postBackofficeOutagesRequest.inserirIndisponibilidade()
-                    .then().log().all()
+                    .then()
                     .statusCode(200)
                     .time(lessThan(4L), TimeUnit.SECONDS)
                     .body("id", not(empty()))
@@ -51,7 +50,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 JsonPath extractor = response.jsonPath();
                 id = extractor.get("id");
                 given()
-                        .when().log().all()
+                        .when()
                         .delete(urlOutages + id);
         }
         @Test
@@ -61,7 +60,6 @@ public class PostBackofficeOutagesTest extends BaseTest{
         public void testIncluirIndisponibilidadeDataInferiorAtual() throws Exception {
                 postBackofficeOutagesRequest.inserirOutageInferiorDataHoraAtual()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .time(lessThan(4L), TimeUnit.SECONDS)
                         .body("errors.title", hasItem("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
@@ -75,7 +73,6 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 String id;
                 Response response = postBackofficeOutagesRequest.inserirIsPartialTrueComUnavailableEndpointsPreenchido()
                         .then()
-                        .log().all()
                         .statusCode(200)
                         .time(lessThan(4L), TimeUnit.SECONDS)
 //FOI INCLUIDO A EXCLUSAO DA INDISPONIBILIDADE INCLUÍDA PARA NÃO TER PROBLEMA DE INDISPONIBILIDADE JÁ EXISTENTE NOS OUTROS CASOS DE TESTE.
@@ -83,7 +80,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 JsonPath extractor = response.jsonPath();
                 id = extractor.get("id");
                 given()
-                        .when().log().all()
+                        .when()
                         .delete(urlOutages + id);
         }
         @Test
@@ -106,7 +103,6 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 String id;
                 Response response = postBackofficeOutagesRequest.inserirIsPartialFalseComUnavailableEndpointsPreenchido()
                         .then()
-                        .log().all()
                         .statusCode(200)
                         .time(lessThan(4L), TimeUnit.SECONDS)
 //FOI INCLUIDO A EXCLUSAO DA INDISPONIBILIDADE INCLUÍDA PARA NÃO TER PROBLEMA DE INDISPONIBILIDADE JÁ EXISTENTE NOS OUTROS CASOS DE TESTE.
@@ -114,7 +110,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 JsonPath extractor = response.jsonPath();
                 id = extractor.get("id");
                 given()
-                        .when().log().all()
+                        .when()
                         .delete(urlOutages + id);
         }
         @Test
@@ -125,7 +121,6 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 String id;
                 Response response = postBackofficeOutagesRequest.inserirIsPartialFalseComUnavailableEndpointsVazio()
                         .then()
-                        .log().all()
                         .statusCode(200)
                         .time(lessThan(4L), TimeUnit.SECONDS)
 //FOI INCLUIDO A EXCLUSAO DA INDISPONIBILIDADE INCLUÍDA PARA NÃO TER PROBLEMA DE INDISPONIBILIDADE JÁ EXISTENTE NOS OUTROS CASOS DE TESTE.
@@ -133,7 +128,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 JsonPath extractor = response.jsonPath();
                 id = extractor.get("id");
                 given()
-                        .when().log().all()
+                        .when()
                         .delete(urlOutages + id);
         }
         @Test
@@ -156,7 +151,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
         public void testGarantirContratosInclusaoIndisponibilidade() throws Exception {
                 String id;
                 Response response = postBackofficeOutagesRequest.inserirIndisponibilidadeContrato()
-                    .then().log().all()
+                    .then()
                     .statusCode(200)
                     .time(lessThan(4L), TimeUnit.SECONDS)
                         .assertThat().body(matchesJsonSchema(
@@ -165,7 +160,7 @@ public class PostBackofficeOutagesTest extends BaseTest{
                 JsonPath extractor = response.jsonPath();
                 id = extractor.get("id");
                 given()
-                        .when().log().all()
+                        .when()
                         .delete(urlOutages + id);
         }
 

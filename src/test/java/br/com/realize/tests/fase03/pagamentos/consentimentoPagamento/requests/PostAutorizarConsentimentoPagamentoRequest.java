@@ -1,10 +1,10 @@
 package br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.requests;
 
-import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory;
+import br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.pojo.AuthorizeReject.BodyAuthorize;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import static br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory.*;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.*;
 import static io.restassured.RestAssured.given;
 
 public class PostAutorizarConsentimentoPagamentoRequest {
@@ -15,7 +15,7 @@ public class PostAutorizarConsentimentoPagamentoRequest {
          return given()
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentIdParaAutorizarConsentimento + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentIdParaAutorizarConsentimento + "/authorize");
     }
 
     @Step("409 - Autorizar um consentimento de pagamento que já esteja autorizado")
@@ -24,10 +24,10 @@ public class PostAutorizarConsentimentoPagamentoRequest {
         given()
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentIdAutorizado + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentIdParaAutorizarConsentimento + "/authorize");
         return given()
                 .body(bodyAuthorize)
                 .when()
-                .post(url + consentIdAutorizado + "/authorize");
+                .post(urlAuthorizeConsentimentoPagamento + consentIdParaAutorizarConsentimento + "/authorize");
     }
 }

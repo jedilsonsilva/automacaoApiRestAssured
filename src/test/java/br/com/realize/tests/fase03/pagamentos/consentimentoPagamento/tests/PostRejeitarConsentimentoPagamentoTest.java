@@ -4,7 +4,8 @@ import br.com.realize.runners.fase03;
 import br.com.realize.suites.AllTests;
 import br.com.realize.suites.Healthcheck;
 import br.com.realize.tests.base.tests.BaseTest;
-import static br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory.*;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.consentIdParaRejeitarConsentimento;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.urlConsetimentoPagamento;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.requests.PostRejeitarConsentimentoPagamentoRequest;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -39,8 +40,8 @@ public class PostRejeitarConsentimentoPagamentoTest extends BaseTest {
                 .time(lessThan(4L), TimeUnit.SECONDS);
         given()
                 .when()
-                .get(url + consentId)
-                .then()
+                .get(urlConsetimentoPagamento + consentIdParaRejeitarConsentimento)
+                .then().log().all()
                 .body("data.status", equalTo("REJECTED"));
     }
     @Test

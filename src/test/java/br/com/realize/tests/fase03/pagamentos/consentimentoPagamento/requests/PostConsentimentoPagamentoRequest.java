@@ -1,12 +1,13 @@
 package br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.requests;
 
-import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory;
+import br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.pojo.ConsentimentoPagamento.*;
 import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import static br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.factory.ConsentimentoPagamentoDataFactory.*;
+
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.*;
 import static io.restassured.RestAssured.given;
 
 public class PostConsentimentoPagamentoRequest {
@@ -15,13 +16,13 @@ public class PostConsentimentoPagamentoRequest {
 
     public Response inserirPedidoConsetimentoPagamento() throws Exception {
         BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
-        return  given()
+        return  given().log().body()
                     .header("Authorization", token)
                     .contentType("application/json")
                     .header("x-idempotency-key", idempotencyPagamento)
                     .body(bodyConsentimentoPagamento)
                     .when()
-                    .post(url);
+                    .post(urlConsetimentoPagamento);
     }
     @Step("Inserir um pedido de consentimento de pagamento com um idempotency-key já usado mas com dados diferentes")
 
@@ -33,7 +34,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
 
     @Step("404 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
@@ -45,7 +46,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url + "ss");
+                .post(urlConsetimentoPagamento + "ss");
     }
     /*@Step("401 - Cabeçalho de autenticação ausente/inválido ou token inválido")
     public Response tokenInvalido() throws Exception {
@@ -69,7 +70,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
     @Step("404 - O recurso solicitado não existe ou não foi implementado.")
     public Response recursoInexistente() throws Exception {
@@ -93,7 +94,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .delete(url);
+                .delete(urlConsetimentoPagamento);
 
     }
     @Step("406 - A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8.")
@@ -107,7 +108,7 @@ public class PostConsentimentoPagamentoRequest {
                 .accept("application/xml")
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
     @Step("415 - O formato do payload não é um formato suportado.")
     public Response payloadNaoSuportado() throws Exception {
@@ -133,7 +134,7 @@ public class PostConsentimentoPagamentoRequest {
                 "  </instrucoes>\n" +
                 "</receita>")
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
     @Step("422 - A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes..")
     public Response impossivelProcessarInstrucoes() throws Exception {
@@ -145,7 +146,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
 
     @Step("429 - A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido.")
@@ -158,7 +159,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response requisicaoMalFormada() throws Exception {
@@ -203,7 +204,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
     @Step("400 - A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL.")
     public Response informacoesObrigatorias() throws Exception {
@@ -214,7 +215,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
     @Step("500 - Ocorreu um erro no gateway da API ou no microsserviço.")
     public Response erroGateway() throws Exception {
@@ -226,7 +227,7 @@ public class PostConsentimentoPagamentoRequest {
                 .header("x-idempotency-key", idempotencyPagamento)
                 .body("Body preenchido para simular o erro 500")
                 .when()
-                .post(url);
+                .post(urlConsetimentoPagamento);
     }
 
 }

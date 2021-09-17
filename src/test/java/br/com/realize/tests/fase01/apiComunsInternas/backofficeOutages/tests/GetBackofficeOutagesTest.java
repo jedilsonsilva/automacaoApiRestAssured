@@ -36,7 +36,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testIndisponibilidadeSemPeriodoInformado() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeSemPeriodoInformado()
                     .then()
-                    .log().all()
                     .statusCode(200);
         }
         @Test
@@ -46,17 +45,15 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testIndisponibilidadeSomenteDataInicioInformada() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeSomenteDataInicioInformada()
                         .then()
-                        .log().all()
                         .statusCode(200);
         }
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno de indisponibilidade informando as data inicial e final")
+        @DisplayName("Validar o retorno de indisponibilidade informando as datas inicial e final")
         public void testIndisponibilidadeDataInicioFimInformadas() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeDataInicioFimInformadas()
                         .then()
-                        .log().all()
                         .statusCode(200);
         }
         @Test
@@ -66,7 +63,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testIndisponibilidadeSomenteFimInformada() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeSomenteDataFimInformada()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                         .body("errors[0].detail", equalTo("É preciso informar o parâmetro dataInicio quando se informa o parâmetro dataFim."));
@@ -75,11 +71,10 @@ public class GetBackofficeOutagesTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno de indisponibilidade informando somente a data fim")
+        @DisplayName("Validar o retorno de indisponibilidade informando a data início maior que a data fim")
         public void testIndisponibilidadeDataInicioMaiorDataFim() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeDataInicioMaiorDataFim()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                         .body("errors[0].detail", equalTo("O parâmetro dataFim não pode ser menor que o parâmetro dataInicio."));
@@ -88,34 +83,24 @@ public class GetBackofficeOutagesTest extends BaseTest{
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno de indisponibilidade informando somente a data inicial inválida")
+        @DisplayName("Validar o retorno de indisponibilidade informando a data inicial inválida")
         public void testIndisponibilidadeDataInicialInvalida() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeDataInicialInvalida()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
-                        .body("errors[0].detail", equalTo("O parâmetro dateFrom é inválido."));;
-
-/*2) "Data inicial inválida" (consulta): Quando a data inicial não for uma data válida, retornar a mensagem
-"A data inicial informada é invalida. Deve ser informado yyyy-MM-dd." e o código de erro "400" para o endpoint.
- */
+                        .body("errors[0].detail", equalTo("O parâmetro dateFrom é inválido."));
         }
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({Healthcheck.class, AllTests.class, fase01.class})
-        @DisplayName("Validar o retorno de indisponibilidade informando somente a data inicial inválida")
+        @DisplayName("Validar o retorno de indisponibilidade informando a data final inválida")
         public void testIndisponibilidadeDataFinalInvalida() throws Exception {
                 getBackofficeOutagesRequest.obterIndisponibilidadeDataFinalInvalida()
                         .then()
-                        .log().all()
                         .statusCode(400)
                         .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                         .body("errors[0].detail", equalTo("O parâmetro dateTo é inválido."));
-
-/*3) "Data final inválida" (consulta): Quando a data final não for uma data válida, retornar a mensagem
-"A data final informada é invalida. Deve ser informado yyyy-MM-dd." e o código de erro "400" para o endpoint.
- */
 
         }
         @Test
@@ -136,7 +121,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testNumeroPaginaNaoLocalizado() throws Exception {
                 getBackofficeOutagesRequest.numeroPaginaNaoLocalizado()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) é maior do que o permitido na consulta (1)."));
@@ -148,7 +132,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testPathInvalido() throws Exception {
                 getBackofficeOutagesRequest.pathInvalido()
                     .then()
-                    .log().all()
                     .statusCode(404)
                     .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                     .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
@@ -160,7 +143,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testNumeroPaginaZero() throws Exception {
                 getBackofficeOutagesRequest.numeroPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -172,7 +154,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testNumeroPaginaInvalido() throws Exception {
                 getBackofficeOutagesRequest.numeroPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Número da página inválido."))
                     .body("errors[0].detail", equalTo("O número da página (parâmetro page) informado é inválido. São permitidos valores numéricos com valor mínimo igual a 1."));
@@ -184,7 +165,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testTamanhoPaginaZero() throws Exception {
                 getBackofficeOutagesRequest.tamanhoPaginaZero()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -196,7 +176,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testTamanhoPaginaInvalido() throws Exception {
                 getBackofficeOutagesRequest.tamanhoPaginaInvalido()
                     .then()
-                    .log().all()
                     .statusCode(400)
                     .body("errors[0].title", equalTo("Tamanho da página inválido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é inválido. São permitidos valores numéricos de 10 a 1000."));
@@ -208,7 +187,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testTamanhoPaginaSuperior() throws Exception {
                 getBackofficeOutagesRequest.tamanhoPaginaSuperior()
                     .then()
-                    .log().all()
                     .statusCode(422)
                     .body("errors[0].title", equalTo("O recurso solicitado está acima do permitido."))
                     .body("errors[0].detail", equalTo("O tamanho da página (parâmetro page-size) informado é superior ao limite previsto (1000)."));
@@ -220,7 +198,6 @@ public class GetBackofficeOutagesTest extends BaseTest{
         public void testMetodoNaoSuportado() throws Exception {
                 getBackofficeOutagesRequest.metodoNaoSuportado()
                         .then()
-                        .log().all()
                         .statusCode(405)
                         .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                         .body("errors.detail", hasItem("Request method 'DELETE' not supported"));

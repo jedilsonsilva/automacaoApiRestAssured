@@ -53,8 +53,8 @@ public class GetBackofficeOutagesRequest {
     public Response obterIndisponibilidadeDataInicioFimInformadas() {
         return given()
                 .log().all()
-                .queryParam("dateFrom", "2021-05-20")
-                .queryParam("dateTo", "2021-06-01")
+                .queryParam("dateFrom", "2001-05-20")
+                .queryParam("dateTo", "2029-06-01")
                 .queryParam("page", 1)
                 .queryParam("page-size", "25")
                 .when()

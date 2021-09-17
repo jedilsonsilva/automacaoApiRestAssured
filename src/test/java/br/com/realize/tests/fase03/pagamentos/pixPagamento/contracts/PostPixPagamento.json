@@ -5,28 +5,8 @@
     "data": {
       "type": "object",
       "properties": {
-        "businessEntity": {
-          "type": "object",
-          "properties": {
-            "document": {
-              "type": "object",
-              "properties": {
-                "identification": {
-                  "type": "string"
-                },
-                "rel": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "identification",
-                "rel"
-              ]
-            }
-          },
-          "required": [
-            "document"
-          ]
+        "cnpjInitiator": {
+          "type": "string"
         },
         "consentId": {
           "type": "string"
@@ -34,73 +14,34 @@
         "creationDateTime": {
           "type": "string"
         },
-        "creditor": {
+        "creditorAccount": {
           "type": "object",
           "properties": {
-            "cpfCnpj": {
+            "accountType": {
               "type": "string"
             },
-            "name": {
-              "type": "string"
-            },
-            "personType": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "cpfCnpj",
-            "name",
-            "personType"
-          ]
-        },
-        "debtorAccount": {
-          "type": "object",
-          "properties": {
             "ispb": {
               "type": "string"
             },
             "issuer": {
-              "type": "integer"
+              "type": "string"
             },
             "number": {
               "type": "string"
-            },
-            "type": {
-              "type": "string"
             }
           },
           "required": [
+            "accountType",
             "ispb",
             "issuer",
-            "number",
-            "type"
+            "number"
           ]
         },
-        "expirationDateTime": {
+        "endToEndId": {
           "type": "string"
         },
-        "loggedUser": {
-          "type": "object",
-          "properties": {
-            "document": {
-              "type": "object",
-              "properties": {
-                "identification": {
-                  "type": "string"
-                },
-                "rel": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "identification",
-                "rel"
-              ]
-            }
-          },
-          "required": [
-            "document"
-          ]
+        "localInstrument": {
+          "type": "string"
         },
         "payment": {
           "type": "object",
@@ -110,20 +51,24 @@
             },
             "currency": {
               "type": "string"
-            },
-            "date": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
             }
           },
           "required": [
             "amount",
-            "currency",
-            "date",
-            "type"
+            "currency"
           ]
+        },
+        "paymentId": {
+          "type": "string"
+        },
+        "proxy": {
+          "type": "string"
+        },
+        "rejectionReason": {
+          "type": "string"
+        },
+        "remittanceInformation": {
+          "type": "string"
         },
         "status": {
           "type": "string"
@@ -133,35 +78,35 @@
         }
       },
       "required": [
-        "businessEntity",
+        "cnpjInitiator",
         "consentId",
         "creationDateTime",
-        "creditor",
-        "debtorAccount",
-        "expirationDateTime",
-        "loggedUser",
+        "creditorAccount",
+        "localInstrument",
         "payment",
-        "status",
-        "statusUpdateDateTime"
+        "paymentId",
+        "proxy",
+        "remittanceInformation",
+        "status"
       ]
     },
     "links": {
       "type": "object",
       "properties": {
         "first": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "last": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "next": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "prev": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "self": {
-          "type": "string"
+          "type": ["string", "null"]
         }
       },
       "required": [

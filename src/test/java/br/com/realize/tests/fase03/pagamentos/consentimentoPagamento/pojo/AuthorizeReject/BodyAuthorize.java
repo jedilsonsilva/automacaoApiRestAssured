@@ -5,7 +5,7 @@ public class BodyAuthorize {
     private String ispb;
     private String issuer;
     private String number;
-    private String type;
+    private String accountType;
 
     public String getIspb() {
         return ispb;
@@ -31,11 +31,11 @@ public class BodyAuthorize {
         this.number = number;
     }
 
-    public String getType() {
-        return type;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 }

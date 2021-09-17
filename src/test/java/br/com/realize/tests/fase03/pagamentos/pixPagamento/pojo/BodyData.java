@@ -2,12 +2,21 @@ package br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo;
 
 public class BodyData {
 
+    private String cnpjInitiator;
     private BodyCreditorAccount creditorAccount;
     private String localInstrument;
     private BodyPayment payment;
     private String proxy;
     private String qrCode;
     private String remittanceInformation;
+
+    public String getCnpjInitiator() {
+        return cnpjInitiator;
+    }
+
+    public void setCnpjInitiator(String cnpjInitiator) {
+        this.cnpjInitiator = cnpjInitiator;
+    }
 
     public BodyCreditorAccount getCreditorAccount() {
         return creditorAccount;

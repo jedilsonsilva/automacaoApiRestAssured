@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "cnpjInitiator": {
+          "type": "string"
+        },
+        "consentId": {
+          "type": "string"
+        },
+        "creationDateTime": {
+          "type": "string"
+        },
+        "creditorAccount": {
+          "type": "object",
+          "properties": {
+            "accountType": {
+              "type": "string"
+            },
+            "ispb": {
+              "type": "string"
+            },
+            "issuer": {
+              "type": "string"
+            },
+            "number": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "accountType",
+            "ispb",
+            "issuer",
+            "number"
+          ]
+        },
+        "endToEndId": {
+          "type": "string"
+        },
+        "localInstrument": {
+          "type": "string"
+        },
+        "payment": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "amount",
+            "currency"
+          ]
+        },
+        "paymentId": {
+          "type": "string"
+        },
+        "proxy": {
+          "type": "string"
+        },
+        "rejectionReason": {
+          "type": "string"
+        },
+        "remittanceInformation": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusUpdateDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cnpjInitiator",
+        "consentId",
+        "creationDateTime",
+        "creditorAccount",
+        "localInstrument",
+        "payment",
+        "paymentId",
+        "proxy",
+        "remittanceInformation",
+        "status"
+      ]
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "first": {
+          "type": ["string", "null"]
+        },
+        "last": {
+          "type": ["string", "null"]
+        },
+        "next": {
+          "type": ["string", "null"]
+        },
+        "prev": {
+          "type": ["string", "null"]
+        },
+        "self": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": [
+        "first",
+        "last",
+        "next",
+        "prev",
+        "self"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "requestDateTime": {
+          "type": "string"
+        },
+        "totalPages": {
+          "type": "integer"
+        },
+        "totalRecords": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "requestDateTime",
+        "totalPages",
+        "totalRecords"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ]
+}

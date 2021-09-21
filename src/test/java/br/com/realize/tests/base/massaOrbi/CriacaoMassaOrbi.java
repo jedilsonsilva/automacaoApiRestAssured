@@ -26,7 +26,9 @@ public class CriacaoMassaOrbi {
     static String idConta;
     public static String agencia;
     public static String conta;
-//DADOS DO CARTAO
+    public static String contaAtualizada;
+
+    //DADOS DO CARTAO
     int externalCardId;
     int dockId;
     String tokenSaldo;
@@ -91,34 +93,25 @@ public class CriacaoMassaOrbi {
         conta = extractor.get("accountNumber");
         return response;
     }
-    /*public Response criarContaMock() {
-        criarPessoaMock();
-        Response response = (Response) given()
-                .contentType("application/json")
-                .when()
-                .get("http://localhost:4546/orbi-bank-account-manager/accounts/95460fff-48f1-4f95-94df-af84001e0d57")
-                .then()
-                .statusCode(200)
-                .extract().response();
-        JsonPath extractor = response.jsonPath();
-        idConta = extractor.get("id");
-        // System.out.println("O Id da conta é " + idConta);
-        return response;
-    }*/
-    public Response dadosConsentimento() throws SQLException, ClassNotFoundException {
+    public Response criarContaAtualizadaParaConsentimentoPagamento() {
+        criarPessoa();
         gerarToken();
-        criarConta();
+        BodyConta bodyConta = ContaDataFactory.dadosConta();
         Response response = (Response) given()
                 .header("Authorization", "Bearer " + token)
                 .contentType("application/json")
+                .body(bodyConta)
                 .when()
-                .get("https://api-int-dev.realizecfi.io/orbi-bank-account-manager/accounts/" + idConta)
-                .then().log().all()
-                .statusCode(200)
+                .post("https://api-int-dev.realizecfi.io/orbi-bank-account-manager/v1/accounts/")
+                .then()
+                .statusCode(201)
                 .extract().response();
+        JsonPath extractor = response.jsonPath();
+        idConta = extractor.get("id");
+        agencia = extractor.get("branch");
+        contaAtualizada = extractor.get("accountNumber");
         return response;
     }
-
     public Response criacaoContaOrbiComSaldo() throws SQLException, ClassNotFoundException {
         gerarToken();
         gerarTokenSaldo();

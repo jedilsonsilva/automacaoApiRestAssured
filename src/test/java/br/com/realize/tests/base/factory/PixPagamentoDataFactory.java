@@ -1,7 +1,7 @@
 package br.com.realize.tests.base.factory;
 
-import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.pojo.AuthorizeReject.BodyAuthorize;
-import br.com.realize.tests.fase03.pagamentos.consentimentoPagamento.pojo.ConsentimentoPagamento.BodyConsentimentoPagamento;
+import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.AuthorizeReject.BodyAuthorize;
+import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.ConsentimentoPagamento.BodyConsentimentoPagamento;
 import br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo.BodyCreditorAccount;
 import br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo.BodyData;
 import br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo.BodyPayment;
@@ -10,7 +10,9 @@ import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import java.util.Locale;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.*;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.base.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.base.factory.RejeitarConsentimentoPagamentoPixDataFactory.urlRejectConsentimentoPagamento;
 import static br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi.agencia;
 import static io.restassured.RestAssured.given;
 
@@ -25,12 +27,10 @@ public class PixPagamentoDataFactory {
     public static String currency;
 //VARIAVEIS PARA CENARIO DE SUCESSO
     public static String idempotencyPix = fake.internet().password();
-    public static String consentIdParaTokenPix;
     public static String agenciaParaInicicaoPagamentoPix;
     public static String contaParaInicicaoPagamentoPix;
     public static String consentIdAutorizadoParaPix;
     public static String cnpjConsentimento;
-    public static String numerContaConsentimento;
 //VARIAVEIS PARA CONSENTIMENTO REJEITADO
     public static String idempotencyPixRejeitado = fake.internet().password();
     public static String agenciaParaInicicaoPagamentoPixRejeitado;
@@ -80,7 +80,7 @@ public class PixPagamentoDataFactory {
 
 //DADOS DE CONSENTIMENTO AUTORIZADO
     public static void obterDadosConsentimentoAutorizadoParaPix() throws Exception {
-        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) AutorizacaoConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -145,7 +145,7 @@ public class PixPagamentoDataFactory {
 
 //DADOS DE CONSENTIMENTO REJEITADO
     public static void obterDadosConsentimentoRejeitadoParaPix() throws Exception {
-        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -209,7 +209,7 @@ public class PixPagamentoDataFactory {
 //DADOS DE CONSENTIMENTO AWAITING_AUTHORISATION
 public static void obterDadosConsentimentoAguardandoAutorizacaoParaPix() throws Exception {
 
-    BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+    BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
     Response response = (Response) given()
             .header("Authorization", token)
             .contentType("application/json")
@@ -256,7 +256,7 @@ public static void obterDadosConsentimentoAguardandoAutorizacaoParaPix() throws 
     }
 //DADOS DE CONSENTIMENTO PARA TESTE DE CONTRATO
     public static void obterDadosTesteContrato() throws Exception {
-        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -320,7 +320,7 @@ public static void obterDadosConsentimentoAguardandoAutorizacaoParaPix() throws 
     }
 //DADOS DE PAGAMENTO PIX PATH INVALIDO
     public static void obterDadosConsentimentoAutorizadoParaPixPathInvalido() throws Exception {
-        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")
@@ -385,7 +385,7 @@ public static void obterDadosConsentimentoAguardandoAutorizacaoParaPix() throws 
 //DADOS DE PAGAMENTO PIX REQUISIÇÃO MALFORMADA
 
 public static void obterDadosConsentimentoAutorizadoParaPixRequisicaoMalformada() throws Exception {
-    BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+    BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
     Response response = (Response) given()
             .header("Authorization", token)
             .contentType("application/json")
@@ -453,7 +453,7 @@ public static void obterDadosConsentimentoAutorizadoParaPixRequisicaoMalformada(
 //DADOS DE CONSENTIMENTO AUTORIZADO
 
 public static void obterDadosConsentimentoAutorizadoParaConsultaPix() throws Exception {
-    BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+    BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
     Response response = (Response) given()
             .header("Authorization", token)
             .contentType("application/json")
@@ -549,7 +549,7 @@ public static void obterPaymentIdPix() throws Exception {
     }
 //DADOS DE CONSENTIMENTO PARA TESTE DE CONTRATO NA CONSULTA
     public static void obterDadosTesteContratoConsulta() throws Exception {
-        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoDataFactory.dadosParaCriarConsentId();
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")

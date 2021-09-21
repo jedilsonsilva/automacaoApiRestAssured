@@ -5,7 +5,7 @@ import br.com.realize.tests.base.factory.PixPagamentoDataFactory;
 import br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo.BodyPixPagamento;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoDataFactory.*;
+import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
 import static br.com.realize.tests.base.factory.PixPagamentoDataFactory.*;
 import static br.com.realize.tests.base.factory.PixPagamentoDataFactory.token;
 import static io.restassured.RestAssured.given;

@@ -26,7 +26,7 @@ import static org.hamcrest.Matchers.*;
 @Feature("Criação de Consentimento de pagamento por PiX pelo client da iniciadora")
 @DisplayName("Incluir consentimento de iniciação de pagamento")
 
-public class PostConsetimentoPagamentoTest extends BaseTest {
+public class PostConsentimentoPagamentoTest extends BaseTest {
 
     PostConsentimentoPagamentoRequest postConsentimentoPagamentoRequest = new PostConsentimentoPagamentoRequest();
 

@@ -122,8 +122,11 @@
                                                 "townName",
                                                 "countrySubDivision",
                                                 "postCode",
+                                                "additionalInfo",
+                                                "ibgeCode",
                                                 "country",
-                                                "countryCode"
+                                                "countryCode",
+                                                "geographicCoordinates"
                                               ]
                                             },
                                             "phones": {
@@ -197,7 +200,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -214,7 +219,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -231,7 +238,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -248,7 +257,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -265,7 +276,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     }
                                                   ]
@@ -279,7 +292,8 @@
                                               },
                                               "required": [
                                                 "standards",
-                                                "exception"
+                                                "exception",
+                                                "isPublicAccessAllowed"
                                               ]
                                             }
                                           },
@@ -344,8 +358,11 @@
                                                 "townName",
                                                 "countrySubDivision",
                                                 "postCode",
+                                                "additionalInfo",
+                                                "ibgeCode",
                                                 "country",
-                                                "countryCode"
+                                                "countryCode",
+                                                "geographicCoordinates"
                                               ]
                                             },
                                             "phones": {
@@ -396,7 +413,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -413,7 +432,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -430,7 +451,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -447,7 +470,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -464,7 +489,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     }
                                                   ]
@@ -478,7 +505,8 @@
                                               },
                                               "required": [
                                                 "standards",
-                                                "exception"
+                                                "exception",
+                                                "isPublicAccessAllowed"
                                               ]
                                             }
                                           },
@@ -543,8 +571,11 @@
                                                 "townName",
                                                 "countrySubDivision",
                                                 "postCode",
+                                                "additionalInfo",
+                                                "ibgeCode",
                                                 "country",
-                                                "countryCode"
+                                                "countryCode",
+                                                "geographicCoordinates"
                                               ]
                                             },
                                             "availability": {
@@ -567,7 +598,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -584,7 +617,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -601,7 +636,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -618,7 +655,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     },
                                                     {
@@ -635,7 +674,9 @@
                                                         }
                                                       },
                                                       "required": [
-                                                        "weekday"
+                                                        "weekday",
+                                                        "openingTime",
+                                                        "closingTime"
                                                       ]
                                                     }
                                                   ]
@@ -649,7 +690,8 @@
                                               },
                                               "required": [
                                                 "standards",
-                                                "exception"
+                                                "exception",
+                                                "isPublicAccessAllowed"
                                               ]
                                             }
                                           },
@@ -678,7 +720,8 @@
                                           },
                                           "required": [
                                             "name",
-                                            "code"
+                                            "code",
+                                            "additionalInfo"
                                           ]
                                         },
                                         {
@@ -696,7 +739,8 @@
                                           },
                                           "required": [
                                             "name",
-                                            "code"
+                                            "code",
+                                            "additionalInfo"
                                           ]
                                         },
                                         {
@@ -714,7 +758,8 @@
                                           },
                                           "required": [
                                             "name",
-                                            "code"
+                                            "code",
+                                            "additionalInfo"
                                           ]
                                         }
                                       ]
@@ -764,16 +809,16 @@
           "type": "string"
         },
         "first": {
-          "type": ["string" ,"null"]
+          "type": "string"
         },
         "prev": {
-          "type": ["string" ,"null"]
+          "type": "string"
         },
         "next": {
-          "type": ["string" ,"null"]
+          "type": "string"
         },
         "last": {
-          "type": ["string" ,"null"]
+          "type": "string"
         }
       },
       "required": [

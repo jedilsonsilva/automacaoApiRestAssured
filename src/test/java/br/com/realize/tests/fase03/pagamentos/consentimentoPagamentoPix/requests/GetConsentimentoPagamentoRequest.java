@@ -1,10 +1,10 @@
 package br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.requests;
 
-import br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory;
+import br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory.*;
 
 public class GetConsentimentoPagamentoRequest {
 

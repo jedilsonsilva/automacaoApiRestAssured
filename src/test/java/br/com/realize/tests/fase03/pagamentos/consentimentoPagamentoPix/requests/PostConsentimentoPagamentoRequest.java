@@ -1,13 +1,13 @@
 package br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.requests;
 
-import br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory;
+import br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.ConsentimentoPagamento.*;
 import br.com.realize.utils.DataUtils;
 import br.com.realize.utils.geradorCpfCnpjRG;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory.*;
 import static io.restassured.RestAssured.given;
 
 public class PostConsentimentoPagamentoRequest {

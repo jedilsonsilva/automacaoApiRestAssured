@@ -1,14 +1,12 @@
 package br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.requests;
 
-import br.com.realize.tests.base.factory.AutorizacaoConsentimentoPagamentoPixDataFactory;
-import br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory;
+import br.com.realize.tests.fase03.pagamentos.factory.AutorizacaoConsentimentoPagamentoPixDataFactory;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.AuthorizeReject.BodyAuthorize;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static br.com.realize.tests.base.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.consentIdParaAutorizarConsentimento;
-import static br.com.realize.tests.base.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.urlAuthorizeConsentimentoPagamento;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.consentIdParaAutorizarConsentimento;
+import static br.com.realize.tests.fase03.pagamentos.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.urlAuthorizeConsentimentoPagamento;
 import static io.restassured.RestAssured.given;
 
 public class PostAutorizarConsentimentoPagamentoPixRequest {

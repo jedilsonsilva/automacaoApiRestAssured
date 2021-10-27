@@ -1,4 +1,4 @@
-package br.com.realize.tests.base.factory;
+package br.com.realize.tests.fase03.pagamentos.factory;
 
 import br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.ConsentimentoPagamento.*;
@@ -7,65 +7,65 @@ import br.com.realize.utils.geradorCpfCnpjRG;
 import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+
 import java.util.Locale;
+
 import static br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi.*;
 import static io.restassured.RestAssured.given;
 
 public class ConsentimentoPagamentoPixDataFactory {
 
-
     static CriacaoMassaOrbi criacaoMassaOrbi = new CriacaoMassaOrbi();
     static Faker fake = new Faker(new Locale("pt-br"));
 
-
-//VARIAVEIS COMUNS
+    //VARIAVEIS COMUNS
     public static String urlConsetimentoPagamento = "/payments/v1/consents/";
     public static String token = "676378126781236";
     public static String tokenInvalido = "987298274987483";
 
-/***************** CONSULTA *****************/
+    /***************** CONSULTA *****************/
 
 //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO
     public static String idempotencyCriacaoConsentimento = fake.internet().password();
-//VARIAVEIS PARA VALIDAÇÃO DO CONTRATO DE CRIAÇÃO DE CONSENTIMENTO
+    //VARIAVEIS PARA VALIDAÇÃO DO CONTRATO DE CRIAÇÃO DE CONSENTIMENTO
     public static String idempotencyCriacaoConsentimentoContrato = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM DADOS DIFERENTES
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM DADOS DIFERENTES
     public static String idempotencyCriacaoConsentimentoDadosDiferentes = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM ENPOINT INCORRETO
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM ENPOINT INCORRETO
     public static String idempotencyCriacaoConsentimentoPathInvalido = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM TOKEN INVALIDO
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM TOKEN INVALIDO
     public static String idempotencyCriacaoConsentimentoTokenInvalido = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM RECURSOS INEXISTENTES
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM RECURSOS INEXISTENTES
     public static String idempotencyCriacaoConsentimentoRecursoInexistente = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM MÉTODO NÃO SUPORTADO
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM MÉTODO NÃO SUPORTADO
     public static String idempotencyCriacaoConsentimentoMetodoNaoSuportado = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM ACCEPT DIFERENTE
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM ACCEPT DIFERENTE
     public static String idempotencyCriacaoConsentimentoAcceptDiferente = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM PAYLOAD NÃO SUPORTADO
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM PAYLOAD NÃO SUPORTADO
     public static String idempotencyCriacaoConsentimentoPayloadNaoSuportado = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM REQUISIÇÃO MALFORMADA
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM REQUISIÇÃO MALFORMADA
     public static String idempotencyCriacaoConsentimentoRequisicaoMalformada = fake.internet().password();
-//VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM CAMPOS OBRIGATÓRIOS NÃO PREENCHIDOS
+    //VARIAVEIS PARA CRIAÇÃO DE CONSENTIMENTO COM SUCESSO COM CAMPOS OBRIGATÓRIOS NÃO PREENCHIDOS
     public static String idempotencyCriacaoConsentimentoInformacoesObrigatorias = fake.internet().password();
-//VARIAVEIS PARA VALIDAÇÃO DO CONTRATO DE CRIAÇÃO DE CONSENTIMENTO
+    //VARIAVEIS PARA VALIDAÇÃO DO CONTRATO DE CRIAÇÃO DE CONSENTIMENTO
     public static String idempotencyCriacaoConsentimentoErroGateway = fake.internet().password();
 
-/***************** CONSULTA *****************/
+    /***************** CONSULTA *****************/
 
 //VARIAVEIS PARA CONSULTA DE CONSENTIMENTO DE PAGAMENTO VIA PIX
     public static String idempotencyConsultaConsentimentoPagamentoPix = fake.internet().password();
     public static String consentIdParaConsulta;
 
-//VARIAVEIS PARA CONSULTA DE CONSENTIMENTO DE PAGAMENTO VIA PIX
+    //VARIAVEIS PARA CONSULTA DE CONSENTIMENTO DE PAGAMENTO VIA PIX
     public static String idempotencyContratoConsultaConsentimentoPagamentoPix = fake.internet().password();
     public static String consentIdContratoConsultaConsentimentoPagamentoPix;
 
-//CONSENTID's PARA TESTES COM IDEMPOTENCIAS DIFERENTES
+    //CONSENTID's PARA TESTES COM IDEMPOTENCIAS DIFERENTES
     public static String consentId;
     public static String consentIdInvalido = fake.internet().password();
     public static String type;
 
-/****************************** CRIAÇÃO DE CONSENTIMENTO INICIAÇÃO DE PAGAMENTO PIX ******************************/
+    /****************************** CRIAÇÃO DE CONSENTIMENTO INICIAÇÃO DE PAGAMENTO PIX ******************************/
 
     public static BodyConsentimentoPagamento dadosParaCriarConsentId() throws Exception {
         criacaoMassaOrbi.criarConta();
@@ -143,7 +143,7 @@ public class ConsentimentoPagamentoPixDataFactory {
         return bodyConsentimentoPagamento;
     }
 
-/****************************** CONSULTA DE CONSENTIMENTO INICIAÇÃO DE PAGAMENTO PIX ******************************/
+    /****************************** CONSULTA DE CONSENTIMENTO INICIAÇÃO DE PAGAMENTO PIX ******************************/
 
 //OBTER CONSENTID PARA CONSULTA DE CONSENTIMENTO DE PAGAMENTO VIA PIX
     public static BodyConsentimentoPagamento dadosParaCriarConsentIdParaConsulta() throws Exception {
@@ -183,9 +183,10 @@ public class ConsentimentoPagamentoPixDataFactory {
         bodyDebtorAccount.setAccountType("TRAN");
         return bodyConsentimentoPagamento;
     }
+
     public static void obterConsentIdParaConsulta() throws Exception {
         BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentIdParaConsulta();
-        Response response = (Response) given().log().all()
+        Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")
                 .header("x-idempotency-key", idempotencyConsultaConsentimentoPagamentoPix)
@@ -198,7 +199,8 @@ public class ConsentimentoPagamentoPixDataFactory {
         JsonPath extractor = (JsonPath) response.jsonPath();
         consentIdParaConsulta = extractor.get("data.consentId");
     }
-//OBTER CONSENTID PARA CONSULTA DE CONSENTIMENTO DE PAGAMENTO VIA PIX
+
+    //OBTER CONSENTID PARA VALIDAÇÃO DE CONTRATO DA CONSULTA DE CONSENTIMENTO DE PAGAMENTO VIA PIX
     public static BodyConsentimentoPagamento dadosParaCriarConsentIdParaValidarContrato() throws Exception {
         criacaoMassaOrbi.criarConta();
         BodyConsentimentoPagamento bodyConsentimentoPagamento = new BodyConsentimentoPagamento();
@@ -236,9 +238,10 @@ public class ConsentimentoPagamentoPixDataFactory {
         bodyDebtorAccount.setAccountType("TRAN");
         return bodyConsentimentoPagamento;
     }
+
     public static void obterConsentIdParaValidarContratoConsulta() throws Exception {
         BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentIdParaValidarContrato();
-        Response response = (Response) given().log().all()
+        Response response = (Response) given()
                 .header("Authorization", token)
                 .contentType("application/json")
                 .header("x-idempotency-key", idempotencyContratoConsultaConsentimentoPagamentoPix)

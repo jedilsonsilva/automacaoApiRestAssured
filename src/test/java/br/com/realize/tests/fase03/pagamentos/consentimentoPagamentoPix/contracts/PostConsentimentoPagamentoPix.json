@@ -5,78 +5,19 @@
     "data": {
       "type": "object",
       "properties": {
-        "businessEntity": {
-          "type": "object",
-          "properties": {
-            "document": {
-              "type": "object",
-              "properties": {
-                "identification": {
-                  "type": "string"
-                },
-                "rel": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "identification",
-                "rel"
-              ]
-            }
-          },
-          "required": [
-            "document"
-          ]
-        },
         "consentId": {
           "type": "string"
         },
         "creationDateTime": {
           "type": "string"
         },
-        "creditor": {
-          "type": "object",
-          "properties": {
-            "cpfCnpj": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "personType": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "cpfCnpj",
-            "name",
-            "personType"
-          ]
-        },
-        "debtorAccount": {
-          "type": "object",
-          "properties": {
-            "accountType": {
-              "type": "string"
-            },
-            "ispb": {
-              "type": "string"
-            },
-            "issuer": {
-              "type": "string"
-            },
-            "number": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "accountType",
-            "ispb",
-            "issuer",
-            "number"
-          ]
-        },
         "expirationDateTime": {
+          "type": "string"
+        },
+        "statusUpdateDateTime": {
+          "type": "string"
+        },
+        "status": {
           "type": "string"
         },
         "loggedUser": {
@@ -102,92 +43,184 @@
             "document"
           ]
         },
+        "businessEntity": {
+          "type": "object",
+          "properties": {
+            "document": {
+              "type": "object",
+              "properties": {
+                "identification": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "identification",
+                "rel"
+              ]
+            }
+          },
+          "required": [
+            "document"
+          ]
+        },
+        "creditor": {
+          "type": "object",
+          "properties": {
+            "personType": {
+              "type": "string"
+            },
+            "cpfCnpj": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "personType",
+            "cpfCnpj",
+            "name"
+          ]
+        },
         "payment": {
           "type": "object",
           "properties": {
-            "amount": {
-              "type": "string"
-            },
-            "currency": {
+            "type": {
               "type": "string"
             },
             "date": {
               "type": "string"
             },
-            "type": {
+            "currency": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "string"
+            },
+            "ibgeTownCode": {
+              "type": "string"
+            },
+            "details": {
+              "type": "object",
+              "properties": {
+                "localInstrument": {
+                  "type": "string"
+                },
+                "qrCode": {
+                  "type": "string"
+                },
+                "proxy": {
+                  "type": "string"
+                },
+                "creditorAccount": {
+                  "type": "object",
+                  "properties": {
+                    "ispb": {
+                      "type": "string"
+                    },
+                    "issuer": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "accountType": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ispb",
+                    "issuer",
+                    "number",
+                    "accountType"
+                  ]
+                }
+              },
+              "required": [
+                "localInstrument",
+                "qrCode",
+                "proxy",
+                "creditorAccount"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "date",
+            "currency",
+            "amount",
+            "ibgeTownCode",
+            "details"
+          ]
+        },
+        "debtorAccount": {
+          "type": "object",
+          "properties": {
+            "ispb": {
+              "type": "string"
+            },
+            "issuer": {
+              "type": "string"
+            },
+            "number": {
+              "type": "string"
+            },
+            "accountType": {
               "type": "string"
             }
           },
           "required": [
-            "amount",
-            "currency",
-            "date",
-            "type"
+            "ispb",
+            "issuer",
+            "number",
+            "accountType"
           ]
-        },
-        "status": {
-          "type": "string"
-        },
-        "statusUpdateDateTime": {
-          "type": "string"
         }
       },
       "required": [
-        "businessEntity",
         "consentId",
         "creationDateTime",
-        "creditor",
-        "debtorAccount",
         "expirationDateTime",
+        "statusUpdateDateTime",
+        "status",
         "loggedUser",
+        "businessEntity",
+        "creditor",
         "payment",
-        "status"
+        "debtorAccount"
       ]
     },
     "links": {
       "type": "object",
       "properties": {
-        "first": {
-          "type": ["string", "null"]
-        },
-        "last": {
-          "type": ["string", "null"]
-        },
-        "next": {
-          "type": ["string", "null"]
-        },
-        "prev": {
-          "type": ["string", "null"]
-        },
         "self": {
-          "type": ["string", "null"]
+          "type": "string"
         }
       },
       "required": [
-        "first",
-        "last",
-        "next",
-        "prev",
         "self"
       ]
     },
     "meta": {
       "type": "object",
       "properties": {
-        "requestDateTime": {
-          "type": "string"
+        "totalRecords": {
+          "type": "integer"
         },
         "totalPages": {
           "type": "integer"
         },
-        "totalRecords": {
-          "type": "integer"
+        "requestDateTime": {
+          "type": "string"
         }
       },
       "required": [
-        "requestDateTime",
+        "totalRecords",
         "totalPages",
-        "totalRecords"
+        "requestDateTime"
       ]
     }
   },

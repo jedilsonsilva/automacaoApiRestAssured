@@ -101,17 +101,6 @@ public class GetConsetimentoTest extends BaseTest {
                 .statusCode(401)
                 .time(lessThan(4L), TimeUnit.SECONDS);
     }*/
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando informando a política de segurança é violada.")
-    public void testPoliticaSegurancaViolada() throws Exception {
-        getConsentimentoRequest.politicaSegurancaVioalada()
-                .then()
-                .statusCode(403)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -132,17 +121,6 @@ public class GetConsetimentoTest extends BaseTest {
         getConsentimentoRequest.acceptDiferente()
                 .then()
                 .statusCode(406)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando muitas solicitações são feitas dentro de um determinado período.")
-    public void testMuitasSolicitacoesFeitas() throws Exception {
-        getConsentimentoRequest.muitasSolicitacoesFeitas()
-                .then()
-                .statusCode(429)
                 .time(lessThan(4L), TimeUnit.SECONDS);
     }
     @Test

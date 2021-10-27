@@ -391,7 +391,7 @@ public class PostConsentimentoRequest {
         bodyBusinessEntity.setDocument(bodyDocumentCnpj);
         bodyDocumentCnpj.setIdentification(geradorCpfCnpjRG.geraCNPJ());
         bodyDocumentCnpj.setRel("CNPJ");
-        bodyData.setExpirationDateTime(expirationDateTime);
+        //bodyData.setExpirationDateTime(expirationDateTime);
         bodyData.setLoggedUser(bodyLoggedUser);
         bodyLoggedUser.setDocument(bodyDocumentCpf);
         bodyDocumentCpf.setIdentification(geradorCpfCnpjRG.geraCPF());

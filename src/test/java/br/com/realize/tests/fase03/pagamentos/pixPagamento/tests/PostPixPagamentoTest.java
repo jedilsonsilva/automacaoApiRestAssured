@@ -68,7 +68,7 @@ public class PostPixPagamentoTest extends BaseTest {
     @DisplayName("Validar a garantia do contrato do retorno da inclusão de iniciação de pagamento PiX.")
     public void testGarantirContratosInclusaoConsentimento() throws Exception {
         postPixPagamentoRequest.inserirPixIniciacaoPagamentoContrato()
-                .then()
+                .then().log().all()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase03/pagamentos/pixPagamento", "PostPixPagamento"))));

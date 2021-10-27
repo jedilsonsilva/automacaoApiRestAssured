@@ -15,7 +15,7 @@
           "type": "string"
         },
         "statusUpdateDateTime": {
-          "type": ["null", "string"]
+          "type": "string"
         },
         "status": {
           "type": "string"
@@ -99,13 +99,61 @@
             },
             "amount": {
               "type": "string"
+            },
+            "ibgeTownCode": {
+              "type": "string"
+            },
+            "details": {
+              "type": "object",
+              "properties": {
+                "localInstrument": {
+                  "type": "string"
+                },
+                "qrCode": {
+                  "type": "string"
+                },
+                "proxy": {
+                  "type": "string"
+                },
+                "creditorAccount": {
+                  "type": "object",
+                  "properties": {
+                    "ispb": {
+                      "type": "string"
+                    },
+                    "issuer": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "string"
+                    },
+                    "accountType": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ispb",
+                    "issuer",
+                    "number",
+                    "accountType"
+                  ]
+                }
+              },
+              "required": [
+                "localInstrument",
+                "qrCode",
+                "proxy",
+                "creditorAccount"
+              ]
             }
           },
           "required": [
             "type",
             "date",
             "currency",
-            "amount"
+            "amount",
+            "ibgeTownCode",
+            "details"
           ]
         },
         "debtorAccount": {
@@ -136,6 +184,7 @@
         "consentId",
         "creationDateTime",
         "expirationDateTime",
+        "statusUpdateDateTime",
         "status",
         "loggedUser",
         "businessEntity",

@@ -34,16 +34,13 @@ public class GetIdentificacaoPessoaNaturalTest extends BaseTest {
     @Category({Healthcheck.class, AllTests.class, fase02.class})
     @DisplayName("Validar o retorno do endpoint de indentificação de pessoa natural")
     public void testValidarIdentificacaoPessoaNatural() throws Exception {
-        String linkSelf = getIdentificacaoPessoaNaturalRequest.obterLinkSelf();
         getIdentificacaoPessoaNaturalRequest.obterIdentificacaoPessoaNatural()
                 .then()
                 .log().all()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
-                .body("meta.totalRecords", greaterThan(0))
-                .body("links.self", is(linkSelf));
-
+                .body("meta.totalRecords", greaterThan(0));
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)

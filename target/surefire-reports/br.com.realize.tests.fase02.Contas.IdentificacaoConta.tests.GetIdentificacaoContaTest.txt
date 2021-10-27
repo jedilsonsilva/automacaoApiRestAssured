@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.174 s - in br.com.realize.tests.fase02.Contas.IdentificacaoConta.tests.GetIdentificacaoContaTest

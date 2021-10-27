@@ -14,8 +14,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import java.util.concurrent.TimeUnit;
 
-import static br.com.realize.tests.base.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.consentIdParaAutorizarConsentimento;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.consentIdParaAutorizarConsentimento;
+import static br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;

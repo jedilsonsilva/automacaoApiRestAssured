@@ -5,7 +5,7 @@ import br.com.realize.runners.fase03;
 import br.com.realize.suites.AllTests;
 import br.com.realize.suites.Contract;
 import br.com.realize.suites.Healthcheck;
-import br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory;
+import br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory;
 import br.com.realize.tests.base.tests.BaseTest;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.requests.GetConsentimentoPagamentoRequest;
 import br.com.realize.utils.Utils;
@@ -14,7 +14,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -29,7 +28,7 @@ import static org.hamcrest.Matchers.*;
 @Feature("Consentimento")
 @DisplayName("Obter consentimento de iniciação de pagamento")
 
-public class GetConsetimentoPagamentoTest extends BaseTest {
+public class GetConsentimentoPagamentoTest extends BaseTest {
 
     GetConsentimentoPagamentoRequest getConsentimentoPagamentoRequestRequest = new GetConsentimentoPagamentoRequest();
 
@@ -40,7 +39,7 @@ public class GetConsetimentoPagamentoTest extends BaseTest {
     public void testConsultarConsentimentoPagamento() throws Exception {
         ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         getConsentimentoPagamentoRequestRequest.obterConsetimentoPagamento()
-                .then().log().all()
+                .then()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))

@@ -1,13 +1,13 @@
 package br.com.realize.tests.fase03.pagamentos.pixPagamento.requests;
 
 
-import br.com.realize.tests.base.factory.PixPagamentoDataFactory;
+import br.com.realize.tests.fase03.pagamentos.factory.PixPagamentoDataFactory;
 import br.com.realize.tests.fase03.pagamentos.pixPagamento.pojo.BodyPixPagamento;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
-import static br.com.realize.tests.base.factory.PixPagamentoDataFactory.*;
-import static br.com.realize.tests.base.factory.PixPagamentoDataFactory.token;
+import static br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.PixPagamentoDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.PixPagamentoDataFactory.token;
 import static io.restassured.RestAssured.given;
 
 public class PostPixPagamentoRequest {
@@ -26,12 +26,12 @@ public class PostPixPagamentoRequest {
     @Step("Validar o contrato de iniciação de pagamento PiX.")
     public Response inserirPixIniciacaoPagamentoContrato() throws Exception {
         BodyPixPagamento bodyPixPagamento = (BodyPixPagamento) PixPagamentoDataFactory.dadosPixPagamentoTesteContrato();
-        return given()
+        return given().log().all()
                 .header("Authorization", consentIdContratoParaPixConsulta)
                 .contentType("application/json")
                 .header("x-idempotency-key", idempotencyPixTesteContratoConsulta)
                 .body(bodyPixPagamento)
-                .when()
+                .when().log().all()
                 .post(urlPagamentoPix);
     }
     @Step("Informar um consentId rejeitado na inclusão de consentimento de pagamento PiX.")

@@ -5,41 +5,6 @@
     "data": {
       "type": "object",
       "properties": {
-        "cnpjInitiator": {
-          "type": "string"
-        },
-        "consentId": {
-          "type": "string"
-        },
-        "creationDateTime": {
-          "type": "string"
-        },
-        "creditorAccount": {
-          "type": "object",
-          "properties": {
-            "accountType": {
-              "type": "string"
-            },
-            "ispb": {
-              "type": "string"
-            },
-            "issuer": {
-              "type": "string"
-            },
-            "number": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "accountType",
-            "ispb",
-            "issuer",
-            "number"
-          ]
-        },
-        "endToEndId": {
-          "type": "string"
-        },
         "localInstrument": {
           "type": "string"
         },
@@ -58,88 +23,62 @@
             "currency"
           ]
         },
-        "paymentId": {
+        "creditorAccount": {
+          "type": "object",
+          "properties": {
+            "ispb": {
+              "type": "string"
+            },
+            "issuer": {
+              "type": "string"
+            },
+            "number": {
+              "type": "string"
+            },
+            "accountType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ispb",
+            "issuer",
+            "number",
+            "accountType"
+          ]
+        },
+        "remittanceInformation": {
+          "type": "string"
+        },
+        "qrCode": {
           "type": "string"
         },
         "proxy": {
           "type": "string"
         },
-        "rejectionReason": {
+        "cnpjInitiator": {
           "type": "string"
         },
-        "remittanceInformation": {
+        "transactionIdentification": {
           "type": "string"
         },
-        "status": {
-          "type": "string"
-        },
-        "statusUpdateDateTime": {
+        "ibgeTownCode": {
           "type": "string"
         }
       },
       "required": [
-        "cnpjInitiator",
-        "consentId",
-        "creationDateTime",
-        "creditorAccount",
         "localInstrument",
         "payment",
-        "paymentId",
-        "proxy",
+        "creditorAccount",
         "remittanceInformation",
-        "status"
-      ]
-    },
-    "links": {
-      "type": "object",
-      "properties": {
-        "first": {
-          "type": ["string", "null"]
-        },
-        "last": {
-          "type": ["string", "null"]
-        },
-        "next": {
-          "type": ["string", "null"]
-        },
-        "prev": {
-          "type": ["string", "null"]
-        },
-        "self": {
-          "type": ["string", "null"]
-        }
-      },
-      "required": [
-        "first",
-        "last",
-        "next",
-        "prev",
-        "self"
-      ]
-    },
-    "meta": {
-      "type": "object",
-      "properties": {
-        "requestDateTime": {
-          "type": "string"
-        },
-        "totalPages": {
-          "type": "integer"
-        },
-        "totalRecords": {
-          "type": "integer"
-        }
-      },
-      "required": [
-        "requestDateTime",
-        "totalPages",
-        "totalRecords"
+        "qrCode",
+        "proxy",
+        "cnpjInitiator",
+        "transactionIdentification",
+        "ibgeTownCode"
       ]
     }
   },
   "required": [
-    "data",
-    "links",
-    "meta"
+    "data"
   ]
 }

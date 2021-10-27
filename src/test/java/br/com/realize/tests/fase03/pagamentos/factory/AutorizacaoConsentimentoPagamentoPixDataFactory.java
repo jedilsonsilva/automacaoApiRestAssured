@@ -1,4 +1,4 @@
-package br.com.realize.tests.base.factory;
+package br.com.realize.tests.fase03.pagamentos.factory;
 
 import br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.AuthorizeReject.BodyAuthorize;
@@ -12,25 +12,29 @@ import io.restassured.response.Response;
 import java.util.Locale;
 
 import static br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi.*;
+import static br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi.conta;
 import static io.restassured.RestAssured.given;
 
-public class AtualizarContaDebitoConsentimentoPagamentoPixDataFactory {
+public class AutorizacaoConsentimentoPagamentoPixDataFactory {
 
     static CriacaoMassaOrbi criacaoMassaOrbi = new CriacaoMassaOrbi();
 
     static Faker fake = new Faker(new Locale("pt-br"));
 //VARIAVEIS COMUNS
-    public static String urlAtualizarContaDebitoConsentimentoPagamento = "payments/v1/consent-request/";
-    public static String urlConsetimentoPagamentoPixParaAtualizacaoContaDebito = "/payments/v1/consents/";
-    public static String tokenAtualizacaoContaDebito = "676378126781236";
-//VARIAVEIS PARA ATUALIZAÇÃO DE CONTA DEBITO DE CONSENTIMENTO DE PAGAMENTO VIA PIX COM SUCESSO
-    public static String idempotencyAtualizacaoContaDebitoConsentimentoPagamentoPix = fake.internet().password();
-    public static String consentIdParaAtualizacaoContaDebitoConsentimento;
+    public static String urlAuthorizeConsentimentoPagamento = "payments/v1/consent-request/";
+    public static String urlConsetimentoPagamentoPixParaautorizacao = "/payments/v1/consents/";
+    public static String token = "676378126781236";
+//VARIAVEIS PARA AUTORIZAÇÃO DE CONSENTIMENTO DE PAGAMENTO VIA PIX COM SUCESSO
+    public static String idempotencyAutorizacaoConsentimentoPagamentoPix = fake.internet().password();
+    public static String consentIdParaAutorizarConsentimento;
     public static String ispb;
-    public static String agenciaContaDebitoParaAtualizacao;
-    public static String numeroContaDebitoParaAtualizacao;
+    public static String agenciaContaDebito;
+    public static String numeroContaDebito;
     public static String accountType;
-    public static String consentIdInvalidoAtualizacaoContaDebito;
+//VARIAVEIS PARA CONSENTIMENTO JA AUTORIZADO
+    public static String idempotencyConsentimentoJaAutorizado = fake.internet().password();
+    public static String consentIdJaAutorizado;
+
 
     //DADOS PARA AUTORIZAR CONSENTIMENTO DE PAGAMENTO POR PIX COM SUCESSO
     public static BodyConsentimentoPagamento dadosParaCriarConsentId() throws Exception {
@@ -70,36 +74,63 @@ public class AtualizarContaDebitoConsentimentoPagamentoPixDataFactory {
         bodyDebtorAccount.setAccountType("TRAN");
         return bodyConsentimentoPagamento;
     }
-    public static Response criarConsentimentoPagamentoPixParaAtualizacaoContaDebito() throws Exception {
+    public static Response criarConsentimentoPagamento() throws Exception {
 
         BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
         Response response = (Response) given()
-                .header("Authorization", tokenAtualizacaoContaDebito)
+                .header("Authorization", token)
                 .contentType("application/json")
-                .header("x-idempotency-key", idempotencyAtualizacaoContaDebitoConsentimentoPagamentoPix)
+                .header("x-idempotency-key", idempotencyAutorizacaoConsentimentoPagamentoPix)
                 .body(bodyConsentimentoPagamento)
                 .when()
-                .post(urlConsetimentoPagamentoPixParaAtualizacaoContaDebito)
-                .then().log().body()
+                .post(urlConsetimentoPagamentoPixParaautorizacao)
+                .then()
                 .statusCode(200)
                 .extract().response();
 
         JsonPath extractor = (JsonPath) response.jsonPath();
-        consentIdParaAtualizacaoContaDebitoConsentimento = extractor.get("data.consentId");
+        consentIdParaAutorizarConsentimento = extractor.get("data.consentId");
         ispb = extractor.get("data.debtorAccount.ispb");
-        agenciaContaDebitoParaAtualizacao = extractor.get("data.debtorAccount.issuer");
-        numeroContaDebitoParaAtualizacao = extractor.get("data.debtorAccount.number");
+        agenciaContaDebito = extractor.get("data.debtorAccount.issuer");
+        numeroContaDebito = extractor.get("data.debtorAccount.number");
         ispb = extractor.get("data.debtorAccount.ispb");
         accountType = extractor.get("data.debtorAccount.type");
         return response;
     }
 
-//FALTA CRIAR UM MÉTODO QUE CRIE UMA OUTRA CONTA PARA O MESMO CLIENTE
-//PARA ASSIM ATUALIZAR A CONT DE DÉBITO MANTENDO O MESMO CLIENTE.
+    //AUTORIZAR CONSENTIMENTO
+    public static BodyAuthorize dadosAutorizarConsentimento() throws Exception {
+        criarConsentimentoPagamento();
+        BodyAuthorize bodyAuthorize = new BodyAuthorize();
+        bodyAuthorize.setIspb("27351731");
+        bodyAuthorize.setIssuer(agencia);
+        bodyAuthorize.setNumber(numeroContaDebito = numeroContaDebito.replace("-",""));
+        // bodyAuthorize.setNumber(numeroConta = numeroConta.substring(0,numeroConta.length()-1));
+        bodyAuthorize.setAccountType("TRAN");
+        return bodyAuthorize;
+    }
 
-//ATUALIZAR DADOS CONSENTIMENTO
-        public static BodyAuthorize dadosAtualizacaoContaDebito() throws Exception {
-        criarConsentimentoPagamentoPixParaAtualizacaoContaDebito();
+//DADOS PARA TENTAR AUTORIZAR UM CONSENTIMENTO DE PAGAMENTO VIA PIX JA AUTORIZADO
+
+    public static Response obterConsentIdParaConsentimentoJaAutorizado() throws Exception {
+
+        BodyConsentimentoPagamento bodyConsentimentoPagamento = (BodyConsentimentoPagamento) ConsentimentoPagamentoPixDataFactory.dadosParaCriarConsentId();
+        Response response = (Response) given()
+                .header("Authorization", token)
+                .contentType("application/json")
+                .header("x-idempotency-key", idempotencyConsentimentoJaAutorizado)
+                .body(bodyConsentimentoPagamento)
+                .when()
+                .post(urlConsetimentoPagamentoPixParaautorizacao)
+                .then()
+                .extract().response();
+        JsonPath extractor = response.jsonPath();
+        consentIdJaAutorizado = extractor.get("data.consentId");
+        return response;
+    }
+
+    public static BodyAuthorize dadosAutorizarConsentimentoJaAutorizado() throws Exception {
+        obterConsentIdParaConsentimentoJaAutorizado();
         BodyAuthorize bodyAuthorize = new BodyAuthorize();
         bodyAuthorize.setIspb("27351731");
         bodyAuthorize.setIssuer(agencia);
@@ -107,4 +138,5 @@ public class AtualizarContaDebitoConsentimentoPagamentoPixDataFactory {
         bodyAuthorize.setAccountType("TRAN");
         return bodyAuthorize;
     }
+
 }

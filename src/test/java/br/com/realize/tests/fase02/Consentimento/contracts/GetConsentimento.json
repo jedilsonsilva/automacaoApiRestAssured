@@ -15,11 +15,17 @@
           "type": "string"
         },
         "statusUpdateDateTime": {
-          "type": "null"
+          "type": "string"
         },
         "permissions": {
           "type": "array",
           "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            },
             {
               "type": "string"
             }
@@ -53,16 +59,16 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [

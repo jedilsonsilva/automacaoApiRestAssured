@@ -675,7 +675,6 @@
                               },
                               "required": [
                                 "minimumFeeRate",
-                                "additionalInfo",
                                 "elegibilityCriteriaInfo",
                                 "closingProcessInfo"
                               ]
@@ -719,24 +718,20 @@
           "type": "string"
         },
         "first": {
-          "type": "null"
+          "type": "string"
         },
         "prev": {
-          "type": "null"
+          "type": "string"
         },
         "next": {
-          "type": "null"
+          "type": "string"
         },
         "last": {
-          "type": "null"
+          "type": "string"
         }
       },
       "required": [
-        "self",
-        "first",
-        "prev",
-        "next",
-        "last"
+        "self"
       ]
     },
     "meta": {

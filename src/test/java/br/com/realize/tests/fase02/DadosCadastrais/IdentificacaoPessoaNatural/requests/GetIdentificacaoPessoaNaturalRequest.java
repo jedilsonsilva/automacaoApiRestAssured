@@ -6,19 +6,19 @@ import io.restassured.response.Response;
 
 import java.util.Locale;
 
+import static br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi.cpf;
 import static io.restassured.RestAssured.given;
 
 public class GetIdentificacaoPessoaNaturalRequest {
     Faker fake = new Faker(new Locale("pt-br"));
-    String cpf = fake.options().option("11162630094","15218532827");
+    //String cpf = fake.options().option("11162630094","15218532827");
     String url = "customers/v1/personal/identifications";
-
 
     @Step("Obtém os registros de identificação da pessoa natural.")
 
     public Response obterIdentificacaoPessoaNatural() {
         return given()
-                .queryParam("cpfCnpj", ""+cpf+"")
+                .queryParam("cpfCnpj", cpf)
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()
@@ -28,7 +28,7 @@ public class GetIdentificacaoPessoaNaturalRequest {
     @Step("O endpoint foi informado com algum caracter que não está de acordo com a chamada da API.")
     public Response pathInvalido() {
         return given()
-                .queryParam("cpfCnpj", ""+cpf+"")
+                .queryParam("cpfCnpj", cpf)
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()
@@ -47,18 +47,11 @@ public class GetIdentificacaoPessoaNaturalRequest {
     @Step("Método não suportado para a o endpoint informado.")
     public Response metodoNaoSuportado() {
         return given()
-                .queryParam("cpfCnpj", ""+cpf+"")
+                .queryParam("cpfCnpj", cpf)
                 .queryParam("page", "1")
                 .queryParam("page-size", "25")
                 .when()
                 .post(url);
-    }
-    public String obterLinkSelf() {
-     String linkself = obterIdentificacaoPessoaNatural()
-                .then()
-                .statusCode(200)
-                .extract().path("links.self");
-     return linkself;
     }
 
 }

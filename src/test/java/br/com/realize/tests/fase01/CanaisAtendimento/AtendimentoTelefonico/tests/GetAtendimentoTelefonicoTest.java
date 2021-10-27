@@ -108,7 +108,7 @@ public class GetAtendimentoTelefonicoTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class, fase01.class})
     @DisplayName("Garantir o contrato do retorno da lista de atendimento telefônico")
-    public void testGarantirContratosInformacoesConta(){
+    public void testGarantirContratosAtendimentoTelefonico(){
         getAtendimentoTelefonicooRequest.obterInformacoesAtendimentoTelefonico()
                 .then()
                 .statusCode(200)

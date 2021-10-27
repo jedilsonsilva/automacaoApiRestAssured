@@ -5,7 +5,10 @@
     "data": {
       "type": "object",
       "properties": {
-        "cnpjInitiator": {
+        "paymentId": {
+          "type": "string"
+        },
+        "endToEndId": {
           "type": "string"
         },
         "consentId": {
@@ -14,33 +17,25 @@
         "creationDateTime": {
           "type": "string"
         },
-        "creditorAccount": {
-          "type": "object",
-          "properties": {
-            "accountType": {
-              "type": "string"
-            },
-            "ispb": {
-              "type": "string"
-            },
-            "issuer": {
-              "type": "string"
-            },
-            "number": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "accountType",
-            "ispb",
-            "issuer",
-            "number"
-          ]
+        "statusUpdateDateTime": {
+          "type": "string"
         },
-        "endToEndId": {
+        "proxy": {
+          "type": "string"
+        },
+        "ibgeTownCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "rejectionReason": {
           "type": "string"
         },
         "localInstrument": {
+          "type": "string"
+        },
+        "cnpjInitiator": {
           "type": "string"
         },
         "payment": {
@@ -58,82 +53,82 @@
             "currency"
           ]
         },
-        "paymentId": {
-          "type": "string"
-        },
-        "proxy": {
-          "type": "string"
-        },
-        "rejectionReason": {
+        "transactionIdentification": {
           "type": "string"
         },
         "remittanceInformation": {
           "type": "string"
         },
-        "status": {
-          "type": "string"
-        },
-        "statusUpdateDateTime": {
-          "type": "string"
+        "creditorAccount": {
+          "type": "object",
+          "properties": {
+            "ispb": {
+              "type": "string"
+            },
+            "issuer": {
+              "type": "string"
+            },
+            "number": {
+              "type": "string"
+            },
+            "accountType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ispb",
+            "issuer",
+            "number",
+            "accountType"
+          ]
         }
       },
       "required": [
-        "cnpjInitiator",
+        "paymentId",
+        "endToEndId",
         "consentId",
         "creationDateTime",
-        "creditorAccount",
-        "localInstrument",
-        "payment",
-        "paymentId",
+        "statusUpdateDateTime",
         "proxy",
+        "ibgeTownCode",
+        "status",
+        "rejectionReason",
+        "localInstrument",
+        "cnpjInitiator",
+        "payment",
+        "transactionIdentification",
         "remittanceInformation",
-        "status"
+        "creditorAccount"
       ]
     },
     "links": {
       "type": "object",
       "properties": {
-        "first": {
-          "type": ["string", "null"]
-        },
-        "last": {
-          "type": ["string", "null"]
-        },
-        "next": {
-          "type": ["string", "null"]
-        },
-        "prev": {
-          "type": ["string", "null"]
-        },
         "self": {
-          "type": ["string", "null"]
+          "type": "string"
         }
       },
       "required": [
-        "first",
-        "last",
-        "next",
-        "prev",
         "self"
       ]
     },
     "meta": {
       "type": "object",
       "properties": {
-        "requestDateTime": {
-          "type": "string"
+        "totalRecords": {
+          "type": "integer"
         },
         "totalPages": {
           "type": "integer"
         },
-        "totalRecords": {
-          "type": "integer"
+        "requestDateTime": {
+          "type": "string"
         }
       },
       "required": [
-        "requestDateTime",
+        "totalRecords",
         "totalPages",
-        "totalRecords"
+        "requestDateTime"
       ]
     }
   },

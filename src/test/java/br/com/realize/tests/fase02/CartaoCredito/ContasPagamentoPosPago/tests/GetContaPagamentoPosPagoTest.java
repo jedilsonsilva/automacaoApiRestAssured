@@ -39,7 +39,7 @@ public class GetContaPagamentoPosPagoTest extends BaseTest {
         getContaPagamentoPosPagoRequest.retornaContasPagamentoPosPago()
                 .then()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
                 .body("links.self", is(linkSelf));;

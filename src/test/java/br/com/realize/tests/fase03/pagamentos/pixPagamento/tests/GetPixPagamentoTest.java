@@ -27,14 +27,14 @@ import static org.hamcrest.Matchers.*;
 
 public class GetPixPagamentoTest extends BaseTest {
 
-    GetPixPagamentoRequest getConsentimentoPagamentoRequest = new GetPixPagamentoRequest();
+    GetPixPagamentoRequest getPixPagamentoRequest = new GetPixPagamentoRequest();
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("Validar a consulta de iniciação de pagamento PiX.")
     public void testConsultarInicicaoPagamentoPix() throws Exception {
-        getConsentimentoPagamentoRequest.obterIniciacaoPagamentoPix()
+        getPixPagamentoRequest.obterIniciacaoPagamentoPix()
                 .then()
                 .statusCode(200)
                 .time(lessThan(4L), TimeUnit.SECONDS)
@@ -46,8 +46,8 @@ public class GetPixPagamentoTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Category({Contract.class, AllTests.class, fase03.class})
     @DisplayName("Validar a garantia do contrato do retorno da consulta de iniciação de pagamento PiX.")
-    public void testGarantirContratosConsultaConsentimento() throws Exception {
-        getConsentimentoPagamentoRequest.obterIniciacaoPagamentoPixContrato()
+    public void testGarantirContratosConsultaPagamento() throws Exception {
+        getPixPagamentoRequest.obterIniciacaoPagamentoPixContrato()
                 .then()
                 .statusCode(200)
                 .assertThat().body(matchesJsonSchema(
@@ -58,31 +58,31 @@ public class GetPixPagamentoTest extends BaseTest {
     @Category({Healthcheck.class, AllTests.class, fase02.class})
     @DisplayName("Path da API inválido no endpoint de consulta de iniciação de pagamento PiX.")
     public void testPathInvalido() throws Exception {
-        getConsentimentoPagamentoRequest.pathInvalido()
+        getPixPagamentoRequest.pathInvalido()
                 .then()
                 .statusCode(404)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("O recurso solicitado não existe."))
-                .body("errors.detail", hasItem("O endereço informado para esse endpoint está incorreto."));;
+                .body("errors.detail", hasItem("O endereço informado para esse endpoint está incorreto."));
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("Requisição Malformada no endpoint de consulta de iniciação de pagamento PiX.")
     public void testRequisicaoMalFormada() throws Exception {
-        getConsentimentoPagamentoRequest.requisicaoMalFormada()
+        getPixPagamentoRequest.requisicaoMalFormada()
                 .then()
                 .statusCode(404)
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("O recurso solicitado não existe."))
-                .body("errors.detail", hasItem("A solicitação de pagamento por PIX informada não foi encontrada."));;
+                .body("errors.detail", hasItem("A solicitação de pagamento por PIX informada não foi encontrada."));
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("405 - Validar o status code informando um método não suportado no endpoint de iniciação de pagamento PiX.")
     public void testMetodoNaoSuportado() throws Exception {
-        getConsentimentoPagamentoRequest.metodoNaoSuportado()
+        getPixPagamentoRequest.metodoNaoSuportado()
                 .then()
                 .statusCode(405)
                 .time(lessThan(4L), TimeUnit.SECONDS)
@@ -104,7 +104,7 @@ public class GetPixPagamentoTest extends BaseTest {
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("Validar o retorno do endpoint de consulta de iniciação de pagamento PiX quando o recurso é inexistente.")
     public void testRecursoInexistente() throws Exception {
-        getConsentimentoPagamentoRequest.recursoInexistente()
+        getPixPagamentoRequest.recursoInexistente()
                 .then()
                 .statusCode(404)
                 .time(lessThan(4L), TimeUnit.SECONDS)
@@ -116,7 +116,7 @@ public class GetPixPagamentoTest extends BaseTest {
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("Validar o retorno do endpoint de consulta iniciação de pagamento PiX.")
     public void testAcceptDiferente() throws Exception {
-        getConsentimentoPagamentoRequest.acceptDiferente()
+        getPixPagamentoRequest.acceptDiferente()
                 .then()
                 .statusCode(406)
                 .time(lessThan(4L), TimeUnit.SECONDS);
@@ -126,7 +126,7 @@ public class GetPixPagamentoTest extends BaseTest {
     @Category({Healthcheck.class, AllTests.class, fase03.class})
     @DisplayName("Validar o retorno do endpoint de consulta iniciação de pagamento PiX quando ocorre erro de Gateway.")
     public void testErroGateway() throws Exception {
-        getConsentimentoPagamentoRequest.erroGateway()
+        getPixPagamentoRequest.erroGateway()
                 .then()
                 .statusCode(500)
                 .time(lessThan(4L), TimeUnit.SECONDS);

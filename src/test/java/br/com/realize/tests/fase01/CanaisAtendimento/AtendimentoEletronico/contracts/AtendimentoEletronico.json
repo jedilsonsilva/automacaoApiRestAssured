@@ -16,7 +16,6 @@
               "items": [
                 {
                   "type": "object",
-
                   "properties": {
                     "name": {
                       "type": "string"
@@ -53,6 +52,7 @@
                               },
                               "required": [
                                 "type",
+                                "additionalInfo",
                                 "urls"
                               ]
                             },
@@ -74,7 +74,8 @@
                                   },
                                   "required": [
                                     "name",
-                                    "code"
+                                    "code",
+                                    "additionalInfo"
                                   ]
                                 },
                                 {
@@ -133,16 +134,16 @@
           "type": "string"
         },
         "first": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "prev": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "next": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "last": {
-          "type": ["string", "null"]
+          "type": "string"
         }
       },
       "required": [

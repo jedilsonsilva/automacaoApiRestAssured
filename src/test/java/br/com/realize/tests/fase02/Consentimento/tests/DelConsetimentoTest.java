@@ -80,17 +80,6 @@ public class DelConsetimentoTest extends BaseTest {
                 .statusCode(401)
                 .time(lessThan(4L), TimeUnit.SECONDS);
     }*/
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando informando a política de segurança é violada.")
-    public void testPoliticaSegurancaViolada() throws Exception {
-        delConsentimentoRequest.politicaSegurancaVioalada()
-                .then()
-                .statusCode(403)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -99,7 +88,7 @@ public class DelConsetimentoTest extends BaseTest {
         delConsentimentoRequest.recursoNaoExiste()
                 .then()
                 .statusCode(404)
-                .time(lessThan(4L), TimeUnit.SECONDS);
+                .time(lessThan(10L), TimeUnit.SECONDS);
     }
     @Test
     @Severity(SeverityLevel.NORMAL)
@@ -109,28 +98,6 @@ public class DelConsetimentoTest extends BaseTest {
         delConsentimentoRequest.acceptDiferente()
                 .then()
                 .statusCode(406)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando muitas solicitações são feitas dentro de um determinado período.")
-    public void testMuitasSolicitacoesFeitas() throws Exception {
-        delConsentimentoRequest.muitasSolicitacoesFeitas()
-                .then()
-                .statusCode(429)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando ocorre erro de Gateway.")
-    public void testErroGateway() throws Exception {
-        delConsentimentoRequest.erroGateway()
-                .then()
-                .statusCode(500)
                 .time(lessThan(4L), TimeUnit.SECONDS);
     }
 }

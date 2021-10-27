@@ -1,10 +1,10 @@
 package br.com.realize.tests.fase03.pagamentos.pixPagamento.requests;
 
-import br.com.realize.tests.base.factory.PixPagamentoDataFactory;
+import br.com.realize.tests.fase03.pagamentos.factory.PixPagamentoDataFactory;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
-import static br.com.realize.tests.base.factory.PixPagamentoDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.PixPagamentoDataFactory.*;
 
 public class GetPixPagamentoRequest {
 

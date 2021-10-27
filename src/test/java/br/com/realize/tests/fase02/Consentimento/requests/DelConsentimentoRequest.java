@@ -121,24 +121,5 @@ public class DelConsentimentoRequest {
                 .when()
                 .delete(url + consentId);
     }
-    @Step("429 - A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido.")
-    public Response muitasSolicitacoesFeitas() throws Exception {
-        obterConsentId();
-        return given()
-                .header("Authorization", token)
-                .contentType("application/json")
-                .when()
-                .delete(url + consentId);
-    }
-    @Step("500 - Ocorreu um erro no gateway da API ou no microsserviço.")
-    public Response erroGateway() throws Exception {
-        obterConsentId();
-        return given()
-                .header("Authorization", token)
-                .contentType("application/json")
-                .when()
-                .delete(url + consentId);
-    }
-
 }
 

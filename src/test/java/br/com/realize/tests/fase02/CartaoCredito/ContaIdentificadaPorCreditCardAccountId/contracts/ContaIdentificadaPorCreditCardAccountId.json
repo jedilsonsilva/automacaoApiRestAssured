@@ -55,26 +55,10 @@
       "properties": {
         "self": {
           "type": "string"
-        },
-        "first": {
-          "type": ["string", "null"]
-        },
-        "prev": {
-          "type": ["string", "null"]
-        },
-        "next": {
-          "type": ["string", "null"]
-        },
-        "last": {
-          "type": ["string", "null"]
         }
       },
       "required": [
-        "self",
-        "first",
-        "prev",
-        "next",
-        "last"
+        "self"
       ]
     },
     "meta": {

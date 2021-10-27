@@ -40,7 +40,7 @@ public class GetLimiteCartaoCreditoTest extends BaseTest {
         getLimiteCartaoCreditoRequest.retornaLimitesCartaoCredito()
                 .then()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                //.time(lessThan(10L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
                 .body("links.self", is(linkSelf));

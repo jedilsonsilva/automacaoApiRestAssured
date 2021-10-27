@@ -41,6 +41,5 @@ public class PostAuthRequest {
                 .header("Authorization", "Basic cmVubmVyLXBhcmNlaXJvOnBhcmNlaXJv")
                 .contentType("application/json")
                 .when().post("api/private/autenticacao/parceiro");
-
     }
 }

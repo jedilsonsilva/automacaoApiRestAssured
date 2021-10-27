@@ -32,8 +32,8 @@ public class PostAtualizacaoContaDebitoPagamentoPixTest extends BaseTest {
     @DisplayName("Validar a atualização dos dados da conta de débito")
     public void testAtualizarDadosContaDebito() throws Exception {
         postAtualizacaoContaDebitoPagamentoPixRequest.atualizarDadosContaDebito()
-                .then().log().body()
+                .then()
                 .statusCode(200)
-                .time(lessThan(5L), TimeUnit.SECONDS);
+                .time(lessThan(6L), TimeUnit.SECONDS);
     }
 }

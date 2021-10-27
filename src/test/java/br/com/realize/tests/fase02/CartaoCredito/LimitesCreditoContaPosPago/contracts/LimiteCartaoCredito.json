@@ -18,10 +18,10 @@
               "type": "string"
             },
             "lineName": {
-              "type": ["string", "null"]
+              "type": "string"
             },
             "lineNameAdditionalInfo": {
-              "type": ["string", "null"]
+              "type": "string"
             },
             "isLimitFlexible": {
               "type": "boolean"
@@ -69,16 +69,16 @@
           "type": "string"
         },
         "first": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "prev": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "next": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "last": {
-          "type": ["string", "null"]
+          "type": "string"
         }
       },
       "required": [

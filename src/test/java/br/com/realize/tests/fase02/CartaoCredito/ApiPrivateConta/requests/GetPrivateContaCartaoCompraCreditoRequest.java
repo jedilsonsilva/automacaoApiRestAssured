@@ -1,6 +1,5 @@
 package br.com.realize.tests.fase02.CartaoCredito.ApiPrivateConta.requests;
 
-import br.com.realize.tests.auth.requests.PostAuthRequest;
 import br.com.realize.tests.auth.tests.PostAuthTest;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;

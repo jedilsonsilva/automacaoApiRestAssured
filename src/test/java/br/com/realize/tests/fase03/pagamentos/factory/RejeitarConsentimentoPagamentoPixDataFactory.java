@@ -1,4 +1,4 @@
-package br.com.realize.tests.base.factory;
+package br.com.realize.tests.fase03.pagamentos.factory;
 
 import br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.AuthorizeReject.BodyAuthorize;

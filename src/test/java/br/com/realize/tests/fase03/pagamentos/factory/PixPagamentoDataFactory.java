@@ -1,4 +1,4 @@
-package br.com.realize.tests.base.factory;
+package br.com.realize.tests.fase03.pagamentos.factory;
 
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.AuthorizeReject.BodyAuthorize;
 import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.pojo.ConsentimentoPagamento.BodyConsentimentoPagamento;
@@ -10,9 +10,9 @@ import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import java.util.Locale;
-import static br.com.realize.tests.base.factory.ConsentimentoPagamentoPixDataFactory.*;
-import static br.com.realize.tests.base.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.*;
-import static br.com.realize.tests.base.factory.RejeitarConsentimentoPagamentoPixDataFactory.urlRejectConsentimentoPagamento;
+import static br.com.realize.tests.fase03.pagamentos.factory.ConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.AutorizacaoConsentimentoPagamentoPixDataFactory.*;
+import static br.com.realize.tests.fase03.pagamentos.factory.RejeitarConsentimentoPagamentoPixDataFactory.urlRejectConsentimentoPagamento;
 import static br.com.realize.tests.base.massaOrbi.CriacaoMassaOrbi.agencia;
 import static io.restassured.RestAssured.given;
 

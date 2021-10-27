@@ -36,7 +36,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.retornaContaIdentificadaPorCreditCardAccountId()
                 .then()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("meta.totalPages", greaterThan(0))
                 .body("meta.totalRecords", greaterThan(0))
                 .body("links.self", is(linkSelf));;
@@ -52,7 +52,6 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
                 .assertThat().body(matchesJsonSchema(
                 new File(Utils.getContractsBasePath("fase02/CartaoCredito/ContaIdentificadaPorCreditCardAccountId", "ContaIdentificadaPorCreditCardAccountId"))));
     }
-    @Ignore
    @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -61,7 +60,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
        getContaIdentificadaPorCreditCardAccountIdRequest.cpfSemConta()
                 .then()
                 .statusCode(200)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                //.time(lessThan(10L), TimeUnit.SECONDS)
                 .body("data", is(empty()));
     }
     @Test
@@ -72,7 +71,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.cpfInvalido()
                 .then()
                 .statusCode(400)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."))
                 .body("errors[0].detail", equalTo("O CPF informado é inválido."));
     }
@@ -84,7 +83,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.cpfdiferenteCreditCard()
                 .then()
                 .statusCode(404)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
     }
@@ -97,7 +96,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.pathInvalido()
                 .then()
                 .statusCode(404)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("O endereço informado para esse endpoint está incorreto."));
     }
@@ -109,7 +108,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.creditCardAccountIdInvalido()
                 .then()
                 .statusCode(404)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("errors[0].title", equalTo("O recurso solicitado não existe."))
                 .body("errors[0].detail", equalTo("A conta do cartão não foi encontrada."));
     }
@@ -122,7 +121,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.metodoNaoSuportado()
                 .then()
                 .statusCode(405)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Request method 'POST' not supported"));
     }
@@ -133,7 +132,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
     public void testAcceptDiferente() throws Exception {
         getContaIdentificadaPorCreditCardAccountIdRequest.acceptDiferente()
                 .then()
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .statusCode(406);
     }
     @Test
@@ -144,7 +143,7 @@ public class GetContaIdentificadaPorCreditCardAccountIdTest extends BaseTest {
         getContaIdentificadaPorCreditCardAccountIdRequest.erroGateway()
                 .then()
                 .statusCode(500)
-                .time(lessThan(4L), TimeUnit.SECONDS)
+                .time(lessThan(10L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("Ocorreu um erro inesperado ao processar sua requisição."))
                 .body("errors.detail", hasItem("Required String parameter 'cpf' is not present"));
     }

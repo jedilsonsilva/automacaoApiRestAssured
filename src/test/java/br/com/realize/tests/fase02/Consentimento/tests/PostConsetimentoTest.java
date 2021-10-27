@@ -66,7 +66,6 @@ public class PostConsetimentoTest extends BaseTest {
                 .body("errors.title", hasItem("O recurso solicitado não existe."))
                 .body("errors.detail", hasItem("O endereço informado para esse endpoint está incorreto."));
     }
-    @Ignore
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -78,7 +77,6 @@ public class PostConsetimentoTest extends BaseTest {
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."));
     }
-    @Ignore
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -112,17 +110,6 @@ public class PostConsetimentoTest extends BaseTest {
                 .statusCode(401)
                 .time(lessThan(4L), TimeUnit.SECONDS);
     }*/
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando informando a política de segurança é violada.")
-    public void testPoliticaSegurancaViolada() throws Exception {
-        postConsentimentoRequest.politicaSegurancaVioalada()
-                .then()
-                .statusCode(403)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({Healthcheck.class, AllTests.class, fase02.class})
@@ -156,28 +143,6 @@ public class PostConsetimentoTest extends BaseTest {
                 .time(lessThan(4L), TimeUnit.SECONDS)
                 .body("errors.title", hasItem("O formato do payload não é um formato suportado."))
                 .body("errors.detail", hasItem("Content type 'application/xml;charset=ISO-8859-1' not supported"));
-    }
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando informando um payload com formato não suportado.")
-    public void testImpossivelProcessarInstrucoes() throws Exception {
-        postConsentimentoRequest.impossivelProcessarInstrucoes()
-                .then()
-                .statusCode(422)
-                .time(lessThan(4L), TimeUnit.SECONDS);
-    }
-    @Ignore
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Category({Healthcheck.class, AllTests.class, fase02.class})
-    @DisplayName("Validar o retorno do endpoint de exclusão de consentimento quando muitas solicitações são feitas dentro de um determinado período.")
-    public void testMuitasSolicitacoesFeitas() throws Exception {
-        postConsentimentoRequest.muitasSolicitacoesFeitas()
-                .then()
-                .statusCode(429)
-                .time(lessThan(4L), TimeUnit.SECONDS);
     }
     @Test
     @Severity(SeverityLevel.NORMAL)

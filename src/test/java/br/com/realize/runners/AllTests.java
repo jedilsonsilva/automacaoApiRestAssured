@@ -22,6 +22,9 @@ import br.com.realize.tests.fase02.Contas.ListaContas.tests.GetContaTest;
 import br.com.realize.tests.fase02.Contas.Saldos.tests.GetSaldoTest;
 import br.com.realize.tests.fase02.DadosCadastrais.IdentificacaoPessoaNatural.tests.GetIdentificacaoPessoaNaturalTest;
 import br.com.realize.tests.fase02.DadosCadastrais.QualificacaoPessoaNatural.tests.GetQualificacaoPessoaNaturalTest;
+import br.com.realize.tests.fase03.pagamentos.consentimentoPagamentoPix.tests.*;
+import br.com.realize.tests.fase03.pagamentos.pixPagamento.tests.GetPixPagamentoTest;
+import br.com.realize.tests.fase03.pagamentos.pixPagamento.tests.PostPixPagamentoTest;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -63,7 +66,19 @@ import org.junit.runners.Suite;
         GetIdentificacaoContaTest.class,
 //Feature - Dados Cadastrais
         GetIdentificacaoPessoaNaturalTest.class,
-        GetQualificacaoPessoaNaturalTest.class
+        GetQualificacaoPessoaNaturalTest.class,
+
+//***************FASE 03***************
+
+//Feature - Consentimento Pagamento Pix
+        GetConsentimentoPagamentoTest.class,
+        PostAtualizacaoContaDebitoPagamentoPixTest.class,
+        PostAutorizarConsentimentoPagamentoPixTest.class,
+        PostConsentimentoPagamentoTest.class,
+        PostRejeitarConsentimentoPagamentoTest.class,
+//Feature - Pagamento Pix
+        GetPixPagamentoTest.class,
+        PostPixPagamentoTest.class
 })
 public class AllTests {
 }

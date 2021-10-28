@@ -16,7 +16,7 @@ pipeline {
         }
                 stage('AllTests openbanking') {
                     steps {
-					bat "mvn test -Dtest=AllTests test"
+					bat "mvn -Dtest=AllTests test"
                 	}
                 }        
             }

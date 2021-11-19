@@ -1,0 +1,116 @@
+**** COBERTURA DE TESTES
+
+Em testes de API Rest a cobertura de testes refere-se a execução de testes que exercitem os
+componentes que compõem tal API. Não envolve cobrir regras de negócio, pois isso se faz através
+de testes funcionais
+
+- Path Coverage (input)
+- Operator Coverage (input)
+- Parameter Coverage (input)
+- Parameter Value Coverage (input)
+- Content-Type Coverage (input e Output)
+- Operation Flow (input)
+- Response Properties Body Coverage (Output)
+- Status Code Coverage (Output)
+
+
+**** TESTES DESTRUTIVOS
+
+- Body com estruturas de Json incorreta
+- Tipagem incorreta dos dados
+- Valores que ferem os permitidos para a entidade
+- URIs muito grandes
+- Content-types incorretos
+- Chaves de Header e valores grandes demais
+- Acentuações (Comuns e com hexa)
+- Métodos não suportados, URIs não permitidas e Protocolos não permitidos
+
+
+**** TESTES DE PERFORMANCE
+
+- Desempenho - Eu sei exatamente quantos o usuário entrarão em minha aplicação em determinado momento.
+- Carga - E sei exatamente o numero de usuários e o tempo (tempo grande) que eles acessarão a aplicação
+- Stress - Não determina os limites, a proposta é descobrir até onde vão os limites da aplicação
+
+**** TESTES DE SEGURANÇA
+
+- Broken object level authorization --- Validar o comportamento da API quando tentar realizar uma ação com usuário que não tem permissão.
+- Broken authentication --------------- Validar a autenticação alterando informações de login no token (Usar o site https://jwt.io/ para alterar as informações no token)
+- Excessive data exposure ------------- Validar que a API está retornando somente o que está previsto que aquele endpoint deve retornar.
+- Lack of Resources & Rate Limiting --- Limitar a quantidade de tentativas de acessos a API com usuário, senha ou qualquer outro dado incorretamente durante 
+a autenticação ou chamadas da API, bloqueando aquele usuário. 
+- Broken function level authorization - Validar o comportamento da API com parametros diferentes. Ex.: Colocar o termo "admin" na URL e validar o que retorna.
+
+**** HEURÍSTICAS DE TESTES DE API
+
+Heurísticas são utilizadas em testes exploratórios ou quando não há muito tempo para testar, mesmo sem ter um script ou roteiro de testes, há a 
+possibilidade de seguir padrões de testes que cubram as necessidades de validação da API.
+Em resumo uma heurística de testes força o testador a seguir uma trilha mesmo sem casos de testes definidos.
+
+- POISED ------------ (Parâmetros, RespOstas, Interoperalibilidade, Segurança, Erros e Dados)
+- VADER ------------- (Verbos, Autorização e Autenticação, Dados, Erros, Responsividade)
+- PAPAS BE @ SFO ---- (Paginação, Autenticação, Parâmetros, Autorização, Segurança, Behave, Gerenciamento de Erros, Estado, Filtros, Ordenação)
+
+**** INCONSISTÊNCIAS
+
+**Conceitos Básicos
+
+- Defeito ---- Uma inconsistência em um artefato.
+- Falha ------ Uma inconsistência encontrada ao executar uma aplicação.
+- Engano ----- A inconsistência entre o que foi dito e o que foi entendido.
+- Incidente -- Uma inconsistência identificada em produção.
+
+** Prioridade e Severidade
+
+Prioridade
+- Alta --- Inconsistência precisa ser corrigida HOJE.
+- Média -- Pode-se aguardar a correção até o final da sprint.
+- Baixa -- Pode ser corrigido no futuro (não necessariamente na sprint atual).
+
+Severiddade
+- Alta --- Isso impede de seguir qualquer fluxo.
+- Média -- Um determinado fluxo não está funcionando, mas da pra fazer um caminho alternativo enquanto corrige
+(O endpoint de edição parou de funcionar, mas dá pra chamar o delete e o de cadastrar novamente, por exemplo).
+- Baixa -- Uma mensagem ou label por exemplo não está muito 'bonita', mas não impacta o entendimento.
+
+**** MOCKS
+- MounteBank
+
+Instalar o mounteBank - npm i -g mountbank
+Verificar a versão do mountebank - mb --version
+Executar o MounteBank - mb
+Executar o MounteBank indicando o arquivo ejs - mb --configfile src/test/resources/mocks/tempoAPI.ejs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
